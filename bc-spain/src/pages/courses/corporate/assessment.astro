@@ -1,0 +1,450 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Hero from '../../../components/Hero.astro';
+import Button from '../../../components/Button.astro';
+import '../../../styles/global.css';
+
+const heroStats = [
+  { value: '2M+', label: 'Annual assessments' },
+  { value: '90', label: 'Countries' },
+  { value: 'Global', label: 'Recognition' }
+];
+---
+
+<Layout title="English Language Assessment & Certification" description="Recruit talent, benchmark skills and measure progress with globally recognized English language assessments. Over 2 million assessments delivered annually across 90 countries.">
+  <Header />
+
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <Hero
+      title="English Language Assessments to recruit talent, benchmark skills and measure progress"
+      subtitle="Through testing and assessment, we help our clients recruit and retain the right talent, support students to gain admission to institutions around world, and help businesses inform and measure training decisions."
+      ctaPrimary={{ text: 'Book Consultation', href: '/contact' }}
+      ctaSecondary={{ text: 'View Assessments', href: '#assessments' }}
+      stats={heroStats}
+    />
+
+    <!-- Assessment Solutions Overview -->
+    <section id="assessments" class="py-20" style="background: transparent;">
+      <div class="bc-container">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Comprehensive Assessment Solutions</h2>
+          <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+            Scalable, technology-enabled testing linked to CEFR English levels and globally recognized
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- EnglishScore -->
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-lg); border: 1px solid var(--line); box-shadow: var(--shadow-lg);" class="p-10">
+            <div class="flex items-start space-x-4 mb-6">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--mint), var(--sky));">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold mb-2" style="color: var(--bc-primary-blue);">EnglishScore</h3>
+                <p class="text-sm" style="color: var(--bc-cta-pink); font-weight: 600;">Mobile-proctored remote testing</p>
+              </div>
+            </div>
+
+            <p class="text-lg mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+              World's only mobile-proctored English test - quick, scalable solution for remote testing
+            </p>
+
+            <div class="mb-6">
+              <h4 class="font-semibold mb-3" style="color: var(--bc-primary-blue);">Key Features:</h4>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Tests receptive skills (listening and reading)</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Simple, trusted way to check English proficiency</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Inform training decisions quickly</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">At-scale remote workforce assessment</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">Mobile-First</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05)); color: var(--bc-cta-pink);">Quick Results</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">Scalable</span>
+            </div>
+
+            <div class="p-4 rounded-lg mb-6" style="background: rgba(47, 214, 200, 0.05);">
+              <p class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Perfect for:</p>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">Remote workforce assessment, initial screening, at-scale testing</p>
+            </div>
+
+            <Button href="/contact" variant="primary" size="md" class="w-full">
+              Learn More
+            </Button>
+          </div>
+
+          <!-- Aptis -->
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-lg); border: 1px solid var(--line); box-shadow: var(--shadow-lg);" class="p-10">
+            <div class="flex items-start space-x-4 mb-6">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold mb-2" style="color: var(--bc-primary-blue);">Aptis</h3>
+                <p class="text-sm" style="color: var(--bc-cta-pink); font-weight: 600;">Comprehensive computer-based assessment</p>
+              </div>
+            </div>
+
+            <p class="text-lg mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+              Scalable, computer-based assessment for comprehensive skills evaluation
+            </p>
+
+            <div class="mb-6">
+              <h4 class="font-semibold mb-3" style="color: var(--bc-primary-blue);">Key Features:</h4>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Tests receptive and productive skills</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Evaluates English in professional, academic, and social situations</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Supervised delivery for reliability</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Training programme evaluation</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">Computer-Based</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05)); color: var(--bc-cta-pink);">Comprehensive</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">Supervised</span>
+            </div>
+
+            <div class="p-4 rounded-lg mb-6" style="background: rgba(124, 77, 255, 0.05);">
+              <p class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Perfect for:</p>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">Training programme evaluation, comprehensive skills assessment, benchmarking</p>
+            </div>
+
+            <Button href="/contact" variant="primary" size="md" class="w-full">
+              Learn More
+            </Button>
+          </div>
+
+          <!-- IELTS -->
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-lg); border: 1px solid var(--line); box-shadow: var(--shadow-lg);" class="p-10">
+            <div class="flex items-start space-x-4 mb-6">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold mb-2" style="color: var(--bc-primary-blue);">IELTS</h3>
+                <p class="text-sm" style="color: var(--bc-cta-pink); font-weight: 600;">World's most popular English test</p>
+              </div>
+            </div>
+
+            <p class="text-lg mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+              Co-created by the British Council - globally recognized for higher education and global migration
+            </p>
+
+            <div class="mb-6">
+              <h4 class="font-semibold mb-3" style="color: var(--bc-primary-blue);">Key Features:</h4>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Tests receptive and productive skills</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Delivered online or in test centres</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Globally recognized credential</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Co-created by British Council</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">Global Standard</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05)); color: var(--bc-cta-pink);">Widely Accepted</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">Flexible Delivery</span>
+            </div>
+
+            <div class="p-4 rounded-lg mb-6" style="background: rgba(255, 20, 147, 0.05);">
+              <p class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Perfect for:</p>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">International assignments, higher education programmes, global talent mobility</p>
+            </div>
+
+            <Button href="/contact" variant="primary" size="md" class="w-full">
+              Learn More
+            </Button>
+          </div>
+
+          <!-- Foundation English Test -->
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-lg); border: 1px solid var(--line); box-shadow: var(--shadow-lg);" class="p-10">
+            <div class="flex items-start space-x-4 mb-6">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--violet), var(--pink));">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold mb-2" style="color: var(--bc-primary-blue);">Foundation English Test</h3>
+                <p class="text-sm" style="color: var(--bc-cta-pink); font-weight: 600;">Entry-level assessment</p>
+              </div>
+            </div>
+
+            <p class="text-lg mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+              Entry-level assessment for basic communication roles (A1-B1 CEFR)
+            </p>
+
+            <div class="mb-6">
+              <h4 class="font-semibold mb-3" style="color: var(--bc-primary-blue);">Key Features:</h4>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Designed by the British Council</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Assesses entry-level English skills (A1-B1)</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Streamline hiring or training processes</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span style="color: var(--bc-dark-gray);">Ideal for basic communication roles</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">Entry-Level</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05)); color: var(--bc-cta-pink);">CEFR Aligned</span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">Recruitment-Ready</span>
+            </div>
+
+            <div class="p-4 rounded-lg mb-6" style="background: rgba(124, 77, 255, 0.05);">
+              <p class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Perfect for:</p>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">Recruitment agencies, vocational schools, government bodies, entry-level hiring</p>
+            </div>
+
+            <Button href="/contact" variant="primary" size="md" class="w-full">
+              Learn More
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Benefits Section -->
+    <section class="py-20" style="background: linear-gradient(180deg, transparent 0%, rgba(124, 77, 255, 0.02) 100%);">
+      <div class="bc-container">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Assessment Solutions for Every Business Need</h2>
+          <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+            Recruit, benchmark, measure and certify with globally recognized credentials
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-6">
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-6 text-center">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+              <svg class="w-7 h-7" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" style="color: var(--bc-primary-blue);">Recruit Talent</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+              Accurate skills assessment to recruit and promote the right talent
+            </p>
+          </div>
+
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-6 text-center">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+              <svg class="w-7 h-7" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" style="color: var(--bc-primary-blue);">Benchmark Skills</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+              Standardized benchmarking linked to CEFR English levels
+            </p>
+          </div>
+
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-6 text-center">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+              <svg class="w-7 h-7" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" style="color: var(--bc-primary-blue);">Measure Progress</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+              Track employee engagement and training programme effectiveness
+            </p>
+          </div>
+
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-6 text-center">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+              <svg class="w-7 h-7" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" style="color: var(--bc-primary-blue);">Global Certification</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+              Globally recognized credentials valued by employers worldwide
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROI Section -->
+    <section class="py-20" style="background: linear-gradient(180deg, rgba(124, 77, 255, 0.02) 0%, transparent 100%);">
+      <div class="bc-container">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--bc-primary-blue);">Reduce Risk, Maximize ROI</h2>
+            <p class="text-lg mb-8 leading-relaxed" style="color: var(--bc-dark-gray);">
+              Make informed decisions with accurate, reliable assessment data
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                  <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-2" style="color: var(--bc-primary-blue);">Reduce Hiring Risks</h3>
+                  <p class="leading-relaxed" style="color: var(--bc-dark-gray);">Accurate pre-employment assessment ensures you hire candidates with the right English proficiency</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                  <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-2" style="color: var(--bc-primary-blue);">Measure Training ROI</h3>
+                  <p class="leading-relaxed" style="color: var(--bc-dark-gray);">Before and after assessments demonstrate tangible improvement and training impact</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                  <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-2" style="color: var(--bc-primary-blue);">Optimize Training Investment</h3>
+                  <p class="leading-relaxed" style="color: var(--bc-dark-gray);">Identify skills gaps and focus resources where they'll have the greatest impact</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);" class="p-12 text-white">
+            <h3 class="text-2xl font-bold mb-8">Scale & Reliability</h3>
+            <div class="space-y-8">
+              <div>
+                <div class="text-5xl font-bold mb-2">2M+</div>
+                <p class="text-white opacity-90 text-lg">Assessments delivered annually</p>
+              </div>
+              <div>
+                <div class="text-5xl font-bold mb-2">90</div>
+                <p class="text-white opacity-90 text-lg">Countries worldwide</p>
+              </div>
+              <div>
+                <div class="text-5xl font-bold mb-2">CEFR</div>
+                <p class="text-white opacity-90 text-lg">Linked to international standards</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 text-white" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+      <div class="bc-container text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Ready to implement assessment solutions?
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto" style="color: rgba(255, 255, 255, 0.9);">
+          Discuss your assessment needs with our experts and discover the right solution for your organization
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/contact" variant="secondary" size="lg" class="bg-white hover:bg-white" style="color: var(--bc-primary-blue); box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);">
+            Book Free Consultation
+          </Button>
+          <Button href="/courses/corporate" variant="outline" size="lg" style="border: 2px solid white; background: transparent; color: white;">
+            View All Solutions
+          </Button>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

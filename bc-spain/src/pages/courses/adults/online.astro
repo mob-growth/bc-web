@@ -1,0 +1,480 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Hero from '../../../components/Hero.astro';
+import Button from '../../../components/Button.astro';
+
+const pageTitle = "Online English Courses for Adults";
+const pageDescription = "Learn English online with British Council Spain. Flexible live classes, self-paced learning, and summer intensive programs. Study from anywhere with expert teachers.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <!-- Hero Section -->
+  <Hero
+    title="Online English Courses"
+    subtitle="Learn English from anywhere in the world. Join live interactive classes with expert teachers, access 24/7 learning resources, and study at your own pace with our flexible online programs."
+    ctaPrimary={{
+      text: "Start Learning Online",
+      href: "#enrol"
+    }}
+    ctaSecondary={{
+      text: "Try Free Demo Class",
+      href: "#demo"
+    }}
+    stats={[
+      { value: "24/7", label: "Platform Access" },
+      { value: "Live", label: "Interactive Classes" },
+      { value: "50+", label: "Countries" }
+    ]}
+  />
+
+  <!-- Overview Section -->
+  <section class="py-20 relative" style="background: transparent;">
+    <div class="bc-container">
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+        <div>
+          <div class="inline-block px-4 py-2 rounded-full mb-6" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <span class="text-sm font-semibold" style="color: var(--bc-cta-pink);">Study Anywhere, Anytime</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--bc-primary-blue);">
+            World-Class English Learning Online
+          </h2>
+          <p class="text-lg mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Experience the same British Council quality and expertise from the comfort of your home. Our online courses combine live interactive classes with self-paced learning, giving you the flexibility to learn English on your schedule.
+          </p>
+          <p class="text-base leading-relaxed mb-6" style="color: var(--bc-dark-gray);">
+            Whether you prefer structured live classes with a teacher or the freedom of self-study, our online platform provides everything you need to achieve your English learning goals.
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Live Interactive Classes</h4>
+                <p class="text-sm" style="color: var(--muted);">Real-time sessions with qualified teachers and classmates from around the world</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">24/7 Platform Access</h4>
+                <p class="text-sm" style="color: var(--muted);">Study whenever you want with unlimited access to learning materials</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Personalized Learning Path</h4>
+                <p class="text-sm" style="color: var(--muted);">Adaptive technology tailors content to your level and progress</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Mobile Learning</h4>
+                <p class="text-sm" style="color: var(--muted);">Learn on any device - desktop, tablet, or smartphone</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Feature Card 1 -->
+          <div class="rounded-3xl p-6 transform hover:-translate-x-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-2" style="color: var(--bc-primary-blue);">Video Lessons</h3>
+                <p class="text-sm" style="color: var(--muted);">High-quality video content with native speakers and real-life scenarios</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Card 2 -->
+          <div class="rounded-3xl p-6 transform hover:-translate-x-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-2" style="color: var(--bc-primary-blue);">Speaking Practice</h3>
+                <p class="text-sm" style="color: var(--muted);">Interactive speaking activities with voice recognition technology</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Card 3 -->
+          <div class="rounded-3xl p-6 transform hover:-translate-x-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--violet), var(--pink));">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg mb-2" style="color: var(--bc-primary-blue);">Progress Tracking</h3>
+                <p class="text-sm" style="color: var(--muted);">Real-time analytics showing your improvement and areas to focus on</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Options -->
+  <section class="py-20" style="background: linear-gradient(180deg, rgba(35, 7, 90, 0.02) 0%, transparent 100%);">
+    <div class="bc-container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          Choose Your Online Learning Path
+        </h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+          Select the format that best fits your schedule, learning style, and goals
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Live Online Classes -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3" style="color: var(--bc-primary-blue);">Live Online Classes</h3>
+          <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Join scheduled live classes with a teacher and classmates. Real-time interaction, speaking practice, and immediate feedback.
+          </p>
+
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Live interactive sessions</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>12-week programs</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Small group sizes</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>All levels A1-C2</span>
+            </div>
+          </div>
+
+          <Button variant="primary" size="md" class="w-full">
+            View Schedule
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <!-- Self-Study -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3" style="color: var(--bc-primary-blue);">Self-Study Online</h3>
+          <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Study completely at your own pace with unlimited access to our learning platform. Perfect for independent learners with busy schedules.
+          </p>
+
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Learn at your pace</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>24/7 access</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Interactive activities</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Automated feedback</span>
+            </div>
+          </div>
+
+          <Button variant="primary" size="md" class="w-full">
+            Start Free Trial
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <!-- Summer Intensive -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all relative" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 2px solid var(--bc-cta-pink); box-shadow: var(--shadow-lg);">
+          <div class="absolute -top-3 right-6 px-4 py-1 rounded-full text-xs font-bold text-white" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+            Limited Time
+          </div>
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--mint), var(--sky));">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3" style="color: var(--bc-primary-blue);">Summer Intensive</h3>
+          <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Fast-track your English in our intensive summer program. 6 weeks of focused learning with daily live classes and dedicated study time.
+          </p>
+
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>6-week program</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Daily live sessions</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Accelerated progress</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>June-August dates</span>
+            </div>
+          </div>
+
+          <Button variant="secondary" size="md" class="w-full">
+            Reserve Your Spot
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Features -->
+  <section class="py-20">
+    <div class="bc-container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          Award-Winning Learning Platform
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          Everything you need to succeed in one powerful platform
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.1), rgba(35, 7, 90, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Video Lessons</h3>
+          <p class="text-sm" style="color: var(--muted);">1000+ hours of video content with native speakers</p>
+        </div>
+
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Voice Recognition</h3>
+          <p class="text-sm" style="color: var(--muted);">Practice pronunciation with AI-powered feedback</p>
+        </div>
+
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.1), rgba(35, 7, 90, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Writing Practice</h3>
+          <p class="text-sm" style="color: var(--muted);">Get feedback on your writing from teachers</p>
+        </div>
+
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Flexible Timing</h3>
+          <p class="text-sm" style="color: var(--muted);">Study anytime that works for your schedule</p>
+        </div>
+
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Mobile App</h3>
+          <p class="text-sm" style="color: var(--muted);">Learn on the go with iOS and Android apps</p>
+        </div>
+
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.1), rgba(35, 7, 90, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Progress Analytics</h3>
+          <p class="text-sm" style="color: var(--muted);">Track your improvement with detailed reports</p>
+        </div>
+
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Community</h3>
+          <p class="text-sm" style="color: var(--muted);">Connect with learners worldwide</p>
+        </div>
+
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.1), rgba(35, 7, 90, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Certificates</h3>
+          <p class="text-sm" style="color: var(--muted);">Earn British Council certificates</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="enrol" class="py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.04) 0%, rgba(255, 20, 147, 0.04) 100%);"></div>
+
+    <div class="bc-container relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6" style="color: var(--bc-primary-blue);">
+          Start Learning English Online Today
+        </h2>
+        <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          Join thousands of students learning English online with British Council. Try a free demo class or start your course today.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <Button variant="secondary" size="lg" id="demo">
+            Try Free Demo Class
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </Button>
+          <Button variant="primary" size="lg">
+            Enrol Now
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t" style="border-color: var(--line);">
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">24/7</p>
+            <p class="text-sm" style="color: var(--muted);">Platform Access</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">50+</p>
+            <p class="text-sm" style="color: var(--muted);">Countries</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">15K+</p>
+            <p class="text-sm" style="color: var(--muted);">Online Students</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">4.8/5</p>
+            <p class="text-sm" style="color: var(--muted);">Student Rating</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes morph-blob {
+      0%, 100% { border-radius: 40% 60% 60% 40% / 60% 40%; }
+      25% { border-radius: 60% 40% 40% 60% / 40% 60%; }
+      50% { border-radius: 40% 60% 60% 40%; }
+      75% { border-radius: 60% 40% / 40% 60%; }
+    }
+
+    .animate-slide-up {
+      animation: slideInUp 0.8s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: slideInUp 1s ease-out forwards;
+    }
+  </style>
+</Layout>

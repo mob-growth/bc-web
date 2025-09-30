@@ -1,0 +1,394 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Hero from '../../../components/Hero.astro';
+import Button from '../../../components/Button.astro';
+import '../../../styles/global.css';
+
+const heroStats = [
+  { value: '80+ Years', label: 'Global expertise' },
+  { value: '80+ Countries', label: 'Worldwide presence' },
+  { value: '80M+ Learners', label: 'Trust us globally' }
+];
+---
+
+<Layout title="Corporate English Solutions" description="Empower your organization with scalable English training solutions. 80+ years of proven expertise in business English, professional communication, and assessment.">
+  <Header />
+
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <Hero
+      title="Power to your team"
+      subtitle="Empowering organizations to boost communication skills for success. Working with businesses, governments and educational institutions for over 80 years, providing practical and engaging training and assessment solutions."
+      ctaPrimary={{ text: 'Book Free Consultation', href: '/contact' }}
+      ctaSecondary={{ text: 'Explore Solutions', href: '#solutions' }}
+      stats={heroStats}
+    />
+
+    <!-- Solutions Overview Section -->
+    <section id="solutions" class="py-20" style="background: transparent;">
+      <div class="bc-container">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Comprehensive English Solutions for Business</h2>
+          <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+            Scalable, engaging, impactful learning solutions for professionals in all roles, industries and career stages
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Solution 1: Professional Communication -->
+          <a href="/courses/corporate/training" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2 block group">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Professional Communication</h3>
+            <p class="leading-relaxed text-sm mb-4" style="color: var(--bc-dark-gray);">
+              Boost engagement, productivity and performance through enhanced spoken and written communication skills
+            </p>
+            <span class="text-sm font-semibold inline-flex items-center" style="color: var(--bc-cta-pink);">
+              Learn more
+              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </span>
+          </a>
+
+          <!-- Solution 2: English Language Skills -->
+          <a href="/courses/corporate/training" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2 block group">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, var(--violet), var(--pink));">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">English Language Skills</h3>
+            <p class="leading-relaxed text-sm mb-4" style="color: var(--bc-dark-gray);">
+              Empower your people to communicate more confidently and effectively in workplace and social situations
+            </p>
+            <span class="text-sm font-semibold inline-flex items-center" style="color: var(--bc-cta-pink);">
+              Learn more
+              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </span>
+          </a>
+
+          <!-- Solution 3: Assessment & Certification -->
+          <a href="/courses/corporate/assessment" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2 block group">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Assessment & Certification</h3>
+            <p class="leading-relaxed text-sm mb-4" style="color: var(--bc-dark-gray);">
+              Globally recognised assessments to recruit talent, benchmark skills and measure progress
+            </p>
+            <span class="text-sm font-semibold inline-flex items-center" style="color: var(--bc-cta-pink);">
+              Learn more
+              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </span>
+          </a>
+
+          <!-- Solution 4: Online Training Suite -->
+          <a href="/courses/corporate/online" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2 block group">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, var(--mint), var(--sky));">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Online Training Suite</h3>
+            <p class="leading-relaxed text-sm mb-4" style="color: var(--bc-dark-gray);">
+              Customised virtual and online English solutions available 24/7, anywhere in the world
+            </p>
+            <span class="text-sm font-semibold inline-flex items-center" style="color: var(--bc-cta-pink);">
+              Learn more
+              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery Formats Section -->
+    <section class="py-20" style="background: linear-gradient(180deg, transparent 0%, rgba(124, 77, 255, 0.02) 100%);">
+      <div class="bc-container">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Flexible Delivery Formats</h2>
+          <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+            Choose the delivery format that works best for your organization and teams
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- In-Person -->
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-8 text-center">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+              <svg class="w-8 h-8" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">In-Person Training</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Immersive, collaborative face-to-face sessions at your office or our centres
+            </p>
+          </div>
+
+          <!-- Online -->
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-8 text-center">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+              <svg class="w-8 h-8" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Online Training</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Live virtual classes and self-paced learning, accessible 24/7 from anywhere
+            </p>
+          </div>
+
+          <!-- Blended -->
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-8 text-center">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+              <svg class="w-8 h-8" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Blended Learning</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Best of both worlds - combine online flexibility with in-person engagement
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROI & Business Benefits Section -->
+    <section class="py-20" style="background: transparent;">
+      <div class="bc-container">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Measurable Business Impact</h2>
+          <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+            Track, measure and report the ROI of your English training investment
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <!-- Benefits List -->
+          <div>
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                  <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-2" style="color: var(--bc-primary-blue);">Track Training Impact</h3>
+                  <p class="leading-relaxed" style="color: var(--bc-dark-gray);">Real-time dashboards and comprehensive reporting tools to monitor employee progress and engagement</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                  <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-2" style="color: var(--bc-primary-blue);">Measure Return on Investment</h3>
+                  <p class="leading-relaxed" style="color: var(--bc-dark-gray);">Targeted feedback and ROI reporting tools help communicate training success to stakeholders</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                  <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-2" style="color: var(--bc-primary-blue);">Behavioral Change</h3>
+                  <p class="leading-relaxed" style="color: var(--bc-dark-gray);">See practical results and behavioral change in the workplace, leading to improved performance</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                  <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold mb-2" style="color: var(--bc-primary-blue);">Scalable Solutions</h3>
+                  <p class="leading-relaxed" style="color: var(--bc-dark-gray);">From small teams to 10,000+ employees, our solutions grow with your organization</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats Card -->
+          <div style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);" class="p-12 text-white">
+            <h3 class="text-2xl font-bold mb-8">Proven Results</h3>
+            <div class="space-y-8">
+              <div>
+                <div class="text-4xl font-bold mb-2">2M+</div>
+                <p class="text-white opacity-90">Assessments delivered annually across 90 countries</p>
+              </div>
+              <div>
+                <div class="text-4xl font-bold mb-2">10,000+</div>
+                <p class="text-white opacity-90">Participants in large-scale training programmes</p>
+              </div>
+              <div>
+                <div class="text-4xl font-bold mb-2">100pts</div>
+                <p class="text-white opacity-90">Average TOEIC improvement in client programmes</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4-Step Process Section -->
+    <section class="py-20" style="background: linear-gradient(180deg, rgba(124, 77, 255, 0.02) 0%, transparent 100%);">
+      <div class="bc-container">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Our Proven 4-Step Process</h2>
+          <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+            We take the pain out of training course design and implementation
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Step 1 -->
+          <div class="relative" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md); padding: 2rem;">
+            <div class="absolute -top-4 -left-4 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl text-white" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">1</div>
+            <div class="mt-4">
+              <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Consultation</h3>
+              <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+                We identify skills gaps and learning goals for your organisation
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md); padding: 2rem;">
+            <div class="absolute -top-4 -left-4 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl text-white" style="background: linear-gradient(135deg, var(--violet), var(--pink));">2</div>
+            <div class="mt-4">
+              <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Design</h3>
+              <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+                We create scalable, customised solutions with personalised content and integrated assessment
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md); padding: 2rem;">
+            <div class="absolute -top-4 -left-4 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl text-white" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">3</div>
+            <div class="mt-4">
+              <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Delivery</h3>
+              <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+                Our experienced trainers engage your teams, develop relevant, transferable skills to ensure employees progress
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md); padding: 2rem;">
+            <div class="absolute -top-4 -left-4 w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl text-white" style="background: linear-gradient(135deg, var(--mint), var(--sky));">4</div>
+            <div class="mt-4">
+              <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Evaluation</h3>
+              <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+                We track and report progress, report ROI and help you communicate success to stakeholders
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Credibility Section -->
+    <section class="py-20" style="background: transparent;">
+      <div class="bc-container">
+        <div style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.03), rgba(255, 20, 147, 0.02)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-lg); border: 1px solid var(--line); box-shadow: var(--shadow-lg);" class="p-12 md:p-16">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Trusted Globally for Over 80 Years</h2>
+            <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+              An unparalleled track record of partnering with corporate, government and education organisations worldwide
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-12 text-center">
+            <div>
+              <div class="text-5xl md:text-6xl font-bold mb-3" style="background: linear-gradient(135deg, var(--bc-primary-blue), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">80+</div>
+              <div class="text-xl font-semibold mb-2" style="color: var(--bc-primary-blue);">Years of Expertise</div>
+              <p style="color: var(--bc-dark-gray);">Decades of proven experience in English language training</p>
+            </div>
+            <div>
+              <div class="text-5xl md:text-6xl font-bold mb-3" style="background: linear-gradient(135deg, var(--bc-cta-pink), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">80+</div>
+              <div class="text-xl font-semibold mb-2" style="color: var(--bc-primary-blue);">Countries</div>
+              <p style="color: var(--bc-dark-gray);">Global presence and international credibility</p>
+            </div>
+            <div>
+              <div class="text-5xl md:text-6xl font-bold mb-3" style="background: linear-gradient(135deg, var(--violet), var(--mint)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">80M+</div>
+              <div class="text-xl font-semibold mb-2" style="color: var(--bc-primary-blue);">Learners</div>
+              <p style="color: var(--bc-dark-gray);">Professionals worldwide trust British Council</p>
+            </div>
+          </div>
+
+          <div class="mt-12 pt-12 border-t border-opacity-20" style="border-color: var(--bc-primary-blue);">
+            <div class="text-center">
+              <p class="text-lg mb-2" style="color: var(--bc-primary-blue); font-weight: 600;">Not-for-profit organization</p>
+              <p style="color: var(--bc-dark-gray);">We reinvest in cultural and educational projects worldwide</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 text-white" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+      <div class="bc-container text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Ready to empower your team?
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto" style="color: rgba(255, 255, 255, 0.9);">
+          Book a free consultation with our corporate training experts to discuss your organization's needs
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/contact" variant="secondary" size="lg" class="bg-white hover:bg-white" style="color: var(--bc-primary-blue); box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);">
+            Book Free Consultation
+          </Button>
+          <Button href="/courses/corporate/online" variant="outline" size="lg" style="border: 2px solid white; background: transparent; color: white;">
+            Explore Online Solutions
+          </Button>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideInUp 0.8s ease-out 0.2s both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>

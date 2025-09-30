@@ -1,0 +1,457 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Hero from '../../../components/Hero.astro';
+import Button from '../../../components/Button.astro';
+
+const pageTitle = "Three Month Face-to-Face English Course";
+const pageDescription = "Join our most popular English course in Madrid and Barcelona. 12-week intensive programs with expert teachers, all levels from A1 to C2.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <!-- Hero Section -->
+  <Hero
+    title="Three Month Face-to-Face Course"
+    subtitle="Our most popular English course. Learn in dynamic classroom environments at our centres in Madrid or Barcelona with expert native teachers and an international community."
+    ctaPrimary={{
+      text: "Enrol Now",
+      href: "#enrol"
+    }}
+    ctaSecondary={{
+      text: "Download Brochure",
+      href: "#brochure"
+    }}
+    stats={[
+      { value: "12 Weeks", label: "Intensive Learning" },
+      { value: "90 Hours", label: "Face-to-Face Classes" },
+      { value: "15 Max", label: "Students Per Class" }
+    ]}
+  />
+
+  <!-- Course Overview -->
+  <section class="py-20 relative" style="background: transparent;">
+    <div class="bc-container">
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+        <div>
+          <div class="inline-block px-4 py-2 rounded-full mb-6" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <span class="text-sm font-semibold" style="color: var(--bc-cta-pink);">Most Popular Course</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--bc-primary-blue);">
+            Why Choose Our Termly Course?
+          </h2>
+          <p class="text-lg mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Our three-month face-to-face courses are designed to provide you with an immersive English learning experience. Whether you're starting from scratch or refining advanced skills, our structured approach ensures rapid progress.
+          </p>
+          <p class="text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+            Study at our modern centres in Madrid or Barcelona, where you'll join an international community of learners and benefit from British Council's 80+ years of English teaching expertise.
+          </p>
+        </div>
+
+        <div class="rounded-3xl p-8" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <h3 class="text-2xl font-bold mb-6" style="color: var(--bc-primary-blue);">Course Highlights</h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">90 Hours of Face-to-Face Learning</h4>
+                <p class="text-sm" style="color: var(--muted);">Intensive 12-week program with 7.5 hours per week</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">All CEFR Levels Available</h4>
+                <p class="text-sm" style="color: var(--muted);">From complete beginners (A1) to proficiency (C2)</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Small Class Sizes</h4>
+                <p class="text-sm" style="color: var(--muted);">Maximum 15 students for personalized attention</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Expert Native Teachers</h4>
+                <p class="text-sm" style="color: var(--muted);">Qualified professionals with extensive experience</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Flexible Schedule Options</h4>
+                <p class="text-sm" style="color: var(--muted);">Morning, afternoon, and evening classes available</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Levels Section -->
+  <section class="py-20" style="background: linear-gradient(180deg, rgba(35, 7, 90, 0.02) 0%, transparent 100%);">
+    <div class="bc-container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          Choose Your Level
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          We offer courses at all CEFR levels. Not sure which level? Take our free placement test.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <!-- Beginner Levels -->
+        <div class="rounded-2xl p-6 transform hover:-translate-y-1 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #4CAF50, #66BB6A);">
+              <span class="text-white font-bold text-lg">A1-A2</span>
+            </div>
+            <h3 class="text-xl font-bold" style="color: var(--bc-primary-blue);">Beginner</h3>
+          </div>
+          <p class="text-sm mb-4" style="color: var(--bc-dark-gray);">
+            Start your English journey. Learn essential vocabulary, basic grammar, and everyday communication.
+          </p>
+          <ul class="space-y-2 text-sm" style="color: var(--muted);">
+            <li class="flex items-center gap-2">
+              <span style="color: var(--bc-cta-pink);">•</span>
+              <span>Basic greetings and introductions</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span style="color: var(--bc-cta-pink);">•</span>
+              <span>Simple conversations</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span style="color: var(--bc-cta-pink);">•</span>
+              <span>Essential grammar structures</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Intermediate Levels -->
+        <div class="rounded-2xl p-6 transform hover:-translate-y-1 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #FF9800, #FFB74D);">
+              <span class="text-white font-bold text-lg">B1-B2</span>
+            </div>
+            <h3 class="text-xl font-bold" style="color: var(--bc-primary-blue);">Intermediate</h3>
+          </div>
+          <p class="text-sm mb-4" style="color: var(--bc-dark-gray);">
+            Build fluency and confidence. Discuss complex topics, express opinions, and understand native speakers.
+          </p>
+          <ul class="space-y-2 text-sm" style="color: var(--muted);">
+            <li class="flex items-center gap-2">
+              <span style="color: var(--bc-cta-pink);">•</span>
+              <span>Detailed conversations</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span style="color: var(--bc-cta-pink);">•</span>
+              <span>Understanding native content</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span style="color: var(--bc-cta-pink);">•</span>
+              <span>Advanced grammar patterns</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Advanced Levels -->
+        <div class="rounded-2xl p-6 transform hover:-translate-y-1 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+              <span class="text-white font-bold text-lg">C1-C2</span>
+            </div>
+            <h3 class="text-xl font-bold" style="color: var(--bc-primary-blue);">Advanced</h3>
+          </div>
+          <p class="text-sm mb-4" style="color: var(--bc-dark-gray);">
+            Master professional English. Achieve near-native fluency for academic and business contexts.
+          </p>
+          <ul class="space-y-2 text-sm" style="color: var(--muted);">
+            <li class="flex items-center gap-2">
+              <span style="color: var(--bc-cta-pink);">•</span>
+              <span>Native-level fluency</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span style="color: var(--bc-cta-pink);">•</span>
+              <span>Professional communication</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span style="color: var(--bc-cta-pink);">•</span>
+              <span>Academic writing skills</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <Button variant="outline" size="lg">
+          Take Free Placement Test
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+          </svg>
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You'll Learn -->
+  <section class="py-20">
+    <div class="bc-container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          What You'll Learn
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          Our comprehensive curriculum covers all four language skills
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.1), rgba(35, 7, 90, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Speaking</h3>
+          <p class="text-sm" style="color: var(--muted);">Build confidence through interactive conversations and presentations</p>
+        </div>
+
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Listening</h3>
+          <p class="text-sm" style="color: var(--muted);">Understand native speakers in various accents and contexts</p>
+        </div>
+
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.1), rgba(35, 7, 90, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Reading</h3>
+          <p class="text-sm" style="color: var(--muted);">Develop comprehension skills with authentic materials</p>
+        </div>
+
+        <div class="rounded-2xl p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-8 h-8" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Writing</h3>
+          <p class="text-sm" style="color: var(--muted);">Master formal and informal writing for all purposes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20" style="background: linear-gradient(180deg, transparent 0%, rgba(35, 7, 90, 0.02) 100%);">
+    <div class="bc-container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          Course Benefits
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          More than just language learning
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+              <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">International Community</h3>
+            <p class="text-sm" style="color: var(--muted);">Meet students from around the world and build global connections</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+              <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Official Certificate</h3>
+            <p class="text-sm" style="color: var(--muted);">Receive a British Council certificate upon completion</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+              <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Quality Materials</h3>
+            <p class="text-sm" style="color: var(--muted);">Access to premium learning resources and online platform</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+              <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Modern Facilities</h3>
+            <p class="text-sm" style="color: var(--muted);">Study in our state-of-the-art centres in Madrid and Barcelona</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+              <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Flexible Timetables</h3>
+            <p class="text-sm" style="color: var(--muted);">Morning, afternoon, and evening options to fit your schedule</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+              <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Fast Progress</h3>
+            <p class="text-sm" style="color: var(--muted);">Intensive format ensures rapid improvement in just 12 weeks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="enrol" class="py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.04) 0%, rgba(255, 20, 147, 0.04) 100%);"></div>
+
+    <div class="bc-container relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6" style="color: var(--bc-primary-blue);">
+          Start Your English Journey Today
+        </h2>
+        <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          Join thousands of students who have transformed their English skills with British Council. Book a free consultation or take our placement test to get started.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <Button variant="secondary" size="lg">
+            Book Free Consultation
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </Button>
+          <Button variant="primary" size="lg">
+            Enrol Now
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <div class="rounded-3xl p-8 max-w-3xl mx-auto" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <h3 class="text-xl font-bold mb-6" style="color: var(--bc-primary-blue);">Course Information</h3>
+          <div class="grid md:grid-cols-3 gap-6 text-left">
+            <div>
+              <p class="text-sm font-semibold mb-2" style="color: var(--muted);">Duration</p>
+              <p class="text-lg font-bold" style="color: var(--bc-primary-blue);">12 Weeks</p>
+            </div>
+            <div>
+              <p class="text-sm font-semibold mb-2" style="color: var(--muted);">Total Hours</p>
+              <p class="text-lg font-bold" style="color: var(--bc-primary-blue);">90 Hours</p>
+            </div>
+            <div>
+              <p class="text-sm font-semibold mb-2" style="color: var(--muted);">Class Size</p>
+              <p class="text-lg font-bold" style="color: var(--bc-primary-blue);">Max 15</p>
+            </div>
+          </div>
+          <div class="mt-6 pt-6 border-t" style="border-color: var(--line);">
+            <p class="text-sm" style="color: var(--muted);">
+              Courses start every term. Contact us for the next available start date at your chosen level.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes morph-blob {
+      0%, 100% { border-radius: 40% 60% 60% 40% / 60% 40%; }
+      25% { border-radius: 60% 40% 40% 60% / 40% 60%; }
+      50% { border-radius: 40% 60% 60% 40%; }
+      75% { border-radius: 60% 40% / 40% 60%; }
+    }
+
+    .animate-slide-up {
+      animation: slideInUp 0.8s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: slideInUp 1s ease-out forwards;
+    }
+  </style>
+</Layout>

@@ -1,0 +1,452 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Hero from '../../../components/Hero.astro';
+import Button from '../../../components/Button.astro';
+
+const pageTitle = "Cambridge Exam Preparation Courses";
+const pageDescription = "Prepare for Cambridge English exams with British Council Spain. Expert preparation for B2 First, C1 Advanced, and C2 Proficiency. Official exam centre.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <!-- Hero Section -->
+  <Hero
+    title="Cambridge Exam Preparation"
+    subtitle="Get certified with Cambridge English qualifications. Our specialized preparation courses give you the skills, strategies, and confidence to ace your B2 First, C1 Advanced, or C2 Proficiency exam."
+    ctaPrimary={{
+      text: "Enrol Now",
+      href: "#enrol"
+    }}
+    ctaSecondary={{
+      text: "Download Exam Guide",
+      href: "#guide"
+    }}
+    stats={[
+      { value: "95%", label: "Pass Rate" },
+      { value: "Official", label: "Exam Centre" },
+      { value: "30+", label: "Years Experience" }
+    ]}
+  />
+
+  <!-- Why Cambridge Section -->
+  <section class="py-20 relative" style="background: transparent;">
+    <div class="bc-container">
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+        <div>
+          <div class="inline-block px-4 py-2 rounded-full mb-6" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <span class="text-sm font-semibold" style="color: var(--bc-cta-pink);">Globally Recognized</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--bc-primary-blue);">
+            Why Cambridge English?
+          </h2>
+          <p class="text-lg mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Cambridge English qualifications are recognized by over 25,000 universities, employers, and governments worldwide. They're accepted for study, work, and visa applications in English-speaking countries.
+          </p>
+          <p class="text-base leading-relaxed mb-6" style="color: var(--bc-dark-gray);">
+            As an official Cambridge exam centre and the world's English experts, British Council provides you with comprehensive preparation, practice materials, and the confidence you need to succeed.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-4 h-4" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-base" style="color: var(--bc-dark-gray);">Recognized in 100+ countries</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-4 h-4" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-base" style="color: var(--bc-dark-gray);">Accepted for university admissions</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-4 h-4" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-base" style="color: var(--bc-dark-gray);">Valid for work visas and immigration</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-4 h-4" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-base" style="color: var(--bc-dark-gray);">Lifetime qualification</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-3xl p-8" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <h3 class="text-2xl font-bold mb-6" style="color: var(--bc-primary-blue);">What Makes Us Different</h3>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2" style="color: var(--bc-primary-blue);">Official Exam Centre</h4>
+                <p class="text-sm" style="color: var(--muted);">Take your exam at the same place you study, in a familiar environment</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2" style="color: var(--bc-primary-blue);">Expert Examiners as Teachers</h4>
+                <p class="text-sm" style="color: var(--muted);">Learn from qualified teachers who are also Cambridge examiners</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2" style="color: var(--bc-primary-blue);">Authentic Practice Materials</h4>
+                <p class="text-sm" style="color: var(--muted);">Access official Cambridge practice tests and resources</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2" style="color: var(--bc-primary-blue);">Proven Track Record</h4>
+                <p class="text-sm" style="color: var(--muted);">95% pass rate with thousands of successful students</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exam Levels Section -->
+  <section class="py-20" style="background: linear-gradient(180deg, rgba(35, 7, 90, 0.02) 0%, transparent 100%);">
+    <div class="bc-container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          Choose Your Cambridge Exam
+        </h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+          We offer preparation courses for the three most popular Cambridge English exams
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- B2 First -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #FF9800, #FFB74D);">
+            <span class="text-white font-bold text-2xl">B2</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3" style="color: var(--bc-primary-blue);">B2 First (FCE)</h3>
+          <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Prove you can use everyday written and spoken English for work or study purposes. Perfect for upper-intermediate learners.
+          </p>
+
+          <div class="space-y-3 mb-6">
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>CEFR Level B2</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>12-week preparation</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Mock exams included</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t mb-6" style="border-color: var(--line);">
+            <p class="text-sm font-semibold mb-3" style="color: var(--bc-primary-blue);">Best for:</p>
+            <ul class="space-y-2 text-sm" style="color: var(--muted);">
+              <li>• University applications</li>
+              <li>• Job opportunities</li>
+              <li>• Study abroad programs</li>
+            </ul>
+          </div>
+
+          <Button variant="primary" size="md" class="w-full">
+            Learn More
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <!-- C1 Advanced -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all relative" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 2px solid var(--bc-cta-pink); box-shadow: var(--shadow-lg);">
+          <div class="absolute -top-3 right-6 px-4 py-1 rounded-full text-xs font-bold text-white" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+            Most Popular
+          </div>
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+            <span class="text-white font-bold text-2xl">C1</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3" style="color: var(--bc-primary-blue);">C1 Advanced (CAE)</h3>
+          <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Show you have the high-level English skills needed for academic and professional success. Widely recognized worldwide.
+          </p>
+
+          <div class="space-y-3 mb-6">
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>CEFR Level C1</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>16-week preparation</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Full mock exam series</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t mb-6" style="border-color: var(--line);">
+            <p class="text-sm font-semibold mb-3" style="color: var(--bc-primary-blue);">Best for:</p>
+            <ul class="space-y-2 text-sm" style="color: var(--muted);">
+              <li>• Master's degree programs</li>
+              <li>• Professional roles</li>
+              <li>• Immigration requirements</li>
+            </ul>
+          </div>
+
+          <Button variant="secondary" size="md" class="w-full">
+            Learn More
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <!-- C2 Proficiency -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--violet), var(--pink));">
+            <span class="text-white font-bold text-2xl">C2</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3" style="color: var(--bc-primary-blue);">C2 Proficiency (CPE)</h3>
+          <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Demonstrate exceptional English ability at the highest level. Perfect for academic research and top-level professional positions.
+          </p>
+
+          <div class="space-y-3 mb-6">
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>CEFR Level C2</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>20-week preparation</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm" style="color: var(--muted);">
+              <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Intensive preparation</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t mb-6" style="border-color: var(--line);">
+            <p class="text-sm font-semibold mb-3" style="color: var(--bc-primary-blue);">Best for:</p>
+            <ul class="space-y-2 text-sm" style="color: var(--muted);">
+              <li>• PhD programs</li>
+              <li>• Executive positions</li>
+              <li>• Academic teaching</li>
+            </ul>
+          </div>
+
+          <Button variant="primary" size="md" class="w-full">
+            Learn More
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features -->
+  <section class="py-20">
+    <div class="bc-container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          Comprehensive Exam Preparation
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          Everything you need to succeed in your Cambridge exam
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-7 h-7" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Exam Strategies</h3>
+          <p class="text-sm" style="color: var(--muted);">Learn proven techniques and strategies specific to each exam task type</p>
+        </div>
+
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-7 h-7" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Practice Tests</h3>
+          <p class="text-sm" style="color: var(--muted);">Complete multiple full-length mock exams under real exam conditions</p>
+        </div>
+
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-7 h-7" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Performance Tracking</h3>
+          <p class="text-sm" style="color: var(--muted);">Monitor your progress with detailed feedback and personalized recommendations</p>
+        </div>
+
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-7 h-7" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Speaking Practice</h3>
+          <p class="text-sm" style="color: var(--muted);">Individual and paired speaking practice with expert feedback</p>
+        </div>
+
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-7 h-7" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Writing Workshops</h3>
+          <p class="text-sm" style="color: var(--muted);">Detailed writing feedback and correction from experienced teachers</p>
+        </div>
+
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-7 h-7" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Study Materials</h3>
+          <p class="text-sm" style="color: var(--muted);">Official Cambridge materials and access to online learning platform</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="enrol" class="py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.04) 0%, rgba(255, 20, 147, 0.04) 100%);"></div>
+
+    <div class="bc-container relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6" style="color: var(--bc-primary-blue);">
+          Ready to Get Cambridge Certified?
+        </h2>
+        <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          Join our next Cambridge preparation course and achieve your certification goals with expert guidance from British Council.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <Button variant="secondary" size="lg">
+            Book Free Consultation
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </Button>
+          <Button variant="primary" size="lg">
+            Enrol Now
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t" style="border-color: var(--line);">
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">95%</p>
+            <p class="text-sm" style="color: var(--muted);">Pass Rate</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">30+</p>
+            <p class="text-sm" style="color: var(--muted);">Years Experience</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">Official</p>
+            <p class="text-sm" style="color: var(--muted);">Exam Centre</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">10K+</p>
+            <p class="text-sm" style="color: var(--muted);">Students Certified</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes morph-blob {
+      0%, 100% { border-radius: 40% 60% 60% 40% / 60% 40%; }
+      25% { border-radius: 60% 40% 40% 60% / 40% 60%; }
+      50% { border-radius: 40% 60% 60% 40%; }
+      75% { border-radius: 60% 40% / 40% 60%; }
+    }
+
+    .animate-slide-up {
+      animation: slideInUp 0.8s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: slideInUp 1s ease-out forwards;
+    }
+  </style>
+</Layout>

@@ -1,0 +1,127 @@
+---
+import Button from './Button.astro';
+
+export interface Props {
+  title: string;
+  subtitle: string;
+  ctaPrimary?: {
+    text: string;
+    href: string;
+  };
+  ctaSecondary?: {
+    text: string;
+    href: string;
+  };
+  stats?: Array<{
+    value: string;
+    label: string;
+  }>;
+}
+
+const { title, subtitle, ctaPrimary, ctaSecondary, stats } = Astro.props;
+---
+
+<section class="relative min-h-[650px] md:min-h-[700px] flex items-center overflow-hidden" style="background: transparent;">
+  <!-- Animated blobs -->
+  <div class="absolute -top-12 -right-24 w-[600px] h-[600px] opacity-80 pointer-events-none" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.08) 0%, rgba(255, 20, 147, 0.04) 50%, transparent 100%); border-radius: 40% 60% 60% 40% / 60% 40%; filter: blur(0.5px); animation: morph-blob 20s ease-in-out infinite; z-index: 0;"></div>
+  <div class="absolute -bottom-36 -left-36 w-[500px] h-[500px] opacity-80 pointer-events-none" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.06) 0%, rgba(35, 7, 90, 0.03) 50%, transparent 100%); border-radius: 60% 40% 40% 60% / 40% 60%; filter: blur(0.5px); animation: morph-blob 25s ease-in-out infinite reverse; z-index: 0;"></div>
+
+  <div class="bc-container relative z-10 py-20">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Content -->
+      <div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in" style="color: var(--bc-primary-blue);">
+          {title}
+        </h1>
+        <p class="text-lg md:text-xl mb-8 animate-slide-up leading-relaxed" style="color: var(--bc-dark-gray);">
+          {subtitle}
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-12 animate-slide-up">
+          {ctaPrimary && (
+            <Button href={ctaPrimary.href} variant="primary" size="lg">
+              {ctaPrimary.text}
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </Button>
+          )}
+          {ctaSecondary && (
+            <Button href={ctaSecondary.href} variant="secondary" size="lg">
+              {ctaSecondary.text}
+            </Button>
+          )}
+        </div>
+
+        <!-- Stats -->
+        {stats && (
+          <div class="grid grid-cols-3 gap-6 animate-fade-in">
+            {stats.map((stat) => (
+              <div class="text-center sm:text-left">
+                <p class="text-3xl font-bold" style="color: var(--bc-primary-blue);">{stat.value}</p>
+                <p class="text-sm mt-1" style="color: var(--bc-dark-gray);">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- Visual Element - Course Preview Cards -->
+      <div class="relative hidden lg:block">
+        <div class="space-y-4">
+          <!-- Course Card 1 -->
+          <div class="rounded-2xl p-6 shadow-lg transform hover:-translate-y-1 transition-all cursor-pointer" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+                <span class="text-white font-bold text-lg">A1</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Beginner Course</h3>
+                <p class="text-sm mb-2" style="color: var(--bc-dark-gray);">Start your English journey</p>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">12 weeks</span>
+                  <span class="text-xs px-2 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05)); color: var(--bc-cta-pink);">Live classes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Card 2 -->
+          <div class="rounded-2xl p-6 shadow-lg transform hover:-translate-y-1 transition-all cursor-pointer ml-8" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                <span class="text-white font-bold text-lg">B2</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Upper Intermediate</h3>
+                <p class="text-sm mb-2" style="color: var(--bc-dark-gray);">Enhance your fluency</p>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">16 weeks</span>
+                  <span class="text-xs px-2 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05)); color: var(--bc-cta-pink);">Self-paced</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Card 3 -->
+          <div class="rounded-2xl p-6 shadow-lg transform hover:-translate-y-1 transition-all cursor-pointer" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--violet), var(--pink));">
+                <span class="text-white font-bold text-lg">C1</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Advanced English</h3>
+                <p class="text-sm mb-2" style="color: var(--bc-dark-gray);">Master professional English</p>
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">20 weeks</span>
+                  <span class="text-xs px-2 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05)); color: var(--bc-cta-pink);">Hybrid</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

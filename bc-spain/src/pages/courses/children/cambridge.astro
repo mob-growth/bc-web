@@ -1,0 +1,489 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Hero from '../../../components/Hero.astro';
+import Button from '../../../components/Button.astro';
+
+const pageTitle = "Cambridge Exam Preparation for Children - British Council Spain";
+const pageDescription = "Official Cambridge exam preparation for children and teens (7-17 years). Expert training for Young Learners, KET, PET, FCE, and CAE exams at British Council Spain.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <!-- Hero Section -->
+  <Hero
+    title="Cambridge Exam Preparation for Children & Teens"
+    subtitle="Give your child a globally recognized English qualification. Our expert preparation courses for Cambridge exams boost confidence and open doors to international opportunities."
+    ctaPrimary={{
+      text: "Book Free Consultation",
+      href: "#contact"
+    }}
+    ctaSecondary={{
+      text: "Check Exam Dates",
+      href: "#exams"
+    }}
+    stats={[
+      { value: "7-17", label: "Years Old" },
+      { value: "Official", label: "Exam Centre" },
+      { value: "98%", label: "Pass Rate" }
+    ]}
+  />
+
+  <!-- Trust Badge -->
+  <section class="py-12" style="background: transparent;">
+    <div class="bc-container">
+      <div class="text-center">
+        <div class="inline-flex items-center gap-4 px-8 py-4 rounded-full" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 94, 168, 0.1)); border: 2px solid rgba(255, 20, 147, 0.3);">
+          <svg class="w-8 h-8" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+          </svg>
+          <span class="text-xl font-bold" style="color: var(--bc-primary-blue);">Official Cambridge Exam Centre</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Available Exams -->
+  <section id="exams" class="py-20" style="background: transparent;">
+    <div class="bc-container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          Cambridge Exams for Every Age
+        </h2>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+          From first steps to advanced proficiency, we prepare children for every Cambridge qualification
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Young Learners Starters -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 182, 151, 0.2), rgba(255, 94, 168, 0.1));">
+              <svg class="w-7 h-7 text-white" style="color: var(--peach);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+              </svg>
+            </div>
+            <div class="text-sm font-bold px-3 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(255, 182, 151, 0.2), rgba(255, 94, 168, 0.2)); color: var(--bc-primary-blue);">
+              Ages 7-8
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: var(--bc-primary-blue);">YLE Starters (Pre A1)</h3>
+          <p class="text-sm mb-4 leading-relaxed" style="color: var(--bc-dark-gray);">
+            A fun first Cambridge exam with colorful tests and stickers. Builds confidence and motivation for young learners.
+          </p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">Fun, colorful test format</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">Every child receives award</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Young Learners Movers -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(47, 214, 200, 0.2), rgba(84, 181, 255, 0.1));">
+              <svg class="w-7 h-7 text-white" style="color: var(--mint);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+              </svg>
+            </div>
+            <div class="text-sm font-bold px-3 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(47, 214, 200, 0.2), rgba(84, 181, 255, 0.2)); color: var(--bc-primary-blue);">
+              Ages 9-10
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: var(--bc-primary-blue);">YLE Movers (A1)</h3>
+          <p class="text-sm mb-4 leading-relaxed" style="color: var(--bc-dark-gray);">
+            The next step in the Young Learners journey. Children demonstrate growing English skills in an encouraging environment.
+          </p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">Builds on Starters skills</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">Certificate with results</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Young Learners Flyers -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(124, 77, 255, 0.15), rgba(84, 181, 255, 0.1));">
+              <svg class="w-7 h-7 text-white" style="color: var(--violet);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+              </svg>
+            </div>
+            <div class="text-sm font-bold px-3 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(124, 77, 255, 0.2), rgba(84, 181, 255, 0.2)); color: var(--bc-primary-blue);">
+              Ages 10-12
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: var(--bc-primary-blue);">YLE Flyers (A2)</h3>
+          <p class="text-sm mb-4 leading-relaxed" style="color: var(--bc-dark-gray);">
+            The highest Young Learners level. Perfect preparation for secondary school Cambridge exams like KET and PET.
+          </p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">Pre-teen level achievement</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">Gateway to KET/PET</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- A2 Key for Schools (KET) -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 94, 168, 0.1));">
+              <svg class="w-7 h-7 text-white" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <div class="text-sm font-bold px-3 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 94, 168, 0.1)); color: var(--bc-primary-blue);">
+              Ages 11-14
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: var(--bc-primary-blue);">A2 Key for Schools (A2)</h3>
+          <p class="text-sm mb-4 leading-relaxed" style="color: var(--bc-dark-gray);">
+            First "serious" Cambridge exam. Shows ability to use English for everyday communication. Excellent for CVs.
+          </p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">Globally recognized</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">Lifetime certificate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- B1 Preliminary for Schools (PET) -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(124, 77, 255, 0.05));">
+              <svg class="w-7 h-7 text-white" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <div class="text-sm font-bold px-3 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(124, 77, 255, 0.1)); color: var(--bc-primary-blue);">
+              Ages 12-16
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: var(--bc-primary-blue);">B1 Preliminary for Schools (B1)</h3>
+          <p class="text-sm mb-4 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Intermediate level English. Required by many Spanish universities and highly valued by employers worldwide.
+          </p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">University requirement</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">Strong career advantage</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- B2 First for Schools (FCE) -->
+        <div class="rounded-3xl p-8 transform hover:-translate-y-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(0, 140, 69, 0.1), rgba(47, 214, 200, 0.1));">
+              <svg class="w-7 h-7 text-white" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <div class="text-sm font-bold px-3 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(0, 140, 69, 0.1), rgba(47, 214, 200, 0.1)); color: var(--bc-primary-blue);">
+              Ages 14-17
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-2" style="color: var(--bc-primary-blue);">B2 First for Schools (B2)</h3>
+          <p class="text-sm mb-4 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Upper-intermediate English. Essential for university studies abroad and professional careers. Most popular teen exam.
+          </p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">International study ready</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4" style="color: var(--bc-success-green);" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-sm" style="color: var(--muted);">Most valued by employers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why British Council for Cambridge -->
+  <section class="py-20" style="background: linear-gradient(180deg, transparent 0%, rgba(35, 7, 90, 0.02) 100%);">
+    <div class="bc-container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          Why Prepare with British Council?
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          We're an official Cambridge exam centre with unmatched expertise
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-10 h-10" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">Official Exam Centre</h3>
+          <p class="text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+            Take the exam where you prepared - no stress, familiar environment, your own teachers
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.05), rgba(35, 7, 90, 0.02));">
+            <svg class="w-10 h-10" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">Expert Examiners</h3>
+          <p class="text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+            Our teachers are Cambridge-trained examiners who know exactly what's needed to pass
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(0, 140, 69, 0.1), rgba(47, 214, 200, 0.1));">
+            <svg class="w-10 h-10" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">98% Pass Rate</h3>
+          <p class="text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+            Our students consistently achieve excellent results - well above national averages
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="py-20" style="background: transparent;">
+    <div class="bc-container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          Complete Exam Preparation
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          Everything your child needs to succeed
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-start gap-4">
+            <svg class="w-6 h-6 flex-shrink-0 mt-1" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <div>
+              <h3 class="font-bold mb-2" style="color: var(--bc-primary-blue);">Exam-Focused Classes</h3>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">Targeted preparation covering all exam papers and question types</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-start gap-4">
+            <svg class="w-6 h-6 flex-shrink-0 mt-1" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <div>
+              <h3 class="font-bold mb-2" style="color: var(--bc-primary-blue);">Practice Tests</h3>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">Regular mock exams in real exam conditions with detailed feedback</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-start gap-4">
+            <svg class="w-6 h-6 flex-shrink-0 mt-1" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <div>
+              <h3 class="font-bold mb-2" style="color: var(--bc-primary-blue);">Official Materials</h3>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">Cambridge official practice materials and past papers</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-start gap-4">
+            <svg class="w-6 h-6 flex-shrink-0 mt-1" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <div>
+              <h3 class="font-bold mb-2" style="color: var(--bc-primary-blue);">Speaking Practice</h3>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">Intensive speaking exam preparation with examiner feedback</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-start gap-4">
+            <svg class="w-6 h-6 flex-shrink-0 mt-1" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <div>
+              <h3 class="font-bold mb-2" style="color: var(--bc-primary-blue);">Exam Techniques</h3>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">Time management, strategies, and confidence-building tips</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-6" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-start gap-4">
+            <svg class="w-6 h-6 flex-shrink-0 mt-1" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <div>
+              <h3 class="font-bold mb-2" style="color: var(--bc-primary-blue);">Exam Registration</h3>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">We handle all exam registration and administration for you</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parent Testimonial -->
+  <section class="py-20" style="background: linear-gradient(180deg, transparent 0%, rgba(35, 7, 90, 0.02) 100%);">
+    <div class="bc-container">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="rounded-3xl p-10" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-lg);">
+          <svg class="w-12 h-12 mx-auto mb-6" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
+          </svg>
+          <p class="text-xl md:text-2xl mb-6 leading-relaxed" style="color: var(--bc-primary-blue); font-weight: 500;">
+            "My son got B2 First at 15 with British Council. The teachers knew exactly what examiners look for. He felt prepared and confident on exam day. Now he's applying to UK universities!"
+          </p>
+          <div class="flex items-center justify-center gap-4">
+            <div class="w-14 h-14 rounded-full" style="background: linear-gradient(135deg, var(--bc-cta-pink), var(--pink));"></div>
+            <div class="text-left">
+              <p class="font-bold" style="color: var(--bc-primary-blue);">Elena Sanchez</p>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">Mother of Miguel, Madrid</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.05) 0%, rgba(255, 94, 168, 0.05) 100%);"></div>
+
+    <div class="bc-container relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6" style="color: var(--bc-primary-blue);">
+          Give Your Child a Globally Recognized Qualification
+        </h2>
+        <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          Book a free consultation to find the right Cambridge exam for your child's level and goals
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <Button variant="secondary" size="lg">
+            Book Free Consultation
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </Button>
+          <Button variant="outline" size="lg">
+            View Exam Dates
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t" style="border-color: var(--line);">
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">29</p>
+            <p class="text-sm" style="color: var(--muted);">Exam Centres</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">98%</p>
+            <p class="text-sm" style="color: var(--muted);">Pass Rate</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">10,000+</p>
+            <p class="text-sm" style="color: var(--muted);">Exams Per Year</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">90+</p>
+            <p class="text-sm" style="color: var(--muted);">Years Experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes morph-blob {
+      0%, 100% { border-radius: 40% 60% 60% 40% / 60% 40%; }
+      25% { border-radius: 60% 40% 40% 60% / 40% 60%; }
+      50% { border-radius: 40% 60% 60% 40%; }
+      75% { border-radius: 60% 40% / 40% 60%; }
+    }
+
+    .animate-slide-up {
+      animation: slideInUp 0.8s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: slideInUp 1s ease-out forwards;
+    }
+  </style>
+</Layout>

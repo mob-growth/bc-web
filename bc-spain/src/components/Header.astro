@@ -1,0 +1,346 @@
+---
+import Button from './Button.astro';
+
+const navItems = [
+  { label: 'Courses', href: '/courses', hasMegaMenu: true },
+  { label: 'Exams', href: '/exams' },
+  { label: 'Corporate', href: '/corporate' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Contact', href: '/contact' }
+];
+
+const courseCategories = [
+  {
+    id: 'adults',
+    title: 'Adults',
+    icon: '👔',
+    description: 'English courses for adults',
+    href: '/courses/adults',
+    courses: [
+      { name: 'Three month face to face course', description: 'Our most popular course', href: '/courses/adults/termly' },
+      { name: 'Cambridge exam preparation', description: 'Prepare for Cambridge exams', href: '/courses/adults/cambridge' },
+      { name: 'Business English', description: 'Communicate confidently in business', href: '/courses/adults/business' },
+      { name: 'Online courses', description: 'Flexible online learning', href: '/courses/adults/online' }
+    ]
+  },
+  {
+    id: 'children',
+    title: 'Children & Teens',
+    icon: '🎓',
+    description: 'English courses for kids aged 2-17',
+    href: '/courses/children',
+    courses: [
+      { name: 'Learning time with Timmy', description: 'Ages 2-5', href: '/courses/children/timmy' },
+      { name: 'Primary Plus', description: 'Ages 6-11', href: '/courses/children/primary' },
+      { name: 'Secondary Plus', description: 'Ages 12-17', href: '/courses/children/secondary' },
+      { name: 'Cambridge exam preparation', description: 'Ages 12-17', href: '/courses/children/cambridge' }
+    ]
+  },
+  {
+    id: 'corporate',
+    title: 'Corporate',
+    icon: '🏢',
+    description: 'English solutions for businesses',
+    href: '/courses/corporate',
+    courses: [
+      { name: 'Corporate English training', description: 'Customized business solutions', href: '/courses/corporate/training' },
+      { name: 'English assessment', description: 'Test your team\'s English level', href: '/courses/corporate/assessment' },
+      { name: 'Online corporate solutions', description: 'Flexible learning for teams', href: '/courses/corporate/online' }
+    ]
+  }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 w-full bg-white shadow-sm z-50">
+  <nav class="bc-container">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center">
+        <img
+          src="https://mktgfiles.britishcouncil.org/hubfs/Logos/BritishCouncil_Logo_Indigo_RGB.png"
+          alt="British Council Spain"
+          class="h-10 w-auto"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        {navItems.map((item) => (
+          <div class="relative mega-menu-wrapper">
+            {item.hasMegaMenu ? (
+              <button
+                class={`text-sm font-medium transition-colors hover:text-bc-blue flex items-center gap-1 ${
+                  currentPath === item.href ? 'text-bc-blue font-semibold' : 'text-gray-700'
+                }`}
+                data-mega-menu-trigger
+              >
+                {item.label}
+                <svg class="w-4 h-4 transition-transform mega-menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+            ) : (
+              <a
+                href={item.href}
+                class={`text-sm font-medium transition-colors hover:text-bc-blue ${
+                  currentPath === item.href ? 'text-bc-blue font-semibold' : 'text-gray-700'
+                }`}
+              >
+                {item.label}
+              </a>
+            )}
+
+            {/* Mega Menu Dropdown */}
+            {item.hasMegaMenu && (
+              <div class="mega-menu-dropdown absolute left-1/2 transform -translate-x-1/2 top-full mt-2 pt-4 opacity-0 invisible transition-all duration-300">
+                <div class="mega-menu-content rounded-3xl shadow-2xl p-8 min-w-[900px]" style="background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--line);">
+                  <h3 class="text-lg font-bold mb-6" style="color: var(--bc-primary-blue);">English Courses</h3>
+
+                  <div class="grid grid-cols-3 gap-8 mb-6">
+                    {courseCategories.map((category) => (
+                      <div class="category-section">
+                        <a href={category.href} class="category-header block mb-4 group">
+                          <div class="flex items-center gap-3 mb-2">
+                            <span class="text-2xl">{category.icon}</span>
+                            <h4 class="font-semibold text-base group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">{category.title}</h4>
+                          </div>
+                          <p class="text-xs" style="color: var(--bc-dark-gray);">{category.description}</p>
+                        </a>
+
+                        <div class="space-y-2">
+                          {category.courses.map((course) => (
+                            <a
+                              href={course.href}
+                              class="course-link block p-3 rounded-xl hover:bg-white/80 transition-all group"
+                            >
+                              <h5 class="text-sm font-medium mb-1 group-hover:text-pink-500 transition-colors" style="color: var(--ink);">{course.name}</h5>
+                              <p class="text-xs" style="color: var(--muted);">{course.description}</p>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div class="text-center pt-4 border-t" style="border-color: var(--line);">
+                    <a
+                      href="/courses"
+                      class="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover-pink"
+                      style="color: var(--bc-primary-blue);"
+                    >
+                      View all courses
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="hidden md:flex items-center space-x-4">
+        <Button variant="secondary" size="sm">
+          Student Portal
+        </Button>
+        <Button variant="primary" size="sm">
+          Enrol Now
+        </Button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-button"
+        class="md:hidden p-2 text-gray-700 hover:text-bc-blue transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col space-y-2 pt-2">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`px-4 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-bc-light-teal ${
+              currentPath === item.href ? 'text-bc-blue bg-bc-light-teal font-semibold' : 'text-gray-700'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+        <div class="flex flex-col space-y-2 px-4 pt-4 border-t border-gray-200">
+          <Button variant="secondary" size="sm" class="w-full">
+            Student Portal
+          </Button>
+          <Button variant="primary" size="sm" class="w-full">
+            Enrol Now
+          </Button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Mega Menu functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const megaMenuWrappers = document.querySelectorAll('.mega-menu-wrapper');
+
+    megaMenuWrappers.forEach((wrapper) => {
+      const trigger = wrapper.querySelector('[data-mega-menu-trigger]');
+      const dropdown = wrapper.querySelector('.mega-menu-dropdown');
+      const icon = wrapper.querySelector('.mega-menu-icon');
+      let timeout: ReturnType<typeof setTimeout>;
+
+      if (!trigger || !dropdown) return;
+
+      const showMenu = () => {
+        clearTimeout(timeout);
+        dropdown.classList.remove('opacity-0', 'invisible');
+        dropdown.classList.add('opacity-100', 'visible');
+        icon?.classList.add('rotate-180');
+      };
+
+      const hideMenu = () => {
+        timeout = setTimeout(() => {
+          dropdown.classList.add('opacity-0', 'invisible');
+          dropdown.classList.remove('opacity-100', 'visible');
+          icon?.classList.remove('rotate-180');
+        }, 150);
+      };
+
+      // Desktop hover
+      wrapper.addEventListener('mouseenter', showMenu);
+      wrapper.addEventListener('mouseleave', hideMenu);
+
+      // Mobile click
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isVisible = dropdown.classList.contains('visible');
+        if (isVisible) {
+          hideMenu();
+        } else {
+          showMenu();
+        }
+      });
+    });
+
+    // Close mega menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.mega-menu-wrapper')) {
+        document.querySelectorAll('.mega-menu-dropdown').forEach((dropdown) => {
+          dropdown.classList.add('opacity-0', 'invisible');
+          dropdown.classList.remove('opacity-100', 'visible');
+        });
+        document.querySelectorAll('.mega-menu-icon').forEach((icon) => {
+          icon.classList.remove('rotate-180');
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  header {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+
+  /* Mega Menu Styles */
+  .mega-menu-wrapper {
+    position: relative;
+  }
+
+  .mega-menu-dropdown {
+    z-index: 1000;
+    pointer-events: none;
+  }
+
+  .mega-menu-dropdown.visible {
+    pointer-events: auto;
+  }
+
+  .mega-menu-content {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .category-section {
+    transition: all 0.3s ease;
+  }
+
+  .category-header:hover h4 {
+    color: var(--bc-cta-pink) !important;
+  }
+
+  .course-link {
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+
+  .course-link:hover {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: var(--line);
+    transform: translateX(4px);
+  }
+
+  .course-link:hover h5 {
+    color: var(--bc-cta-pink) !important;
+  }
+
+  .mega-menu-icon {
+    transition: transform 0.3s ease;
+  }
+
+  /* View all courses link hover */
+  .hover-pink:hover {
+    color: var(--bc-cta-pink) !important;
+  }
+
+  .hover-pink:hover svg {
+    transform: translateX(4px);
+    transition: transform 0.3s ease;
+  }
+
+  /* Make mega menu background more opaque to prevent text bleed-through */
+  .mega-menu-content {
+    box-shadow: 0 20px 60px rgba(23, 12, 70, 0.2);
+  }
+
+  /* Ensure text color uses CSS variables */
+  .hover\:text-bc-blue:hover {
+    color: var(--bc-primary-blue) !important;
+  }
+
+  .text-bc-blue {
+    color: var(--bc-primary-blue) !important;
+  }
+</style>

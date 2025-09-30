@@ -1,0 +1,323 @@
+{
+  "source_url": "https://www.britishcouncil.es/en/english/corporate-solutions",
+  "scraped_date": "2025-09-30",
+  "page_title": "Corporate English Solutions",
+  "brand": "British Council Spain",
+
+  "service_overview": {
+    "title": "Corporate English Solutions",
+    "tagline": "Power to your team",
+    "main_description": "Working with businesses, governments and educational institutions for over 80 years, providing practical and engaging training and assessment solutions.",
+    "value_proposition": "Empowering organisations to boost communication skills for success"
+  },
+
+  "key_credentials": {
+    "experience": "80+ years",
+    "global_reach": "80+ countries",
+    "learners_worldwide": "80+ million",
+    "partnership_types": [
+      "Corporate organisations",
+      "Government organisations",
+      "Educational institutions"
+    ]
+  },
+
+  "target_audience": {
+    "primary": [
+      "Businesses",
+      "Governments",
+      "Educational institutions"
+    ],
+    "professionals": [
+      "Professionals in all roles",
+      "All industries",
+      "All career stages",
+      "Students",
+      "Recent graduates",
+      "Researchers"
+    ],
+    "stakeholders": [
+      "L&D managers",
+      "HR managers",
+      "Business managers"
+    ]
+  },
+
+  "key_features_benefits": [
+    "Scalable learning solutions",
+    "Engaging training programs",
+    "Impactful learning outcomes",
+    "Practical and engaging training",
+    "Expertise and experience in skills development",
+    "Practical results and behavioural change in the workplace",
+    "Flexible delivery options (in-person, online, blended)",
+    "Targeted, relevant workplace skills development",
+    "Tools to track training impact and ROI",
+    "Support through 4-step implementation process"
+  ],
+
+  "implementation_process": {
+    "title": "Create your customised programme",
+    "steps": [
+      {
+        "step": 1,
+        "name": "Consultation",
+        "description": "We identify skills gaps and learning goals for your organisation"
+      },
+      {
+        "step": 2,
+        "name": "Design",
+        "description": "We create scalable, customised solutions with personalised content and integrated assessment"
+      },
+      {
+        "step": 3,
+        "name": "Delivery",
+        "description": "Our experienced trainers engage your teams, develop relevant, transferable skills to ensure your employees progress"
+      },
+      {
+        "step": 4,
+        "name": "Evaluation",
+        "description": "We track and report progress, report ROI and help you communicate success to stakeholders"
+      }
+    ]
+  },
+
+  "training_solutions": {
+    "overview": "Our English and Professional Communication Skills training solutions",
+    "offerings": [
+      {
+        "title": "Professional Communication Skills",
+        "description": "Boost engagement, productivity and performance through enhanced spoken and written communication skills",
+        "key_features": [
+          "Each module develops a well-defined communication competency",
+          "Can be aligned with your organisation's capability frameworks"
+        ],
+        "benefits": [
+          "Enhanced spoken communication",
+          "Enhanced written communication",
+          "Increased engagement",
+          "Improved productivity",
+          "Better performance"
+        ]
+      },
+      {
+        "title": "English Language Skills",
+        "description": "Empower your people to communicate more confidently and effectively in workplace and social situations",
+        "key_features": [
+          "Engaging self-directed sessions",
+          "Trainer-led sessions",
+          "Maximum progress methodology"
+        ],
+        "benefits": [
+          "Confident communication",
+          "Effective workplace communication",
+          "Improved social communication"
+        ]
+      },
+      {
+        "title": "Assessment",
+        "description": "Globally recognised exams, assessments and credentials that set standards to benchmark, track progress and highlight achievement",
+        "key_features": [
+          "Globally recognised credentials",
+          "Standardized benchmarking",
+          "Progress tracking",
+          "Achievement recognition"
+        ]
+      }
+    ]
+  },
+
+  "online_training_suite": {
+    "title": "Online training suite",
+    "description": "A one-stop solution for English and Professional Communication skills development",
+    "features": [
+      "Dashboards for tracking",
+      "Targeted feedback",
+      "Training impact reporting",
+      "Return on investment measurement",
+      "Curated courses to meet specific needs"
+    ],
+    "course_types": [
+      {
+        "name": "Self-Study",
+        "description": "Convenient, scalable, affordable guided learning to strengthen social or workplace English skills when and where it suits learners",
+        "benefits": [
+          "Convenient timing",
+          "Scalable solution",
+          "Affordable pricing",
+          "Flexible location"
+        ]
+      },
+      {
+        "name": "Workplace English",
+        "description": "Scalable, cost-effective blended learning, combining flexible self-study with interactivity and feedback in trainer-led sessions",
+        "format": "Blended learning",
+        "benefits": [
+          "Scalable",
+          "Cost-effective",
+          "Interactive",
+          "Trainer feedback"
+        ]
+      },
+      {
+        "name": "Social English",
+        "description": "Engaging, interactive trainer-led workplace and social English programmes, with premium online learning activities and assessments",
+        "format": "Trainer-led",
+        "benefits": [
+          "Engaging content",
+          "Interactive sessions",
+          "Premium online activities",
+          "Integrated assessments"
+        ]
+      },
+      {
+        "name": "Professional Communication Skills",
+        "description": "Targeted, impactful spoken and written workplace communication skills development",
+        "focus": [
+          "Spoken communication",
+          "Written communication",
+          "Workplace-specific skills"
+        ]
+      },
+      {
+        "name": "IELTS Coach",
+        "description": "Focused language and skills training to help your team and students get the score they need",
+        "unique_selling_point": "From the co-creators of the IELTS test",
+        "target_users": [
+          "Corporate teams",
+          "Students"
+        ]
+      }
+    ]
+  },
+
+  "delivery_formats": {
+    "options": [
+      "In-person training",
+      "Online training",
+      "Blended learning",
+      "Self-directed learning",
+      "Trainer-led sessions"
+    ],
+    "flexibility": "Flexible delivery options to suit organizational needs"
+  },
+
+  "customization_options": {
+    "available": true,
+    "features": [
+      "Customised solutions based on skills gaps",
+      "Personalised content",
+      "Integrated assessment",
+      "Alignment with organisation's capability frameworks",
+      "Scalable programmes",
+      "Curated courses to meet specific needs"
+    ]
+  },
+
+  "roi_business_benefits": {
+    "measurable_outcomes": [
+      "Track training impact",
+      "Report ROI to stakeholders",
+      "Measure and communicate success",
+      "Dashboards for progress monitoring",
+      "Targeted feedback"
+    ],
+    "business_impact": [
+      "Practical results in the workplace",
+      "Behavioural change",
+      "Boost engagement",
+      "Increase productivity",
+      "Enhance performance",
+      "Confident and effective communication",
+      "Relevant, transferable skills"
+    ],
+    "pain_points_solved": [
+      "Takes the pain out of training course design",
+      "Simplifies implementation",
+      "Provides support to L&D, HR and business managers"
+    ]
+  },
+
+  "assessment_certification": {
+    "title": "Assessment and certification",
+    "description": "Enable you to recruit talent, benchmark skills and measure progress and support students to gain admission to institutions around the world",
+    "use_cases": [
+      "Recruit talent",
+      "Benchmark skills",
+      "Measure progress",
+      "Support student admissions to institutions worldwide"
+    ],
+    "credibility": "Globally recognised exams, assessments and credentials"
+  },
+
+  "call_to_action": {
+    "primary": "Book a free consultation",
+    "link": "https://corporate.britishcouncil.org/contact-us?country=es",
+    "additional_resources": [
+      {
+        "title": "Online learning solutions",
+        "link": "https://corporate.britishcouncil.org/courses?country=es&lang=en"
+      },
+      {
+        "title": "Testing and assessment solutions",
+        "link": "https://corporate.britishcouncil.org/testing-assessment?country=es&lang=en"
+      }
+    ]
+  },
+
+  "case_studies_testimonials": {
+    "available": false,
+    "note": "No specific case studies or testimonials found on this page"
+  },
+
+  "pricing_information": {
+    "available": false,
+    "contact_method": "Free consultation required",
+    "note": "Pricing appears to be customized based on organizational needs"
+  },
+
+  "related_services": [
+    "English for schools"
+  ],
+
+  "video_content": {
+    "available": true,
+    "title": "Corporate English Solutions: Power to your team",
+    "platform": "YouTube",
+    "channel": "British Council | English",
+    "duration": "1:17"
+  },
+
+  "b2b_marketing_messaging": {
+    "key_value_propositions": [
+      "80+ years of proven expertise working with businesses, governments and educational institutions",
+      "Global reach across 80+ countries with 80+ million learners",
+      "Unparalleled track record in corporate English and communication training",
+      "Scalable solutions for organizations of all sizes",
+      "Measurable ROI through comprehensive tracking and reporting",
+      "Customized programs aligned with organizational goals and capability frameworks",
+      "Practical workplace results and behavioral change",
+      "Expert support throughout design, delivery and evaluation",
+      "Flexible delivery options to fit any organizational structure",
+      "Globally recognized assessments and certifications"
+    ],
+    "competitive_advantages": [
+      "80+ years of experience",
+      "Global presence and credibility",
+      "Co-creators of IELTS test",
+      "Comprehensive 4-step implementation process",
+      "End-to-end support for L&D, HR and business managers",
+      "Proven methodology for practical results",
+      "Scalability across all roles, industries and career stages"
+    ],
+    "target_pain_points": [
+      "Skills gaps in communication",
+      "Training course design complexity",
+      "Implementation challenges",
+      "Measuring training ROI",
+      "Lack of engagement in training programs",
+      "Need for scalable solutions",
+      "Difficulty communicating success to stakeholders"
+    ]
+  }
+}

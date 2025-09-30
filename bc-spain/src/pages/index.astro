@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Button from '../components/Button.astro';
+import '../styles/global.css';
+
+const heroStats = [
+  { value: '30,000+', label: 'Students per year' },
+  { value: '90+', label: 'Years of experience' },
+  { value: '15', label: 'Centers in Spain' }
+];
+---
+
+<Layout title="Home">
+  <Header />
+
+  <main class="pt-20">
+    <Hero
+      title="Learn English with the world's English experts"
+      subtitle="Join over 30,000 students who trust British Council Spain every year to achieve their professional and personal goals."
+      ctaPrimary={{ text: 'View Courses', href: '/courses' }}
+      ctaSecondary={{ text: 'Level Test', href: '/level-test' }}
+      stats={heroStats}
+    />
+
+    <!-- Features Section -->
+    <section class="py-20" style="background: transparent;">
+      <div class="bc-container">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Why British Council?</h2>
+          <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+            We offer a unique learning experience backed by our global expertise
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+              <svg class="w-7 h-7" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Proven Methodology</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Communicative approach with certified native teachers and exclusive materials
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+              <svg class="w-7 h-7" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Official Certifications</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Official IELTS and Cambridge center with 29 exam centers across Spain
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md);" class="p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-4" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+              <svg class="w-7 h-7" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: var(--bc-primary-blue);">Total Flexibility</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Face-to-face, online, and blended modalities with schedules adapted to your life
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 text-white" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+      <div class="bc-container text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Start your English journey today
+        </h2>
+        <p class="text-xl mb-8" style="color: rgba(255, 255, 255, 0.9);">
+          Discover your current level with our free online test
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/level-test" variant="secondary" size="lg" class="bg-white hover:bg-white" style="color: var(--bc-primary-blue); box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);">
+            Take Level Test
+          </Button>
+          <Button href="/contact" variant="outline" size="lg" style="border: 2px solid white; background: transparent; color: white;">
+            Request Information
+          </Button>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

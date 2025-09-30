@@ -1,0 +1,449 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Hero from '../../../components/Hero.astro';
+import Button from '../../../components/Button.astro';
+
+const pageTitle = "English Courses for Children & Teens (2-17 years)";
+const pageDescription = "Give your child the gift of English with British Council Spain. Expert teachers, proven methods, and courses designed for ages 2-17. Build confidence and unlock global opportunities.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <!-- Hero Section -->
+  <Hero
+    title="Give Your Child the Gift of English"
+    subtitle="Prepare your child for a world of opportunities with British Council's proven English courses for ages 2-17. Our expert teachers make learning engaging, fun, and effective."
+    ctaPrimary={{
+      text: "Book Free Consultation",
+      href: "#contact"
+    }}
+    ctaSecondary={{
+      text: "Explore Courses",
+      href: "#courses"
+    }}
+    stats={[
+      { value: "90+", label: "Years of Experience" },
+      { value: "30,000+", label: "Children Learning" },
+      { value: "95%", label: "Parent Satisfaction" }
+    ]}
+  />
+
+  <!-- Trust Indicators -->
+  <section class="py-12" style="background: transparent;">
+    <div class="bc-container">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="flex flex-col items-center">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-3" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+            <svg class="w-8 h-8" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <p class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Certified Teachers</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-3" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+            <svg class="w-8 h-8" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <p class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Proven Methods</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-3" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+            <svg class="w-8 h-8" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+            </svg>
+          </div>
+          <p class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Fun & Engaging</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-3" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+            <svg class="w-8 h-8" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path>
+            </svg>
+          </div>
+          <p class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Global Recognition</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses" class="py-20" style="background: transparent;">
+    <div class="bc-container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          Find the Perfect Course for Your Child
+        </h2>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+          Age-appropriate programs designed by education experts to help your child thrive
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <!-- Learning Time with Timmy (2-5 years) -->
+        <div class="group rounded-3xl p-8 transform hover:-translate-y-2 transition-all cursor-pointer" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, var(--peach), var(--pink));">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div class="text-sm font-bold px-4 py-2 rounded-full text-white" style="background: linear-gradient(135deg, var(--peach), var(--pink));">
+              Ages 2-5
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">
+            Learning Time with Timmy
+          </h3>
+          <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            A gentle introduction to English through play, songs, and stories with our lovable character Timmy. Perfect for preschoolers taking their first steps in learning.
+          </p>
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">Learn through play and creativity</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">Small class sizes (max 8 children)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">Build confidence from day one</span>
+            </div>
+          </div>
+          <Button href="/courses/children/timmy" variant="primary" size="md" class="w-full">
+            Learn More
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <!-- Primary Plus (6-11 years) -->
+        <div class="group rounded-3xl p-8 transform hover:-translate-y-2 transition-all cursor-pointer" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, var(--mint), var(--sky));">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <div class="text-sm font-bold px-4 py-2 rounded-full text-white" style="background: linear-gradient(135deg, var(--mint), var(--sky));">
+              Ages 6-11
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">
+            Primary Plus
+          </h3>
+          <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Build strong English foundations through interactive activities, projects, and real-world communication. Develop skills that last a lifetime.
+          </p>
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">Real-world English skills</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">21st century skills development</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">Progress tracking and reports</span>
+            </div>
+          </div>
+          <Button href="/courses/children/primary" variant="primary" size="md" class="w-full">
+            Learn More
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <!-- Secondary Plus (12-17 years) -->
+        <div class="group rounded-3xl p-8 transform hover:-translate-y-2 transition-all cursor-pointer" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div class="text-sm font-bold px-4 py-2 rounded-full text-white" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+              Ages 12-17
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">
+            Secondary Plus
+          </h3>
+          <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Prepare teens for academic success and global opportunities. Advanced English skills, critical thinking, and university preparation.
+          </p>
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">Academic English preparation</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">University and career readiness</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">Critical thinking & debate skills</span>
+            </div>
+          </div>
+          <Button href="/courses/children/secondary" variant="primary" size="md" class="w-full">
+            Learn More
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <!-- Cambridge Exam Preparation -->
+        <div class="group rounded-3xl p-8 transform hover:-translate-y-2 transition-all cursor-pointer" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <div class="text-sm font-bold px-4 py-2 rounded-full text-white" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+              Ages 7-17
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">
+            Cambridge Exam Preparation
+          </h3>
+          <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+            Get globally recognized Cambridge English qualifications. From Young Learners to FCE and CAE. Official exam center with expert preparation.
+          </p>
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">Official Cambridge exam center</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">Exam-focused methodology</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center" style="background: rgba(255, 20, 147, 0.1);">
+                <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <span class="text-sm" style="color: var(--muted);">Global recognition</span>
+            </div>
+          </div>
+          <Button href="/courses/children/cambridge" variant="primary" size="md" class="w-full">
+            Learn More
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why British Council for Children -->
+  <section class="py-20" style="background: linear-gradient(180deg, transparent 0%, rgba(35, 7, 90, 0.02) 100%);">
+    <div class="bc-container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">
+          Why Parents Trust British Council
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          Give your child the best start with the world's English experts
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.05), rgba(35, 7, 90, 0.02));">
+            <svg class="w-10 h-10" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">Safe & Supportive Environment</h3>
+          <p class="text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+            Qualified teachers trained in child safeguarding create a secure, nurturing space where your child can flourish
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05));">
+            <svg class="w-10 h-10" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">Real Progress, Real Results</h3>
+          <p class="text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+            Regular progress reports keep you informed. See your child's confidence and skills grow week by week
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.05), rgba(35, 7, 90, 0.02));">
+            <svg class="w-10 h-10" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">Future-Ready Skills</h3>
+          <p class="text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+            Beyond English: creativity, critical thinking, and communication skills for tomorrow's global citizens
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parent Testimonial Section -->
+  <section class="py-20" style="background: transparent;">
+    <div class="bc-container">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="rounded-3xl p-10 md:p-16" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-lg);">
+          <svg class="w-12 h-12 mx-auto mb-6" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
+          </svg>
+          <p class="text-xl md:text-2xl mb-8 leading-relaxed" style="color: var(--bc-primary-blue); font-weight: 500;">
+            "My daughter started at age 6 with Primary Plus and now at 10, she's reading English books confidently. The teachers make learning fun and engaging. Best investment in her future!"
+          </p>
+          <div class="flex items-center justify-center gap-4">
+            <div class="w-16 h-16 rounded-full" style="background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-cta-pink));"></div>
+            <div class="text-left">
+              <p class="font-bold" style="color: var(--bc-primary-blue);">Maria Rodriguez</p>
+              <p class="text-sm" style="color: var(--bc-dark-gray);">Parent, Barcelona</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.03) 0%, rgba(255, 20, 147, 0.03) 100%);"></div>
+
+    <div class="bc-container relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6" style="color: var(--bc-primary-blue);">
+          Invest in Your Child's Future Today
+        </h2>
+        <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          Book a free consultation to discover the perfect English course for your child. Our experts will guide you every step of the way.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <Button variant="secondary" size="lg">
+            Book Free Consultation
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </Button>
+          <Button variant="outline" size="lg">
+            Visit a Centre
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t" style="border-color: var(--line);">
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">90+</p>
+            <p class="text-sm" style="color: var(--muted);">Years Experience</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">30,000+</p>
+            <p class="text-sm" style="color: var(--muted);">Children Learning</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">15</p>
+            <p class="text-sm" style="color: var(--muted);">Centres in Spain</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">95%</p>
+            <p class="text-sm" style="color: var(--muted);">Parent Satisfaction</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes morph-blob {
+      0%, 100% { border-radius: 40% 60% 60% 40% / 60% 40%; }
+      25% { border-radius: 60% 40% 40% 60% / 40% 60%; }
+      50% { border-radius: 40% 60% 60% 40%; }
+      75% { border-radius: 60% 40% / 40% 60%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .animate-slide-up {
+      animation: slideInUp 0.8s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: slideInUp 1s ease-out forwards;
+    }
+  </style>
+</Layout>
