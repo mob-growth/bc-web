@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Footer from '../components/Footer.astro';
 
 export interface Props {
   title: string;
@@ -56,6 +57,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.url.origin);
   </head>
   <body>
     <slot />
+    <Footer />
     <script src="/src/scripts/animations.js"></script>
   </body>
 </html>
