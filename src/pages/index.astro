@@ -75,13 +75,16 @@ const heroStats = [
     <section class="py-20" style="background: transparent;">
       <div class="bc-container">
         <div class="text-center mb-12">
+          <div class="inline-block px-4 py-2 rounded-full mb-4" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04)); border: 1px solid rgba(35, 7, 90, 0.1);">
+            <span class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Official Test Center</span>
+          </div>
           <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Find Your Perfect English Course</h2>
           <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
             Whether you're learning for work, study, or personal development, we have the perfect program for you
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <!-- Adults -->
           <a href="/courses/adults" class="pathway-card group block" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md); overflow: hidden;">
             <div class="aspect-video overflow-hidden">
@@ -153,70 +156,51 @@ const heroStats = [
               </div>
             </div>
           </a>
-        </div>
-      </div>
-    </section>
 
-    <!-- Exams & Certifications Section -->
-    <section class="py-20" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(35, 7, 90, 0.02) 50%, rgba(255, 255, 255, 0) 100%);">
-      <div class="bc-container">
-        <div class="text-center mb-12">
-          <div class="inline-block px-4 py-2 rounded-full mb-4" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04)); border: 1px solid rgba(35, 7, 90, 0.1);">
-            <span class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Official Test Center</span>
-          </div>
-          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Official English Exams & Certifications</h2>
-          <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
-            Take your internationally recognized English exam with the British Council
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6 mb-8">
           <!-- IELTS -->
-          <a href="/exams/ielts" class="exam-card group block p-6 rounded-2xl transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
-            <div class="flex items-start gap-4">
-              <div class="flex-shrink-0">
-                <div class="w-16 h-16 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 212, 232, 0.3), rgba(255, 20, 147, 0.1));">
-                  <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#ffd4e8" opacity="0.5"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#ff9ec7" stroke-width="1.5"/><path d="M2 12h20M12 2c2.5 0 4.5 4.5 4.5 10s-2 10-4.5 10-4.5-4.5-4.5-10S9.5 2 12 2z" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </div>
+          <a href="/exams/ielts" class="pathway-card group block" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md); overflow: hidden;">
+            <div class="aspect-video overflow-hidden" style="background: linear-gradient(135deg, #ffd4e8, #ffcce0);">
+              <img
+                src="https://mktgfiles.britishcouncil.org/hubfs/IELTS%20Coach-May-mail1.png"
+                alt="IELTS"
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#ffd4e8" opacity="0.5"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#ff9ec7" stroke-width="1.5"/><path d="M2 12h20M12 2c2.5 0 4.5 4.5 4.5 10s-2 10-4.5 10-4.5-4.5-4.5-10S9.5 2 12 2z" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <h3 class="text-xl font-bold group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">IELTS</h3>
               </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-bold mb-2 group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">IELTS</h3>
-                <p class="text-sm mb-3" style="color: var(--bc-dark-gray);">The world's most popular English exam for study, work, and migration. Accepted by 12,500+ organizations globally.</p>
-                <div class="flex flex-wrap gap-2 mb-3">
-                  <span class="text-xs px-3 py-1 rounded-full" style="background: rgba(35, 7, 90, 0.06); color: var(--bc-primary-blue);">Paper & Computer</span>
-                  <span class="text-xs px-3 py-1 rounded-full" style="background: rgba(35, 7, 90, 0.06); color: var(--bc-primary-blue);">Results in 13 days</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm font-medium" style="color: var(--bc-cta-pink);">
-                  <span>Book IELTS Exam</span>
-                  <svg class="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                  </svg>
-                </div>
+              <p class="text-sm mb-4" style="color: var(--bc-dark-gray);">The world's most popular English exam for study, work, and migration. Accepted by 12,500+ organizations globally.</p>
+              <div class="flex items-center gap-2 text-sm font-medium" style="color: var(--bc-cta-pink);">
+                <span>Book IELTS Exam</span>
+                <svg class="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
               </div>
             </div>
           </a>
 
           <!-- Aptis ESOL -->
-          <a href="/exams/aptis" class="exam-card group block p-6 rounded-2xl transition-all" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
-            <div class="flex items-start gap-4">
-              <div class="flex-shrink-0">
-                <div class="w-16 h-16 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(232, 217, 245, 0.5), rgba(124, 77, 255, 0.1));">
-                  <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" fill="#e8d9f5" opacity="0.5"/><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
+          <a href="/exams/aptis" class="pathway-card group block" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md); overflow: hidden;">
+            <div class="aspect-video overflow-hidden" style="background: linear-gradient(135deg, #e8d9f5, #dcc6f0);">
+              <img
+                src="https://mktgfiles.britishcouncil.org/hubfs/Aptis-EmailHeader-568x180-FourIcons.153150.png"
+                alt="Aptis ESOL"
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" fill="#e8d9f5" opacity="0.5"/><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <h3 class="text-xl font-bold group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">Aptis ESOL</h3>
               </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-bold mb-2 group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">Aptis ESOL</h3>
-                <p class="text-sm mb-3" style="color: var(--bc-dark-gray);">Fast, flexible English certification recognized by Spanish authorities. Modular test assessing A1-C2 levels.</p>
-                <div class="flex flex-wrap gap-2 mb-3">
-                  <span class="text-xs px-3 py-1 rounded-full" style="background: rgba(35, 7, 90, 0.06); color: var(--bc-primary-blue);">Computer-based</span>
-                  <span class="text-xs px-3 py-1 rounded-full" style="background: rgba(35, 7, 90, 0.06); color: var(--bc-primary-blue);">Results in 48-72 hours</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm font-medium" style="color: var(--bc-cta-pink);">
-                  <span>Book Aptis Exam</span>
-                  <svg class="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                  </svg>
-                </div>
+              <p class="text-sm mb-4" style="color: var(--bc-dark-gray);">Fast, flexible English certification recognized by Spanish authorities. Modular test assessing A1-C2 levels.</p>
+              <div class="flex items-center gap-2 text-sm font-medium" style="color: var(--bc-cta-pink);">
+                <span>Book Aptis Exam</span>
+                <svg class="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
               </div>
             </div>
           </a>
@@ -224,11 +208,99 @@ const heroStats = [
 
         <div class="text-center">
           <a href="/exams" class="inline-flex items-center gap-2 text-base font-semibold hover:gap-3 transition-all" style="color: var(--bc-primary-blue);">
-            <span>View all exams and certifications</span>
+            <span>View all courses and certifications</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
             </svg>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wall of Love -->
+    <section class="py-16 overflow-hidden" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(35, 7, 90, 0.015) 50%, rgba(255, 255, 255, 0) 100%);">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-3 mb-3">
+          <h2 class="text-3xl md:text-4xl font-bold" style="color: var(--bc-primary-blue);">Wall of Love</h2>
+          <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#b794d4" opacity="0.3"/>
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="#8e5db8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="text-base max-w-2xl mx-auto px-4" style="color: var(--bc-dark-gray);">
+          What our students say about their British Council experience
+        </p>
+      </div>
+
+      <!-- Row 1 - Scroll Left -->
+      <div class="marquee-container mb-4">
+        <div class="marquee-content marquee-left">
+          <div class="love-card">"Achieved IELTS 8.0! Expert teachers made all the difference."</div>
+          <div class="love-card">"The Business English course secured me a promotion at work."</div>
+          <div class="love-card">"My daughter's confidence has grown tremendously. She loves every class!"</div>
+          <div class="love-card">"Best English learning experience. Interactive and engaging lessons."</div>
+          <div class="love-card">"Online courses are flexible and high quality. Perfect for busy professionals."</div>
+          <div class="love-card">"Cambridge exam prep was thorough. Passed with distinction!"</div>
+          <div class="love-card">"Teachers are native speakers and incredibly patient."</div>
+          <div class="love-card">"The digital platform makes learning accessible anytime, anywhere."</div>
+        </div>
+        <div class="marquee-content marquee-left" aria-hidden="true">
+          <div class="love-card">"Achieved IELTS 8.0! Expert teachers made all the difference."</div>
+          <div class="love-card">"The Business English course secured me a promotion at work."</div>
+          <div class="love-card">"My daughter's confidence has grown tremendously. She loves every class!"</div>
+          <div class="love-card">"Best English learning experience. Interactive and engaging lessons."</div>
+          <div class="love-card">"Online courses are flexible and high quality. Perfect for busy professionals."</div>
+          <div class="love-card">"Cambridge exam prep was thorough. Passed with distinction!"</div>
+          <div class="love-card">"Teachers are native speakers and incredibly patient."</div>
+          <div class="love-card">"The digital platform makes learning accessible anytime, anywhere."</div>
+        </div>
+      </div>
+
+      <!-- Row 2 - Scroll Right -->
+      <div class="marquee-container mb-4">
+        <div class="marquee-content marquee-right">
+          <div class="love-card">"Corporate training transformed our team's communication skills."</div>
+          <div class="love-card">"Primary Plus program is fantastic for young learners. Highly recommend!"</div>
+          <div class="love-card">"Got my dream job in London thanks to British Council preparation."</div>
+          <div class="love-card">"The learning resources are world-class. Worth every penny."</div>
+          <div class="love-card">"Native-level fluency achieved in just 18 months!"</div>
+          <div class="love-card">"Aptis ESOL was perfectly structured. Teachers guide you every step."</div>
+          <div class="love-card">"Small class sizes mean personalized attention for every student."</div>
+          <div class="love-card">"Cultural activities make learning English fun and immersive."</div>
+        </div>
+        <div class="marquee-content marquee-right" aria-hidden="true">
+          <div class="love-card">"Corporate training transformed our team's communication skills."</div>
+          <div class="love-card">"Primary Plus program is fantastic for young learners. Highly recommend!"</div>
+          <div class="love-card">"Got my dream job in London thanks to British Council preparation."</div>
+          <div class="love-card">"The learning resources are world-class. Worth every penny."</div>
+          <div class="love-card">"Native-level fluency achieved in just 18 months!"</div>
+          <div class="love-card">"Aptis ESOL was perfectly structured. Teachers guide you every step."</div>
+          <div class="love-card">"Small class sizes mean personalized attention for every student."</div>
+          <div class="love-card">"Cultural activities make learning English fun and immersive."</div>
+        </div>
+      </div>
+
+      <!-- Row 3 - Scroll Left -->
+      <div class="marquee-container">
+        <div class="marquee-content marquee-left">
+          <div class="love-card">"90 years of excellence really shows in their teaching methods."</div>
+          <div class="love-card">"Free level test helped me start at exactly the right course."</div>
+          <div class="love-card">"Blended learning combines the best of online and in-person classes."</div>
+          <div class="love-card">"The support team is always responsive and helpful."</div>
+          <div class="love-card">"Exam preparation courses are comprehensive and confidence-building."</div>
+          <div class="love-card">"My son went from shy to speaking fluently in English!"</div>
+          <div class="love-card">"Professional environment with state-of-the-art facilities."</div>
+          <div class="love-card">"British Council credentials opened doors globally for me."</div>
+        </div>
+        <div class="marquee-content marquee-left" aria-hidden="true">
+          <div class="love-card">"90 years of excellence really shows in their teaching methods."</div>
+          <div class="love-card">"Free level test helped me start at exactly the right course."</div>
+          <div class="love-card">"Blended learning combines the best of online and in-person classes."</div>
+          <div class="love-card">"The support team is always responsive and helpful."</div>
+          <div class="love-card">"Exam preparation courses are comprehensive and confidence-building."</div>
+          <div class="love-card">"My son went from shy to speaking fluently in English!"</div>
+          <div class="love-card">"Professional environment with state-of-the-art facilities."</div>
+          <div class="love-card">"British Council credentials opened doors globally for me."</div>
         </div>
       </div>
     </section>
@@ -325,118 +397,32 @@ const heroStats = [
       </div>
     </section>
 
-    <!-- Wall of Love -->
-    <section class="py-16 overflow-hidden" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(35, 7, 90, 0.015) 50%, rgba(255, 255, 255, 0) 100%);">
-      <div class="text-center mb-10">
-        <div class="inline-flex items-center gap-3 mb-3">
-          <h2 class="text-3xl md:text-4xl font-bold" style="color: var(--bc-primary-blue);">Wall of Love</h2>
-          <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#b794d4" opacity="0.3"/>
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="#8e5db8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <p class="text-base max-w-2xl mx-auto px-4" style="color: var(--bc-dark-gray);">
-          What our students say about their British Council experience
-        </p>
-      </div>
-
-      <!-- Row 1 - Scroll Left -->
-      <div class="marquee-container mb-4">
-        <div class="marquee-content marquee-left">
-          <div class="love-card">"Achieved IELTS 8.0! Expert teachers made all the difference."</div>
-          <div class="love-card">"The Business English course secured me a promotion at work."</div>
-          <div class="love-card">"My daughter's confidence has grown tremendously. She loves every class!"</div>
-          <div class="love-card">"Best English learning experience. Interactive and engaging lessons."</div>
-          <div class="love-card">"Online courses are flexible and high quality. Perfect for busy professionals."</div>
-          <div class="love-card">"Cambridge exam prep was thorough. Passed with distinction!"</div>
-          <div class="love-card">"Teachers are native speakers and incredibly patient."</div>
-          <div class="love-card">"The digital platform makes learning accessible anytime, anywhere."</div>
-        </div>
-        <div class="marquee-content marquee-left" aria-hidden="true">
-          <div class="love-card">"Achieved IELTS 8.0! Expert teachers made all the difference."</div>
-          <div class="love-card">"The Business English course secured me a promotion at work."</div>
-          <div class="love-card">"My daughter's confidence has grown tremendously. She loves every class!"</div>
-          <div class="love-card">"Best English learning experience. Interactive and engaging lessons."</div>
-          <div class="love-card">"Online courses are flexible and high quality. Perfect for busy professionals."</div>
-          <div class="love-card">"Cambridge exam prep was thorough. Passed with distinction!"</div>
-          <div class="love-card">"Teachers are native speakers and incredibly patient."</div>
-          <div class="love-card">"The digital platform makes learning accessible anytime, anywhere."</div>
-        </div>
-      </div>
-
-      <!-- Row 2 - Scroll Right -->
-      <div class="marquee-container mb-4">
-        <div class="marquee-content marquee-right">
-          <div class="love-card">"Corporate training transformed our team's communication skills."</div>
-          <div class="love-card">"Primary Plus program is fantastic for young learners. Highly recommend!"</div>
-          <div class="love-card">"Got my dream job in London thanks to British Council preparation."</div>
-          <div class="love-card">"The learning resources are world-class. Worth every penny."</div>
-          <div class="love-card">"Native-level fluency achieved in just 18 months!"</div>
-          <div class="love-card">"Aptis ESOL was perfectly structured. Teachers guide you every step."</div>
-          <div class="love-card">"Small class sizes mean personalized attention for every student."</div>
-          <div class="love-card">"Cultural activities make learning English fun and immersive."</div>
-        </div>
-        <div class="marquee-content marquee-right" aria-hidden="true">
-          <div class="love-card">"Corporate training transformed our team's communication skills."</div>
-          <div class="love-card">"Primary Plus program is fantastic for young learners. Highly recommend!"</div>
-          <div class="love-card">"Got my dream job in London thanks to British Council preparation."</div>
-          <div class="love-card">"The learning resources are world-class. Worth every penny."</div>
-          <div class="love-card">"Native-level fluency achieved in just 18 months!"</div>
-          <div class="love-card">"Aptis ESOL was perfectly structured. Teachers guide you every step."</div>
-          <div class="love-card">"Small class sizes mean personalized attention for every student."</div>
-          <div class="love-card">"Cultural activities make learning English fun and immersive."</div>
-        </div>
-      </div>
-
-      <!-- Row 3 - Scroll Left -->
-      <div class="marquee-container">
-        <div class="marquee-content marquee-left">
-          <div class="love-card">"90 years of excellence really shows in their teaching methods."</div>
-          <div class="love-card">"Free level test helped me start at exactly the right course."</div>
-          <div class="love-card">"Blended learning combines the best of online and in-person classes."</div>
-          <div class="love-card">"The support team is always responsive and helpful."</div>
-          <div class="love-card">"Exam preparation courses are comprehensive and confidence-building."</div>
-          <div class="love-card">"My son went from shy to speaking fluently in English!"</div>
-          <div class="love-card">"Professional environment with state-of-the-art facilities."</div>
-          <div class="love-card">"British Council credentials opened doors globally for me."</div>
-        </div>
-        <div class="marquee-content marquee-left" aria-hidden="true">
-          <div class="love-card">"90 years of excellence really shows in their teaching methods."</div>
-          <div class="love-card">"Free level test helped me start at exactly the right course."</div>
-          <div class="love-card">"Blended learning combines the best of online and in-person classes."</div>
-          <div class="love-card">"The support team is always responsive and helpful."</div>
-          <div class="love-card">"Exam preparation courses are comprehensive and confidence-building."</div>
-          <div class="love-card">"My son went from shy to speaking fluently in English!"</div>
-          <div class="love-card">"Professional environment with state-of-the-art facilities."</div>
-          <div class="love-card">"British Council credentials opened doors globally for me."</div>
-        </div>
-      </div>
-    </section>
-
     <!-- Global Stats Section -->
-    <section class="py-20 text-white" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+    <section class="py-20" style="background: transparent;">
       <div class="bc-container">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #ffffff;">Our Global Impact</h2>
-          <p class="text-xl" style="color: rgba(255, 255, 255, 0.9);">Making a difference worldwide for over 90 years</p>
-        </div>
+        <div class="rounded-3xl p-12 md:p-16 text-white" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570); box-shadow: 0 8px 32px rgba(35, 7, 90, 0.15);">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #ffffff;">Our Global Impact</h2>
+            <p class="text-xl" style="color: rgba(255, 255, 255, 0.9);">Making a difference worldwide for over 90 years</p>
+          </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold mb-2" style="color: #ffffff;">100+</div>
-            <div class="text-sm md:text-base" style="color: rgba(255, 255, 255, 0.85);">Countries Worldwide</div>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold mb-2" style="color: #ffffff;">30,000+</div>
-            <div class="text-sm md:text-base" style="color: rgba(255, 255, 255, 0.85);">Students per Year in Spain</div>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold mb-2" style="color: #ffffff;">15</div>
-            <div class="text-sm md:text-base" style="color: rgba(255, 255, 255, 0.85);">Centers Across Spain</div>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold mb-2" style="color: #ffffff;">90+</div>
-            <div class="text-sm md:text-base" style="color: rgba(255, 255, 255, 0.85);">Years of Excellence</div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+              <div class="text-4xl md:text-5xl font-bold mb-2" style="color: #ffffff;">100+</div>
+              <div class="text-sm md:text-base" style="color: rgba(255, 255, 255, 0.85);">Countries Worldwide</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl md:text-5xl font-bold mb-2" style="color: #ffffff;">30,000+</div>
+              <div class="text-sm md:text-base" style="color: rgba(255, 255, 255, 0.85);">Students per Year in Spain</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl md:text-5xl font-bold mb-2" style="color: #ffffff;">15</div>
+              <div class="text-sm md:text-base" style="color: rgba(255, 255, 255, 0.85);">Centers Across Spain</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl md:text-5xl font-bold mb-2" style="color: #ffffff;">90+</div>
+              <div class="text-sm md:text-base" style="color: rgba(255, 255, 255, 0.85);">Years of Excellence</div>
+            </div>
           </div>
         </div>
       </div>
