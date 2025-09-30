@@ -13,39 +13,39 @@ const courseCategories = [
   {
     id: 'adults',
     title: 'Adults',
-    icon: '👔',
+    icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M20 7H4C3.44772 7 3 7.44772 3 8V18C3 18.5523 3.44772 19 4 19H20C20.5523 19 21 18.5523 21 18V8C21 7.44772 20.5523 7 20 7Z" fill="#dcc6f0" opacity="0.5"/><path d="M16 7V5C16 4.44772 15.5523 4 15 4H9C8.44772 4 8 4.44772 8 5V7M12 13H12.01M4 7H20C20.5523 7 21 7.44772 21 8V18C21 18.5523 20.5523 19 20 19H4C3.44772 19 3 18.5523 3 18V8C3 7.44772 3.44772 7 4 7Z" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     description: 'English courses for adults',
     href: '/courses/adults',
     courses: [
-      { name: 'Three month face to face course', description: 'Our most popular course', href: '/courses/adults/termly' },
-      { name: 'Cambridge exam preparation', description: 'Prepare for Cambridge exams', href: '/courses/adults/cambridge' },
-      { name: 'Business English', description: 'Communicate confidently in business', href: '/courses/adults/business' },
-      { name: 'Online courses', description: 'Flexible online learning', href: '/courses/adults/online' }
+      { name: 'Three month face to face course', description: 'Our most popular course', href: '/courses/adults/termly', icon: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="15" rx="2" fill="#e8d9f5" opacity="0.6"/><path d="M8 2V6M16 2V6M3 10H21M7 14H7.01M12 14H12.01M17 14H17.01M7 18H7.01M12 18H12.01M17 18H17.01" stroke="#9b7bbe" stroke-width="1.5" stroke-linecap="round"/></svg>' },
+      { name: 'Cambridge exam preparation', description: 'Prepare for Cambridge exams', href: '/courses/adults/cambridge', icon: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" fill="#ffd4e8" opacity="0.5"/><path d="M9 12L11 14L15 10M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+      { name: 'Business English', description: 'Communicate confidently in business', href: '/courses/adults/business', icon: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M13 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V11" fill="#dcc6f0" opacity="0.4"/><path d="M7 8V16M12 11V16M17 14V16M17 3V8M14 3H20M3 5C3 3.89543 3.89543 3 5 3H13V11H21V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5Z" stroke="#a688c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+      { name: 'Online courses', description: 'Flexible online learning', href: '/courses/adults/online', icon: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" fill="#ffcce0" opacity="0.5"/><path d="M8 21H16M12 17V21M2 3H22V13C22 14.1046 21.1046 15 20 15H4C2.89543 15 2 14.1046 2 13V3Z" stroke="#ff99c8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 7L10 9.5L7 12" stroke="#ff99c8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' }
     ]
   },
   {
     id: 'children',
     title: 'Children & Teens',
-    icon: '🎓',
+    icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M5 19H19C19.5523 19 20 18.5523 20 18V6C20 5.44772 19.5523 5 19 5H5C4.44772 5 4 5.44772 4 6V18C4 18.5523 4.44772 19 5 19Z" fill="#ffd4e8" opacity="0.6"/><path d="M4 19H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V19ZM19 2H5C3.89543 2 3 2.89543 3 4V18C3 19.1046 3.89543 20 5 20H19C20.1046 20 21 19.1046 21 18V4C21 2.89543 20.1046 2 19 2Z" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 6H16M8 10H16M8 14H12" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round"/></svg>',
     description: 'English courses for kids aged 2-17',
     href: '/courses/children',
     courses: [
-      { name: 'Learning time with Timmy', description: 'Ages 2-5', href: '/courses/children/timmy' },
-      { name: 'Primary Plus', description: 'Ages 6-11', href: '/courses/children/primary' },
-      { name: 'Secondary Plus', description: 'Ages 12-17', href: '/courses/children/secondary' },
-      { name: 'Cambridge exam preparation', description: 'Ages 12-17', href: '/courses/children/cambridge' }
+      { name: 'Learning time with Timmy', description: 'Ages 2-5', href: '/courses/children/timmy', icon: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="5" fill="#ffd4e8" opacity="0.5"/><path d="M9 11C9 9.89543 9.89543 9 11 9H13C14.1046 9 15 9.89543 15 11V13M12 3C9.23858 3 7 5.23858 7 8C7 10.7614 9.23858 13 12 13C14.7614 13 17 10.7614 17 8C17 5.23858 14.7614 3 12 3ZM3 20C3 16.6863 5.68629 14 9 14H15C18.3137 14 21 16.6863 21 20V21H3V20Z" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+      { name: 'Primary Plus', description: 'Ages 6-11', href: '/courses/children/primary', icon: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M12 4L3 9L12 14L21 9L12 4Z" fill="#e8d9f5" opacity="0.6"/><path d="M12 4L3 9L12 14L21 9L12 4Z" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14L12 19L21 14M3 19L12 24L21 19" stroke="#d4b3e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+      { name: 'Secondary Plus', description: 'Ages 12-17', href: '/courses/children/secondary', icon: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#ffcce0" opacity="0.5" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+      { name: 'Cambridge exam preparation', description: 'Ages 12-17', href: '/courses/children/cambridge', icon: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#e8d9f5" opacity="0.5"/><path d="M9 12L11 14L15 10" stroke="#9b7bbe" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#b794d4" stroke-width="1.5"/></svg>' }
     ]
   },
   {
     id: 'corporate',
     title: 'Corporate',
-    icon: '🏢',
+    icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="#dcc6f0" opacity="0.5"/><path d="M3 3H21V21H3V3Z" stroke="#a688c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 3V21M15 3V21M3 9H21M3 15H21" stroke="#c4a7de" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="2" fill="#ff9ec7"/></svg>',
     description: 'English solutions for businesses',
     href: '/courses/corporate',
     courses: [
-      { name: 'Corporate English training', description: 'Customized business solutions', href: '/courses/corporate/training' },
-      { name: 'English assessment', description: 'Test your team\'s English level', href: '/courses/corporate/assessment' },
-      { name: 'Online corporate solutions', description: 'Flexible learning for teams', href: '/courses/corporate/online' }
+      { name: 'Corporate English training', description: 'Customized business solutions', href: '/courses/corporate/training', icon: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" fill="#e8d9f5" opacity="0.5"/><path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" fill="#ffcce0" opacity="0.5"/><path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="#9b7bbe" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+      { name: 'English assessment', description: 'Test your team\'s English level', href: '/courses/corporate/assessment', icon: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" fill="#ffcce0" opacity="0.5"/><path d="M16 2H8C6.89543 2 6 2.89543 6 4V20C6 21.1046 6.89543 22 8 22H16C17.1046 22 18 21.1046 18 20V4C18 2.89543 17.1046 2 16 2Z" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 7H15M9 11H15M9 15H13" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round"/></svg>' },
+      { name: 'Online corporate solutions', description: 'Flexible learning for teams', href: '/courses/corporate/online', icon: '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#e8d9f5" opacity="0.5"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#b794d4" stroke-width="1.5"/><path d="M2 12h20M12 2c2.5 0 4.5 4.5 4.5 10s-2 10-4.5 10-4.5-4.5-4.5-10S9.5 2 12 2z" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round"/></svg>' }
     ]
   }
 ];
@@ -54,28 +54,28 @@ const examCategories = [
   {
     id: 'ielts',
     title: 'IELTS',
-    icon: '🌍',
+    icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#ffd4e8" opacity="0.5"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#ff9ec7" stroke-width="1.5"/><path d="M2 12h20M12 2c2.5 0 4.5 4.5 4.5 10s-2 10-4.5 10-4.5-4.5-4.5-10S9.5 2 12 2z" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round"/></svg>',
     description: 'IELTS exams for visas and immigration to the United Kingdom',
     href: '/exams/ielts'
   },
   {
     id: 'aptis',
     title: 'Aptis ESOL',
-    icon: '⚡',
+    icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" fill="#e8d9f5" opacity="0.5"/><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     description: 'Fast English certification recognised in Spain',
     href: '/exams/aptis'
   },
   {
     id: 'schools',
     title: 'English assessment for schools',
-    icon: '🏫',
+    icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" fill="#dcc6f0" opacity="0.5"/><path d="M9 22V12h6v10M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="1.5" fill="#ff9ec7"/></svg>',
     description: 'Age-appropriate testing for students',
     href: '/exams/schools'
   },
   {
     id: 'professional',
     title: 'Professionals and university students',
-    icon: '🎓',
+    icon: '<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M12 14l9-5-9-5-9 5 9 5z" fill="#ffcce0" opacity="0.6"/><path d="M12 14l9-5-9-5-9 5 9 5z" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     description: 'Professional English certification',
     href: '/exams/professional'
   }
@@ -134,7 +134,7 @@ const currentPath = Astro.url.pathname;
                       <div class="category-section">
                         <a href={category.href} class="category-header block mb-4 group">
                           <div class="flex items-center gap-3 mb-2">
-                            <span class="text-2xl">{category.icon}</span>
+                            <span set:html={category.icon} />
                             <h4 class="font-semibold text-base group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">{category.title}</h4>
                           </div>
                           <p class="text-xs" style="color: var(--bc-dark-gray);">{category.description}</p>
@@ -144,10 +144,13 @@ const currentPath = Astro.url.pathname;
                           {category.courses.map((course) => (
                             <a
                               href={course.href}
-                              class="course-link block p-3 rounded-xl hover:bg-white/80 transition-all group"
+                              class="course-link flex items-start gap-2 p-3 rounded-xl hover:bg-white/80 transition-all group"
                             >
-                              <h5 class="text-sm font-medium mb-1 group-hover:text-pink-500 transition-colors" style="color: var(--ink);">{course.name}</h5>
-                              <p class="text-xs" style="color: var(--muted);">{course.description}</p>
+                              <span set:html={course.icon} class="flex-shrink-0 mt-0.5" />
+                              <div class="flex-1">
+                                <h5 class="text-sm font-medium mb-1 group-hover:text-pink-500 transition-colors" style="color: var(--ink);">{course.name}</h5>
+                                <p class="text-xs" style="color: var(--muted);">{course.description}</p>
+                              </div>
                             </a>
                           ))}
                         </div>
@@ -185,7 +188,7 @@ const currentPath = Astro.url.pathname;
                         style="border: 1px solid var(--line);"
                       >
                         <div class="flex items-start gap-3">
-                          <span class="text-2xl">{exam.icon}</span>
+                          <span set:html={exam.icon} class="flex-shrink-0" />
                           <div>
                             <h4 class="font-semibold text-base mb-1 group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">{exam.title}</h4>
                             <p class="text-xs leading-relaxed" style="color: var(--muted);">{exam.description}</p>
@@ -240,14 +243,79 @@ const currentPath = Astro.url.pathname;
     <div id="mobile-menu" class="hidden md:hidden pb-4">
       <div class="flex flex-col space-y-2 pt-2">
         {navItems.map((item) => (
-          <a
-            href={item.href}
-            class={`px-4 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-bc-light-teal ${
-              currentPath === item.href ? 'text-bc-blue bg-bc-light-teal font-semibold' : 'text-gray-700'
-            }`}
-          >
-            {item.label}
-          </a>
+          <div>
+            {item.hasMegaMenu ? (
+              <div class="mobile-submenu-wrapper">
+                <button
+                  class="mobile-submenu-trigger w-full px-4 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-bc-light-teal text-gray-700 flex items-center justify-between"
+                  data-submenu={item.label.toLowerCase()}
+                >
+                  <span>{item.label}</span>
+                  <svg class="w-4 h-4 transition-transform mobile-submenu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+
+                {item.label === 'Courses' && (
+                  <div class="mobile-submenu hidden pl-4 pr-2 pt-2 pb-2 space-y-3" data-submenu-content="courses">
+                    {courseCategories.map((category) => (
+                      <div class="border-l-2 border-gray-200 pl-3">
+                        <a href={category.href} class="flex items-center gap-2 py-1.5 font-semibold text-xs" style="color: var(--bc-primary-blue);">
+                          <span set:html={category.icon} class="w-4 h-4" />
+                          <span>{category.title}</span>
+                        </a>
+                        <div class="space-y-1 mt-1">
+                          {category.courses.map((course) => (
+                            <a
+                              href={course.href}
+                              class="block py-1 text-xs text-gray-600 hover:text-pink-500 transition-colors"
+                            >
+                              {course.name}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                    <a
+                      href="/courses"
+                      class="block py-2 text-xs font-semibold text-center rounded-lg mt-2"
+                      style="color: var(--bc-primary-blue); background: rgba(35, 7, 90, 0.05);"
+                    >
+                      View all courses →
+                    </a>
+                  </div>
+                )}
+
+                {item.label === 'Exams' && (
+                  <div class="mobile-submenu hidden pl-4 pr-2 pt-2 pb-2 space-y-2" data-submenu-content="exams">
+                    {examCategories.map((exam) => (
+                      <a
+                        href={exam.href}
+                        class="block p-2 rounded-lg border border-gray-200 hover:border-pink-300 transition-colors"
+                      >
+                        <div class="flex items-start gap-2">
+                          <span set:html={exam.icon} class="w-5 h-5 flex-shrink-0" />
+                          <div>
+                            <h5 class="text-xs font-semibold mb-0.5" style="color: var(--bc-primary-blue);">{exam.title}</h5>
+                            <p class="text-xs text-gray-600">{exam.description}</p>
+                          </div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <a
+                href={item.href}
+                class={`block px-4 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-bc-light-teal ${
+                  currentPath === item.href ? 'text-bc-blue bg-bc-light-teal font-semibold' : 'text-gray-700'
+                }`}
+              >
+                {item.label}
+              </a>
+            )}
+          </div>
         ))}
         <div class="flex flex-col space-y-2 px-4 pt-4 border-t border-gray-200">
           <Button variant="secondary" size="sm" class="w-full">
@@ -268,6 +336,24 @@ const currentPath = Astro.url.pathname;
 
   mobileMenuButton?.addEventListener('click', () => {
     mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Mobile submenu toggles
+  document.addEventListener('DOMContentLoaded', () => {
+    const submenuTriggers = document.querySelectorAll('.mobile-submenu-trigger');
+
+    submenuTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const submenuName = trigger.getAttribute('data-submenu');
+        const submenu = document.querySelector(`[data-submenu-content="${submenuName}"]`);
+        const icon = trigger.querySelector('.mobile-submenu-icon');
+
+        if (submenu) {
+          submenu.classList.toggle('hidden');
+          icon?.classList.toggle('rotate-180');
+        }
+      });
+    });
   });
 
   // Mega Menu functionality
