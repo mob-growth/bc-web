@@ -1,0 +1,13 @@
+/* ========================================
+   Mobile Responsive Fixes - DISABLED
+   All fixes removed to prevent breaking layouts
+   ======================================== */
+
+/* Tablet optimization (640px - 1024px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  /* 2-column layout for tablets */
+  .grid.md\:grid-cols-3,
+  .grid.lg\:grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,473 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import Button from '../../components/Button.astro';
+
+const pageTitle = "Corporate English Solutions - British Council Spain";
+const pageDescription = "Transform your business with professional English training solutions. Customized programs, flexible delivery, and measurable results for organizations of all sizes.";
+
+const heroStats = [
+  { value: "80+ Years", label: "Global Expertise" },
+  { value: "2M+", label: "Annual Assessments" },
+  { value: "80+", label: "Countries Worldwide" }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <!-- Hero Section -->
+  <Hero
+    title="English Solutions for Businesses"
+    subtitle="Empower your teams with world-class English training. We partner with businesses worldwide to develop communication skills that drive results, enhance productivity, and unlock global opportunities."
+    ctaPrimary={{
+      text: "Book Free Consultation",
+      href: "#contact"
+    }}
+    ctaSecondary={{
+      text: "View Solutions",
+      href: "#solutions"
+    }}
+    stats={heroStats}
+  />
+
+  <!-- Corporate Courses Cards Section -->
+  <section id="solutions" class="py-12 md:py-16 lg:py-20" style="background: transparent;">
+    <div class="bc-container px-4">
+      <div class="text-center mb-10 md:mb-16">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4" style="color: var(--bc-primary-blue);">
+          Comprehensive Corporate English Solutions
+        </h2>
+        <p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto px-2" style="color: var(--bc-dark-gray);">
+          Scalable, engaging, and impactful learning solutions tailored to your business needs
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <!-- Corporate English Training -->
+        <a href="/courses/corporate/training" class="group block rounded-2xl md:rounded-3xl p-6 sm:p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-4 sm:mb-6 rounded-2xl md:rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(35, 7, 90, 0.02));">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="2" fill="#dcc6f0" opacity="0.5"/>
+              <path d="M3 3H21V21H3V3Z" stroke="#a688c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 3V21M15 3V21M3 9H21M3 15H21" stroke="#c4a7de" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="2" fill="#ff9ec7"/>
+            </svg>
+          </div>
+          <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-center group-hover:text-pink-600 transition-colors" style="color: var(--bc-primary-blue);">
+            Corporate English Training
+          </h3>
+          <p class="text-sm sm:text-base leading-relaxed text-center mb-4 sm:mb-6" style="color: var(--bc-dark-gray);">
+            Customized training programs designed to meet your organization's specific needs. From small teams to enterprise-wide solutions.
+          </p>
+          <div class="text-center">
+            <span class="inline-flex items-center text-sm sm:text-base font-semibold group-hover:translate-x-1 transition-transform" style="color: var(--bc-cta-pink);">
+              Learn More
+              <svg class="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- English Assessment -->
+        <a href="/courses/corporate/assessment" class="group block rounded-2xl md:rounded-3xl p-6 sm:p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-4 sm:mb-6 rounded-2xl md:rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style="background: linear-gradient(135deg, rgba(255, 94, 168, 0.2), rgba(255, 20, 147, 0.1));">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10" viewBox="0 0 24 24" fill="none">
+              <rect x="5" y="2" width="14" height="20" rx="2" fill="#ffcce0" opacity="0.5"/>
+              <path d="M16 2H8C6.89543 2 6 2.89543 6 4V20C6 21.1046 6.89543 22 8 22H16C17.1046 22 18 21.1046 18 20V4C18 2.89543 17.1046 2 16 2Z" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 7H15M9 11H15M9 15H13" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-center group-hover:text-pink-600 transition-colors" style="color: var(--bc-primary-blue);">
+            English Assessment
+          </h3>
+          <p class="text-sm sm:text-base leading-relaxed text-center mb-4 sm:mb-6" style="color: var(--bc-dark-gray);">
+            Globally recognized assessments to benchmark skills, recruit talent, and measure progress with reliable, accurate results.
+          </p>
+          <div class="text-center">
+            <span class="inline-flex items-center text-sm sm:text-base font-semibold group-hover:translate-x-1 transition-transform" style="color: var(--bc-cta-pink);">
+              Learn More
+              <svg class="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Online Corporate Solutions -->
+        <a href="/courses/corporate/online" class="group block rounded-2xl md:rounded-3xl p-6 sm:p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-4 sm:mb-6 rounded-2xl md:rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style="background: linear-gradient(135deg, rgba(47, 214, 200, 0.2), rgba(84, 181, 255, 0.2));">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#e8d9f5" opacity="0.5"/>
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#b794d4" stroke-width="1.5"/>
+              <path d="M2 12h20M12 2c2.5 0 4.5 4.5 4.5 10s-2 10-4.5 10-4.5-4.5-4.5-10S9.5 2 12 2z" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-center group-hover:text-pink-600 transition-colors" style="color: var(--bc-primary-blue);">
+            Online Corporate Solutions
+          </h3>
+          <p class="text-sm sm:text-base leading-relaxed text-center mb-4 sm:mb-6" style="color: var(--bc-dark-gray);">
+            Flexible 24/7 online learning platforms, live virtual classes, and blended solutions accessible from anywhere worldwide.
+          </p>
+          <div class="text-center">
+            <span class="inline-flex items-center text-sm sm:text-base font-semibold group-hover:translate-x-1 transition-transform" style="color: var(--bc-cta-pink);">
+              Learn More
+              <svg class="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits for Business Section -->
+  <section class="py-12 md:py-16 lg:py-20" style="background: linear-gradient(180deg, transparent 0%, rgba(35, 7, 90, 0.02) 100%);">
+    <div class="bc-container px-4">
+      <div class="text-center mb-10 md:mb-16">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4" style="color: var(--bc-primary-blue);">
+          Why Choose British Council for Corporate Training
+        </h2>
+        <p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto px-2" style="color: var(--bc-dark-gray);">
+          Deliver real business impact with proven training solutions
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Benefit 1: ROI -->
+        <div class="rounded-2xl md:rounded-3xl p-4 sm:p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(0, 140, 69, 0.1), rgba(47, 214, 200, 0.1));">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" style="color: var(--bc-success-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold mb-2 text-sm sm:text-base md:text-lg" style="color: var(--bc-primary-blue);">Measurable ROI</h3>
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+            Track training impact with real-time dashboards and comprehensive ROI reporting tools
+          </p>
+        </div>
+
+        <!-- Benefit 2: Customized Solutions -->
+        <div class="rounded-2xl md:rounded-3xl p-4 sm:p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(124, 77, 255, 0.15), rgba(84, 181, 255, 0.1));">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" style="color: var(--violet);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold mb-2 text-sm sm:text-base md:text-lg" style="color: var(--bc-primary-blue);">Customized Solutions</h3>
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+            Tailored programs designed specifically for your industry, roles, and business objectives
+          </p>
+        </div>
+
+        <!-- Benefit 3: Flexible Delivery -->
+        <div class="rounded-2xl md:rounded-3xl p-4 sm:p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(84, 181, 255, 0.2), rgba(47, 214, 200, 0.1));">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" style="color: var(--sky);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold mb-2 text-sm sm:text-base md:text-lg" style="color: var(--bc-primary-blue);">Flexible Delivery</h3>
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+            In-person, online, or blended learning options to suit your teams' schedules and locations
+          </p>
+        </div>
+
+        <!-- Benefit 4: Measurable Results -->
+        <div class="rounded-2xl md:rounded-3xl p-4 sm:p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 94, 168, 0.2), rgba(255, 20, 147, 0.1));">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" style="color: var(--bc-cta-pink);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold mb-2 text-sm sm:text-base md:text-lg" style="color: var(--bc-primary-blue);">Proven Results</h3>
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+            See practical behavioral change and improved performance in real workplace situations
+          </p>
+        </div>
+
+        <!-- Benefit 5: Expert Trainers -->
+        <div class="rounded-2xl md:rounded-3xl p-4 sm:p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(124, 77, 255, 0.05));">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold mb-2 text-sm sm:text-base md:text-lg" style="color: var(--bc-primary-blue);">Expert Trainers</h3>
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+            Certified business English specialists with deep corporate training experience
+          </p>
+        </div>
+
+        <!-- Benefit 6: Scalable -->
+        <div class="rounded-2xl md:rounded-3xl p-4 sm:p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(255, 182, 151, 0.2), rgba(255, 94, 168, 0.1));">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" style="color: var(--peach);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold mb-2 text-sm sm:text-base md:text-lg" style="color: var(--bc-primary-blue);">Highly Scalable</h3>
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+            From small teams to 10,000+ employees, our solutions grow with your organization
+          </p>
+        </div>
+
+        <!-- Benefit 7: Global Recognition -->
+        <div class="rounded-2xl md:rounded-3xl p-4 sm:p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(47, 214, 200, 0.2), rgba(84, 181, 255, 0.2));">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" style="color: var(--mint);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold mb-2 text-sm sm:text-base md:text-lg" style="color: var(--bc-primary-blue);">Global Recognition</h3>
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+            80+ years of expertise trusted by organizations in over 80 countries worldwide
+          </p>
+        </div>
+
+        <!-- Benefit 8: Ongoing Support -->
+        <div class="rounded-2xl md:rounded-3xl p-4 sm:p-6 text-center" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(124, 77, 255, 0.15), rgba(84, 181, 255, 0.1));">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" style="color: var(--violet);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold mb-2 text-sm sm:text-base md:text-lg" style="color: var(--bc-primary-blue);">Dedicated Support</h3>
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--bc-dark-gray);">
+            Ongoing account management and technical support throughout your training journey
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="py-12 md:py-16 lg:py-20" style="background: transparent;">
+    <div class="bc-container px-4">
+      <div class="rounded-3xl p-8 sm:p-10 md:p-16" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570); box-shadow: var(--shadow-lg);">
+        <div class="text-center mb-8 sm:mb-12">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 text-white">
+            Trusted Globally for Over 80 Years
+          </h2>
+          <p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-white opacity-90">
+            An unparalleled track record of partnering with organizations worldwide
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-white">80+</div>
+            <p class="text-sm sm:text-base text-white opacity-90">Years of Global Expertise</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-white">2M+</div>
+            <p class="text-sm sm:text-base text-white opacity-90">Assessments Annually</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-white">80+</div>
+            <p class="text-sm sm:text-base text-white opacity-90">Countries Worldwide</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-white">80M+</div>
+            <p class="text-sm sm:text-base text-white opacity-90">Learners Trust Us</p>
+          </div>
+        </div>
+
+        <div class="mt-8 sm:mt-12 pt-8 sm:pt-12 border-t border-white border-opacity-20">
+          <div class="text-center">
+            <p class="text-base sm:text-lg font-semibold text-white mb-2">Not-for-profit organization</p>
+            <p class="text-sm sm:text-base text-white opacity-90">We reinvest in cultural and educational projects worldwide</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-12 md:py-16 lg:py-20" style="background: linear-gradient(180deg, transparent 0%, rgba(35, 7, 90, 0.02) 100%);">
+    <div class="bc-container px-4">
+      <div class="text-center mb-10 md:mb-16">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4" style="color: var(--bc-primary-blue);">
+          What Our Corporate Clients Say
+        </h2>
+        <p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto px-2" style="color: var(--bc-dark-gray);">
+          Real results from real businesses
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+        <!-- Testimonial 1 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-lg);">
+          <svg class="w-8 h-8 sm:w-10 sm:h-10 mb-4 sm:mb-6" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
+          </svg>
+          <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 leading-relaxed" style="color: var(--bc-primary-blue); font-weight: 500;">
+            "The British Council's corporate training transformed our international team's communication. The measurable improvement in confidence and clarity has directly impacted our global collaboration and business results."
+          </p>
+          <div class="flex items-center gap-3 sm:gap-4">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full" style="background: linear-gradient(135deg, var(--bc-primary-blue), var(--violet));"></div>
+            <div>
+              <p class="font-bold text-sm sm:text-base" style="color: var(--bc-primary-blue);">Carlos Rodriguez</p>
+              <p class="text-xs sm:text-sm" style="color: var(--bc-dark-gray);">Head of HR, Tech Corporation Spain</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-lg);">
+          <svg class="w-8 h-8 sm:w-10 sm:h-10 mb-4 sm:mb-6" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
+          </svg>
+          <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 leading-relaxed" style="color: var(--bc-primary-blue); font-weight: 500;">
+            "Outstanding ROI on our training investment. The flexible online platform and expert trainers made it easy to upskill our entire team across multiple locations. Highly recommend British Council for corporate English training."
+          </p>
+          <div class="flex items-center gap-3 sm:gap-4">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full" style="background: linear-gradient(135deg, var(--bc-cta-pink), var(--pink));"></div>
+            <div>
+              <p class="font-bold text-sm sm:text-base" style="color: var(--bc-primary-blue);">Maria Garcia</p>
+              <p class="text-xs sm:text-sm" style="color: var(--bc-dark-gray);">L&D Director, International Finance Group</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Work Section -->
+  <section class="py-12 md:py-16 lg:py-20" style="background: transparent;">
+    <div class="bc-container px-4">
+      <div class="text-center mb-10 md:mb-16">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4" style="color: var(--bc-primary-blue);">
+          Our Proven 4-Step Process
+        </h2>
+        <p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto px-2" style="color: var(--bc-dark-gray);">
+          We take the complexity out of corporate training design and implementation
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Step 1 -->
+        <div class="relative rounded-2xl md:rounded-3xl p-6 sm:p-8" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="absolute -top-4 -left-4 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold text-xl sm:text-2xl text-white" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">1</div>
+          <div class="mt-2 sm:mt-4">
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3" style="color: var(--bc-primary-blue);">Consultation</h3>
+            <p class="text-sm sm:text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+              We identify skills gaps and learning goals specific to your organization's needs
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative rounded-2xl md:rounded-3xl p-6 sm:p-8" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="absolute -top-4 -left-4 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold text-xl sm:text-2xl text-white" style="background: linear-gradient(135deg, var(--violet), var(--pink));">2</div>
+          <div class="mt-2 sm:mt-4">
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3" style="color: var(--bc-primary-blue);">Design</h3>
+            <p class="text-sm sm:text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+              We create scalable, customized solutions with personalized content and integrated assessment
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative rounded-2xl md:rounded-3xl p-6 sm:p-8" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="absolute -top-4 -left-4 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold text-xl sm:text-2xl text-white" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">3</div>
+          <div class="mt-2 sm:mt-4">
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3" style="color: var(--bc-primary-blue);">Delivery</h3>
+            <p class="text-sm sm:text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+              Expert trainers engage your teams and develop relevant, transferable skills to ensure progress
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative rounded-2xl md:rounded-3xl p-6 sm:p-8" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+          <div class="absolute -top-4 -left-4 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold text-xl sm:text-2xl text-white" style="background: linear-gradient(135deg, var(--mint), var(--sky));">4</div>
+          <div class="mt-2 sm:mt-4">
+            <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3" style="color: var(--bc-primary-blue);">Evaluation</h3>
+            <p class="text-sm sm:text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+              We track and report progress, demonstrate ROI, and help communicate success to stakeholders
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="py-16 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.05) 0%, rgba(255, 20, 147, 0.03) 100%);"></div>
+
+    <div class="bc-container relative z-10 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6" style="color: var(--bc-primary-blue);">
+          Ready to Empower Your Team?
+        </h2>
+        <p class="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+          Book a free consultation with our corporate training experts to discuss your organization's needs and discover how we can help
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10 sm:mb-12">
+          <Button variant="secondary" size="lg">
+            Book Free Consultation
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </Button>
+          <Button variant="outline" size="lg">
+            Download Brochure
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pt-8 border-t" style="border-color: var(--line);">
+          <div>
+            <p class="text-2xl sm:text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">100+</p>
+            <p class="text-xs sm:text-sm" style="color: var(--muted);">Training Programmes</p>
+          </div>
+          <div>
+            <p class="text-2xl sm:text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">10,000+</p>
+            <p class="text-xs sm:text-sm" style="color: var(--muted);">Corporate Learners</p>
+          </div>
+          <div>
+            <p class="text-2xl sm:text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">90+</p>
+            <p class="text-xs sm:text-sm" style="color: var(--muted);">Countries Served</p>
+          </div>
+          <div>
+            <p class="text-2xl sm:text-3xl font-bold mb-2" style="color: var(--bc-primary-blue);">98%</p>
+            <p class="text-xs sm:text-sm" style="color: var(--muted);">Client Satisfaction</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .animate-slide-up {
+      animation: slideInUp 0.8s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: slideInUp 1s ease-out forwards;
+    }
+
+    /* Smooth hover transitions */
+    a[href^="/courses/corporate/"] {
+      will-change: transform, box-shadow;
+    }
+  </style>
+</Layout>

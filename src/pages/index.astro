@@ -204,18 +204,279 @@ const heroStats = [
               </div>
             </div>
           </a>
-        </div>
 
-        <div class="text-center">
-          <a href="/exams" class="inline-flex items-center gap-2 text-base font-semibold hover:gap-3 transition-all" style="color: var(--bc-primary-blue);">
-            <span>View all courses and certifications</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-            </svg>
+          <!-- Free Level Test -->
+          <a href="/level-test" class="pathway-card group block" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid var(--line); box-shadow: var(--shadow-md); overflow: hidden;">
+            <div class="aspect-video overflow-hidden">
+              <img
+                src="https://mktgfiles.britishcouncil.org/hubfs/English%20-%20LearnEnglish/Level%20nurture/English%20-%20All%20-%20Learn%20English%20-%20Global%20-%20Level%20Test%20-%20Nurture%20-%20B1.jpg"
+                alt="Free Level Test"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M9 11H7a2 2 0 00-2 2v6a2 2 0 002 2h2m6-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2m-6-10V3a2 2 0 012-2h2a2 2 0 012 2v8m-6 0h6" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="1.5" fill="#ff9ec7"/></svg>
+                <h3 class="text-xl font-bold group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">Free Level Test</h3>
+              </div>
+              <p class="text-sm mb-4" style="color: var(--bc-dark-gray);">Discover your English level with our free 25-minute online test. Get personalized course recommendations.</p>
+              <div class="flex items-center gap-2 text-sm font-medium" style="color: var(--bc-cta-pink);">
+                <span>Start Free Test</span>
+                <svg class="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </div>
+            </div>
           </a>
         </div>
+
+        <!-- Upcoming Courses Calendar (integrated into courses section) -->
+        <div class="mt-12 pt-12" style="border-top: 2px solid rgba(183, 148, 212, 0.1);">
+          <div class="text-center mb-10">
+          <div class="inline-block px-4 py-2 rounded-full mb-4" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04)); border: 1px solid rgba(35, 7, 90, 0.1);">
+            <span class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Start This Month</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Upcoming Course Schedule</h2>
+          <p class="text-lg max-w-3xl mx-auto" style="color: var(--bc-dark-gray);">
+            Browse our upcoming courses and secure your spot today. New classes starting weekly!
+          </p>
+        </div>
+
+        <!-- Filters -->
+        <div class="mb-6">
+          <!-- Event Type Filters -->
+          <div class="flex flex-wrap gap-3 justify-center mb-4">
+            <button class="event-type-btn active" onclick="filterEventType('all', this)" style="background: linear-gradient(135deg, var(--bc-primary-blue), #5a3a77); color: white; padding: 8px 16px; border-radius: 12px; font-size: 14px; font-weight: 500; transition: all 0.3s;">
+              <div class="flex items-center gap-2">
+                <span>All Events</span>
+              </div>
+            </button>
+            <button class="event-type-btn" onclick="filterEventType('courses', this)" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); padding: 8px 16px; border-radius: 12px; font-size: 14px; font-weight: 500; transition: all 0.3s;">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+                <span>English & Exams</span>
+              </div>
+            </button>
+            <button class="event-type-btn" onclick="filterEventType('webinars', this)" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); padding: 8px 16px; border-radius: 12px; font-size: 14px; font-weight: 500; transition: all 0.3s;">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+                <span>Webinars</span>
+              </div>
+            </button>
+            <button class="event-type-btn" onclick="filterEventType('cultural', this)" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); padding: 8px 16px; border-radius: 12px; font-size: 14px; font-weight: 500; transition: all 0.3s;">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
+                <span>Cultural Events</span>
+              </div>
+            </button>
+          </div>
+
+          <!-- Course Type Filter -->
+          <div class="flex justify-center items-center">
+            <label class="text-sm font-medium mr-3" style="color: var(--bc-dark-gray);">Course Type:</label>
+            <div class="relative">
+              <select id="courseTypeFilter" onchange="filterCourses(this.value)" class="course-type-dropdown appearance-none px-6 py-2.5 pr-12 rounded-full text-sm font-medium transition-all cursor-pointer" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); min-width: 200px;">
+                <option value="all">All Courses</option>
+                <option value="adults">Adults</option>
+                <option value="kids">Children</option>
+                <option value="teens">Teenagers</option>
+                <option value="business">Business</option>
+                <option value="exams">Exam Prep</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <svg class="w-5 h-5" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event Type Legend -->
+          <div class="mt-4 flex flex-wrap gap-4 justify-center text-xs">
+            <div class="flex items-center gap-1" style="color: var(--bc-dark-gray);">
+              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+              </svg>
+              <span>Course</span>
+            </div>
+            <div class="flex items-center gap-1" style="color: #10b981;">
+              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
+              </svg>
+              <span>Webinar</span>
+            </div>
+            <div class="flex items-center gap-1" style="color: #ef4444;">
+              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"/>
+              </svg>
+              <span>Cultural Event</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calendar Controls -->
+        <div class="flex items-center justify-between mb-8 p-4 rounded-2xl" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <button class="calendar-nav-btn p-2 rounded-lg hover:bg-white/50 transition-all" onclick="previousMonth()">
+            <svg class="w-5 h-5" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+
+          <div class="text-center">
+            <h3 class="text-xl font-bold" style="color: var(--bc-primary-blue);" id="currentMonth">November 2025</h3>
+            <p class="text-sm" style="color: var(--bc-dark-gray);">Click on any event for details</p>
+          </div>
+
+          <button class="calendar-nav-btn p-2 rounded-lg hover:bg-white/50 transition-all" onclick="nextMonth()">
+            <svg class="w-5 h-5" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Calendar Grid -->
+        <div class="calendar-container overflow-x-auto p-6 rounded-3xl" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 3px solid var(--bc-primary-blue); box-shadow: 0 12px 40px rgba(35, 7, 90, 0.15);">
+          <div class="calendar-grid min-w-[900px]">
+            <!-- Days Header -->
+            <div class="calendar-header grid grid-cols-7 gap-2 mb-4">
+              <div class="text-center p-3 rounded-lg font-semibold" style="background: linear-gradient(135deg, #e8d9f5, #dcc6f0); color: var(--bc-primary-blue);">Monday</div>
+              <div class="text-center p-3 rounded-lg font-semibold" style="background: linear-gradient(135deg, #e8d9f5, #dcc6f0); color: var(--bc-primary-blue);">Tuesday</div>
+              <div class="text-center p-3 rounded-lg font-semibold" style="background: linear-gradient(135deg, #e8d9f5, #dcc6f0); color: var(--bc-primary-blue);">Wednesday</div>
+              <div class="text-center p-3 rounded-lg font-semibold" style="background: linear-gradient(135deg, #e8d9f5, #dcc6f0); color: var(--bc-primary-blue);">Thursday</div>
+              <div class="text-center p-3 rounded-lg font-semibold" style="background: linear-gradient(135deg, #e8d9f5, #dcc6f0); color: var(--bc-primary-blue);">Friday</div>
+              <div class="text-center p-3 rounded-lg font-semibold" style="background: linear-gradient(135deg, #ffd4e8, #ffcce0); color: var(--bc-primary-blue);">Saturday</div>
+              <div class="text-center p-3 rounded-lg font-semibold" style="background: linear-gradient(135deg, #ffd4e8, #ffcce0); color: var(--bc-primary-blue);">Sunday</div>
+            </div>
+
+            <!-- Calendar Days -->
+            <div class="grid grid-cols-7 gap-2" id="calendarDays">
+              <!-- Calendar will be dynamically generated here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mt-10">
+          <p class="text-base mb-4" style="color: var(--bc-dark-gray);">
+            Can't find a suitable time? We offer flexible scheduling options.
+          </p>
+          <div class="flex gap-4 justify-center flex-wrap">
+            <Button href="/courses" variant="primary" size="md">
+              View All Courses
+            </Button>
+            <Button href="/contact" variant="secondary" size="md">
+              Contact an Advisor
+            </Button>
+          </div>
+        </div>
+        <!-- End of integrated calendar -->
       </div>
     </section>
+
+    <!-- Course Details Modal -->
+    <div id="courseModal" class="modal-overlay fixed inset-0 z-50 hidden" style="background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px);">
+      <div class="modal-container flex items-center justify-center h-full p-4">
+        <div class="modal-content bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-modal-enter" style="box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);">
+          <!-- Modal Header -->
+          <div class="modal-header relative">
+            <img id="modalImage" src="" alt="" class="w-full h-64 object-cover rounded-t-3xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-white/90 backdrop-blur rounded-full p-2 hover:bg-white transition-all">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Modal Body -->
+          <div class="modal-body p-8">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" id="modalLevel" style="background: linear-gradient(135deg, rgba(183, 148, 212, 0.15), rgba(255, 158, 199, 0.1)); color: var(--bc-primary-blue);"></span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold" id="modalCategory" style="background: linear-gradient(135deg, rgba(255, 212, 232, 0.2), rgba(255, 204, 224, 0.15)); color: #ff1493;"></span>
+            </div>
+
+            <h2 id="modalTitle" class="text-2xl md:text-3xl font-bold mb-4" style="color: var(--bc-primary-blue);"></h2>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <h3 class="font-semibold mb-2" style="color: var(--bc-primary-blue);">Schedule</h3>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4" style="color: #8e5db8;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <span id="modalDay" class="text-sm" style="color: var(--bc-dark-gray);"></span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4" style="color: #8e5db8;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span id="modalTime" class="text-sm" style="color: var(--bc-dark-gray);"></span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4" style="color: #8e5db8;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span id="modalDuration" class="text-sm" style="color: var(--bc-dark-gray);">8 weeks course</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="font-semibold mb-2" style="color: var(--bc-primary-blue);">Details</h3>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4" style="color: #8e5db8;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span id="modalLocation" class="text-sm" style="color: var(--bc-dark-gray);">Madrid Center / Online</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4" style="color: #8e5db8;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span id="modalPrice" class="text-sm" style="color: var(--bc-dark-gray);">€180/month</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4" style="color: #8e5db8;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <span id="modalSize" class="text-sm" style="color: var(--bc-dark-gray);">Max 12 students</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <h3 class="font-semibold mb-2" style="color: var(--bc-primary-blue);">Course Description</h3>
+              <p id="modalDescription" class="text-sm leading-relaxed" style="color: var(--bc-dark-gray);"></p>
+            </div>
+
+            <div class="mb-6">
+              <h3 class="font-semibold mb-2" style="color: var(--bc-primary-blue);">What You'll Learn</h3>
+              <ul id="modalLearning" class="space-y-2">
+              </ul>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex gap-4 flex-wrap">
+              <Button href="/enroll" variant="primary" size="md" class="flex-1">
+                Enroll Now
+              </Button>
+              <Button href="/contact" variant="secondary" size="md" class="flex-1">
+                Request Info
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Wall of Love -->
     <section class="py-16 overflow-hidden" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(35, 7, 90, 0.015) 50%, rgba(255, 255, 255, 0) 100%);">
@@ -612,4 +873,1002 @@ const heroStats = [
   .marquee-container:hover .marquee-content {
     animation-play-state: paused;
   }
+
+  /* Calendar Styles */
+  .calendar-day {
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .calendar-day:hover:not(.opacity-40) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(35, 7, 90, 0.1);
+    z-index: 10;
+  }
+
+  .calendar-day.today {
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.08), rgba(183, 148, 212, 0.05)) !important;
+    animation: subtlePulse 3s infinite;
+  }
+
+  @keyframes subtlePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 20, 147, 0.2); }
+    50% { box-shadow: 0 0 0 5px rgba(255, 20, 147, 0); }
+  }
+
+  .course-item {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2px;
+  }
+
+  .course-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--bc-primary-blue), var(--bc-cta-pink));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .course-item:hover::before {
+    opacity: 1;
+  }
+
+  .course-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .special-offer {
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.15), rgba(183, 148, 212, 0.1)) !important;
+    border: 1px solid rgba(255, 20, 147, 0.25) !important;
+    position: relative;
+  }
+
+  .offer-badge-inline {
+    background: linear-gradient(135deg, #ff1493, #ff69b4);
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(255, 20, 147, 0.3);
+    animation: pulse 2s infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  .filter-btn {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--line);
+    color: var(--bc-dark-gray);
+    cursor: pointer;
+  }
+
+  .filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.08);
+    border-color: rgba(183, 148, 212, 0.3);
+  }
+
+  .filter-btn.active {
+    background: linear-gradient(135deg, var(--bc-primary-blue), #5a3a77);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .event-type-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.15);
+  }
+
+  .course-type-dropdown:hover {
+    border-color: rgba(183, 148, 212, 0.3);
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.08);
+  }
+
+  .course-type-dropdown:focus {
+    outline: none;
+    border-color: var(--bc-primary-blue);
+    box-shadow: 0 0 0 3px rgba(35, 7, 90, 0.1);
+  }
+
+  .calendar-nav-btn {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .calendar-nav-btn:hover {
+    background: rgba(183, 148, 212, 0.15);
+  }
+
+  .calendar-nav-btn:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 768px) {
+    .calendar-container {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .calendar-day {
+      min-width: 120px;
+    }
+  }
+
+  /* Modal Styles */
+  .modal-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-overlay.show {
+    opacity: 1;
+  }
+
+  .modal-content {
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .modal-overlay.show .modal-content {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  @keyframes modalEnter {
+    from {
+      opacity: 0;
+      transform: scale(0.9) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
 </style>
+
+<script>
+  let currentMonth = 10; // November (0-indexed)
+  let currentYear = 2025;
+  let activeFilter = 'all';
+  let activeEventType = 'all';
+
+  // Course database with details
+  const courseDatabase = {
+    'Business English B2': {
+      level: 'B2 Upper-Intermediate',
+      category: 'Business',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/Global%20-%20Future%20of%20English/Corporate%20English%20Solutions.jpg',
+      price: '€210/month',
+      description: 'Master professional English communication for the global business environment. This comprehensive course focuses on business vocabulary, formal presentations, email writing, and negotiation skills.',
+      learningPoints: [
+        'Professional email and report writing',
+        'Business presentations and public speaking',
+        'Meeting participation and leadership',
+        'Negotiation tactics and strategies',
+        'Industry-specific vocabulary'
+      ]
+    },
+    'Kids 7-9': {
+      level: 'Elementary',
+      category: 'Children 7-9',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/Photo%20of%20five%20children%20in%20a%20class.jpg',
+      price: '€145/month',
+      description: 'Fun and engaging English classes designed specifically for young learners. Using games, stories, and interactive activities to build confidence and foundational language skills.',
+      learningPoints: [
+        'Basic vocabulary through play',
+        'Simple conversation skills',
+        'Reading comprehension basics',
+        'Creative storytelling',
+        'Cultural awareness activities'
+      ]
+    },
+    'General English A2': {
+      level: 'A2 Elementary',
+      category: 'Adults',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/HD%20-%20Assets/FaceToFace/lp/images/f2f-adults-lp-hero.jpg',
+      price: '€180/month',
+      description: 'Build essential English skills for everyday communication. Perfect for beginners looking to develop confidence in speaking, listening, reading and writing.',
+      learningPoints: [
+        'Everyday conversation skills',
+        'Basic grammar structures',
+        'Essential vocabulary for daily life',
+        'Simple reading and writing tasks',
+        'Listening comprehension exercises'
+      ]
+    },
+    'IELTS Preparation': {
+      level: 'B2-C1',
+      category: 'Exam Prep',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/IELTS%20Coach-May-mail1.png',
+      price: '€250/month',
+      description: 'Comprehensive IELTS exam preparation with expert teachers. Includes practice tests, exam strategies, and personalized feedback to help you achieve your target score.',
+      learningPoints: [
+        'All four IELTS modules covered',
+        'Exam techniques and time management',
+        'Practice tests with detailed feedback',
+        'Academic writing skills',
+        'Speaking test simulation'
+      ]
+    },
+    'Teen English 14-17': {
+      level: 'B1 Intermediate',
+      category: 'Teenagers',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/Photo%20of%20five%20children%20in%20a%20class.jpg',
+      price: '€165/month',
+      description: 'Dynamic English classes for teenagers combining academic excellence with topics that interest and motivate young adults.',
+      learningPoints: [
+        'Academic English skills',
+        'Critical thinking in English',
+        'Digital literacy and online communication',
+        'Creative project work',
+        'Exam preparation support'
+      ]
+    },
+    'Cambridge FCE Intensive': {
+      level: 'B2 Upper-Intermediate',
+      category: 'Exam Prep',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/English%20-%20LearnEnglish/Level%20nurture/English%20-%20All%20-%20Learn%20English%20-%20Global%20-%20Level%20Test%20-%20Nurture%20-%20B1.jpg',
+      price: '€280/month',
+      description: 'Intensive preparation for the Cambridge First Certificate exam. Small groups ensure personalized attention and maximum practice opportunities.',
+      learningPoints: [
+        'Complete FCE exam coverage',
+        'Weekly mock tests',
+        'Writing correction service',
+        'Speaking practice in pairs',
+        'Grammar and vocabulary expansion'
+      ]
+    },
+    'Weekend Intensive IELTS': {
+      level: 'B1-C1',
+      category: 'Weekend Special',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/IELTS%20Coach-May-mail1.png',
+      price: '€320/month',
+      description: 'Perfect for busy professionals! Intensive IELTS preparation over weekends with 4-hour sessions covering all exam components.',
+      learningPoints: [
+        'Intensive weekend sessions',
+        'Complete IELTS preparation',
+        'Online resources access',
+        'Personal study plan',
+        'Progress tracking system'
+      ]
+    },
+    'Conversation Club B1': {
+      level: 'B1 Intermediate',
+      category: 'Speaking Focus',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/HD%20-%20Assets/FaceToFace/lp/images/f2f-adults-lp-hero.jpg',
+      price: '€120/month',
+      description: 'Boost your speaking confidence in a relaxed, supportive environment. Focus on fluency, pronunciation, and natural conversation skills.',
+      learningPoints: [
+        'Fluency development',
+        'Pronunciation improvement',
+        'Discussion skills',
+        'Cultural topics',
+        'Real-world scenarios'
+      ]
+    },
+    'Business English C1': {
+      level: 'C1 Advanced',
+      category: 'Business',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/Global%20-%20Future%20of%20English/Corporate%20English%20Solutions.jpg',
+      price: '€240/month',
+      description: 'Advanced business English for senior professionals. Focus on leadership communication, complex negotiations, and strategic presentations.',
+      learningPoints: [
+        'Executive communication skills',
+        'Advanced negotiation techniques',
+        'Strategic presentation delivery',
+        'Cross-cultural business communication',
+        'Professional networking in English'
+      ]
+    },
+    'General English B1+': {
+      level: 'B1+ Intermediate Plus',
+      category: 'Adults',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/HD%20-%20Assets/FaceToFace/lp/images/f2f-adults-lp-hero.jpg',
+      price: '€195/month',
+      description: 'Bridge the gap to upper-intermediate level with focused skill development and confidence building activities.',
+      learningPoints: [
+        'Complex grammar structures',
+        'Expanded vocabulary range',
+        'Debate and discussion skills',
+        'Media comprehension',
+        'Written communication skills'
+      ]
+    },
+    'Kids Starters 4-6': {
+      level: 'Pre-A1 Beginner',
+      category: 'Children 4-6',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/Photo%20of%20five%20children%20in%20a%20class.jpg',
+      price: '€135/month',
+      description: 'First steps in English for very young learners. Through songs, games, and creative activities, children develop a love for the language.',
+      learningPoints: [
+        'First English words and phrases',
+        'Songs and rhymes',
+        'Motor skills development',
+        'Social interaction in English',
+        'Creative arts and crafts'
+      ]
+    },
+    'Saturday Kids Club': {
+      level: 'Mixed Levels',
+      category: 'Weekend Special',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/Photo%20of%20five%20children%20in%20a%20class.jpg',
+      price: '€95/month',
+      description: 'Fun Saturday sessions combining English learning with creative activities, sports, and cultural exploration.',
+      learningPoints: [
+        'Project-based learning',
+        'Team activities',
+        'Creative workshops',
+        'Cultural celebrations',
+        'Outdoor learning experiences'
+      ]
+    },
+    'Sunday Speaking Workshop': {
+      level: 'B1-B2',
+      category: 'Speaking Focus',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/HD%20-%20Assets/FaceToFace/lp/images/f2f-adults-lp-hero.jpg',
+      price: '€85/session',
+      description: 'Intensive speaking workshops focusing on specific topics each week. Perfect for improving fluency and confidence.',
+      learningPoints: [
+        'Topic-based discussions',
+        'Presentation skills',
+        'Debate techniques',
+        'Pronunciation workshops',
+        'Real-life scenarios practice'
+      ]
+    },
+    'Kids 4-6': {
+      level: 'Pre-A1 Beginner',
+      category: 'Children 4-6',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/Photo%20of%20five%20children%20in%20a%20class.jpg',
+      price: '€135/month',
+      description: 'Playful introduction to English for young learners through interactive games, stories, and creative activities.',
+      learningPoints: [
+        'Basic vocabulary through play',
+        'Simple songs and rhymes',
+        'Listening skills development',
+        'Fine motor skills activities',
+        'Social interaction games'
+      ]
+    },
+    // Webinars
+    'Business Communication Webinar': {
+      type: 'webinar',
+      level: 'B2-C1',
+      category: 'Webinar',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/Global%20-%20Future%20of%20English/Corporate%20English%20Solutions.jpg',
+      price: 'Free',
+      description: 'Join our online webinar on effective business communication strategies in English.',
+      learningPoints: [
+        'Virtual meeting etiquette',
+        'Email best practices',
+        'Cross-cultural communication',
+        'Remote presentation skills',
+        'Q&A session with experts'
+      ]
+    },
+    'IELTS Tips Webinar': {
+      type: 'webinar',
+      level: 'B1-C1',
+      category: 'Webinar',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/IELTS%20Coach-May-mail1.png',
+      price: 'Free',
+      description: 'Expert tips and strategies for maximizing your IELTS score.',
+      learningPoints: [
+        'Test format overview',
+        'Time management strategies',
+        'Common mistakes to avoid',
+        'Practice resources',
+        'Live Q&A session'
+      ]
+    },
+    'Teaching Methods Webinar': {
+      type: 'webinar',
+      level: 'Teachers',
+      category: 'Webinar',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/HD%20-%20Assets/FaceToFace/lp/images/f2f-adults-lp-hero.jpg',
+      price: 'Free',
+      description: 'For English teachers: Latest methodologies and classroom techniques.',
+      learningPoints: [
+        'Digital classroom tools',
+        'Student engagement techniques',
+        'Assessment strategies',
+        'Inclusive teaching methods',
+        'Resource sharing'
+      ]
+    },
+    // Cultural Events
+    'British Film Night': {
+      type: 'cultural',
+      level: 'All Levels',
+      category: 'Cultural Event',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/English%20-%20LearnEnglish/Level%20nurture/English%20-%20All%20-%20Learn%20English%20-%20Global%20-%20Level%20Test%20-%20Nurture%20-%20B1.jpg',
+      price: '€5',
+      description: 'Watch classic and contemporary British films with English subtitles. Discussion session included.',
+      learningPoints: [
+        'British culture and history',
+        'Listening comprehension',
+        'Colloquial expressions',
+        'Film discussion group',
+        'Refreshments included'
+      ]
+    },
+    'Tea & Conversation': {
+      type: 'cultural',
+      level: 'B1+',
+      category: 'Cultural Event',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/HD%20-%20Assets/FaceToFace/lp/images/f2f-adults-lp-hero.jpg',
+      price: '€10',
+      description: 'Traditional British afternoon tea with guided English conversation practice.',
+      learningPoints: [
+        'British tea traditions',
+        'Informal conversation practice',
+        'Cultural exchange',
+        'Networking opportunity',
+        'Traditional refreshments'
+      ]
+    },
+    'Shakespeare Workshop': {
+      type: 'cultural',
+      level: 'B2-C1',
+      category: 'Cultural Event',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/English%20-%20LearnEnglish/Level%20nurture/English%20-%20All%20-%20Learn%20English%20-%20Global%20-%20Level%20Test%20-%20Nurture%20-%20B1.jpg',
+      price: '€15',
+      description: 'Interactive workshop exploring Shakespeare\'s language and its influence on modern English.',
+      learningPoints: [
+        'Shakespearean language',
+        'Drama techniques',
+        'Literary analysis',
+        'Performance activities',
+        'Historical context'
+      ]
+    },
+    'British Music Night': {
+      type: 'cultural',
+      level: 'All Levels',
+      category: 'Cultural Event',
+      image: 'https://mktgfiles.britishcouncil.org/hubfs/HD%20-%20Assets/FaceToFace/lp/images/f2f-adults-lp-hero.jpg',
+      price: '€8',
+      description: 'Explore British music history from The Beatles to modern artists. Lyric analysis and karaoke included.',
+      learningPoints: [
+        'British music history',
+        'Lyric comprehension',
+        'Cultural movements',
+        'Interactive karaoke',
+        'Music vocabulary'
+      ]
+    }
+  };
+
+  // Course schedule - which courses are on which dates
+  const courseSchedule = {
+    // Monday courses (1st, 8th, 15th, 22nd, 29th of each month if it's a Monday)
+    'monday': [
+      { time: '09:00', name: 'Business English B2', duration: '09:00-11:00', type: 'course' },
+      { time: '16:00', name: 'Kids 7-9', duration: '16:00-17:30', type: 'course' },
+      { time: '19:00', name: 'Business Communication Webinar', duration: '19:00-20:00', type: 'webinar' }
+    ],
+    'tuesday': [
+      { time: '10:00', name: 'General English A2', duration: '10:00-12:00', type: 'course' },
+      { time: '18:00', name: 'IELTS Preparation', duration: '18:00-20:00', type: 'course' },
+      { time: '20:00', name: 'IELTS Tips Webinar', duration: '20:00-21:00', type: 'webinar' }
+    ],
+    'wednesday': [
+      { time: '11:00', name: 'Conversation Club B1', duration: '11:00-12:30', type: 'course' },
+      { time: '15:00', name: 'Tea & Conversation', duration: '15:00-17:00', type: 'cultural' },
+      { time: '17:00', name: 'Teen English 14-17', duration: '17:00-19:00', type: 'course' }
+    ],
+    'thursday': [
+      { time: '09:00', name: 'Business English C1', duration: '09:00-11:00', type: 'course' },
+      { time: '19:00', name: 'Cambridge FCE Intensive', duration: '19:00-21:00', special: 'NEW', type: 'course' },
+      { time: '18:00', name: 'Teaching Methods Webinar', duration: '18:00-19:30', type: 'webinar' }
+    ],
+    'friday': [
+      { time: '10:00', name: 'General English B1+', duration: '10:00-12:00', type: 'course' },
+      { time: '16:30', name: 'Kids Starters 4-6', duration: '16:30-17:30', type: 'course' },
+      { time: '19:00', name: 'British Film Night', duration: '19:00-22:00', type: 'cultural' }
+    ],
+    'saturday': [
+      { time: '09:00', name: 'Weekend Intensive IELTS', duration: '09:00-13:00', special: 'WEEKEND', type: 'course' },
+      { time: '10:00', name: 'Saturday Kids Club', duration: '10:00-12:00', type: 'course' },
+      { time: '14:00', name: 'Shakespeare Workshop', duration: '14:00-17:00', type: 'cultural' },
+      { time: '19:00', name: 'British Music Night', duration: '19:00-21:00', type: 'cultural' }
+    ],
+    'sunday': [
+      { time: '11:00', name: 'Sunday Speaking Workshop', duration: '11:00-13:00', type: 'course' }
+    ]
+  };
+
+  // Make functions globally available
+  window.previousMonth = function() {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    updateMonthDisplay();
+    animateCalendarTransition('left');
+
+    // Reset filters when changing months
+    if (activeFilter !== 'all') {
+      activeFilter = 'all';
+      const courseDropdown = document.getElementById('courseTypeFilter');
+      if (courseDropdown) {
+        courseDropdown.value = 'all';
+      }
+    }
+
+    // Reset event type filter
+    if (activeEventType !== 'all') {
+      activeEventType = 'all';
+      document.querySelectorAll('.event-type-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.style.background = 'var(--glass)';
+        btn.style.color = '';
+      });
+      const allEventsBtn = document.querySelector('.event-type-btn[onclick*="all"]');
+      if (allEventsBtn) {
+        allEventsBtn.classList.add('active');
+        allEventsBtn.style.background = 'linear-gradient(135deg, var(--bc-primary-blue), #5a3a77)';
+        allEventsBtn.style.color = 'white';
+      }
+    }
+  }
+
+  window.nextMonth = function() {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    updateMonthDisplay();
+    animateCalendarTransition('right');
+
+    // Reset filters when changing months
+    if (activeFilter !== 'all') {
+      activeFilter = 'all';
+      const courseDropdown = document.getElementById('courseTypeFilter');
+      if (courseDropdown) {
+        courseDropdown.value = 'all';
+      }
+    }
+
+    // Reset event type filter
+    if (activeEventType !== 'all') {
+      activeEventType = 'all';
+      document.querySelectorAll('.event-type-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.style.background = 'var(--glass)';
+        btn.style.color = '';
+      });
+      const allEventsBtn = document.querySelector('.event-type-btn[onclick*="all"]');
+      if (allEventsBtn) {
+        allEventsBtn.classList.add('active');
+        allEventsBtn.style.background = 'linear-gradient(135deg, var(--bc-primary-blue), #5a3a77)';
+        allEventsBtn.style.color = 'white';
+      }
+    }
+  }
+
+  function updateMonthDisplay() {
+    const monthElement = document.getElementById('currentMonth');
+    if (!monthElement) return;
+
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                       'July', 'August', 'September', 'October', 'November', 'December'];
+
+    monthElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+    generateCalendarDays();
+  }
+
+  function generateCalendarDays() {
+    const calendarDays = document.getElementById('calendarDays');
+    if (!calendarDays) return;
+
+    const firstDay = new Date(currentYear, currentMonth, 1);
+    const lastDay = new Date(currentYear, currentMonth + 1, 0);
+    const prevLastDay = new Date(currentYear, currentMonth, 0);
+
+    // Get the day of week for the first day (0 = Sunday)
+    let startingDayOfWeek = firstDay.getDay();
+    // Convert to Monday start (0 = Monday, 6 = Sunday)
+    startingDayOfWeek = startingDayOfWeek === 0 ? 6 : startingDayOfWeek - 1;
+
+    const daysInMonth = lastDay.getDate();
+    const daysInPrevMonth = prevLastDay.getDate();
+
+    const dayNames = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+    let html = '';
+    let dayCounter = 1;
+
+    // Add empty cells for days before month starts
+    for (let i = startingDayOfWeek - 1; i >= 0; i--) {
+      const prevMonthDay = daysInPrevMonth - i;
+      html += `
+        <div class="calendar-day min-h-[100px] p-2 rounded-xl opacity-40" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="text-xs font-semibold mb-1" style="color: var(--bc-dark-gray);">${prevMonthDay}</div>
+        </div>
+      `;
+    }
+
+    // Add days of the current month
+    for (let day = 1; day <= daysInMonth; day++) {
+      const currentDate = new Date(currentYear, currentMonth, day);
+      const dayOfWeek = currentDate.getDay();
+      const dayName = dayNames[dayOfWeek === 0 ? 6 : dayOfWeek - 1];
+      const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+      const isToday = isCurrentDay(currentDate);
+
+      // Get courses for this day
+      const todaysCourses = getCoursesByDayAndDate(dayName, day);
+
+      html += `
+        <div class="calendar-day min-h-[100px] p-2 rounded-xl ${isWeekend ? 'weekend' : ''} ${isToday ? 'today' : ''}"
+             style="background: ${isWeekend ? 'linear-gradient(135deg, rgba(255, 212, 232, 0.08), rgba(255, 204, 224, 0.05))' : 'var(--glass)'};
+                    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+                    border: ${isToday ? '2px solid var(--bc-cta-pink)' : '1px solid ' + (isWeekend ? 'rgba(255, 158, 199, 0.15)' : 'var(--line)')};">
+          <div class="text-xs font-bold mb-1" style="color: ${isToday ? 'var(--bc-cta-pink)' : 'var(--bc-dark-gray)'};">${day}</div>
+          <div class="space-y-0.5 overflow-y-auto max-h-[80px]">
+            ${todaysCourses}
+          </div>
+        </div>
+      `;
+    }
+
+    // Add empty cells for days after month ends
+    const totalCells = startingDayOfWeek + daysInMonth;
+    const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+
+    for (let day = 1; day <= remainingCells; day++) {
+      html += `
+        <div class="calendar-day min-h-[100px] p-2 rounded-xl opacity-40" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+          <div class="text-xs font-semibold mb-1" style="color: var(--bc-dark-gray);">${day}</div>
+        </div>
+      `;
+    }
+
+    calendarDays.innerHTML = html;
+  }
+
+  function isCurrentDay(date) {
+    const today = new Date();
+    return date.getDate() === today.getDate() &&
+           date.getMonth() === today.getMonth() &&
+           date.getFullYear() === today.getFullYear();
+  }
+
+  function getCoursesByDayAndDate(dayName, dayOfMonth) {
+    // Different distributions for each month to make it more realistic
+    const octoberDistribution = {
+      1: { monday: [0], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      2: { monday: [], tuesday: [0, 1], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      3: { monday: [], tuesday: [], wednesday: [0], thursday: [], friday: [], saturday: [], sunday: [] },
+      5: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [0], saturday: [0, 1], sunday: [] },
+      6: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [0] },
+      7: { monday: [0], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      8: { monday: [], tuesday: [], wednesday: [], thursday: [0, 1], friday: [], saturday: [], sunday: [] },
+      9: { monday: [], tuesday: [0], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      11: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [1], sunday: [] },
+      12: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [0] },
+      14: { monday: [0, 1], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      15: { monday: [], tuesday: [1], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      16: { monday: [], tuesday: [], wednesday: [0, 1], thursday: [], friday: [], saturday: [], sunday: [] },
+      17: { monday: [], tuesday: [], wednesday: [], thursday: [0], friday: [], saturday: [], sunday: [] },
+      18: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [0, 1], saturday: [], sunday: [] },
+      19: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [0], sunday: [] },
+      20: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [0] },
+      21: { monday: [1], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      22: { monday: [], tuesday: [0], wednesday: [], thursday: [1], friday: [], saturday: [], sunday: [] },
+      23: { monday: [], tuesday: [], wednesday: [1], thursday: [], friday: [0], saturday: [], sunday: [] },
+      25: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [0, 1], sunday: [] },
+      26: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [0] },
+      27: { monday: [0], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      28: { monday: [], tuesday: [0, 1], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      29: { monday: [], tuesday: [], wednesday: [0], thursday: [0], friday: [], saturday: [], sunday: [] },
+      30: { monday: [], tuesday: [], wednesday: [], thursday: [1], friday: [1], saturday: [], sunday: [] },
+      31: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] }
+    };
+
+    const novemberDistribution = {
+      1: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [0, 3], sunday: [] },
+      3: { monday: [0, 2], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      4: { monday: [], tuesday: [1, 2], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      6: { monday: [], tuesday: [], wednesday: [], thursday: [0, 2], friday: [], saturday: [], sunday: [] },
+      7: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [1, 2], saturday: [], sunday: [] },
+      8: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [0, 1, 2], sunday: [] },
+      10: { monday: [1], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      11: { monday: [], tuesday: [0], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      12: { monday: [], tuesday: [], wednesday: [0, 1], thursday: [], friday: [], saturday: [], sunday: [] },
+      13: { monday: [], tuesday: [], wednesday: [], thursday: [1], friday: [], saturday: [], sunday: [] },
+      15: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [1, 3], sunday: [] },
+      16: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [0] },
+      17: { monday: [0, 2], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      18: { monday: [], tuesday: [1], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      19: { monday: [], tuesday: [], wednesday: [1, 2], thursday: [], friday: [], saturday: [], sunday: [] },
+      21: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [0, 2], saturday: [], sunday: [] },
+      22: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [0, 2], sunday: [] },
+      24: { monday: [1], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      25: { monday: [], tuesday: [0, 2], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [] },
+      26: { monday: [], tuesday: [], wednesday: [0, 1], thursday: [], friday: [], saturday: [], sunday: [] },
+      27: { monday: [], tuesday: [], wednesday: [], thursday: [0], friday: [], saturday: [], sunday: [] },
+      28: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [1], saturday: [], sunday: [] },
+      29: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [1, 2, 3], sunday: [] },
+      30: { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: [0] }
+    };
+
+    // Select distribution based on current month
+    let courseDistribution;
+    if (currentMonth === 9) { // October
+      courseDistribution = octoberDistribution;
+    } else if (currentMonth === 10) { // November
+      courseDistribution = novemberDistribution;
+    } else {
+      // For other months, use a default sporadic pattern
+      courseDistribution = octoberDistribution;
+    }
+
+    const courseDays = courseSchedule[dayName] || [];
+    const todaysSchedule = courseDistribution[dayOfMonth]?.[dayName];
+
+    if (!todaysSchedule || todaysSchedule.length === 0) {
+      return '';
+    }
+
+    // Filter courses based on active filter
+    const filteredCourses = todaysSchedule.map(courseIndex => {
+      if (!courseDays[courseIndex]) return null;
+
+      const course = courseDays[courseIndex];
+      const courseData = courseDatabase[course.name];
+
+      // Apply category filter
+      if (activeFilter !== 'all') {
+        const category = courseData?.category || '';
+
+        if (activeFilter === 'adults' && !category.includes('Adults') && !category.includes('Speaking Focus') && !category.includes('Business')) return null;
+        if (activeFilter === 'kids' && !category.includes('Children')) return null;
+        if (activeFilter === 'teens' && !category.includes('Teen')) return null;
+        if (activeFilter === 'business' && !category.includes('Business')) return null;
+        if (activeFilter === 'exams' && !category.includes('Exam') && !course.name.includes('IELTS') && !course.name.includes('Cambridge')) return null;
+      }
+
+      // Apply event type filter
+      if (activeEventType !== 'all') {
+        const eventType = course.type || 'course';
+        if (activeEventType === 'courses' && eventType !== 'course') return null;
+        if (activeEventType === 'webinars' && eventType !== 'webinar') return null;
+        if (activeEventType === 'cultural' && eventType !== 'cultural') return null;
+      }
+
+      return { course, courseData, courseIndex };
+    }).filter(Boolean);
+
+    if (filteredCourses.length === 0) return '';
+
+    return filteredCourses.map(({ course, courseData }) => {
+      const categoryColor = getCategoryColor(courseData?.category);
+
+      // Get event type icon
+      let eventIcon = '';
+      let eventBgColor = '';
+      if (course.type === 'webinar') {
+        eventIcon = '<svg class="w-3 h-3 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/></svg>';
+        eventBgColor = 'rgba(16, 185, 129, 0.1)';
+      } else if (course.type === 'cultural') {
+        eventIcon = '<svg class="w-3 h-3 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"/></svg>';
+        eventBgColor = 'rgba(239, 68, 68, 0.1)';
+      } else {
+        eventIcon = '<svg class="w-3 h-3 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>';
+        eventBgColor = '';
+      }
+
+      if (course.special) {
+        return `
+          <button class="course-item w-full text-left p-1 rounded hover:scale-105 transition-all special-offer"
+                  onclick="showCourseDetails('${course.name}', '${course.duration}', '${dayName}')">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-[10px] font-semibold" style="color: var(--bc-primary-blue);">${eventIcon}${course.time}</div>
+                <div class="text-[10px] truncate" style="color: ${categoryColor};">${course.name.length > 12 ? course.name.substring(0, 12) + '...' : course.name}</div>
+              </div>
+              <span class="text-[8px] px-1 py-0.5 rounded" style="background: linear-gradient(135deg, #ff1493, #ff69b4); color: white;">${course.special}</span>
+            </div>
+          </button>
+        `;
+      } else {
+        const bgStyle = eventBgColor ?
+          `background: ${eventBgColor}; border: 1px solid ${getCategoryBorder(courseData?.category)};` :
+          `background: linear-gradient(135deg, ${getCategoryBackground(courseData?.category)}); border: 1px solid ${getCategoryBorder(courseData?.category)};`;
+
+        return `
+          <button class="course-item w-full text-left p-1 rounded hover:scale-105 transition-all"
+                  style="${bgStyle}"
+                  onclick="showCourseDetails('${course.name}', '${course.duration}', '${dayName}')">
+            <div class="text-[10px] font-semibold" style="color: var(--bc-primary-blue);">${eventIcon}${course.time}</div>
+            <div class="text-[10px] truncate" style="color: ${categoryColor};">${course.name.length > 12 ? course.name.substring(0, 12) + '...' : course.name}</div>
+          </button>
+        `;
+      }
+    }).join('');
+  }
+
+  function getCategoryColor(category) {
+    if (!category) return '#5a3a77';
+    if (category.includes('Children') || category.includes('Teen')) return '#ff1493';
+    if (category.includes('Exam')) return '#8e5db8';
+    if (category.includes('Business')) return '#5a3a77';
+    return '#5a3a77';
+  }
+
+  function getCategoryBackground(category) {
+    if (!category) return 'rgba(183, 148, 212, 0.15), rgba(255, 158, 199, 0.1)';
+    if (category.includes('Children') || category.includes('Teen')) return 'rgba(255, 212, 232, 0.2), rgba(255, 204, 224, 0.15)';
+    if (category.includes('Exam')) return 'rgba(232, 217, 245, 0.3), rgba(220, 198, 240, 0.2)';
+    return 'rgba(183, 148, 212, 0.15), rgba(255, 158, 199, 0.1)';
+  }
+
+  function getCategoryBorder(category) {
+    if (!category) return 'rgba(183, 148, 212, 0.2)';
+    if (category.includes('Children') || category.includes('Teen')) return 'rgba(255, 158, 199, 0.25)';
+    if (category.includes('Exam')) return 'rgba(166, 136, 199, 0.3)';
+    return 'rgba(183, 148, 212, 0.2)';
+  }
+
+  function animateCalendarTransition(direction) {
+    const calendar = document.getElementById('calendarDays');
+    if (!calendar) return;
+
+    calendar.style.opacity = '0.3';
+    calendar.style.transform = direction === 'left' ? 'translateX(20px)' : 'translateX(-20px)';
+
+    setTimeout(() => {
+      calendar.style.opacity = '1';
+      calendar.style.transform = 'translateX(0)';
+    }, 300);
+  }
+
+  window.showCourseDetails = function(courseName, time, day) {
+    const modal = document.getElementById('courseModal');
+    const courseData = courseDatabase[courseName] || courseDatabase['General English A2'];
+
+    // Capitalize day name properly
+    const dayCapitalized = day.charAt(0).toUpperCase() + day.slice(1);
+
+    // Populate modal with course data
+    document.getElementById('modalImage').src = courseData.image;
+    document.getElementById('modalImage').alt = courseName;
+    document.getElementById('modalTitle').textContent = courseName;
+    document.getElementById('modalLevel').textContent = courseData.level;
+    document.getElementById('modalCategory').textContent = courseData.category;
+    document.getElementById('modalDay').textContent = `Every ${dayCapitalized}`;
+    document.getElementById('modalTime').textContent = time;
+    document.getElementById('modalPrice').textContent = courseData.price;
+    document.getElementById('modalDescription').textContent = courseData.description;
+
+    // Populate learning points
+    const learningList = document.getElementById('modalLearning');
+    learningList.innerHTML = '';
+    courseData.learningPoints.forEach(point => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start gap-2';
+      li.innerHTML = `
+        <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #ff1493;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        <span class="text-sm" style="color: var(--bc-dark-gray);">${point}</span>
+      `;
+      learningList.appendChild(li);
+    });
+
+    // Show modal
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+      modal.classList.add('show');
+    }, 10);
+  }
+
+  window.closeModal = function() {
+    const modal = document.getElementById('courseModal');
+    modal.classList.remove('show');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+    }, 300);
+  }
+
+  window.filterCourses = function(type) {
+    // Update active filter
+    activeFilter = type;
+
+    // Regenerate calendar with filter applied
+    generateCalendarDays();
+
+    // Animate calendar
+    const calendar = document.getElementById('calendarDays');
+    if (calendar) {
+      calendar.style.opacity = '0';
+      setTimeout(() => {
+        calendar.style.opacity = '1';
+      }, 100);
+    }
+  }
+
+  window.filterEventType = function(type, element) {
+    // Update active event type filter
+    activeEventType = type;
+
+    // Update active event type button
+    document.querySelectorAll('.event-type-btn').forEach(btn => {
+      btn.classList.remove('active');
+      // Reset button styles
+      btn.style.background = 'var(--glass)';
+      btn.style.color = '';
+    });
+
+    // Find and style the active button
+    const clickedBtn = element || event?.target;
+    if (clickedBtn && clickedBtn.classList) {
+      clickedBtn.classList.add('active');
+      if (type === 'all') {
+        clickedBtn.style.background = 'linear-gradient(135deg, var(--bc-primary-blue), #5a3a77)';
+        clickedBtn.style.color = 'white';
+      } else if (type === 'webinars') {
+        clickedBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        clickedBtn.style.color = 'white';
+      } else if (type === 'cultural') {
+        clickedBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+        clickedBtn.style.color = 'white';
+      } else {
+        clickedBtn.style.background = 'linear-gradient(135deg, var(--bc-primary-blue), #5a3a77)';
+        clickedBtn.style.color = 'white';
+      }
+    }
+
+    // Regenerate calendar with filter applied
+    generateCalendarDays();
+
+    // Animate calendar
+    const calendar = document.getElementById('calendarDays');
+    if (calendar) {
+      calendar.style.opacity = '0';
+      setTimeout(() => {
+        calendar.style.opacity = '1';
+      }, 100);
+    }
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    updateMonthDisplay();
+
+    // Add smooth transitions to calendar
+    const calendarDays = document.getElementById('calendarDays');
+    if (calendarDays) {
+      calendarDays.style.transition = 'all 0.3s ease';
+    }
+
+    // Close modal on overlay click
+    const modalOverlay = document.getElementById('courseModal');
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay || e.target.classList.contains('modal-container')) {
+          closeModal();
+        }
+      });
+    }
+  });
+</script>
