@@ -1,0 +1,176 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import Button from '../../components/Button.astro';
+
+const pageTitle = "English Assessment for Schools | British Council Spain";
+const pageDescription = "Age-appropriate English testing for schools. Our English assessments help students shine at every stage of their education.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <Hero
+    title="English Assessment for Schools"
+    subtitle="Our English Assessments for Schools provide age-appropriate testing that lets students shine at every stage of their education with accurate, reliable results."
+    ctaPrimary={{
+      text: "Contact Us",
+      href: "#contact"
+    }}
+    ctaSecondary={{
+      text: "Learn More",
+      href: "#benefits"
+    }}
+    stats={[
+      { value: "90+", label: "Years of experience" },
+      { value: "1000+", label: "Schools trust us" },
+      { value: "All Ages", label: "From primary to secondary" }
+    ]}
+  />
+
+  <main class="pt-10 pb-20">
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-16">
+      <div class="bc-container">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Why Choose Our School Assessments?</h2>
+          <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+            Trusted by schools worldwide to accurately assess English language proficiency
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-8 rounded-2xl" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">Age-Appropriate</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Carefully designed tests that match the developmental stage and abilities of students at every level
+            </p>
+          </div>
+
+          <div class="p-8 rounded-2xl" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">Accurate Results</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Reliable, detailed reporting that helps teachers understand each student's strengths and areas for improvement
+            </p>
+          </div>
+
+          <div class="p-8 rounded-2xl" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--violet), var(--pink));">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">Fast Turnaround</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Quick results delivery so schools can make informed decisions about student placement and progression
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20" style="background: linear-gradient(180deg, transparent 0%, rgba(35, 7, 90, 0.03) 50%, transparent 100%);">
+      <div class="bc-container">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Our Services for Schools</h2>
+            <p class="text-lg" style="color: var(--bc-dark-gray);">
+              Comprehensive assessment solutions tailored to your school's needs
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="p-6 rounded-2xl flex items-start gap-4" style="background: var(--glass); border: 1px solid var(--line);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                <svg class="w-6 h-6" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Placement Testing</h3>
+                <p class="text-sm" style="color: var(--bc-dark-gray);">Accurately place students in the right level classes for optimal learning outcomes</p>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-2xl flex items-start gap-4" style="background: var(--glass); border: 1px solid var(--line);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                <svg class="w-6 h-6" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Progress Monitoring</h3>
+                <p class="text-sm" style="color: var(--bc-dark-gray);">Track student development over time with regular assessments and detailed analytics</p>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-2xl flex items-start gap-4" style="background: var(--glass); border: 1px solid var(--line);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                <svg class="w-6 h-6" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Certification Exams</h3>
+                <p class="text-sm" style="color: var(--bc-dark-gray);">Prepare students for internationally recognised English language certifications</p>
+              </div>
+            </div>
+
+            <div class="p-6 rounded-2xl flex items-start gap-4" style="background: var(--glass); border: 1px solid var(--line);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                <svg class="w-6 h-6" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Teacher Support</h3>
+                <p class="text-sm" style="color: var(--bc-dark-gray);">Professional development and training for teachers on assessment best practices</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 relative overflow-hidden">
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);"></div>
+
+      <div class="bc-container relative z-10 text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">
+          Partner With Us
+        </h2>
+        <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto" style="opacity: 0.95;">
+          Join over 1,000 schools worldwide that trust British Council for English language assessment. Contact us to discuss your school's needs.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="secondary" size="lg" class="bg-white hover:bg-white" style="color: var(--bc-primary-blue); box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);">
+            Contact Us
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </Button>
+          <Button variant="outline" size="lg" style="border: 2px solid white; background: transparent; color: white;">
+            Download Brochure
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </Button>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

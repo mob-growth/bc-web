@@ -1,0 +1,301 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import Button from '../../components/Button.astro';
+
+const pageTitle = "IELTS - Take Your IELTS Test with British Council Spain";
+const pageDescription = "IELTS is the world's most popular English language test. Book your IELTS exam in Spain with British Council - trusted by millions worldwide.";
+
+const features = [
+  {
+    title: "Why Choose IELTS?",
+    description: "Success starts with IELTS – it's your end goal that matters. IELTS is accepted as evidence of English language proficiency for higher education and global migration.",
+    icon: "star",
+    href: "#why-choose"
+  },
+  {
+    title: "Which Test?",
+    description: "Choose the right test based on where you want to go and what you want to do.",
+    icon: "question",
+    href: "#which-test"
+  },
+  {
+    title: "Dates, Fees & Locations",
+    description: "We offer tests in 29 locations across Spain, at affordable prices. Select your test date and book IELTS today.",
+    icon: "calendar",
+    href: "#dates-fees"
+  },
+  {
+    title: "Prepare for IELTS",
+    description: "Prepare for your IELTS test with our range of resources, from free mock tests to listening and reading practice.",
+    icon: "book",
+    href: "#prepare"
+  },
+  {
+    title: "Test Day",
+    description: "To help your IELTS test day go as smoothly as possible, we've put together information and advice.",
+    icon: "clipboard",
+    href: "#test-day"
+  },
+  {
+    title: "Results",
+    description: "Find out when and how you will get your IELTS results and what your score means.",
+    icon: "chart",
+    href: "#results"
+  }
+];
+
+const icons = {
+  star: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>',
+  question: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+  calendar: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>',
+  book: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>',
+  clipboard: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>',
+  chart: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>'
+};
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <Hero
+    title="Take IELTS with British Council Spain"
+    subtitle="IELTS is the world's most popular English language test for work, study, and migration. Join millions of test takers who trust IELTS to achieve their dreams."
+    ctaPrimary={{
+      text: "Book Your Test",
+      href: "#book-test"
+    }}
+    ctaSecondary={{
+      text: "Free Practice",
+      href: "#prepare"
+    }}
+    stats={[
+      { value: "4M+", label: "Tests taken annually" },
+      { value: "12,500+", label: "Organisations accept IELTS" },
+      { value: "140+", label: "Countries" }
+    ]}
+  />
+
+  <main class="pt-10 pb-20">
+    <!-- Quick Info Section -->
+    <section class="py-12" style="background: linear-gradient(180deg, transparent 0%, rgba(35, 7, 90, 0.02) 100%);">
+      <div class="bc-container">
+        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div class="text-center p-6 rounded-2xl" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line);">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Fast Results</h3>
+            <p class="text-sm" style="color: var(--muted);">Get results within 3-5 days with IELTS on Computer</p>
+          </div>
+
+          <div class="text-center p-6 rounded-2xl" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line);">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">29 Locations</h3>
+            <p class="text-sm" style="color: var(--muted);">Test centres across Spain for your convenience</p>
+          </div>
+
+          <div class="text-center p-6 rounded-2xl" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line);">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--violet), var(--pink));">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Trusted Partner</h3>
+            <p class="text-sm" style="color: var(--muted);">Official IELTS test centre since 1989</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Features Grid -->
+    <section class="py-16">
+      <div class="bc-container">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Everything You Need to Know</h2>
+          <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">From booking your test to receiving your results, we're here to guide you every step of the way.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map(feature => (
+            <a href={feature.href} class="group block rounded-2xl p-8 transform hover:-translate-y-2 transition-all" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md); text-decoration: none;">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.04));">
+                <svg class="w-7 h-7" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={icons[feature.icon]} />
+              </div>
+              <h3 class="text-xl font-bold mb-3 group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">
+                {feature.title}
+              </h3>
+              <p class="text-base leading-relaxed" style="color: var(--bc-dark-gray);">
+                {feature.description}
+              </p>
+              <div class="mt-4 flex items-center gap-2" style="color: var(--bc-cta-pink);">
+                <span class="text-sm font-semibold">Learn more</span>
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Which Test Section -->
+    <section id="which-test" class="py-20" style="background: linear-gradient(180deg, transparent 0%, rgba(35, 7, 90, 0.03) 50%, transparent 100%);">
+      <div class="bc-container">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Choose Your IELTS Test</h2>
+          <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">Select the right test based on your goals and requirements.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- IELTS Academic -->
+          <div class="rounded-3xl p-8" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-lg);">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4" style="color: var(--bc-primary-blue);">IELTS Academic</h3>
+            <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+              For university admissions and professional registration. Tests your English in an academic context.
+            </p>
+            <div class="space-y-3 mb-8">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">University undergraduate & postgraduate courses</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">Professional registration (doctors, nurses, etc.)</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">Academic English in higher education</span>
+              </div>
+            </div>
+            <Button variant="primary" size="md" class="w-full">
+              Book IELTS Academic
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </Button>
+          </div>
+
+          <!-- IELTS General Training -->
+          <div class="rounded-3xl p-8" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-lg);">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4" style="color: var(--bc-primary-blue);">IELTS General Training</h3>
+            <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+              For migration, work experience, and training programs. Focuses on everyday English skills.
+            </p>
+            <div class="space-y-3 mb-8">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">UK, Australia, Canada, New Zealand migration</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">Work experience and training programs</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">Secondary education programs</span>
+              </div>
+            </div>
+            <Button variant="primary" size="md" class="w-full">
+              Book IELTS General
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="book-test" class="py-20 relative overflow-hidden">
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);"></div>
+
+      <div class="bc-container relative z-10 text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">
+          Ready to Take Your IELTS Test?
+        </h2>
+        <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto" style="opacity: 0.95;">
+          Register quickly and easily through our online system. Choose from 29 test centres across Spain.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <Button variant="secondary" size="lg" class="bg-white hover:bg-white" style="color: var(--bc-primary-blue); box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);">
+            Book Your Test
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </Button>
+          <Button variant="outline" size="lg" style="border: 2px solid white; background: transparent; color: white;">
+            Free Practice Test
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+            </svg>
+          </Button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t" style="border-color: rgba(255, 255, 255, 0.2);">
+          <div>
+            <p class="text-3xl font-bold mb-2">4M+</p>
+            <p class="text-sm" style="opacity: 0.9;">Annual Test Takers</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2">12,500+</p>
+            <p class="text-sm" style="opacity: 0.9;">Accepting Organisations</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2">140+</p>
+            <p class="text-sm" style="opacity: 0.9;">Countries</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold mb-2">29</p>
+            <p class="text-sm" style="opacity: 0.9;">Test Centres in Spain</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -3,7 +3,7 @@ import Button from './Button.astro';
 
 const navItems = [
   { label: 'Courses', href: '/courses', hasMegaMenu: true },
-  { label: 'Exams', href: '/exams' },
+  { label: 'Exams', href: '/exams', hasMegaMenu: true },
   { label: 'Corporate', href: '/corporate' },
   { label: 'About Us', href: '/about' },
   { label: 'Contact', href: '/contact' }
@@ -50,6 +50,37 @@ const courseCategories = [
   }
 ];
 
+const examCategories = [
+  {
+    id: 'ielts',
+    title: 'IELTS',
+    icon: '🌍',
+    description: 'IELTS exams for visas and immigration to the United Kingdom',
+    href: '/exams/ielts'
+  },
+  {
+    id: 'aptis',
+    title: 'Aptis ESOL',
+    icon: '⚡',
+    description: 'Fast English certification recognised in Spain',
+    href: '/exams/aptis'
+  },
+  {
+    id: 'schools',
+    title: 'English assessment for schools',
+    icon: '🏫',
+    description: 'Age-appropriate testing for students',
+    href: '/exams/schools'
+  },
+  {
+    id: 'professional',
+    title: 'Professionals and university students',
+    icon: '🎓',
+    description: 'Professional English certification',
+    href: '/exams/professional'
+  }
+];
+
 const currentPath = Astro.url.pathname;
 ---
 
@@ -93,7 +124,7 @@ const currentPath = Astro.url.pathname;
             )}
 
             {/* Mega Menu Dropdown */}
-            {item.hasMegaMenu && (
+            {item.hasMegaMenu && item.label === 'Courses' && (
               <div class="mega-menu-dropdown absolute left-1/2 transform -translate-x-1/2 top-full mt-2 pt-4 opacity-0 invisible transition-all duration-300">
                 <div class="mega-menu-content rounded-3xl shadow-2xl p-8 min-w-[900px]" style="background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--line);">
                   <h3 class="text-lg font-bold mb-6" style="color: var(--bc-primary-blue);">English Courses</h3>
@@ -131,6 +162,46 @@ const currentPath = Astro.url.pathname;
                       style="color: var(--bc-primary-blue);"
                     >
                       View all courses
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Exams Mega Menu */}
+            {item.hasMegaMenu && item.label === 'Exams' && (
+              <div class="mega-menu-dropdown absolute left-1/2 transform -translate-x-1/2 top-full mt-2 pt-4 opacity-0 invisible transition-all duration-300">
+                <div class="mega-menu-content rounded-3xl shadow-2xl p-8 min-w-[750px]" style="background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--line);">
+                  <h3 class="text-lg font-bold mb-6" style="color: var(--bc-primary-blue);">English Exams & Certifications</h3>
+
+                  <div class="grid grid-cols-2 gap-6 mb-6">
+                    {examCategories.map((exam) => (
+                      <a
+                        href={exam.href}
+                        class="exam-link block p-4 rounded-2xl hover:bg-white/80 transition-all group"
+                        style="border: 1px solid var(--line);"
+                      >
+                        <div class="flex items-start gap-3">
+                          <span class="text-2xl">{exam.icon}</span>
+                          <div>
+                            <h4 class="font-semibold text-base mb-1 group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">{exam.title}</h4>
+                            <p class="text-xs leading-relaxed" style="color: var(--muted);">{exam.description}</p>
+                          </div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+
+                  <div class="text-center pt-4 border-t" style="border-color: var(--line);">
+                    <a
+                      href="/exams"
+                      class="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover-pink"
+                      style="color: var(--bc-primary-blue);"
+                    >
+                      Why take an exam with the British Council?
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                       </svg>

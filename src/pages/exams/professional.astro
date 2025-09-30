@@ -1,0 +1,216 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import Button from '../../components/Button.astro';
+
+const pageTitle = "Professional & University Exams | British Council Spain";
+const pageDescription = "Professional English certification for university students and professionals. Boost your career with internationally recognised qualifications.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <Hero
+    title="Professional & University English Exams"
+    subtitle="Advance your career and academic goals with internationally recognised English language certifications. We offer professional exams accepted worldwide by employers and universities."
+    ctaPrimary={{
+      text: "Book an Exam",
+      href: "#book"
+    }}
+    ctaSecondary={{
+      text: "Explore Options",
+      href: "#exams"
+    }}
+    stats={[
+      { value: "Global", label: "Recognition" },
+      { value: "Professional", label: "Certification" },
+      { value: "Expert", label: "Support" }
+    ]}
+  />
+
+  <main class="pt-10 pb-20">
+    <!-- Main Benefits -->
+    <section class="py-16">
+      <div class="bc-container">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Why Get Professionally Certified?</h2>
+          <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+            Professional English certification opens doors to international career opportunities
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-8 rounded-2xl text-center" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+            <div class="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">Career Advancement</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Stand out in the job market with globally recognised English certification that employers trust
+            </p>
+          </div>
+
+          <div class="p-8 rounded-2xl text-center" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+            <div class="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">University Access</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Meet university language requirements for undergraduate and postgraduate programs worldwide
+            </p>
+          </div>
+
+          <div class="p-8 rounded-2xl text-center" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-md);">
+            <div class="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--violet), var(--pink));">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3" style="color: var(--bc-primary-blue);">Global Mobility</h3>
+            <p class="leading-relaxed" style="color: var(--bc-dark-gray);">
+              Prove your English proficiency for work visas and professional registration abroad
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Available Exams -->
+    <section id="exams" class="py-20" style="background: linear-gradient(180deg, transparent 0%, rgba(35, 7, 90, 0.03) 50%, transparent 100%);">
+      <div class="bc-container">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--bc-primary-blue);">Available Exams</h2>
+          <p class="text-lg max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+            Choose the exam that best fits your professional or academic goals
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- IELTS -->
+          <div class="rounded-3xl p-8" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-lg);">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4" style="color: var(--bc-primary-blue);">IELTS Academic</h3>
+            <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+              The world's most popular English test for higher education and professional registration
+            </p>
+            <div class="space-y-3 mb-8">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">Accepted by 12,500+ organisations worldwide</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">Results in 3-5 days (computer-based)</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">29 test centres across Spain</span>
+              </div>
+            </div>
+            <Button href="/exams/ielts" variant="primary" size="md" class="w-full">
+              Learn More
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </Button>
+          </div>
+
+          <!-- Aptis ESOL -->
+          <div class="rounded-3xl p-8" style="background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--line); box-shadow: var(--shadow-lg);">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4" style="color: var(--bc-primary-blue);">Aptis ESOL</h3>
+            <p class="text-base mb-6 leading-relaxed" style="color: var(--bc-dark-gray);">
+              Fast, affordable certification recognised across Spain for professional and academic purposes
+            </p>
+            <div class="space-y-3 mb-8">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">Results in 48-72 hours</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">Recognised by 16 Autonomous Communities</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full flex items-center justify-center mt-0.5" style="background: rgba(255, 20, 147, 0.1);">
+                  <svg class="w-3 h-3" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <span class="text-sm" style="color: var(--muted);">Ofqual regulated qualification</span>
+              </div>
+            </div>
+            <Button href="/exams/aptis" variant="primary" size="md" class="w-full">
+              Learn More
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="book" class="py-20 relative overflow-hidden">
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);"></div>
+
+      <div class="bc-container relative z-10 text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">
+          Ready to Get Certified?
+        </h2>
+        <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto" style="opacity: 0.95;">
+          Take the next step in your professional or academic career with internationally recognised English certification.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="secondary" size="lg" class="bg-white hover:bg-white" style="color: var(--bc-primary-blue); box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);">
+            Book IELTS
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </Button>
+          <Button variant="outline" size="lg" style="border: 2px solid white; background: transparent; color: white;">
+            Book Aptis ESOL
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </Button>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
