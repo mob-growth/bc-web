@@ -1,0 +1,1336 @@
+---
+import DashboardLayout from '../../components/portal/DashboardLayout.astro';
+import SidebarNav from '../../components/portal/SidebarNav.astro';
+
+// Mock data for assignments
+const activeAssignments = [
+  {
+    id: 1,
+    title: 'Business Email Writing Task',
+    course: 'Business English B2',
+    dueDate: '2025-10-05',
+    dueTime: '23:59',
+    status: 'pending',
+    progress: 60,
+    description: 'Write a formal business email responding to a client inquiry',
+    attachments: ['email_template.pdf', 'guidelines.docx']
+  },
+  {
+    id: 2,
+    title: 'IELTS Writing Task 2 Practice',
+    course: 'IELTS Preparation',
+    dueDate: '2025-10-03',
+    dueTime: '18:00',
+    status: 'overdue',
+    progress: 30,
+    description: 'Complete an argumentative essay on environmental topics',
+    attachments: ['topic_list.pdf']
+  },
+  {
+    id: 3,
+    title: 'Speaking Video Recording',
+    course: 'Speaking Focus Group',
+    dueDate: '2025-10-08',
+    dueTime: '20:00',
+    status: 'pending',
+    progress: 0,
+    description: 'Record a 3-minute presentation on your favorite hobby',
+    attachments: ['rubric.pdf', 'sample_video.mp4']
+  },
+  {
+    id: 4,
+    title: 'Grammar Exercise Set 5',
+    course: 'Business English B2',
+    dueDate: '2025-10-04',
+    dueTime: '17:00',
+    status: 'pending',
+    progress: 85,
+    description: 'Complete exercises on conditional sentences and modal verbs',
+    attachments: ['exercise_sheet.pdf']
+  }
+];
+
+const pastAssignments = [
+  {
+    id: 5,
+    title: 'Vocabulary Quiz - Unit 4',
+    course: 'Business English B2',
+    submittedDate: '2025-09-25',
+    status: 'completed',
+    grade: 92,
+    maxGrade: 100,
+    feedback: 'Excellent work! Your understanding of business terminology is impressive. Keep focusing on pronunciation.',
+    teacher: 'Sarah Williams'
+  },
+  {
+    id: 6,
+    title: 'IELTS Reading Practice Test',
+    course: 'IELTS Preparation',
+    submittedDate: '2025-09-20',
+    status: 'completed',
+    grade: 7.5,
+    maxGrade: 9,
+    feedback: 'Good progress. Work on time management and skimming techniques for better results.',
+    teacher: 'James Morrison'
+  },
+  {
+    id: 7,
+    title: 'Group Discussion Participation',
+    course: 'Speaking Focus Group',
+    submittedDate: '2025-09-18',
+    status: 'completed',
+    grade: 88,
+    maxGrade: 100,
+    feedback: 'Great participation and fluency. Try to incorporate more advanced vocabulary in future discussions.',
+    teacher: 'Emma Thompson'
+  },
+  {
+    id: 8,
+    title: 'Essay Writing - Technology Impact',
+    course: 'IELTS Preparation',
+    submittedDate: '2025-09-15',
+    status: 'completed',
+    grade: 6.5,
+    maxGrade: 9,
+    feedback: 'Well-structured essay. Focus on developing more complex sentence structures and linking words.',
+    teacher: 'James Morrison'
+  },
+  {
+    id: 9,
+    title: 'Business Presentation Skills',
+    course: 'Business English B2',
+    submittedDate: '2025-09-10',
+    status: 'completed',
+    grade: 95,
+    maxGrade: 100,
+    feedback: 'Outstanding presentation! Excellent use of professional language and engaging delivery.',
+    teacher: 'Sarah Williams'
+  }
+];
+
+// Calculate statistics
+const totalAssignments = activeAssignments.length + pastAssignments.length;
+const completedAssignments = pastAssignments.length;
+const pendingAssignments = activeAssignments.filter(a => a.status === 'pending').length;
+const overdueAssignments = activeAssignments.filter(a => a.status === 'overdue').length;
+const averageGrade = pastAssignments.reduce((sum, a) => {
+  const percentage = (a.grade / a.maxGrade) * 100;
+  return sum + percentage;
+}, 0) / pastAssignments.length;
+
+// Helper function to format date
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  if (date.toDateString() === today.toDateString()) return 'Today';
+  if (date.toDateString() === tomorrow.toDateString()) return 'Tomorrow';
+
+  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+// Helper function to get days remaining
+function getDaysRemaining(dateString: string, timeString: string) {
+  const dueDate = new Date(`${dateString}T${timeString}`);
+  const now = new Date();
+  const diff = dueDate.getTime() - now.getTime();
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+  if (days < 0) return `${Math.abs(days)} days overdue`;
+  if (days === 0) return 'Due today';
+  if (days === 1) return 'Due tomorrow';
+  return `${days} days left`;
+}
+---
+
+<DashboardLayout title="Assignments" currentPage="assignments">
+  <SidebarNav slot="sidebar" currentPage="assignments" />
+
+  <div slot="header">
+    <div>
+      <h1 class="header-title">Assignments</h1>
+      <p class="header-subtitle">Track and submit your course assignments</p>
+    </div>
+    <div class="header-actions">
+      <button class="notification-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <span class="notification-badge">{overdueAssignments}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Assignment Statistics -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon completed" set:html={`
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="14" fill="#b794d4" opacity="0.2"/>
+          <circle cx="16" cy="16" r="11" fill="#dcc6f0"/>
+          <path d="M10 16.5L14 20.5L22 12.5" stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="22" cy="10" r="3" fill="#ff9ec7"/>
+        </svg>
+      `}>
+      </div>
+      <div class="stat-content">
+        <h3 class="stat-value">{completedAssignments}</h3>
+        <p class="stat-label">Completed</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon pending" set:html={`
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="14" fill="#ff9ec7" opacity="0.2"/>
+          <circle cx="16" cy="16" r="11" fill="#ffd4e8"/>
+          <circle cx="16" cy="16" r="1.5" fill="#ff9ec7"/>
+          <line x1="16" y1="16" x2="16" y2="10" stroke="#ff9ec7" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="16" y1="16" x2="20" y2="18" stroke="#ff9ec7" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M24 8C24 9.65685 22.6569 11 21 11C19.3431 11 18 9.65685 18 8C18 6.34315 19.3431 5 21 5C22.6569 5 24 6.34315 24 8Z" fill="#b794d4"/>
+        </svg>
+      `}>
+      </div>
+      <div class="stat-content">
+        <h3 class="stat-value">{pendingAssignments}</h3>
+        <p class="stat-label">Pending</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon overdue" set:html={`
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="14" fill="#ff9ec7" opacity="0.15"/>
+          <circle cx="16" cy="16" r="11" fill="#ffcce0"/>
+          <path d="M16 10V16" stroke="#ff9ec7" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="16" cy="20" r="1.5" fill="#ff9ec7"/>
+          <circle cx="24" cy="8" r="4" fill="#ffd4e8"/>
+          <path d="M22.5 8L25.5 8" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M24 6.5L24 9.5" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      `}>
+      </div>
+      <div class="stat-content">
+        <h3 class="stat-value">{overdueAssignments}</h3>
+        <p class="stat-label">Overdue</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon average" set:html={`
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="14" fill="#e8d9f5" opacity="0.3"/>
+          <path d="M16 8L18.5 13L24 14L20 18L21 24L16 21L11 24L12 18L8 14L13.5 13L16 8Z" fill="#dcc6f0"/>
+          <path d="M16 8L18.5 13L24 14L20 18L21 24L16 21L11 24L12 18L8 14L13.5 13L16 8Z" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="22" cy="9" r="2.5" fill="#ff9ec7"/>
+          <circle cx="10" cy="9" r="2" fill="#ffd4e8"/>
+        </svg>
+      `}>
+      </div>
+      <div class="stat-content">
+        <h3 class="stat-value">{averageGrade.toFixed(1)}%</h3>
+        <p class="stat-label">Average Grade</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="filter-section">
+    <button class="filter-btn active" data-filter="all">
+      All Assignments
+      <span class="filter-count">{totalAssignments}</span>
+    </button>
+    <button class="filter-btn" data-filter="active">
+      Active
+      <span class="filter-count">{activeAssignments.length}</span>
+    </button>
+    <button class="filter-btn" data-filter="completed">
+      Completed
+      <span class="filter-count">{completedAssignments}</span>
+    </button>
+    <button class="filter-btn" data-filter="overdue">
+      Overdue
+      <span class="filter-count">{overdueAssignments}</span>
+    </button>
+  </div>
+
+  <!-- Active Assignments Section -->
+  <section class="section" id="active-section">
+    <div class="section-header">
+      <h2 class="section-title">Active Assignments</h2>
+      <span class="section-count">{activeAssignments.length} assignments</span>
+    </div>
+
+    <div class="assignments-grid">
+      {activeAssignments.map((assignment) => (
+        <div class={`assignment-card ${assignment.status}`} data-status={assignment.status}>
+          <div class="assignment-header">
+            <div>
+              <h3 class="assignment-title">{assignment.title}</h3>
+              <p class="assignment-course">{assignment.course}</p>
+            </div>
+            <span class={`status-badge ${assignment.status}`}>
+              {assignment.status === 'overdue' ? 'Overdue' : 'Pending'}
+            </span>
+          </div>
+
+          <p class="assignment-description">{assignment.description}</p>
+
+          <div class="assignment-meta">
+            <div class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Due: {formatDate(assignment.dueDate)} at {assignment.dueTime}</span>
+            </div>
+            <div class={`meta-item ${assignment.status === 'overdue' ? 'overdue-text' : ''}`}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>{getDaysRemaining(assignment.dueDate, assignment.dueTime)}</span>
+            </div>
+          </div>
+
+          <div class="progress-section">
+            <div class="progress-header">
+              <span class="progress-label">Progress</span>
+              <span class="progress-value">{assignment.progress}%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style={`width: ${assignment.progress}%`}></div>
+            </div>
+          </div>
+
+          {assignment.attachments.length > 0 && (
+            <div class="attachments">
+              <span class="attachments-label">Materials:</span>
+              <div class="attachments-list">
+                {assignment.attachments.map((file) => (
+                  <span class="attachment-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                      <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                    {file}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div class="assignment-actions">
+            <button class="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              Submit
+            </button>
+            <button class="btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              View Details
+            </button>
+            <button class="btn-icon" title="Download materials">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Submission Portal Section -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Submit Assignment</h2>
+      <p class="section-subtitle">Upload your completed work</p>
+    </div>
+
+    <div class="submission-portal">
+      <div class="upload-area">
+        <div class="upload-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+        </div>
+        <h3 class="upload-title">Drop files here or click to browse</h3>
+        <p class="upload-subtitle">Supported formats: PDF, DOC, DOCX, MP4, MP3 (Max 50MB)</p>
+        <button class="browse-btn">Browse Files</button>
+      </div>
+
+      <div class="submission-form">
+        <div class="form-group">
+          <label for="assignment-select">Select Assignment</label>
+          <select id="assignment-select" class="form-control">
+            <option value="">Choose an assignment...</option>
+            {activeAssignments.map((assignment) => (
+              <option value={assignment.id}>
+                {assignment.title} - {assignment.course}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="submission-notes">Submission Notes (Optional)</label>
+          <textarea id="submission-notes" class="form-control" rows="4" placeholder="Add any comments or notes about your submission..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Submit Assignment
+          </button>
+          <button class="btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Past Assignments Section -->
+  <section class="section" id="completed-section">
+    <div class="section-header">
+      <h2 class="section-title">Past Assignments</h2>
+      <span class="section-count">{pastAssignments.length} assignments</span>
+    </div>
+
+    <div class="past-assignments-list">
+      {pastAssignments.map((assignment) => (
+        <div class="past-assignment-card" data-status="completed">
+          <div class="past-assignment-header">
+            <div class="past-assignment-info">
+              <h3 class="past-assignment-title">{assignment.title}</h3>
+              <div class="past-assignment-meta">
+                <span class="course-tag">{assignment.course}</span>
+                <span class="submitted-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  Submitted: {formatDate(assignment.submittedDate)}
+                </span>
+              </div>
+            </div>
+            <div class="grade-display">
+              <div class={`grade-circle ${assignment.grade / assignment.maxGrade >= 0.9 ? 'excellent' : assignment.grade / assignment.maxGrade >= 0.7 ? 'good' : 'average'}`}>
+                <span class="grade-value">{assignment.grade}</span>
+                <span class="grade-max">/{assignment.maxGrade}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="feedback-section">
+            <div class="feedback-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Teacher Feedback - {assignment.teacher}</span>
+            </div>
+            <p class="feedback-text">{assignment.feedback}</p>
+          </div>
+
+          <div class="past-assignment-actions">
+            <button class="btn-view-submission">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              View Submission
+            </button>
+            <button class="btn-download">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</DashboardLayout>
+
+<style>
+  /* Header Styles */
+  .header-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.25rem;
+  }
+
+  .header-subtitle {
+    font-size: 1rem;
+    color: var(--bc-dark-gray);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .notification-btn {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid var(--bc-light-gray);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--bc-primary-blue);
+  }
+
+  .notification-btn:hover {
+    background: rgba(35, 7, 90, 0.05);
+    border-color: var(--bc-primary-blue);
+  }
+
+  .notification-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 20px;
+    height: 20px;
+    background: #ef4444;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Statistics Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(35, 7, 90, 0.12);
+  }
+
+  .stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: transparent;
+  }
+
+  .stat-icon.completed {
+    background: transparent;
+  }
+
+  .stat-icon.pending {
+    background: transparent;
+  }
+
+  .stat-icon.overdue {
+    background: transparent;
+  }
+
+  .stat-icon.average {
+    background: transparent;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--bc-dark-gray);
+    font-weight: 500;
+  }
+
+  /* Filter Section */
+  .filter-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    border: 1px solid var(--bc-light-gray);
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--bc-dark-gray);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn:hover {
+    background: rgba(35, 7, 90, 0.05);
+    border-color: var(--bc-primary-blue);
+    color: var(--bc-primary-blue);
+  }
+
+  .filter-btn.active {
+    background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-light-blue));
+    color: white;
+    border-color: transparent;
+  }
+
+  .filter-count {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.125rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  .filter-btn.active .filter-count {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Section Styles */
+  .section {
+    margin-bottom: 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+  }
+
+  .section-subtitle {
+    font-size: 0.9375rem;
+    color: var(--bc-dark-gray);
+    margin-top: 0.25rem;
+  }
+
+  .section-count {
+    font-size: 0.875rem;
+    color: var(--bc-dark-gray);
+    background: rgba(35, 7, 90, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
+
+  /* Assignment Cards */
+  .assignments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .assignment-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
+    border-left: 4px solid;
+    transition: all 0.3s ease;
+  }
+
+  .assignment-card.pending {
+    border-left-color: #f59e0b;
+  }
+
+  .assignment-card.overdue {
+    border-left-color: #ef4444;
+  }
+
+  .assignment-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(35, 7, 90, 0.12);
+  }
+
+  .assignment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .assignment-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.375rem;
+  }
+
+  .assignment-course {
+    font-size: 0.875rem;
+    color: var(--bc-dark-gray);
+  }
+
+  .status-badge {
+    padding: 0.375rem 0.875rem;
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .status-badge.pending {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+  }
+
+  .status-badge.overdue {
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+  }
+
+  .assignment-description {
+    font-size: 0.9375rem;
+    color: var(--bc-dark-gray);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .assignment-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--bc-dark-gray);
+  }
+
+  .meta-item svg {
+    color: var(--bc-light-blue);
+  }
+
+  .meta-item.overdue-text {
+    color: #dc2626;
+    font-weight: 600;
+  }
+
+  .meta-item.overdue-text svg {
+    color: #dc2626;
+  }
+
+  /* Progress Section */
+  .progress-section {
+    margin-bottom: 1.25rem;
+  }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .progress-label {
+    font-size: 0.875rem;
+    color: var(--bc-dark-gray);
+    font-weight: 500;
+  }
+
+  .progress-value {
+    font-size: 0.875rem;
+    color: var(--bc-primary-blue);
+    font-weight: 600;
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: rgba(35, 7, 90, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  /* Attachments */
+  .attachments {
+    background: rgba(35, 7, 90, 0.03);
+    border-radius: 8px;
+    padding: 0.875rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .attachments-label {
+    font-size: 0.8125rem;
+    color: var(--bc-dark-gray);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .attachments-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .attachment-item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    color: var(--bc-primary-blue);
+    background: white;
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--bc-light-gray);
+  }
+
+  /* Assignment Actions */
+  .assignment-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-light-blue));
+    color: white;
+    flex: 1;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.3);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--bc-primary-blue);
+    border: 1px solid var(--bc-light-gray);
+    flex: 1;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(35, 7, 90, 0.05);
+    border-color: var(--bc-primary-blue);
+  }
+
+  .btn-icon {
+    width: 40px;
+    padding: 0.625rem;
+    background: transparent;
+    color: var(--bc-dark-gray);
+    border: 1px solid var(--bc-light-gray);
+  }
+
+  .btn-icon:hover {
+    background: rgba(35, 7, 90, 0.05);
+    color: var(--bc-primary-blue);
+    border-color: var(--bc-primary-blue);
+  }
+
+  /* Submission Portal */
+  .submission-portal {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
+  }
+
+  .upload-area {
+    border: 2px dashed var(--bc-light-gray);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .upload-area:hover {
+    border-color: var(--bc-primary-blue);
+    background: rgba(35, 7, 90, 0.02);
+  }
+
+  .upload-icon {
+    color: var(--bc-light-blue);
+    margin-bottom: 1rem;
+  }
+
+  .upload-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.5rem;
+  }
+
+  .upload-subtitle {
+    font-size: 0.875rem;
+    color: var(--bc-dark-gray);
+    margin-bottom: 1.5rem;
+  }
+
+  .browse-btn {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-light-blue));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .browse-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.3);
+  }
+
+  /* Form Styles */
+  .submission-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--bc-primary-blue);
+  }
+
+  .form-control {
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--bc-light-gray);
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    color: var(--bc-primary-blue);
+    background: white;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: var(--bc-primary-blue);
+    box-shadow: 0 0 0 3px rgba(35, 7, 90, 0.1);
+  }
+
+  textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .btn-submit,
+  .btn-cancel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+  }
+
+  .btn-submit {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    flex: 1;
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  }
+
+  .btn-cancel {
+    background: transparent;
+    color: var(--bc-dark-gray);
+    border: 1px solid var(--bc-light-gray);
+  }
+
+  .btn-cancel:hover {
+    background: rgba(35, 7, 90, 0.05);
+    border-color: var(--bc-dark-gray);
+  }
+
+  /* Past Assignments */
+  .past-assignments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .past-assignment-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
+    border-left: 4px solid #22c55e;
+    transition: all 0.3s ease;
+  }
+
+  .past-assignment-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(35, 7, 90, 0.12);
+  }
+
+  .past-assignment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .past-assignment-info {
+    flex: 1;
+  }
+
+  .past-assignment-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.75rem;
+  }
+
+  .past-assignment-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .course-tag {
+    font-size: 0.8125rem;
+    color: var(--bc-light-blue);
+    background: rgba(35, 7, 90, 0.08);
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  .submitted-date {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    color: var(--bc-dark-gray);
+  }
+
+  .grade-display {
+    flex-shrink: 0;
+  }
+
+  .grade-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid;
+  }
+
+  .grade-circle.excellent {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: #22c55e;
+    color: #22c55e;
+  }
+
+  .grade-circle.good {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: #3b82f6;
+    color: #3b82f6;
+  }
+
+  .grade-circle.average {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: #f59e0b;
+    color: #f59e0b;
+  }
+
+  .grade-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .grade-max {
+    font-size: 1rem;
+    opacity: 0.7;
+  }
+
+  /* Feedback Section */
+  .feedback-section {
+    background: rgba(35, 7, 90, 0.03);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .feedback-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.75rem;
+  }
+
+  .feedback-header svg {
+    color: var(--bc-light-blue);
+  }
+
+  .feedback-text {
+    font-size: 0.9375rem;
+    color: var(--bc-dark-gray);
+    line-height: 1.6;
+  }
+
+  /* Past Assignment Actions */
+  .past-assignment-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .btn-view-submission,
+  .btn-download {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--bc-light-gray);
+    background: white;
+    color: var(--bc-primary-blue);
+  }
+
+  .btn-view-submission:hover,
+  .btn-download:hover {
+    background: rgba(35, 7, 90, 0.05);
+    border-color: var(--bc-primary-blue);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .assignments-grid {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filter-section {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: 0.5rem;
+    }
+
+    .assignments-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .assignment-actions {
+      flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      flex: none;
+      width: 100%;
+    }
+
+    .past-assignment-header {
+      flex-direction: column;
+    }
+
+    .grade-display {
+      align-self: flex-start;
+    }
+
+    .form-actions {
+      flex-direction: column;
+    }
+
+    .btn-submit {
+      flex: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .past-assignment-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Filter functionality
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const assignmentCards = document.querySelectorAll('.assignment-card');
+  const pastAssignmentCards = document.querySelectorAll('.past-assignment-card');
+  const activeSection = document.getElementById('active-section');
+  const completedSection = document.getElementById('completed-section');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      button.classList.add('active');
+
+      const filter = button.getAttribute('data-filter');
+
+      // Show/hide sections and cards based on filter
+      if (filter === 'all') {
+        if (activeSection) activeSection.style.display = 'block';
+        if (completedSection) completedSection.style.display = 'block';
+        assignmentCards.forEach(card => card.style.display = 'block');
+      } else if (filter === 'active') {
+        if (activeSection) activeSection.style.display = 'block';
+        if (completedSection) completedSection.style.display = 'none';
+        assignmentCards.forEach(card => card.style.display = 'block');
+      } else if (filter === 'completed') {
+        if (activeSection) activeSection.style.display = 'none';
+        if (completedSection) completedSection.style.display = 'block';
+      } else if (filter === 'overdue') {
+        if (activeSection) activeSection.style.display = 'block';
+        if (completedSection) completedSection.style.display = 'none';
+        assignmentCards.forEach(card => {
+          const status = card.getAttribute('data-status');
+          card.style.display = status === 'overdue' ? 'block' : 'none';
+        });
+      }
+    });
+  });
+
+  // Upload area click handler
+  const uploadArea = document.querySelector('.upload-area');
+  const browseBtn = document.querySelector('.browse-btn');
+
+  if (uploadArea && browseBtn) {
+    uploadArea.addEventListener('click', () => {
+      // Simulate file picker
+      console.log('File picker would open here');
+    });
+  }
+</script>

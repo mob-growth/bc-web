@@ -1,0 +1,299 @@
+---
+export interface Props {
+  courseName: string;
+  level: string;
+  teacher: string;
+  progress: number;
+  nextClass: string;
+  schedule: string;
+  image?: string;
+}
+
+const { courseName, level, teacher, progress, nextClass, schedule, image } = Astro.props;
+---
+
+<div class="course-card">
+  <div class="course-header">
+    <div class="course-image">
+      {image ? (
+        <img src={image} alt={courseName} />
+      ) : (
+        <div class="course-image-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </div>
+      )}
+    </div>
+    <div class="course-info">
+      <h3 class="course-name">{courseName}</h3>
+      <div class="course-meta">
+        <span class="course-level">{level}</span>
+        <span class="course-separator">•</span>
+        <span class="course-teacher">Teacher: {teacher}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-section">
+    <div class="progress-header">
+      <span class="progress-label">Course Progress</span>
+      <span class="progress-value">{progress}%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style={`width: ${progress}%`}></div>
+    </div>
+  </div>
+
+  <div class="course-details">
+    <div class="detail-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <div>
+        <p class="detail-label">Next Class</p>
+        <p class="detail-value">{nextClass}</p>
+      </div>
+    </div>
+    <div class="detail-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polyline points="12 6 12 12 16 14"></polyline>
+      </svg>
+      <div>
+        <p class="detail-label">Schedule</p>
+        <p class="detail-value">{schedule}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="course-actions">
+    <button class="btn-secondary">View Materials</button>
+    <button class="btn-primary">Join Class</button>
+  </div>
+</div>
+
+<style>
+  .course-card {
+    background: var(--bc-white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(35, 7, 90, 0.08);
+    border: 1px solid var(--bc-border);
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .course-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--bc-primary-blue), transparent);
+    border-radius: 8px 8px 0 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .course-card:hover {
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.12), 0 2px 4px rgba(35, 7, 90, 0.08);
+    transform: translateY(-2px);
+    border-color: rgba(35, 7, 90, 0.15);
+  }
+
+  .course-card:hover::before {
+    opacity: 1;
+  }
+
+  .course-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .course-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .course-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--bc-light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bc-medium-gray);
+  }
+
+  .course-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .course-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .course-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--bc-dark-gray);
+  }
+
+  .course-level {
+    background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), var(--bc-light-purple));
+    color: var(--bc-primary-blue);
+    padding: 0.125rem 0.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    border: 1px solid rgba(35, 7, 90, 0.1);
+  }
+
+  .course-separator {
+    color: #cbd5e1;
+  }
+
+  .progress-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .progress-label {
+    font-size: 0.875rem;
+    color: var(--bc-dark-gray);
+  }
+
+  .progress-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: linear-gradient(90deg, rgba(35, 7, 90, 0.05), var(--bc-light-gray));
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(35, 7, 90, 0.06);
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--bc-primary-blue), var(--bc-purple), var(--bc-pink));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    box-shadow: 0 1px 3px rgba(35, 7, 90, 0.2);
+  }
+
+  .course-details {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .detail-item svg {
+    color: var(--bc-purple);
+    margin-top: 0.125rem;
+  }
+
+  .detail-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-bottom: 0.125rem;
+  }
+
+  .detail-value {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--bc-primary-blue);
+  }
+
+  .course-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-purple), var(--bc-pink));
+    color: white;
+    box-shadow: 0 2px 4px rgba(35, 7, 90, 0.15);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--bc-pink), var(--bc-purple), var(--bc-primary-blue));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(35, 7, 90, 0.2);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--bc-purple);
+    border: 1px solid var(--bc-light-purple);
+  }
+
+  .btn-secondary:hover {
+    background: linear-gradient(135deg, rgba(35, 7, 90, 0.05), var(--bc-lavender));
+    border-color: var(--bc-primary-blue);
+    color: var(--bc-primary-blue);
+    box-shadow: 0 2px 4px rgba(35, 7, 90, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .course-details {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .course-actions {
+      flex-direction: column;
+    }
+  }
+</style>

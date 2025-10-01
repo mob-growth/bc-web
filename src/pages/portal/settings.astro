@@ -1,0 +1,1424 @@
+---
+import DashboardLayout from '../../components/portal/DashboardLayout.astro';
+import SidebarNav from '../../components/portal/SidebarNav.astro';
+
+// Mock user data
+const userData = {
+  name: 'John Doe',
+  email: 'john.doe@example.com',
+  phone: '+44 7700 900123',
+  address: '123 Oxford Street, London, UK',
+  dateOfBirth: '1995-06-15',
+  studentId: 'BC-2024-001234'
+};
+
+// Mock learning preferences
+const learningPreferences = {
+  learningStyle: 'visual',
+  primaryGoal: 'business-english',
+  interests: ['Business Communication', 'IELTS Preparation', 'Speaking Practice']
+};
+
+// Mock notification settings
+const notificationSettings = {
+  emailNotifications: true,
+  smsNotifications: false,
+  pushNotifications: true,
+  courseUpdates: true,
+  assignmentReminders: true,
+  classReminders: true,
+  achievementAlerts: true
+};
+
+// Mock privacy settings
+const privacySettings = {
+  profileVisibility: 'students',
+  showProgressToTeachers: true,
+  shareDataForImprovement: true
+};
+
+// Mock security settings
+const securitySettings = {
+  twoFactorEnabled: false,
+  lastPasswordChange: '2024-08-15'
+};
+
+// Mock payment history
+const paymentHistory = [
+  {
+    id: 1,
+    date: '2024-09-01',
+    description: 'IELTS Preparation Course - Q4 2024',
+    amount: '£450.00',
+    status: 'Completed',
+    invoice: 'INV-2024-09-001'
+  },
+  {
+    id: 2,
+    date: '2024-06-01',
+    description: 'Business English B2 - Q3 2024',
+    amount: '£380.00',
+    status: 'Completed',
+    invoice: 'INV-2024-06-001'
+  },
+  {
+    id: 3,
+    date: '2024-03-01',
+    description: 'Speaking Focus Group - Q2 2024',
+    amount: '£250.00',
+    status: 'Completed',
+    invoice: 'INV-2024-03-001'
+  }
+];
+---
+
+<DashboardLayout title="Settings" currentPage="settings">
+  <SidebarNav slot="sidebar" currentPage="settings" />
+
+  <div slot="header">
+    <div>
+      <h1 class="header-title">Settings</h1>
+      <p class="header-subtitle">Manage your account preferences and settings</p>
+    </div>
+  </div>
+
+  <!-- Profile Information Section -->
+  <section class="settings-section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Profile Information</h2>
+        <p class="section-description">Update your personal details and contact information</p>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input type="text" id="fullName" class="form-input" value={userData.name} />
+        </div>
+        <div class="form-group">
+          <label for="studentId" class="form-label">Student ID</label>
+          <input type="text" id="studentId" class="form-input" value={userData.studentId} disabled />
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" id="email" class="form-input" value={userData.email} />
+        </div>
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" id="phone" class="form-input" value={userData.phone} />
+        </div>
+        <div class="form-group form-group-full">
+          <label for="address" class="form-label">Address</label>
+          <input type="text" id="address" class="form-input" value={userData.address} />
+        </div>
+        <div class="form-group">
+          <label for="dateOfBirth" class="form-label">Date of Birth</label>
+          <input type="date" id="dateOfBirth" class="form-input" value={userData.dateOfBirth} />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-save">Save Changes</button>
+        <button class="btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning Preferences Section -->
+  <section class="settings-section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Learning Preferences</h2>
+        <p class="section-description">Customize your learning experience</p>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="learningStyle" class="form-label">Preferred Learning Style</label>
+          <select id="learningStyle" class="form-select">
+            <option value="visual" selected={learningPreferences.learningStyle === 'visual'}>Visual Learner</option>
+            <option value="auditory" selected={learningPreferences.learningStyle === 'auditory'}>Auditory Learner</option>
+            <option value="kinesthetic" selected={learningPreferences.learningStyle === 'kinesthetic'}>Kinesthetic Learner</option>
+            <option value="reading" selected={learningPreferences.learningStyle === 'reading'}>Reading/Writing</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="primaryGoal" class="form-label">Primary Learning Goal</label>
+          <select id="primaryGoal" class="form-select">
+            <option value="general-english" selected={learningPreferences.primaryGoal === 'general-english'}>General English</option>
+            <option value="business-english" selected={learningPreferences.primaryGoal === 'business-english'}>Business English</option>
+            <option value="ielts" selected={learningPreferences.primaryGoal === 'ielts'}>IELTS Preparation</option>
+            <option value="academic" selected={learningPreferences.primaryGoal === 'academic'}>Academic English</option>
+            <option value="conversation" selected={learningPreferences.primaryGoal === 'conversation'}>Conversation Skills</option>
+          </select>
+        </div>
+        <div class="form-group form-group-full">
+          <label class="form-label">Areas of Interest</label>
+          <div class="interests-tags">
+            {learningPreferences.interests.map((interest) => (
+              <span class="interest-tag">
+                {interest}
+                <button class="interest-remove" aria-label="Remove interest">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </span>
+            ))}
+            <button class="interest-add">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Add Interest
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-save">Save Preferences</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notification Settings Section -->
+  <section class="settings-section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Notification Settings</h2>
+        <p class="section-description">Choose how you want to receive updates</p>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="notification-group">
+        <h3 class="notification-group-title">Communication Channels</h3>
+        <div class="toggle-list">
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <div class="toggle-label">Email Notifications</div>
+              <div class="toggle-description">Receive updates via email</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked={notificationSettings.emailNotifications} />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <div class="toggle-label">SMS Notifications</div>
+              <div class="toggle-description">Receive text message alerts</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked={notificationSettings.smsNotifications} />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <div class="toggle-label">Push Notifications</div>
+              <div class="toggle-description">Get browser notifications</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked={notificationSettings.pushNotifications} />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="notification-group">
+        <h3 class="notification-group-title">Content Preferences</h3>
+        <div class="toggle-list">
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <div class="toggle-label">Course Updates</div>
+              <div class="toggle-description">New content and materials</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked={notificationSettings.courseUpdates} />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <div class="toggle-label">Assignment Reminders</div>
+              <div class="toggle-description">Deadlines and submissions</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked={notificationSettings.assignmentReminders} />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <div class="toggle-label">Class Reminders</div>
+              <div class="toggle-description">Upcoming classes and sessions</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked={notificationSettings.classReminders} />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="toggle-item">
+            <div class="toggle-info">
+              <div class="toggle-label">Achievement Alerts</div>
+              <div class="toggle-description">Badges and milestones</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked={notificationSettings.achievementAlerts} />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-save">Save Notification Settings</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Language & Regional Settings -->
+  <section class="settings-section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Language & Regional Settings</h2>
+        <p class="section-description">Customize your interface language and region</p>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="interfaceLanguage" class="form-label">Interface Language</label>
+          <select id="interfaceLanguage" class="form-select">
+            <option value="en" selected>English (UK)</option>
+            <option value="en-us">English (US)</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="zh">Chinese</option>
+            <option value="ar">Arabic</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="timezone" class="form-label">Timezone</label>
+          <select id="timezone" class="form-select">
+            <option value="Europe/London" selected>London (GMT+0)</option>
+            <option value="Europe/Paris">Paris (GMT+1)</option>
+            <option value="America/New_York">New York (GMT-5)</option>
+            <option value="Asia/Dubai">Dubai (GMT+4)</option>
+            <option value="Asia/Tokyo">Tokyo (GMT+9)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="dateFormat" class="form-label">Date Format</label>
+          <select id="dateFormat" class="form-select">
+            <option value="dd-mm-yyyy" selected>DD/MM/YYYY</option>
+            <option value="mm-dd-yyyy">MM/DD/YYYY</option>
+            <option value="yyyy-mm-dd">YYYY-MM-DD</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="timeFormat" class="form-label">Time Format</label>
+          <select id="timeFormat" class="form-select">
+            <option value="24" selected>24-hour</option>
+            <option value="12">12-hour (AM/PM)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-save">Save Language Settings</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Settings Section -->
+  <section class="settings-section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Privacy Settings</h2>
+        <p class="section-description">Control your privacy and data sharing preferences</p>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="toggle-list">
+        <div class="toggle-item">
+          <div class="toggle-info">
+            <div class="toggle-label">Profile Visibility</div>
+            <div class="toggle-description">Choose who can see your profile</div>
+          </div>
+          <select class="privacy-select">
+            <option value="public">Everyone</option>
+            <option value="students" selected={privacySettings.profileVisibility === 'students'}>Students Only</option>
+            <option value="teachers">Teachers Only</option>
+            <option value="private">Private</option>
+          </select>
+        </div>
+        <div class="toggle-item">
+          <div class="toggle-info">
+            <div class="toggle-label">Show Progress to Teachers</div>
+            <div class="toggle-description">Allow teachers to view your detailed progress</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" checked={privacySettings.showProgressToTeachers} />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="toggle-item">
+          <div class="toggle-info">
+            <div class="toggle-label">Share Data for Improvement</div>
+            <div class="toggle-description">Help us improve your learning experience</div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" checked={privacySettings.shareDataForImprovement} />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-save">Save Privacy Settings</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security Section -->
+  <section class="settings-section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Security</h2>
+        <p class="section-description">Manage your account security settings</p>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="security-item">
+        <div class="security-info">
+          <div class="security-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="security-title">Password</h3>
+            <p class="security-description">Last changed: {new Date(securitySettings.lastPasswordChange).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+          </div>
+        </div>
+        <button class="btn-secondary">Change Password</button>
+      </div>
+
+      <div class="security-item">
+        <div class="security-info">
+          <div class="security-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="security-title">Two-Factor Authentication</h3>
+            <p class="security-description">{securitySettings.twoFactorEnabled ? 'Enabled' : 'Disabled'} - Add extra security to your account</p>
+          </div>
+        </div>
+        <button class="btn-secondary">{securitySettings.twoFactorEnabled ? 'Disable' : 'Enable'} 2FA</button>
+      </div>
+
+      <div class="security-item">
+        <div class="security-info">
+          <div class="security-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3 class="security-title">Login Sessions</h3>
+            <p class="security-description">Manage devices and active sessions</p>
+          </div>
+        </div>
+        <button class="btn-secondary">View Sessions</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Information & Billing History -->
+  <section class="settings-section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Payment & Billing</h2>
+        <p class="section-description">Manage payment methods and view billing history</p>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="payment-methods">
+        <h3 class="subsection-title">Payment Methods</h3>
+        <div class="payment-card-item">
+          <div class="payment-card-info">
+            <div class="payment-card-icon">
+              <svg width="32" height="24" viewBox="0 0 32 24" fill="none">
+                <rect width="32" height="24" rx="4" fill="#23075a"/>
+                <circle cx="10" cy="12" r="5" fill="#ff1493" opacity="0.8"/>
+                <circle cx="22" cy="12" r="5" fill="#ffd700" opacity="0.8"/>
+              </svg>
+            </div>
+            <div>
+              <div class="payment-card-name">Visa ending in 4242</div>
+              <div class="payment-card-expiry">Expires 12/2025</div>
+            </div>
+          </div>
+          <div class="payment-card-actions">
+            <button class="btn-icon" aria-label="Edit payment method">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+            </button>
+            <button class="btn-icon" aria-label="Remove payment method">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button class="btn-add-payment">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Add Payment Method
+        </button>
+      </div>
+
+      <div class="billing-history">
+        <h3 class="subsection-title">Billing History</h3>
+        <div class="billing-table">
+          <div class="billing-table-header">
+            <div class="billing-col billing-col-date">Date</div>
+            <div class="billing-col billing-col-description">Description</div>
+            <div class="billing-col billing-col-amount">Amount</div>
+            <div class="billing-col billing-col-status">Status</div>
+            <div class="billing-col billing-col-actions">Invoice</div>
+          </div>
+          {paymentHistory.map((payment) => (
+            <div class="billing-table-row">
+              <div class="billing-col billing-col-date">{new Date(payment.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
+              <div class="billing-col billing-col-description">{payment.description}</div>
+              <div class="billing-col billing-col-amount">{payment.amount}</div>
+              <div class="billing-col billing-col-status">
+                <span class="status-badge status-completed">{payment.status}</span>
+              </div>
+              <div class="billing-col billing-col-actions">
+                <button class="btn-download" aria-label="Download invoice">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  Download
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Account Actions Section -->
+  <section class="settings-section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Account Actions</h2>
+        <p class="section-description">Manage your account data and preferences</p>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="account-actions">
+        <div class="account-action-item">
+          <div class="account-action-info">
+            <div class="account-action-icon export">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div>
+              <h3 class="account-action-title">Export Your Data</h3>
+              <p class="account-action-description">Download a copy of all your personal data and learning progress</p>
+            </div>
+          </div>
+          <button class="btn-secondary">Export Data</button>
+        </div>
+
+        <div class="account-action-item danger">
+          <div class="account-action-info">
+            <div class="account-action-icon deactivate">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+            </div>
+            <div>
+              <h3 class="account-action-title">Deactivate Account</h3>
+              <p class="account-action-description">Temporarily disable your account. You can reactivate it anytime.</p>
+            </div>
+          </div>
+          <button class="btn-danger">Deactivate</button>
+        </div>
+
+        <div class="account-action-item danger">
+          <div class="account-action-info">
+            <div class="account-action-icon delete">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18"></path>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
+            </div>
+            <div>
+              <h3 class="account-action-title">Delete Account</h3>
+              <p class="account-action-description">Permanently delete your account and all associated data. This action cannot be undone.</p>
+            </div>
+          </div>
+          <button class="btn-danger">Delete Account</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</DashboardLayout>
+
+<style>
+  /* Header Styles */
+  .header-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.25rem;
+  }
+
+  .header-subtitle {
+    font-size: 1rem;
+    color: var(--bc-dark-gray);
+  }
+
+  /* Settings Section */
+  .settings-section {
+    margin-bottom: 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.375rem;
+  }
+
+  .section-description {
+    font-size: 0.875rem;
+    color: var(--bc-dark-gray);
+  }
+
+  .subsection-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 1.25rem;
+  }
+
+  /* Settings Card */
+  .settings-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(35, 7, 90, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Form Styles */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group-full {
+    grid-column: 1 / -1;
+  }
+
+  .form-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--bc-light-gray);
+    border-radius: 12px;
+    font-size: 0.9375rem;
+    background: white;
+    color: var(--bc-primary-blue);
+    transition: all 0.2s ease;
+  }
+
+  .form-input:focus,
+  .form-select:focus {
+    outline: none;
+    border-color: var(--bc-primary-blue);
+    box-shadow: 0 0 0 3px rgba(35, 7, 90, 0.1);
+  }
+
+  .form-input:disabled {
+    background: rgba(35, 7, 90, 0.05);
+    cursor: not-allowed;
+    color: var(--bc-dark-gray);
+  }
+
+  .form-select {
+    cursor: pointer;
+  }
+
+  /* Interests Tags */
+  .interests-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(35, 7, 90, 0.02);
+    border-radius: 12px;
+    border: 1px solid var(--bc-light-gray);
+  }
+
+  .interest-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-light-blue));
+    color: white;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .interest-remove {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  .interest-remove:hover {
+    opacity: 1;
+  }
+
+  .interest-add {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    color: var(--bc-primary-blue);
+    border: 2px dashed var(--bc-light-gray);
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .interest-add:hover {
+    border-color: var(--bc-primary-blue);
+    background: rgba(35, 7, 90, 0.05);
+  }
+
+  /* Toggle Styles */
+  .notification-group {
+    margin-bottom: 2rem;
+  }
+
+  .notification-group:last-child {
+    margin-bottom: 1.5rem;
+  }
+
+  .notification-group-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 1rem;
+  }
+
+  .toggle-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .toggle-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+    background: rgba(35, 7, 90, 0.02);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+  }
+
+  .toggle-item:hover {
+    background: rgba(35, 7, 90, 0.05);
+  }
+
+  .toggle-info {
+    flex: 1;
+  }
+
+  .toggle-label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.25rem;
+  }
+
+  .toggle-description {
+    font-size: 0.8125rem;
+    color: var(--bc-dark-gray);
+  }
+
+  /* Toggle Switch */
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    transition: 0.3s;
+    border-radius: 34px;
+  }
+
+  .toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+  }
+
+  .toggle-switch input:checked + .toggle-slider {
+    background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-light-blue));
+  }
+
+  .toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(24px);
+  }
+
+  /* Privacy Select */
+  .privacy-select {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--bc-light-gray);
+    border-radius: 8px;
+    background: white;
+    color: var(--bc-primary-blue);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .privacy-select:focus {
+    outline: none;
+    border-color: var(--bc-primary-blue);
+  }
+
+  /* Security Items */
+  .security-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: rgba(35, 7, 90, 0.02);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .security-item:hover {
+    background: rgba(35, 7, 90, 0.05);
+  }
+
+  .security-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  .security-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-light-blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .security-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.25rem;
+  }
+
+  .security-description {
+    font-size: 0.8125rem;
+    color: var(--bc-dark-gray);
+  }
+
+  /* Payment Methods */
+  .payment-methods {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--bc-light-gray);
+  }
+
+  .payment-card-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+    background: rgba(35, 7, 90, 0.02);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .payment-card-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .payment-card-icon {
+    flex-shrink: 0;
+  }
+
+  .payment-card-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.25rem;
+  }
+
+  .payment-card-expiry {
+    font-size: 0.8125rem;
+    color: var(--bc-dark-gray);
+  }
+
+  .payment-card-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .btn-add-payment {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    color: var(--bc-primary-blue);
+    border: 2px dashed var(--bc-light-gray);
+    border-radius: 12px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-add-payment:hover {
+    border-color: var(--bc-primary-blue);
+    background: rgba(35, 7, 90, 0.05);
+  }
+
+  /* Billing Table */
+  .billing-table {
+    background: rgba(35, 7, 90, 0.02);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .billing-table-header,
+  .billing-table-row {
+    display: grid;
+    grid-template-columns: 120px 2fr 120px 100px 150px;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 1.5rem;
+  }
+
+  .billing-table-header {
+    background: rgba(35, 7, 90, 0.05);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    text-transform: uppercase;
+  }
+
+  .billing-table-row {
+    border-bottom: 1px solid var(--bc-light-gray);
+    font-size: 0.875rem;
+    color: var(--bc-primary-blue);
+    transition: all 0.2s ease;
+  }
+
+  .billing-table-row:last-child {
+    border-bottom: none;
+  }
+
+  .billing-table-row:hover {
+    background: rgba(35, 7, 90, 0.05);
+  }
+
+  .billing-col-amount {
+    font-weight: 600;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .status-completed {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+  }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    background: white;
+    color: var(--bc-primary-blue);
+    border: 1px solid var(--bc-light-gray);
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-download:hover {
+    background: rgba(35, 7, 90, 0.05);
+    border-color: var(--bc-primary-blue);
+  }
+
+  /* Account Actions */
+  .account-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .account-action-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: rgba(35, 7, 90, 0.02);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+  }
+
+  .account-action-item:hover {
+    background: rgba(35, 7, 90, 0.05);
+  }
+
+  .account-action-item.danger {
+    background: rgba(239, 68, 68, 0.05);
+  }
+
+  .account-action-item.danger:hover {
+    background: rgba(239, 68, 68, 0.1);
+  }
+
+  .account-action-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  .account-action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .account-action-icon.export {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+  }
+
+  .account-action-icon.deactivate,
+  .account-action-icon.delete {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+  }
+
+  .account-action-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.25rem;
+  }
+
+  .account-action-item.danger .account-action-title {
+    color: #ef4444;
+  }
+
+  .account-action-description {
+    font-size: 0.8125rem;
+    color: var(--bc-dark-gray);
+  }
+
+  /* Button Styles */
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bc-light-gray);
+  }
+
+  .btn-save,
+  .btn-secondary,
+  .btn-danger,
+  .btn-cancel,
+  .btn-icon {
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-save {
+    background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-light-blue));
+    color: white;
+  }
+
+  .btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.3);
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--bc-primary-blue);
+    border: 1px solid var(--bc-light-gray);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(35, 7, 90, 0.05);
+    border-color: var(--bc-primary-blue);
+  }
+
+  .btn-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+  }
+
+  .btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  }
+
+  .btn-cancel {
+    background: transparent;
+    color: var(--bc-dark-gray);
+    border: 1px solid var(--bc-light-gray);
+  }
+
+  .btn-cancel:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .btn-icon {
+    padding: 0.5rem;
+    background: white;
+    color: var(--bc-primary-blue);
+    border: 1px solid var(--bc-light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-icon:hover {
+    background: rgba(35, 7, 90, 0.05);
+    border-color: var(--bc-primary-blue);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .billing-table-header,
+    .billing-table-row {
+      grid-template-columns: 100px 1.5fr 100px 80px 130px;
+      gap: 0.75rem;
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .settings-card {
+      padding: 1.5rem;
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .form-actions {
+      flex-direction: column;
+    }
+
+    .btn-save,
+    .btn-secondary,
+    .btn-danger,
+    .btn-cancel {
+      width: 100%;
+    }
+
+    .toggle-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .security-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .btn-secondary {
+      width: 100%;
+    }
+
+    .payment-card-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .billing-table {
+      overflow-x: auto;
+    }
+
+    .billing-table-header,
+    .billing-table-row {
+      grid-template-columns: 90px 150px 80px 70px 100px;
+      font-size: 0.75rem;
+      padding: 0.75rem;
+    }
+
+    .billing-col-description {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .account-action-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .btn-danger {
+      width: 100%;
+    }
+
+    .header-title {
+      font-size: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .interests-tags {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .interest-tag,
+    .interest-add {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  // Add interactivity for form submissions
+  document.querySelectorAll('.btn-save').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const section = button.closest('.settings-section');
+      const sectionTitle = section?.querySelector('.section-title')?.textContent || 'Settings';
+      alert(`${sectionTitle} saved successfully!`);
+    });
+  });
+
+  // Toggle switches
+  document.querySelectorAll('.toggle-switch input').forEach(toggle => {
+    toggle.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const label = target.closest('.toggle-item')?.querySelector('.toggle-label')?.textContent;
+      console.log(`${label} is now ${target.checked ? 'enabled' : 'disabled'}`);
+    });
+  });
+
+  // Account action buttons
+  document.querySelectorAll('.account-action-item button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const actionTitle = button.closest('.account-action-item')?.querySelector('.account-action-title')?.textContent;
+      if (button.classList.contains('btn-danger')) {
+        const confirm = window.confirm(`Are you sure you want to proceed with: ${actionTitle}? This action may be irreversible.`);
+        if (confirm) {
+          alert(`${actionTitle} action initiated.`);
+        }
+      } else {
+        alert(`${actionTitle} action initiated.`);
+      }
+    });
+  });
+
+  // Payment method actions
+  document.querySelectorAll('.btn-icon').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const action = button.getAttribute('aria-label');
+      alert(`${action} action initiated.`);
+    });
+  });
+
+  // Download invoice buttons
+  document.querySelectorAll('.btn-download').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Invoice download started...');
+    });
+  });
+
+  // Add payment method
+  document.querySelector('.btn-add-payment')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('Add payment method form would open here.');
+  });
+
+  // Interest tag management
+  document.querySelectorAll('.interest-remove').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tag = button.closest('.interest-tag');
+      if (tag) {
+        tag.remove();
+      }
+    });
+  });
+
+  document.querySelector('.interest-add')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const newInterest = prompt('Enter new area of interest:');
+    if (newInterest && newInterest.trim()) {
+      const tagsContainer = document.querySelector('.interests-tags');
+      const addButton = document.querySelector('.interest-add');
+      const newTag = document.createElement('span');
+      newTag.className = 'interest-tag';
+      newTag.innerHTML = `
+        ${newInterest.trim()}
+        <button class="interest-remove" aria-label="Remove interest">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      `;
+
+      // Add remove event listener to the new button
+      const removeBtn = newTag.querySelector('.interest-remove');
+      removeBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        newTag.remove();
+      });
+
+      if (tagsContainer && addButton) {
+        tagsContainer.insertBefore(newTag, addButton);
+      }
+    }
+  });
+
+  // Security actions
+  document.querySelectorAll('.security-item button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const actionTitle = button.closest('.security-item')?.querySelector('.security-title')?.textContent;
+      alert(`${actionTitle} settings would open here.`);
+    });
+  });
+</script>

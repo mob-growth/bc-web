@@ -1,0 +1,204 @@
+---
+export interface Props {
+  title: string;
+  currentPage: string;
+}
+
+const { title, currentPage } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} | British Council Student Portal</title>
+  <style>
+    :root {
+      --bc-primary-blue: #23075a;
+      --bc-accent-blue: #4f46e5;
+      --bc-pink: #ff9ec7;
+      --bc-light-pink: #ffd4e8;
+      --bc-purple: #b794d4;
+      --bc-light-purple: #e8d9f5;
+      --bc-lavender: #dcc6f0;
+      --bc-dark-gray: #374151;
+      --bc-medium-gray: #6b7280;
+      --bc-light-gray: #f3f4f6;
+      --bc-border: #e5e7eb;
+      --bc-white: #ffffff;
+      --bc-bg: #f9fafb;
+      --bc-sidebar-bg: #fcfafd;
+      --bc-sidebar-border: #e8d9f5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bc-bg);
+      min-height: 100vh;
+      color: var(--bc-dark-gray);
+      line-height: 1.6;
+    }
+
+    .dashboard-container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .dashboard-sidebar {
+      width: 280px;
+      background: var(--bc-sidebar-bg);
+      box-shadow: 2px 0 8px rgba(35, 7, 90, 0.06), 2px 0 4px rgba(183, 148, 212, 0.08);
+      border-right: 1px solid var(--bc-sidebar-border);
+      padding: 0;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+
+    .dashboard-main {
+      flex: 1;
+      margin-left: 280px;
+      padding: 1.5rem;
+      overflow-y: auto;
+      min-height: 100vh;
+    }
+
+    .dashboard-header {
+      background: linear-gradient(to right, rgba(35, 7, 90, 0.02), rgba(255, 255, 255, 1));
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 3px rgba(35, 7, 90, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid var(--bc-border);
+      border-left: 3px solid var(--bc-primary-blue);
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: var(--bc-primary-blue);
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 12px;
+      cursor: pointer;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 101;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-sidebar {
+        transform: translateX(-100%);
+      }
+
+      .dashboard-sidebar.active {
+        transform: translateX(0);
+      }
+
+      .dashboard-main {
+        margin-left: 0;
+        padding: 1rem;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .dashboard-header {
+        padding: 1rem;
+        margin-top: 4rem;
+      }
+    }
+
+    .dashboard-content {
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(35, 7, 90, 0.3);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(35, 7, 90, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <slot name="sidebar" />
+    </aside>
+
+    <main class="dashboard-main">
+      <div class="dashboard-header">
+        <slot name="header" />
+      </div>
+      <div class="dashboard-content">
+        <slot />
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const dashboardSidebar = document.getElementById('dashboardSidebar');
+
+    mobileMenuToggle?.addEventListener('click', () => {
+      dashboardSidebar?.classList.toggle('active');
+    });
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 &&
+          !dashboardSidebar?.contains(e.target as Node) &&
+          !mobileMenuToggle?.contains(e.target as Node)) {
+        dashboardSidebar?.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
