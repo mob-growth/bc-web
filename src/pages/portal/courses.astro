@@ -1,26 +1,30 @@
 ---
 import DashboardLayout from '../../components/portal/DashboardLayout.astro';
 import SidebarNav from '../../components/portal/SidebarNav.astro';
-import CourseCard from '../../components/portal/CourseCard.astro';
 
-// Mock data for courses
+// Featured course data
+const featuredCourse = {
+  courseName: 'Business English B2',
+  level: 'B2',
+  teacher: 'Sarah Williams',
+  progress: 65,
+  nextClass: 'Tomorrow, 18:00',
+  totalLessons: 24,
+  completedLessons: 16,
+  description: 'Master professional communication and workplace English with real-world scenarios',
+  image: 'https://mktgfiles.britishcouncil.org/hubfs/Global%20-%20Future%20of%20English/Corporate%20English%20Solutions.jpg'
+};
+
+// Current courses for carousel
 const currentCourses = [
-  {
-    courseName: 'Business English B2',
-    level: 'B2',
-    teacher: 'Sarah Williams',
-    progress: 65,
-    nextClass: 'Tomorrow, 18:00',
-    schedule: 'Mon & Wed 18:00-19:30',
-    image: 'https://mktgfiles.britishcouncil.org/hubfs/Global%20-%20Future%20of%20English/Corporate%20English%20Solutions.jpg'
-  },
   {
     courseName: 'IELTS Preparation',
     level: 'Advanced',
     teacher: 'James Morrison',
     progress: 45,
     nextClass: 'Thursday, 17:00',
-    schedule: 'Tue & Thu 17:00-18:30'
+    totalLessons: 20,
+    completedLessons: 9
   },
   {
     courseName: 'Speaking Focus Group',
@@ -28,52 +32,53 @@ const currentCourses = [
     teacher: 'Emma Thompson',
     progress: 80,
     nextClass: 'Friday, 19:00',
-    schedule: 'Friday 19:00-20:00'
-  }
-];
-
-const completedCourses = [
-  {
-    courseName: 'General English B1',
-    level: 'B1',
-    teacher: 'Michael Brown',
-    progress: 100,
-    completionDate: 'July 2024',
-    grade: 'A',
-    certificateAvailable: true
+    totalLessons: 15,
+    completedLessons: 12
   },
   {
-    courseName: 'Cambridge FCE Prep',
-    level: 'B2',
-    teacher: 'Lisa Anderson',
-    progress: 100,
-    completionDate: 'March 2024',
-    grade: 'B+',
-    certificateAvailable: true
+    courseName: 'Academic Writing',
+    level: 'C1',
+    teacher: 'David Chen',
+    progress: 30,
+    nextClass: 'Monday, 16:00',
+    totalLessons: 18,
+    completedLessons: 5
   }
 ];
 
-const recommendedCourses = [
+// Available courses for carousel
+const availableCourses = [
   {
     courseName: 'Advanced Business Writing',
     level: 'C1',
     duration: '3 months',
     startDate: 'January 2025',
-    price: '€280/month'
+    price: '€280',
+    features: ['24 live sessions', 'Personal feedback', 'Certificate']
   },
   {
     courseName: 'Cambridge CAE Preparation',
     level: 'C1',
     duration: '4 months',
     startDate: 'February 2025',
-    price: '€320/month'
+    price: '€320',
+    features: ['32 live sessions', 'Mock exams', 'Study materials']
   },
   {
     courseName: 'Professional Presentations',
     level: 'B2-C1',
     duration: '2 months',
     startDate: 'January 2025',
-    price: '€250/month'
+    price: '€250',
+    features: ['16 live sessions', 'Video feedback', 'Templates']
+  },
+  {
+    courseName: 'English for Medicine',
+    level: 'B2',
+    duration: '3 months',
+    startDate: 'March 2025',
+    price: '€290',
+    features: ['Medical vocabulary', 'Case studies', 'Certification']
   }
 ];
 ---
@@ -84,136 +89,245 @@ const recommendedCourses = [
   <div slot="header">
     <div>
       <h1 class="header-title">My Courses</h1>
-      <p class="header-subtitle">Manage your enrolled courses and discover new ones</p>
-    </div>
-    <div class="header-actions">
-      <button class="filter-btn active">All</button>
-      <button class="filter-btn">Active</button>
-      <button class="filter-btn">Completed</button>
-      <button class="filter-btn">Available</button>
+      <p class="header-subtitle">Continue your learning journey</p>
     </div>
   </div>
 
-  <!-- Current Courses -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-        Current Courses
-      </h2>
-      <span class="course-count">{currentCourses.length} Active</span>
-    </div>
-    <div class="courses-grid">
-      {currentCourses.map((course) => (
-        <CourseCard {...course} />
-      ))}
-    </div>
-  </section>
+  <div class="courses-container">
 
-  <!-- Completed Courses -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-        </svg>
-        Completed Courses
-      </h2>
-      <span class="course-count">{completedCourses.length} Completed</span>
+    <!-- Featured Course - Large Hero Card -->
+    <div class="featured-section">
+      <div class="featured-card glass">
+        <div class="featured-gradient"></div>
+        <div class="featured-content">
+          <div class="featured-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            Featured Course
+          </div>
+
+          <div class="featured-info">
+            <div class="featured-text">
+              <h2 class="featured-title">{featuredCourse.courseName}</h2>
+              <p class="featured-description">{featuredCourse.description}</p>
+
+              <div class="featured-meta">
+                <div class="meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  <span>{featuredCourse.teacher}</span>
+                </div>
+                <div class="meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>Next: {featuredCourse.nextClass}</span>
+                </div>
+                <div class="meta-item">
+                  <span class="level-badge">{featuredCourse.level}</span>
+                </div>
+              </div>
+
+              <div class="featured-stats">
+                <div class="stat-info">
+                  <span class="stat-label">Progress</span>
+                  <span class="stat-value">{featuredCourse.completedLessons}/{featuredCourse.totalLessons} lessons</span>
+                </div>
+                <button class="continue-btn">
+                  Continue Learning
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="featured-progress-ring">
+              <svg class="progress-ring" width="180" height="180" viewBox="0 0 180 180">
+                <circle class="progress-ring-bg" cx="90" cy="90" r="70"></circle>
+                <circle class="progress-ring-fill" cx="90" cy="90" r="70"
+                  style={`stroke-dashoffset: ${440 - (440 * featuredCourse.progress) / 100}`}></circle>
+              </svg>
+              <div class="progress-text">
+                <span class="progress-percent">{featuredCourse.progress}%</span>
+                <span class="progress-label">Complete</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating decorative elements -->
+        <div class="float-element float-1"></div>
+        <div class="float-element float-2"></div>
+        <div class="float-element float-3"></div>
+      </div>
     </div>
-    <div class="completed-grid">
-      {completedCourses.map((course) => (
-        <div class="completed-card">
-          <div class="completed-header">
-            <div>
-              <h3 class="course-name">{course.courseName}</h3>
-              <p class="course-meta">
+
+    <!-- Current Courses Carousel -->
+    <section class="carousel-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Your Active Courses
+        </h2>
+        <div class="carousel-nav">
+          <button class="nav-btn" id="current-prev" aria-label="Previous">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="nav-btn" id="current-next" aria-label="Next">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="carousel-container">
+        <div class="carousel-track" id="current-carousel">
+          {currentCourses.map((course) => (
+            <div class="course-card glass">
+              <div class="course-header">
+                <h3 class="course-title">{course.courseName}</h3>
                 <span class="level-badge">{course.level}</span>
-                <span class="teacher">Teacher: {course.teacher}</span>
-              </p>
-            </div>
-            <div class="grade-badge">
-              Grade: {course.grade}
-            </div>
-          </div>
-          <div class="completed-info">
-            <p class="completion-date">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              Completed: {course.completionDate}
-            </p>
-            {course.certificateAvailable && (
-              <button class="certificate-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                </svg>
-                Download Certificate
-              </button>
-            )}
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
+              </div>
 
-  <!-- Recommended Courses -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-        </svg>
-        Recommended for You
-      </h2>
-      <a href="#" class="view-all-link">Browse All Courses →</a>
-    </div>
-    <div class="recommended-grid">
-      {recommendedCourses.map((course) => (
-        <div class="recommended-card">
-          <div class="recommended-badge">Recommended</div>
-          <h3 class="course-name">{course.courseName}</h3>
-          <div class="course-details">
-            <span class="detail-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              {course.duration}
-            </span>
-            <span class="detail-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              Starts {course.startDate}
-            </span>
-          </div>
-          <div class="course-footer">
-            <span class="price">{course.price}</span>
-            <button class="enroll-btn">Learn More</button>
-          </div>
+              <div class="course-teacher">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                {course.teacher}
+              </div>
+
+              <div class="course-progress-section">
+                <div class="mini-progress-ring">
+                  <svg width="80" height="80" viewBox="0 0 80 80">
+                    <circle class="mini-ring-bg" cx="40" cy="40" r="32"></circle>
+                    <circle class="mini-ring-fill" cx="40" cy="40" r="32"
+                      style={`stroke-dashoffset: ${200 - (200 * course.progress) / 100}`}></circle>
+                  </svg>
+                  <div class="mini-progress-text">
+                    <span>{course.progress}%</span>
+                  </div>
+                </div>
+                <div class="course-details">
+                  <div class="detail-row">
+                    <span class="detail-label">Lessons</span>
+                    <span class="detail-value">{course.completedLessons}/{course.totalLessons}</span>
+                  </div>
+                  <div class="detail-row">
+                    <span class="detail-label">Next Class</span>
+                    <span class="detail-value">{course.nextClass}</span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="course-action-btn">
+                <span>Continue</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </section>
+      </div>
+    </section>
+
+    <!-- Available Courses Carousel -->
+    <section class="carousel-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Available Courses
+        </h2>
+        <div class="carousel-nav">
+          <button class="nav-btn" id="available-prev" aria-label="Previous">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="nav-btn" id="available-next" aria-label="Next">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="carousel-container">
+        <div class="carousel-track" id="available-carousel">
+          {availableCourses.map((course, index) => (
+            <div class="available-card glass">
+              <div class="available-badge">New</div>
+              <div class="available-header">
+                <h3 class="available-title">{course.courseName}</h3>
+                <span class="level-badge">{course.level}</span>
+              </div>
+
+              <div class="available-features">
+                {course.features.map((feature) => (
+                  <div class="feature-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div class="available-info">
+                <div class="info-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>{course.duration}</span>
+                </div>
+                <div class="info-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span>{course.startDate}</span>
+                </div>
+              </div>
+
+              <div class="available-footer">
+                <div class="price-tag">
+                  <span class="price-amount">{course.price}</span>
+                  <span class="price-period">/month</span>
+                </div>
+                <button class="enroll-btn">
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
 </DashboardLayout>
 
 <style>
+  /* Header */
   .header-title {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--bc-primary-blue);
     margin-bottom: 0.25rem;
@@ -224,36 +338,276 @@ const recommendedCourses = [
     color: var(--bc-dark-gray);
   }
 
-  .header-actions {
+  /* Container */
+  .courses-container {
     display: flex;
-    gap: 0.75rem;
+    flex-direction: column;
+    gap: 2rem;
   }
 
-  .filter-btn {
-    padding: 0.5rem 1.25rem;
+  /* Glass Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      0 8px 32px rgba(31, 38, 135, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
-    border: 1px solid var(--bc-light-gray);
-    background: white;
-    color: var(--bc-dark-gray);
+  }
+
+  /* Featured Course Section */
+  .featured-section {
+    margin-bottom: 1rem;
+  }
+
+  .featured-card {
+    position: relative;
+    overflow: hidden;
+    padding: 3rem;
+    min-height: 360px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+    transition: all 0.4s ease;
+  }
+
+  .featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 16px 48px rgba(31, 38, 135, 0.2),
+      0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .featured-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+      rgba(102, 126, 234, 0.1) 0%,
+      rgba(118, 75, 162, 0.1) 50%,
+      rgba(237, 100, 166, 0.1) 100%);
+    pointer-events: none;
+  }
+
+  .featured-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .featured-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(245, 158, 11, 0.15));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 12px;
+    color: #d97706;
+    font-weight: 600;
     font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .featured-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .featured-text {
+    flex: 1;
+  }
+
+  .featured-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .featured-description {
+    font-size: 1.125rem;
+    color: var(--bc-dark-gray);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--bc-dark-gray);
+    font-size: 0.95rem;
+  }
+
+  .meta-item svg {
+    color: var(--bc-light-blue);
+  }
+
+  .level-badge {
+    background: linear-gradient(135deg, var(--bc-light-pink), var(--bc-pink));
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .featured-stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--bc-medium-gray);
     font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
   }
 
-  .filter-btn:hover {
-    background: rgba(35, 7, 90, 0.05);
-    border-color: var(--bc-primary-blue);
+  .stat-value {
+    font-size: 1.125rem;
+    color: var(--bc-primary-blue);
+    font-weight: 600;
   }
 
-  .filter-btn.active {
+  .continue-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 2rem;
     background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-light-blue));
     color: white;
     border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.2);
   }
 
-  .section {
-    margin-bottom: 2.5rem;
+  .continue-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(35, 7, 90, 0.3);
+  }
+
+  /* Progress Ring */
+  .featured-progress-ring {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .progress-ring {
+    transform: rotate(-90deg);
+    filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.3));
+  }
+
+  .progress-ring-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 12;
+  }
+
+  .progress-ring-fill {
+    fill: none;
+    stroke: url(#progress-gradient);
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-dasharray: 440;
+    transition: stroke-dashoffset 1s ease;
+  }
+
+  .progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .progress-percent {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .progress-label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--bc-medium-gray);
+    font-weight: 500;
+  }
+
+  /* Floating Elements */
+  .float-element {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-1 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    top: 10%;
+    right: 5%;
+    animation-delay: 0s;
+  }
+
+  .float-2 {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    bottom: 15%;
+    left: 8%;
+    animation-delay: 2s;
+  }
+
+  .float-3 {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    top: 50%;
+    right: 15%;
+    animation-delay: 4s;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  /* Carousel Section */
+  .carousel-section {
+    margin-bottom: 1rem;
   }
 
   .section-header {
@@ -267,222 +621,444 @@ const recommendedCourses = [
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 1.375rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: var(--bc-primary-blue);
   }
 
-  .course-count,
-  .view-all-link {
-    font-size: 0.875rem;
-    color: var(--bc-light-blue);
-    font-weight: 500;
-  }
-
-  .view-all-link {
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-
-  .view-all-link:hover {
-    color: var(--bc-primary-blue);
-    transform: translateX(2px);
-  }
-
-  .courses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.5rem;
-  }
-
-  /* Completed Courses */
-  .completed-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .completed-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
-    border: 2px solid #22c55e;
-  }
-
-  .completed-header {
+  .carousel-nav {
     display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin-bottom: 1rem;
-  }
-
-  .course-name {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--bc-primary-blue);
-    margin-bottom: 0.5rem;
-  }
-
-  .course-meta {
-    display: flex;
-    align-items: center;
     gap: 0.75rem;
-    font-size: 0.875rem;
   }
 
-  .level-badge {
-    background: linear-gradient(135deg, var(--bc-light-pink), var(--bc-pink));
-    color: white;
-    padding: 0.125rem 0.5rem;
-    border-radius: 6px;
-    font-weight: 500;
-  }
-
-  .teacher {
-    color: var(--bc-dark-gray);
-  }
-
-  .grade-badge {
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-    color: white;
-    padding: 0.375rem 0.75rem;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.875rem;
-  }
-
-  .completed-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .completion-date {
+  .nav-btn {
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    color: var(--bc-dark-gray);
-    font-size: 0.875rem;
-  }
-
-  .certificate-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-light-blue));
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .certificate-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.2);
-  }
-
-  /* Recommended Courses */
-  .recommended-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .recommended-card {
-    background: rgba(255, 255, 255, 0.95);
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--bc-primary-blue);
+  }
+
+  .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-btn:active {
+    transform: translateY(0);
+  }
+
+  .carousel-container {
+    overflow: hidden;
     position: relative;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  /* Course Cards */
+  .course-card {
+    min-width: 340px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
     transition: all 0.3s ease;
   }
 
-  .recommended-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(35, 7, 90, 0.12);
+  .course-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 12px 40px rgba(31, 38, 135, 0.2),
+      0 6px 16px rgba(0, 0, 0, 0.1);
   }
 
-  .recommended-badge {
-    position: absolute;
-    top: -8px;
-    right: 1rem;
-    background: linear-gradient(135deg, #f97316, #ea580c);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 600;
-  }
-
-  .course-details {
+  .course-header {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin: 1rem 0;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
-  .detail-item {
+  .course-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .course-teacher {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     color: var(--bc-dark-gray);
     font-size: 0.875rem;
+    margin-bottom: 1.5rem;
   }
 
-  .course-footer {
+  .course-teacher svg {
+    color: var(--bc-light-blue);
+  }
+
+  .course-progress-section {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--bc-light-gray);
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
   }
 
-  .price {
+  /* Mini Progress Ring */
+  .mini-progress-ring {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .mini-progress-ring svg {
+    transform: rotate(-90deg);
+  }
+
+  .mini-ring-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 6;
+  }
+
+  .mini-ring-fill {
+    fill: none;
+    stroke: url(#mini-gradient);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 200;
+    transition: stroke-dashoffset 0.8s ease;
+  }
+
+  .mini-progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 1.125rem;
     font-weight: 700;
     color: var(--bc-primary-blue);
   }
 
-  .enroll-btn {
-    padding: 0.5rem 1.25rem;
-    background: transparent;
-    color: var(--bc-primary-blue);
-    border: 1px solid var(--bc-primary-blue);
-    border-radius: 8px;
+  .course-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .detail-label {
     font-size: 0.875rem;
-    font-weight: 500;
+    color: var(--bc-medium-gray);
+  }
+
+  .detail-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+  }
+
+  .course-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-light-blue));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+  }
+
+  .course-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(35, 7, 90, 0.25);
+  }
+
+  /* Available Course Cards */
+  .available-card {
+    min-width: 300px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .available-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 12px 40px rgba(31, 38, 135, 0.2),
+      0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .available-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 0.375rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  }
+
+  .available-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .available-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .available-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--bc-dark-gray);
+  }
+
+  .feature-item svg {
+    color: #10b981;
+    flex-shrink: 0;
+  }
+
+  .available-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--bc-dark-gray);
+  }
+
+  .info-item svg {
+    color: var(--bc-light-blue);
+  }
+
+  .available-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .price-tag {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+  }
+
+  .price-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+  }
+
+  .price-period {
+    font-size: 0.875rem;
+    color: var(--bc-medium-gray);
+  }
+
+  .enroll-btn {
+    padding: 0.625rem 1.25rem;
+    background: linear-gradient(135deg, var(--bc-light-pink), var(--bc-pink));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(237, 100, 166, 0.3);
   }
 
   .enroll-btn:hover {
-    background: var(--bc-primary-blue);
-    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(237, 100, 166, 0.4);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .featured-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .featured-progress-ring {
+      align-self: center;
+    }
+
+    .featured-title {
+      font-size: 2rem;
+    }
   }
 
   @media (max-width: 768px) {
-    .header-actions {
-      flex-wrap: wrap;
+    .featured-card {
+      padding: 2rem 1.5rem;
+      min-height: auto;
     }
 
-    .courses-grid,
-    .completed-grid,
-    .recommended-grid {
-      grid-template-columns: 1fr;
+    .featured-title {
+      font-size: 1.75rem;
     }
 
-    .completed-info {
+    .featured-description {
+      font-size: 1rem;
+    }
+
+    .featured-meta {
       flex-direction: column;
-      align-items: start;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .featured-stats {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
       gap: 1rem;
+    }
+
+    .continue-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .progress-ring {
+      width: 140px;
+      height: 140px;
+    }
+
+    .progress-percent {
+      font-size: 2rem;
+    }
+
+    .course-card,
+    .available-card {
+      min-width: 280px;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .carousel-track {
+      gap: 1rem;
+    }
+
+    .course-card,
+    .available-card {
+      min-width: 260px;
+    }
+
+    .float-element {
+      display: none;
     }
   }
 </style>
+
+<script>
+  // Carousel functionality
+  function initCarousel(carouselId: string, prevBtnId: string, nextBtnId: string) {
+    const carousel = document.getElementById(carouselId);
+    const prevBtn = document.getElementById(prevBtnId);
+    const nextBtn = document.getElementById(nextBtnId);
+
+    if (!carousel || !prevBtn || !nextBtn) return;
+
+    let currentPosition = 0;
+    const cardWidth = 340; // min-width + gap
+    const gap = 24; // 1.5rem
+    const scrollAmount = cardWidth + gap;
+
+    prevBtn.addEventListener('click', () => {
+      currentPosition = Math.min(currentPosition + scrollAmount, 0);
+      carousel.style.transform = `translateX(${currentPosition}px)`;
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const maxScroll = -(carousel.scrollWidth - carousel.parentElement!.clientWidth);
+      currentPosition = Math.max(currentPosition - scrollAmount, maxScroll);
+      carousel.style.transform = `translateX(${currentPosition}px)`;
+    });
+  }
+
+  // Initialize both carousels
+  document.addEventListener('DOMContentLoaded', () => {
+    initCarousel('current-carousel', 'current-prev', 'current-next');
+    initCarousel('available-carousel', 'available-prev', 'available-next');
+  });
+</script>
+
+<svg style="position: absolute; width: 0; height: 0;">
+  <defs>
+    <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ed64a6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mini-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

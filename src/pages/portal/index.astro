@@ -1,102 +1,139 @@
 ---
 import DashboardLayout from '../../components/portal/DashboardLayout.astro';
 import SidebarNav from '../../components/portal/SidebarNav.astro';
-import QuickStats from '../../components/portal/QuickStats.astro';
-import CourseCard from '../../components/portal/CourseCard.astro';
 
-// Mock data for active courses
-const activeCourses = [
-  {
-    courseName: 'Business English B2',
-    level: 'B2',
-    teacher: 'Sarah Williams',
-    progress: 65,
-    nextClass: 'Tomorrow, 18:00',
-    schedule: 'Mon & Wed 18:00-19:30'
-  },
-  {
-    courseName: 'IELTS Preparation',
-    level: 'Advanced',
-    teacher: 'James Morrison',
-    progress: 45,
-    nextClass: 'Thursday, 17:00',
-    schedule: 'Tue & Thu 17:00-18:30'
-  },
-  {
-    courseName: 'Speaking Focus Group',
-    level: 'B1-B2',
-    teacher: 'Emma Thompson',
-    progress: 80,
-    nextClass: 'Friday, 19:00',
-    schedule: 'Friday 19:00-20:00'
+// Mock user data
+const userData = {
+  name: 'John',
+  level: 'B2',
+  levelName: 'Upper Intermediate',
+  streak: 21,
+  totalPoints: 2321,
+  weeklyGoal: 144,
+  weeklyProgress: 78,
+  nextClass: {
+    name: 'Business English B2',
+    time: 'Tomorrow, 18:00',
+    type: 'online'
   }
-];
+};
 
-// Mock data for upcoming classes
-const upcomingClasses = [
+// Simplified stats
+const stats = [
   {
-    id: 1,
-    courseName: 'Business English B2',
-    time: '18:00 - 19:30',
-    date: 'Tomorrow',
-    room: 'Room 203',
-    type: 'In-person'
-  },
-  {
-    id: 2,
-    courseName: 'IELTS Preparation',
-    time: '17:00 - 18:30',
-    date: 'Thursday',
-    room: 'Online',
-    type: 'Virtual'
-  },
-  {
-    id: 3,
-    courseName: 'Speaking Focus Group',
-    time: '19:00 - 20:00',
-    date: 'Friday',
-    room: 'Room 105',
-    type: 'In-person'
-  }
-];
-
-// Mock data for recent achievements
-const recentAchievements = [
-  {
-    id: 1,
-    name: 'Perfect Attendance',
-    description: 'Attended 10 classes in a row',
-    icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff9ec7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"></circle>
-      <circle cx="12" cy="12" r="6"></circle>
-      <circle cx="12" cy="12" r="2"></circle>
+    label: 'Completed',
+    value: '56%',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
     </svg>`,
-    date: '2 days ago'
+    color: 'from-blue-400 to-cyan-300'
   },
   {
-    id: 2,
-    name: 'Vocabulary Master',
-    description: 'Learned 100 new words',
-    icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b794d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    label: 'Lessons',
+    value: '21/23',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
       <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-      <line x1="12" y1="6" x2="12" y2="12"></line>
-      <line x1="9" y1="9" x2="15" y2="9"></line>
     </svg>`,
-    date: '1 week ago'
+    color: 'from-purple-400 to-pink-400'
   },
   {
-    id: 3,
-    name: 'Quiz Champion',
-    description: 'Scored 95% on grammar quiz',
-    icon: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffd4e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5.5 4 6 4.5 6 5v4zM18 9h1.5a2.5 2.5 0 0 0 0-5c-1 0-1.5.5-1.5 1.5V9z"></path>
-      <path d="M4 22h16"></path>
-      <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-      <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-      <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+    label: 'Hours',
+    value: '120/111',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polyline points="12 6 12 12 16 14"></polyline>
     </svg>`,
-    date: '2 weeks ago'
+    color: 'from-pink-400 to-rose-400'
+  }
+];
+
+// Study progress data for chart
+const studyData = [
+  { month: 'Sep', value: 65 },
+  { month: 'Oct', value: 72 },
+  { month: 'Nov', value: 68 },
+  { month: 'Dec', value: 85 },
+  { month: 'Jan', value: 78 },
+  { month: 'Feb', value: 92 }
+];
+
+// Leaderboard data
+const leaderboard = [
+  { rank: 1, name: 'Brody Bellson', points: 65322 },
+  { rank: 2, name: 'Jack Nicklson', points: 48105, isUser: true },
+  { rank: 3, name: 'Timoty Bell', points: 41780 },
+  { rank: 4, name: 'Brody Bennet', points: 19231 },
+  { rank: 5, name: 'Sarah Chen', points: 15322 }
+];
+
+// Recent badges
+const recentBadges = [
+  {
+    name: 'Book Explorer',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+    </svg>`,
+    color: 'from-purple-400 to-purple-600'
+  },
+  {
+    name: 'Heart Reader',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    </svg>`,
+    color: 'from-pink-400 to-rose-500'
+  },
+  {
+    name: 'Star Achiever',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </svg>`,
+    color: 'from-blue-400 to-purple-500'
+  },
+  {
+    name: 'Reading Pro',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </svg>`,
+    color: 'from-orange-400 to-pink-500'
+  }
+];
+
+// Categories for learning
+const categories = [
+  {
+    name: 'Ethics',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2L10 7L5 9L10 11L12 16L14 11L19 9L14 7L12 2Z" fill="white" opacity="0.9"/>
+      <circle cx="12" cy="12" r="3" fill="white" opacity="0.8"/>
+    </svg>`,
+    color: 'from-orange-400 to-red-500'
+  },
+  {
+    name: 'Technology',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24m-4.24 4.24l4.24 4.24m-13.22-13.22L2.76 7.76m4.24 4.24l-4.24 4.24"/>
+    </svg>`,
+    color: 'from-blue-400 to-indigo-500'
+  },
+  {
+    name: 'History',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 6v6l4 2"/>
+    </svg>`,
+    color: 'from-green-400 to-teal-500'
+  },
+  {
+    name: 'Art',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>`,
+    color: 'from-purple-400 to-pink-500'
   }
 ];
 ---
@@ -104,157 +141,320 @@ const recentAchievements = [
 <DashboardLayout title="Dashboard" currentPage="dashboard">
   <SidebarNav slot="sidebar" currentPage="dashboard" />
 
-  <div slot="header">
+  <div slot="header" class="header-content">
     <div>
-      <h1 class="header-title">Welcome back, John!</h1>
-      <p class="header-subtitle">Here's your learning progress overview</p>
+      <h1 class="header-title">Dashboard</h1>
+      <p class="header-subtitle">Welcome back, {userData.name}!</p>
     </div>
-    <div class="header-actions">
-      <button class="notification-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-        </svg>
-        <span class="notification-badge">3</span>
-      </button>
-      <div class="date-display">
-        {new Date().toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+    <div class="header-stats">
+      <div class="stat-badge">
+        <span class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" fill="#ffd4e8" opacity="0.6"/>
+            <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="stat-value">{userData.weeklyGoal}</span>
+      </div>
+      <div class="stat-badge">
+        <span class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#ffcce0" opacity="0.6"/>
+            <path d="M8 12C8 14 10 16 12 16C14 16 16 14 16 12C16 10 12 4 12 4C12 4 8 10 8 12Z" fill="#ffd4e8"/>
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#ff9ec7" stroke-width="1.5"/>
+            <path d="M8 12C8 14 10 16 12 16C14 16 16 14 16 12C16 10 12 4 12 4C12 4 8 10 8 12Z" stroke="#b794d4" stroke-width="1.5"/>
+          </svg>
+        </span>
+        <span class="stat-value">{userData.totalPoints.toLocaleString()}</span>
       </div>
     </div>
   </div>
 
-  <!-- Quick Stats -->
-  <QuickStats />
+  <div class="dashboard-container">
+    <!-- Main Content Area -->
+    <div class="main-content">
 
-  <!-- Active Courses Section -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Active Courses</h2>
-      <a href="/portal/courses" class="section-link">
-        View All
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </a>
-    </div>
-    <div class="courses-grid">
-      {activeCourses.map((course) => (
-        <CourseCard {...course} />
-      ))}
-    </div>
-  </section>
-
-  <!-- Upcoming Classes Section -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Upcoming Classes</h2>
-      <a href="/portal/schedule" class="section-link">
-        View Calendar
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </a>
-    </div>
-    <div class="classes-list">
-      {upcomingClasses.map((classItem) => (
-        <div class="class-item">
-          <div class="class-time">
-            <div class="class-date">{classItem.date}</div>
-            <div class="class-hour">{classItem.time}</div>
-          </div>
-          <div class="class-info">
-            <h4 class="class-name">{classItem.courseName}</h4>
-            <div class="class-details">
-              <span class={`class-type ${classItem.type === 'Virtual' ? 'virtual' : 'in-person'}`}>
-                {classItem.type}
-              </span>
-              <span class="class-room">{classItem.room}</span>
+      <!-- Top Stats Cards -->
+      <div class="stats-row">
+        {stats.map((stat) => (
+          <div class="stat-card glass">
+            <div class={`stat-icon-wrapper bg-gradient-to-br ${stat.color}`}>
+              <span set:html={stat.icon} />
+            </div>
+            <div class="stat-info">
+              <p class="stat-label">{stat.label}</p>
+              <h3 class="stat-number">{stat.value}</h3>
             </div>
           </div>
-          <div class="class-action">
-            {classItem.type === 'Virtual' ? (
-              <button class="btn-join">Join Online</button>
-            ) : (
-              <button class="btn-view">View Details</button>
-            )}
+        ))}
+      </div>
+
+      <!-- Category Selection -->
+      <div class="categories-section glass">
+        <h2 class="section-title">Select Category <span class="count-badge">34</span></h2>
+        <div class="categories-grid">
+          {categories.map((cat) => (
+            <button class={`category-card bg-gradient-to-br ${cat.color}`}>
+              <span class="category-icon" set:html={cat.icon} />
+              <span class="category-name">{cat.name}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Study Progress Chart -->
+      <div class="chart-section glass">
+        <div class="chart-header">
+          <div>
+            <h3 class="chart-title">Study Progress</h3>
+            <div class="revenue-display">
+              <span class="revenue-change">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                +12%
+              </span>
+              <span class="revenue-value">78%</span>
+            </div>
+          </div>
+          <button class="learn-more-btn">View details</button>
+        </div>
+
+        <div class="chart-subheader">
+          <h4>Monthly Performance</h4>
+        </div>
+
+        <div class="chart-container">
+          <div class="chart-bars">
+            {studyData.map((data) => (
+              <div class="chart-column">
+                <div class="chart-bar" style={`height: ${data.value}%`}>
+                  <div class="bar-fill"></div>
+                </div>
+                <span class="chart-label">{data.month}</span>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </section>
+      </div>
 
-  <!-- Recent Achievements Section -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Recent Achievements</h2>
-      <a href="/portal/achievements" class="section-link">
-        View All
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </a>
-    </div>
-    <div class="achievements-grid">
-      {recentAchievements.map((achievement) => (
-        <div class="achievement-card">
-          <div class="achievement-icon" set:html={achievement.icon}></div>
-          <div class="achievement-content">
-            <h4 class="achievement-name">{achievement.name}</h4>
-            <p class="achievement-description">{achievement.description}</p>
-            <p class="achievement-date">{achievement.date}</p>
+      <!-- Next Course Card -->
+      <div class="course-highlight glass">
+        <div class="course-badge">
+          <span class="badge-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12.5L10 3L14 8L21 3L19 13.5C19 13.5 17 21 12 21C7 21 5 13.5 5 13.5Z" fill="#f59e0b" opacity="0.3"/>
+              <path d="M5 12.5L10 3L14 8L21 3L19 13.5C19 13.5 17 21 12 21C7 21 5 13.5 5 13.5Z" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="8" y="13" width="8" height="4" fill="#f59e0b" opacity="0.5"/>
+            </svg>
+          </span>
+          <span class="badge-text">Mind Unlocked</span>
+        </div>
+        <h3 class="course-title">The Human Mind</h3>
+        <p class="course-subtitle">A Deep Dive into Thoughts, Emotions, and Behavior</p>
+        <div class="course-stats">
+          <div class="course-stat">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" fill="#ffd4e8" opacity="0.6"/>
+              <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" stroke="#ff9ec7" stroke-width="1.5"/>
+            </svg>
+            <span>+5</span>
+          </div>
+          <div class="course-stat">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#ffcce0" opacity="0.6"/>
+              <path d="M8 12C8 14 10 16 12 16C14 16 16 14 16 12C16 10 12 4 12 4C12 4 8 10 8 12Z" fill="#ffd4e8"/>
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#ff9ec7" stroke-width="1.5"/>
+            </svg>
+            <span>+145</span>
           </div>
         </div>
-      ))}
-    </div>
-  </section>
+        <div class="robot-illustration">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="35" r="25" fill="url(#robot-gradient)" opacity="0.2"/>
+            <rect x="35" y="25" width="30" height="30" rx="8" fill="currentColor" opacity="0.3"/>
+            <circle cx="42" cy="35" r="3" fill="currentColor"/>
+            <circle cx="58" cy="35" r="3" fill="currentColor"/>
+            <path d="M40 45 Q50 50 60 45" stroke="currentColor" stroke-width="2" fill="none"/>
+            <defs>
+              <linearGradient id="robot-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
 
-  <!-- Quick Actions -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Quick Actions</h2>
+      <!-- Badges Section -->
+      <div class="badges-section glass">
+        <div class="section-header">
+          <h3 class="section-title">Badges <span class="count-circle">8</span></h3>
+          <a href="/portal/achievements" class="view-all">View all →</a>
+        </div>
+        <div class="badges-grid">
+          {recentBadges.map((badge) => (
+            <div class={`badge-item bg-gradient-to-br ${badge.color}`}>
+              <span class="badge-emoji" set:html={badge.icon} />
+              <p class="badge-name">{badge.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
-    <div class="quick-actions">
-      <button class="action-btn">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-          <line x1="16" y1="13" x2="8" y2="13"></line>
-          <line x1="16" y1="17" x2="8" y2="17"></line>
-          <polyline points="10 9 9 9 8 9"></polyline>
-        </svg>
-        <span>Submit Assignment</span>
-      </button>
-      <button class="action-btn">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-          <line x1="16" y1="2" x2="16" y2="6"></line>
-          <line x1="8" y1="2" x2="8" y2="6"></line>
-          <line x1="3" y1="10" x2="21" y2="10"></line>
-        </svg>
-        <span>Book Exam</span>
-      </button>
-      <button class="action-btn">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        <span>Download Materials</span>
-      </button>
-      <button class="action-btn">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-        <span>Message Teacher</span>
-      </button>
+
+    <!-- Sidebar Content -->
+    <div class="sidebar-content">
+
+      <!-- Leaderboard -->
+      <div class="leaderboard-card glass">
+        <h3 class="leaderboard-title">Leaderboard</h3>
+        <div class="leaderboard-list">
+          {leaderboard.slice(0, 3).map((user, index) => (
+            <div class={`leaderboard-item ${user.isUser ? 'is-user' : ''}`}>
+              <div class={`rank-badge rank-${user.rank}`}>
+                {user.rank === 1 ? '#1' : user.rank === 2 ? '#2' : '#3'}
+              </div>
+              <div class="user-info">
+                <span class="user-name">{user.name}</span>
+              </div>
+              <span class="user-points">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" fill="#ffd4e8" opacity="0.6"/>
+                  <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" stroke="#ff9ec7" stroke-width="1.5"/>
+                </svg>
+                {user.points.toLocaleString()}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div class="leaderboard-more">
+          {leaderboard.slice(3).map((user) => (
+            <div class="leaderboard-compact">
+              <span class="compact-rank">#{user.rank}</span>
+              <span class="compact-name">{user.name}</span>
+              <span class="compact-points">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" fill="#e8d9f5" opacity="0.6"/>
+                  <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" stroke="#b794d4" stroke-width="1.5"/>
+                </svg>
+                {user.points.toLocaleString()}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Challenges -->
+      <div class="challenges-card glass">
+        <h3 class="challenges-title">Challenges <span class="count-circle">12</span></h3>
+        <div class="challenge-item">
+          <div class="challenge-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12.5L10 3L14 8L21 3L19 13.5C19 13.5 17 21 12 21C7 21 5 13.5 5 13.5Z" fill="#b794d4" opacity="0.3"/>
+              <path d="M5 12.5L10 3L14 8L21 3L19 13.5C19 13.5 17 21 12 21C7 21 5 13.5 5 13.5Z" stroke="#b794d4" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="challenge-info">
+            <h4>Deep Focus</h4>
+            <p>Extra challenge</p>
+          </div>
+          <div class="challenge-points">
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" fill="#ffd4e8" opacity="0.6"/>
+                <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" stroke="#ff9ec7" stroke-width="1.5"/>
+              </svg>
+              +250
+            </span>
+          </div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="6" fill="#ffd4e8" opacity="0.3"/>
+              <path d="M12 2L13.5 5L17 5.5L14.5 8L15 11.5L12 10L9 11.5L9.5 8L7 5.5L10.5 5L12 2Z" fill="#ff9ec7" opacity="0.6"/>
+              <circle cx="12" cy="8" r="7" stroke="#ff9ec7" stroke-width="1.5"/>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="challenge-info">
+            <h4>Day 10/32</h4>
+            <p>Daily challenge</p>
+          </div>
+          <div class="challenge-points">
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" fill="#ffd4e8" opacity="0.6"/>
+                <path d="M12 2L14.5 7L20 7.5L16 11.5L17 17L12 14.5L7 17L8 11.5L4 7.5L9.5 7L12 2Z" stroke="#ff9ec7" stroke-width="1.5"/>
+              </svg>
+              +5
+            </span>
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#ffcce0" opacity="0.6"/>
+                <path d="M8 12C8 14 10 16 12 16C14 16 16 14 16 12C16 10 12 4 12 4C12 4 8 10 8 12Z" fill="#ffd4e8"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#ff9ec7" stroke-width="1.5"/>
+              </svg>
+              +200
+            </span>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
 </DashboardLayout>
 
 <style>
-  /* Header Styles */
+  /* Global Dashboard Styles */
+  .dashboard-container {
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 0;
+  }
+
+  .sidebar-content {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Glass Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      0 8px 32px rgba(31, 38, 135, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+  }
+
+  /* Header */
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
   .header-title {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--bc-primary-blue);
     margin-bottom: 0.25rem;
@@ -265,59 +465,341 @@ const recentAchievements = [
     color: var(--bc-dark-gray);
   }
 
-  .header-actions {
+  .header-stats {
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
-  .notification-btn {
-    position: relative;
-    width: 44px;
-    height: 44px;
+  .stat-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
-    border: 1px solid var(--bc-light-gray);
-    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .stat-icon {
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  }
+
+  .stat-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .stat-value {
+    font-weight: 600;
     color: var(--bc-primary-blue);
   }
 
-  .notification-btn:hover {
-    background: rgba(35, 7, 90, 0.05);
-    border-color: var(--bc-primary-blue);
+  /* Stats Row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
   }
 
-  .notification-badge {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    width: 20px;
-    height: 20px;
-    background: var(--bc-pink);
+  .stat-card {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 12px 40px rgba(31, 38, 135, 0.2),
+      0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
-    border-radius: 50%;
-    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .stat-info {
+    flex: 1;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--bc-medium-gray);
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+  }
+
+  /* Categories Section */
+  .categories-section {
+    padding: 1.75rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
     font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .count-badge {
+    background: rgba(35, 7, 90, 0.1);
+    color: var(--bc-primary-blue);
+    padding: 0.125rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .category-card {
+    padding: 1.25rem;
+    border-radius: 16px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .category-card:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .category-icon {
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .date-display {
-    font-size: 0.875rem;
-    color: var(--bc-dark-gray);
-    padding: 0.5rem 1rem;
-    background: rgba(35, 7, 90, 0.05);
-    border-radius: 8px;
+  .category-icon svg {
+    width: 100%;
+    height: 100%;
   }
 
-  /* Section Styles */
-  .section {
-    margin-bottom: 2.5rem;
+  .category-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* Chart Section */
+  .chart-section {
+    padding: 1.75rem;
+  }
+
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .chart-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.5rem;
+  }
+
+  .revenue-display {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .revenue-change {
+    color: #10b981;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .revenue-change svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .revenue-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+  }
+
+  .learn-more-btn {
+    padding: 0.5rem 1.25rem;
+    background: rgba(35, 7, 90, 0.1);
+    color: var(--bc-primary-blue);
+    border: none;
+    border-radius: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .learn-more-btn:hover {
+    background: rgba(35, 7, 90, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .chart-subheader {
+    margin-bottom: 1.5rem;
+  }
+
+  .chart-subheader h4 {
+    font-size: 0.875rem;
+    color: var(--bc-medium-gray);
+  }
+
+  .chart-container {
+    height: 150px;
+    position: relative;
+  }
+
+  .chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
+    gap: 0.75rem;
+  }
+
+  .chart-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .chart-bar {
+    width: 100%;
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .chart-bar:hover {
+    opacity: 0.8;
+  }
+
+  .chart-label {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--bc-medium-gray);
+  }
+
+  /* Course Highlight */
+  .course-highlight {
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  }
+
+  .course-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    background: rgba(245, 158, 11, 0.2);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    color: #f59e0b;
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+
+  .course-badge .badge-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .course-badge svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .course-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.5rem;
+  }
+
+  .course-subtitle {
+    color: var(--bc-dark-gray);
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .course-stats {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .course-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
+  .course-stat svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .robot-illustration {
+    position: absolute;
+    right: 2rem;
+    bottom: 1rem;
+    opacity: 0.3;
+  }
+
+  /* Badges Section */
+  .badges-section {
+    padding: 1.75rem;
   }
 
   .section-header {
@@ -327,281 +809,314 @@ const recentAchievements = [
     margin-bottom: 1.5rem;
   }
 
-  .section-title {
-    font-size: 1.375rem;
-    font-weight: 600;
+  .count-circle {
+    background: rgba(35, 7, 90, 0.1);
     color: var(--bc-primary-blue);
+    padding: 0.125rem 0.375rem;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
   }
 
-  .section-link {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    color: var(--bc-light-blue);
+  .view-all {
+    color: var(--bc-primary-blue);
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.2s ease;
   }
 
-  .section-link:hover {
-    color: var(--bc-primary-blue);
-    transform: translateX(2px);
+  .view-all:hover {
+    transform: translateX(4px);
   }
 
-  /* Courses Grid */
-  .courses-grid {
+  .badges-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
   }
 
-  /* Classes List */
-  .classes-list {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+  .badge-item {
+    padding: 1.25rem;
     border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    text-align: center;
+    transition: all 0.3s ease;
   }
 
-  .class-item {
+  .badge-item:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .badge-emoji {
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
-    padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid var(--bc-light-gray);
+    justify-content: center;
+  }
+
+  .badge-emoji svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .badge-name {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  /* Leaderboard */
+  .leaderboard-card {
+    padding: 1.5rem;
+  }
+
+  .leaderboard-title,
+  .challenges-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .leaderboard-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 12px;
     transition: all 0.2s ease;
   }
 
-  .class-item:last-child {
-    border-bottom: none;
+  .leaderboard-item:hover {
+    background: rgba(255, 255, 255, 0.3);
   }
 
-  .class-item:hover {
-    background: rgba(35, 7, 90, 0.02);
+  .leaderboard-item.is-user {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+    border: 1px solid rgba(245, 158, 11, 0.2);
   }
 
-  .class-time {
-    width: 120px;
+  .rank-badge {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-weight: 700;
     flex-shrink: 0;
-    padding-right: 1.5rem;
   }
 
-  .class-date {
+  .rank-badge.rank-1 {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #7c6f00;
+  }
+
+  .rank-badge.rank-2 {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    color: white;
+  }
+
+  .rank-badge.rank-3 {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    color: white;
+  }
+
+  .user-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .user-avatar {
+    font-size: 1.25rem;
+  }
+
+  .user-name {
+    font-weight: 500;
+    color: var(--bc-dark-gray);
+  }
+
+  .user-points {
+    font-weight: 600;
+    color: var(--bc-primary-blue);
     font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .user-points svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .leaderboard-more {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .leaderboard-compact {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .leaderboard-compact:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .compact-rank {
+    font-weight: 600;
+    color: var(--bc-medium-gray);
+    width: 30px;
+  }
+
+  .compact-name {
+    flex: 1;
+    color: var(--bc-dark-gray);
+  }
+
+  .compact-points {
+    font-weight: 500;
+    color: var(--bc-primary-blue);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .compact-points svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  /* Challenges */
+  .challenges-card {
+    padding: 1.5rem;
+  }
+
+  .challenge-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-bottom: 0.75rem;
+    transition: all 0.2s ease;
+  }
+
+  .challenge-item:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(4px);
+  }
+
+  .challenge-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .challenge-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .challenge-info {
+    flex: 1;
+  }
+
+  .challenge-info h4 {
     font-weight: 600;
     color: var(--bc-primary-blue);
     margin-bottom: 0.25rem;
   }
 
-  .class-hour {
-    font-size: 0.8125rem;
-    color: var(--bc-dark-gray);
-  }
-
-  .class-info {
-    flex: 1;
-  }
-
-  .class-name {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--bc-primary-blue);
-    margin-bottom: 0.5rem;
-  }
-
-  .class-details {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  .class-type {
+  .challenge-info p {
     font-size: 0.75rem;
-    font-weight: 500;
-    padding: 0.25rem 0.75rem;
-    border-radius: 6px;
+    color: var(--bc-medium-gray);
   }
 
-  .class-type.virtual {
-    background: rgba(34, 197, 94, 0.1);
-    color: #22c55e;
-  }
-
-  .class-type.in-person {
-    background: rgba(59, 130, 246, 0.1);
-    color: #3b82f6;
-  }
-
-  .class-room {
-    font-size: 0.875rem;
-    color: var(--bc-dark-gray);
-  }
-
-  .class-action {
-    flex-shrink: 0;
-  }
-
-  .btn-join,
-  .btn-view {
-    padding: 0.625rem 1.25rem;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .btn-join {
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-    color: white;
-  }
-
-  .btn-join:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-  }
-
-  .btn-view {
-    background: transparent;
-    color: var(--bc-primary-blue);
-    border: 1px solid var(--bc-light-gray);
-  }
-
-  .btn-view:hover {
-    background: rgba(35, 7, 90, 0.05);
-    border-color: var(--bc-primary-blue);
-  }
-
-  /* Achievements Grid */
-  .achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .achievement-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
-    display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
-    transition: all 0.3s ease;
-  }
-
-  .achievement-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(35, 7, 90, 0.12);
-  }
-
-  .achievement-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: #fcfafd;
-    border-radius: 12px;
-    flex-shrink: 0;
-  }
-
-  .achievement-content {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .achievement-name {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--bc-primary-blue);
-    margin-bottom: 0.375rem;
-  }
-
-  .achievement-description {
-    font-size: 0.875rem;
-    color: var(--bc-dark-gray);
-    margin-bottom: 0.5rem;
-  }
-
-  .achievement-date {
-    font-size: 0.75rem;
-    color: #94a3b8;
-  }
-
-  /* Quick Actions */
-  .quick-actions {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-
-  .action-btn {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--bc-light-gray);
-    border-radius: 12px;
-    padding: 1.25rem;
+  .challenge-points {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    color: var(--bc-primary-blue);
-  }
-
-  .action-btn:hover {
-    background: linear-gradient(135deg, rgba(35, 7, 90, 0.05), rgba(90, 58, 119, 0.05));
-    border-color: var(--bc-primary-blue);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.1);
-  }
-
-  .action-btn svg {
-    width: 28px;
-    height: 28px;
-  }
-
-  .action-btn span {
+    align-items: flex-end;
+    gap: 0.25rem;
     font-size: 0.875rem;
     font-weight: 500;
   }
 
-  /* Responsive Design */
+  .challenge-points span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .challenge-points svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .sidebar-content {
+      display: none;
+    }
+
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .badges-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
-    .header-actions {
+    .dashboard-container {
+      flex-direction: column;
+    }
+
+    .stats-row {
+      grid-template-columns: 1fr;
+    }
+
+    .header-content {
       flex-direction: column;
       align-items: flex-start;
       gap: 1rem;
     }
 
-    .courses-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .class-item {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-
-    .class-time {
-      width: 100%;
-      padding-right: 0;
-    }
-
-    .achievements-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .quick-actions {
+    .categories-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }

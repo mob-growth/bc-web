@@ -2,510 +2,285 @@
 import DashboardLayout from '../../components/portal/DashboardLayout.astro';
 import SidebarNav from '../../components/portal/SidebarNav.astro';
 
-// Mock data for achievement overview
+// Achievement overview stats
 const achievementStats = {
   totalBadges: 24,
   totalPoints: 3850,
   currentLevel: 'B2',
   levelProgress: 68,
   ranking: 12,
-  totalStudents: 48,
   streakDays: 15
 };
 
-// Mock data for recent achievements
-const recentAchievements = [
+// Featured achievements - floating bubbles
+const featuredAchievements = [
   {
-    id: 1,
-    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffd4e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5.5 4 6 4.5 6 5v4zM18 9h1.5a2.5 2.5 0 0 0 0-5c-1 0-1.5.5-1.5 1.5V9z"></path>
-      <path d="M4 22h16"></path>
-      <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-      <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-      <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
-    </svg>`,
     name: 'Grammar Master',
-    description: 'Completed 10 grammar exercises with 90%+ accuracy',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>',
     points: 150,
-    date: 'Yesterday',
-    rarity: 'gold'
+    color: '#667eea',
+    unlocked: true,
+    size: 'large'
   },
   {
-    id: 2,
-    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff9ec7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"></circle>
-      <circle cx="12" cy="12" r="6"></circle>
-      <circle cx="12" cy="12" r="2"></circle>
-    </svg>`,
     name: 'Perfect Attendance',
-    description: 'Attended all classes this month',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
     points: 200,
-    date: '2 days ago',
-    rarity: 'gold'
+    color: '#ec4899',
+    unlocked: true,
+    size: 'large'
   },
   {
-    id: 3,
-    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b794d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-      <line x1="12" y1="6" x2="12" y2="12"></line>
-      <line x1="9" y1="9" x2="15" y2="9"></line>
-    </svg>`,
+    name: 'Speaking Star',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>',
+    points: 200,
+    color: '#f97316',
+    unlocked: true,
+    size: 'medium'
+  },
+  {
     name: 'Bookworm',
-    description: 'Read 5 full articles this week',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>',
     points: 100,
-    date: '3 days ago',
-    rarity: 'silver'
-  }
-];
-
-// Mock data for badges organized by categories
-const badgeCategories = [
-  {
-    name: 'Academic',
-    color: '#3b82f6',
-    badges: [
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffd4e8" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5.5 4 6 4.5 6 5v4zM18 9h1.5a2.5 2.5 0 0 0 0-5c-1 0-1.5.5-1.5 1.5V9z"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>`, name: 'Grammar Master', points: 150, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b794d4" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`, name: 'Writing Pro', points: 150, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff9ec7" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>`, name: 'Speaking Star', points: 200, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8d9f5" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>`, name: 'Listening Expert', points: 150, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dcc6f0" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`, name: 'Reading Champion', points: 100, unlocked: false, progress: 75 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffcce0" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>`, name: 'Vocabulary Wizard', points: 100, unlocked: false, progress: 60 }
-    ]
+    color: '#10b981',
+    unlocked: true,
+    size: 'medium'
   },
   {
-    name: 'Attendance',
-    color: '#22c55e',
-    badges: [
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff9ec7" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>`, name: 'Perfect Attendance', points: 200, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffd4e8" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`, name: 'Early Bird', points: 100, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffcce0" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5Z"></path><path d="M12 5L8 21l4-7 4 7-4-16"></path></svg>`, name: '15 Day Streak', points: 150, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8d9f5" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="m9 16 2 2 4-4"></path></svg>`, name: 'Monthly Regular', points: 150, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b794d4" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`, name: '30 Day Streak', points: 300, unlocked: false, progress: 50 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dcc6f0" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>`, name: '90 Day Streak', points: 500, unlocked: false, progress: 16 }
-    ]
+    name: '15 Day Streak',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>',
+    points: 150,
+    color: '#ec4899',
+    unlocked: true,
+    size: 'small'
   },
   {
-    name: 'Participation',
-    color: '#f59e0b',
-    badges: [
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b794d4" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><line x1="9" y1="10" x2="15" y2="10"></line><line x1="12" y1="7" x2="12" y2="13"></line></svg>`, name: 'Class Contributor', points: 100, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff9ec7" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`, name: 'Team Player', points: 150, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffd4e8" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>`, name: 'Discussion Leader', points: 100, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8d9f5" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`, name: 'Presentation Pro', points: 200, unlocked: false, progress: 80 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dcc6f0" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6"></path><path d="M12 17v6"></path><path d="M4.22 4.22l4.24 4.24"></path><path d="M15.54 15.54l4.24 4.24"></path><path d="M1 12h6"></path><path d="M17 12h6"></path><path d="M4.22 19.78l4.24-4.24"></path><path d="M15.54 8.46l4.24-4.24"></path></svg>`, name: 'Peer Helper', points: 150, unlocked: false, progress: 45 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffcce0" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`, name: 'All-Star Participant', points: 250, unlocked: false, progress: 30 }
-    ]
-  },
-  {
-    name: 'Special',
+    name: 'Team Player',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+    points: 150,
     color: '#8b5cf6',
-    badges: [
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b794d4" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="12" y1="6" x2="12" y2="12"></line><line x1="9" y1="9" x2="15" y2="9"></line></svg>`, name: 'Bookworm', points: 100, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff9ec7" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>`, name: 'Movie Buff', points: 100, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffd4e8" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>`, name: 'Music Lover', points: 100, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8d9f5" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>`, name: 'Cultural Explorer', points: 150, unlocked: true, progress: 100 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dcc6f0" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>`, name: 'Creative Mind', points: 150, unlocked: false, progress: 40 },
-      { icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffcce0" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path><polyline points="16 2 16 8 22 8"></polyline></svg>`, name: 'Fast Learner', points: 200, unlocked: false, progress: 55 }
-    ]
+    unlocked: true,
+    size: 'small'
   }
 ];
 
-// Mock data for leaderboard
-const leaderboard = [
-  { rank: 1, name: 'Emma Thompson', level: 'B2+', points: 5240, avatar: 'ET', trend: 'up' },
-  { rank: 2, name: 'Michael Chen', level: 'B2+', points: 4980, avatar: 'MC', trend: 'up' },
-  { rank: 3, name: 'Sofia Rodriguez', level: 'B2', points: 4750, avatar: 'SR', trend: 'same' },
-  { rank: 4, name: 'James Wilson', level: 'B2', points: 4620, avatar: 'JW', trend: 'down' },
-  { rank: 5, name: 'Aisha Patel', level: 'B2', points: 4480, avatar: 'AP', trend: 'up' },
-  { rank: 12, name: 'You', level: 'B2', points: 3850, avatar: 'JD', current: true, trend: 'up' }
+// Achievement path/timeline
+const achievementPath = [
+  { name: 'Reading Champion', progress: 75, color: '#b794d4', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h8"/><path d="M8 11h8"/></svg>' },
+  { name: 'Vocabulary Wizard', progress: 60, color: '#dcc6f0', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 3v5h5"/><path d="M10 13H8"/><path d="M10 17H8"/><path d="M16 13h-2"/><path d="M16 17h-2"/></svg>' },
+  { name: 'Presentation Pro', progress: 80, color: '#ff9ec7', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>' },
+  { name: '30 Day Streak', progress: 50, color: '#ffd4e8', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>' },
+  { name: 'Peer Helper', progress: 45, color: '#e8d9f5', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>' },
+  { name: 'Creative Mind', progress: 40, color: '#ffcce0', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="M2 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="M12 18v4"/><path d="m19.07 19.07-2.83-2.83"/><path d="M22 12h-4"/><path d="m19.07 4.93-2.83 2.83"/><circle cx="12" cy="12" r="3"/></svg>' }
 ];
 
-// Mock data for points history
-const pointsHistory = [
-  { activity: 'Grammar Master Badge', points: 150, date: 'Oct 1, 10:30 AM', type: 'badge' },
-  { activity: 'Perfect Attendance Badge', points: 200, date: 'Sep 30, 9:15 AM', type: 'badge' },
-  { activity: 'Completed Speaking Assessment', points: 85, date: 'Sep 29, 2:45 PM', type: 'assignment' },
-  { activity: 'Bookworm Badge', points: 100, date: 'Sep 28, 4:20 PM', type: 'badge' },
-  { activity: 'Class Participation', points: 25, date: 'Sep 28, 11:00 AM', type: 'participation' },
-  { activity: 'Vocabulary Quiz', points: 92, date: 'Sep 27, 3:30 PM', type: 'quiz' }
+// Recent unlocked achievements
+const recentUnlocked = [
+  { name: 'Grammar Master', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b794d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>', date: 'Yesterday', color: '#b794d4' },
+  { name: 'Perfect Attendance', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff9ec7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>', date: '2 days ago', color: '#ff9ec7' },
+  { name: 'Bookworm', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e8d9f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>', date: '3 days ago', color: '#e8d9f5' }
 ];
-
-// Mock data for upcoming achievements
-const upcomingAchievements = [
-  {
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dcc6f0" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`,
-    name: 'Reading Champion',
-    description: 'Read 10 full articles',
-    progress: 75,
-    current: 7.5,
-    target: 10,
-    points: 100
-  },
-  {
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffcce0" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>`,
-    name: 'Vocabulary Wizard',
-    description: 'Learn 500 new words',
-    progress: 60,
-    current: 300,
-    target: 500,
-    points: 100
-  },
-  {
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8d9f5" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`,
-    name: 'Presentation Pro',
-    description: 'Give 5 presentations',
-    progress: 80,
-    current: 4,
-    target: 5,
-    points: 200
-  },
-  {
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b794d4" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
-    name: '30 Day Streak',
-    description: 'Maintain 30-day attendance streak',
-    progress: 50,
-    current: 15,
-    target: 30,
-    points: 300
-  }
-];
-
-// Calculate next level points
-const currentLevelPoints = 3000;
-const nextLevelPoints = 5000;
-const pointsToNextLevel = nextLevelPoints - achievementStats.totalPoints;
 ---
 
 <DashboardLayout title="Achievements & Badges" currentPage="achievements">
   <SidebarNav slot="sidebar" currentPage="achievements" />
 
-  <div slot="header">
+  <div slot="header" class="header-content">
     <div>
-      <h1 class="header-title">Achievements & Badges</h1>
-      <p class="header-subtitle">Track your progress and unlock rewards</p>
+      <h1 class="header-title">Achievements</h1>
+      <p class="header-subtitle">Your learning journey milestones</p>
     </div>
-    <div class="header-actions">
-      <button class="view-rewards-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 12v-1a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v1"></path>
-          <path d="M2 12v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7"></path>
-          <circle cx="12" cy="11" r="3"></circle>
-        </svg>
-        View Rewards
-      </button>
+    <div class="header-stats">
+      <div class="stat-badge">
+        <span class="stat-icon" set:html={'<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff9ec7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>'}></span>
+        <span class="stat-value">{achievementStats.totalBadges}</span>
+      </div>
+      <div class="stat-badge">
+        <span class="stat-icon" set:html={'<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffd4e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'}></span>
+        <span class="stat-value">{achievementStats.totalPoints}</span>
+      </div>
     </div>
   </div>
 
-  <!-- Achievement Stats Overview -->
-  <section class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-icon">
-        <span set:html={`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff9ec7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="8" r="7"></circle>
-          <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-        </svg>`}></span>
-      </div>
-      <div class="stat-content">
-        <p class="stat-label">Total Badges</p>
-        <h3 class="stat-value">{achievementStats.totalBadges}</h3>
-        <p class="stat-change positive">+3 this month</p>
-      </div>
-    </div>
+  <div class="achievements-container">
 
-    <div class="stat-card">
-      <div class="stat-icon">
-        <span set:html={`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffd4e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-        </svg>`}></span>
-      </div>
-      <div class="stat-content">
-        <p class="stat-label">Total Points</p>
-        <h3 class="stat-value">{achievementStats.totalPoints.toLocaleString()}</h3>
-        <p class="stat-change positive">+450 this week</p>
-      </div>
-    </div>
-
-    <div class="stat-card">
-      <div class="stat-icon">
-        <span set:html={`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b794d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-          <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-        </svg>`}></span>
-      </div>
-      <div class="stat-content">
-        <p class="stat-label">Current Level</p>
-        <h3 class="stat-value">{achievementStats.currentLevel}</h3>
-        <p class="stat-change">{achievementStats.levelProgress}% to next level</p>
-      </div>
-    </div>
-
-    <div class="stat-card">
-      <div class="stat-icon">
-        <span set:html={`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e8d9f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-          <circle cx="9" cy="7" r="4"></circle>
-          <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-        </svg>`}></span>
-      </div>
-      <div class="stat-content">
-        <p class="stat-label">Class Ranking</p>
-        <h3 class="stat-value">#{achievementStats.ranking}</h3>
-        <p class="stat-change">of {achievementStats.totalStudents} students</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Level Progress Bar -->
-  <section class="section">
-    <div class="level-progress-card">
-      <div class="level-info">
-        <div class="level-badge">
-          <span class="level-icon" set:html={`<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b794d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-          </svg>`}></span>
-          <span class="level-text">{achievementStats.currentLevel}</span>
-        </div>
-        <div class="level-details">
-          <h3 class="level-title">Intermediate Upper (B2)</h3>
-          <p class="level-description">
-            {pointsToNextLevel.toLocaleString()} more points to reach Advanced (C1) level
-          </p>
+    <!-- Compact Stats Row -->
+    <div class="compact-stats">
+      <div class="compact-stat glass">
+        <div class="compact-stat-content">
+          <span class="compact-label">Points</span>
+          <h3 class="compact-value">{achievementStats.totalPoints}</h3>
         </div>
       </div>
-      <div class="level-progress-bar">
-        <div class="level-progress-fill" style={`width: ${achievementStats.levelProgress}%;`}>
-          <span class="level-progress-label">{achievementStats.levelProgress}%</span>
+      <div class="compact-stat glass">
+        <div class="compact-stat-content">
+          <span class="compact-label">Rank</span>
+          <h3 class="compact-value">#{achievementStats.ranking}</h3>
         </div>
       </div>
-      <div class="level-stats">
-        <div class="level-stat">
-          <span class="level-stat-value">{achievementStats.totalPoints.toLocaleString()}</span>
-          <span class="level-stat-label">Current Points</span>
-        </div>
-        <div class="level-stat">
-          <span class="level-stat-value">{nextLevelPoints.toLocaleString()}</span>
-          <span class="level-stat-label">Next Level</span>
+      <div class="compact-stat glass">
+        <div class="compact-stat-content">
+          <span class="compact-label">Streak</span>
+          <h3 class="compact-value">{achievementStats.streakDays} days</h3>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Recent Achievements -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="8" r="7"></circle>
-          <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-        </svg>
-        Recent Achievements
-      </h2>
-      <span class="info-text">Your latest unlocked badges</span>
-    </div>
-    <div class="recent-achievements-grid">
-      {recentAchievements.map((achievement) => (
-        <div class={`achievement-card ${achievement.rarity}`}>
-          <div class="achievement-badge">
-            <span class="achievement-icon" set:html={achievement.icon}></span>
-            <div class={`rarity-glow ${achievement.rarity}`}></div>
-          </div>
-          <div class="achievement-content">
-            <h4 class="achievement-name">{achievement.name}</h4>
-            <p class="achievement-description">{achievement.description}</p>
-            <div class="achievement-footer">
-              <span class="achievement-points">+{achievement.points} points</span>
-              <span class="achievement-date">{achievement.date}</span>
-            </div>
+    <!-- Level Progress Circle -->
+    <div class="level-section glass">
+      <div class="level-header">
+        <h2 class="section-title">Level Progress</h2>
+      </div>
+      <div class="level-circle-container">
+        <div class="circular-progress-large">
+          <svg class="progress-ring-large" width="200" height="200">
+            <circle
+              class="progress-ring-bg"
+              stroke="rgba(255, 255, 255, 0.2)"
+              stroke-width="12"
+              fill="none"
+              r="85"
+              cx="100"
+              cy="100"
+            />
+            <circle
+              class="progress-ring-fill"
+              stroke="url(#level-gradient)"
+              stroke-width="12"
+              fill="none"
+              r="85"
+              cx="100"
+              cy="100"
+              style={`stroke-dasharray: ${534 * achievementStats.levelProgress / 100} 534; stroke-dashoffset: 133.5;`}
+            />
+            <defs>
+              <linearGradient id="level-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="progress-center">
+            <span class="level-text">{achievementStats.currentLevel}</span>
+            <span class="level-percent">{achievementStats.levelProgress}%</span>
           </div>
         </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Badges Collection by Category -->
-  {badgeCategories.map((category) => (
-    <section class="section">
-      <div class="section-header">
-        <h2 class="section-title">
-          <div class="category-icon" style={`background: ${category.color};`}></div>
-          {category.name} Badges
-        </h2>
-        <span class="info-text">
-          {category.badges.filter(b => b.unlocked).length} of {category.badges.length} unlocked
-        </span>
       </div>
-      <div class="badges-grid">
-        {category.badges.map((badge) => (
-          <div class={`badge-card ${badge.unlocked ? 'unlocked' : 'locked'}`}>
-            <div class="badge-icon-wrapper">
-              <span class={`badge-icon ${badge.unlocked ? '' : 'locked'}`} set:html={badge.icon}>
-              </span>
-              {badge.unlocked && (
-                <div class="unlock-checkmark">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-              )}
+    </div>
+
+    <!-- Floating Achievement Bubbles -->
+    <div class="bubbles-section glass">
+      <h2 class="section-title">Featured Achievements</h2>
+      <div class="bubbles-container">
+        {featuredAchievements.map((achievement, index) => (
+          <div
+            class={`achievement-bubble ${achievement.size} ${achievement.unlocked ? 'unlocked' : 'locked'}`}
+            style={`--bubble-color: ${achievement.color}; animation-delay: ${index * 0.1}s;`}
+          >
+            <div class="bubble-glow"></div>
+            <div class="bubble-content">
+              <span class="bubble-icon" set:html={achievement.icon}></span>
+              <span class="bubble-name">{achievement.name}</span>
+              <span class="bubble-points">+{achievement.points}</span>
             </div>
-            <h4 class="badge-name">{badge.name}</h4>
-            <p class="badge-points">{badge.points} points</p>
-            {!badge.unlocked && (
-              <div class="badge-progress">
-                <div class="badge-progress-bar">
-                  <div class="badge-progress-fill" style={`width: ${badge.progress}%; background: ${category.color};`}></div>
-                </div>
-                <span class="badge-progress-text">{badge.progress}%</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Recent Unlocked -->
+    <div class="recent-section glass">
+      <h2 class="section-title">Recently Unlocked</h2>
+      <div class="recent-grid">
+        {recentUnlocked.map((achievement) => (
+          <div class="recent-card" style={`--card-color: ${achievement.color}`}>
+            <span class="recent-icon" set:html={achievement.icon}></span>
+            <div class="recent-info">
+              <h4>{achievement.name}</h4>
+              <p>{achievement.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Achievement Path / Timeline -->
+    <div class="path-section glass">
+      <h2 class="section-title">Achievement Path</h2>
+      <div class="achievement-path">
+        {achievementPath.map((achievement, index) => (
+          <div class="path-item">
+            <div class="path-connector" style={index === 0 ? 'opacity: 0;' : ''}></div>
+            <div class="path-node">
+              <div class="path-icon-wrapper" style={`background: ${achievement.color};`}>
+                <span class="path-icon" set:html={achievement.icon}></span>
               </div>
-            )}
+              <div class="path-progress-ring">
+                <svg width="100" height="100">
+                  <circle
+                    class="path-ring-bg"
+                    stroke="rgba(255, 255, 255, 0.2)"
+                    stroke-width="4"
+                    fill="none"
+                    r="45"
+                    cx="50"
+                    cy="50"
+                  />
+                  <circle
+                    class="path-ring-fill"
+                    stroke={achievement.color}
+                    stroke-width="4"
+                    fill="none"
+                    r="45"
+                    cx="50"
+                    cy="50"
+                    style={`stroke-dasharray: ${283 * achievement.progress / 100} 283; stroke-dashoffset: 70.75;`}
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="path-info">
+              <h4>{achievement.name}</h4>
+              <p>{achievement.progress}%</p>
+            </div>
           </div>
         ))}
       </div>
-    </section>
-  ))}
+    </div>
 
-  <!-- Two Column Layout: Leaderboard & Points History -->
-  <div class="two-column-grid">
-    <!-- Leaderboard -->
-    <section class="section">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-          Class Leaderboard
-        </h2>
-      </div>
-      <div class="leaderboard-card">
-        {leaderboard.map((student) => (
-          <div class={`leaderboard-item ${student.current ? 'current-user' : ''}`}>
-            <div class="leaderboard-rank">
-              {student.rank <= 3 ? (
-                <span class={`rank-medal rank-${student.rank}`}>
-                  {student.rank === 1 ? '🥇' : student.rank === 2 ? '🥈' : '🥉'}
-                </span>
-              ) : (
-                <span class="rank-number">{student.rank}</span>
-              )}
-            </div>
-            <div class="leaderboard-avatar">
-              <span class="avatar-text">{student.avatar}</span>
-            </div>
-            <div class="leaderboard-info">
-              <h4 class="leaderboard-name">{student.name}</h4>
-              <p class="leaderboard-level">{student.level}</p>
-            </div>
-            <div class="leaderboard-points">
-              <span class="points-value">{student.points.toLocaleString()}</span>
-              <span class={`points-trend ${student.trend}`}>
-                {student.trend === 'up' ? '↑' : student.trend === 'down' ? '↓' : '•'}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Points History -->
-    <section class="section">
-      <div class="section-header">
-        <h2 class="section-title">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
-          Points History
-        </h2>
-      </div>
-      <div class="points-history-card">
-        {pointsHistory.map((item) => (
-          <div class="points-history-item">
-            <div class={`points-icon ${item.type}`}>
-              {item.type === 'badge' && (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="8" r="7"></circle>
-                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                </svg>
-              )}
-              {item.type === 'assignment' && (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                </svg>
-              )}
-              {item.type === 'participation' && (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-              )}
-              {item.type === 'quiz' && (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9 11l3 3L22 4"></path>
-                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                </svg>
-              )}
-            </div>
-            <div class="points-info">
-              <h4 class="points-activity">{item.activity}</h4>
-              <p class="points-date">{item.date}</p>
-            </div>
-            <div class="points-earned">+{item.points}</div>
-          </div>
-        ))}
-      </div>
-    </section>
   </div>
-
-  <!-- Upcoming Achievements -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M12 6v6l4 2"></path>
-        </svg>
-        In Progress
-      </h2>
-      <span class="info-text">Achievements you're working towards</span>
-    </div>
-    <div class="upcoming-grid">
-      {upcomingAchievements.map((achievement) => (
-        <div class="upcoming-card">
-          <div class="upcoming-header">
-            <span class="upcoming-icon" set:html={achievement.icon}></span>
-            <div class="upcoming-info">
-              <h4 class="upcoming-name">{achievement.name}</h4>
-              <p class="upcoming-description">{achievement.description}</p>
-            </div>
-          </div>
-          <div class="upcoming-progress">
-            <div class="upcoming-progress-bar">
-              <div class="upcoming-progress-fill" style={`width: ${achievement.progress}%;`}></div>
-            </div>
-            <div class="upcoming-stats">
-              <span class="upcoming-current">{achievement.current} / {achievement.target}</span>
-              <span class="upcoming-percentage">{achievement.progress}%</span>
-            </div>
-          </div>
-          <div class="upcoming-footer">
-            <span class="upcoming-reward">🎁 {achievement.points} points</span>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
 </DashboardLayout>
 
 <style>
-  /* Header Styles */
+  /* Container */
+  .achievements-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Glass Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      0 8px 32px rgba(31, 38, 135, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+  }
+
+  /* Header */
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
   .header-title {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--bc-primary-blue);
     margin-bottom: 0.25rem;
@@ -516,795 +291,419 @@ const pointsToNextLevel = nextLevelPoints - achievementStats.totalPoints;
     color: var(--bc-dark-gray);
   }
 
-  .header-actions {
+  .header-stats {
     display: flex;
     gap: 1rem;
-    align-items: center;
   }
 
-  .view-rewards-btn {
+  .stat-badge {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.625rem 1.25rem;
-    background: linear-gradient(135deg, #ec4899, #be185d);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .view-rewards-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
-  }
-
-  /* Stats Grid */
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .stat-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
-    display: flex;
-    gap: 1.25rem;
-    align-items: center;
-    transition: all 0.3s ease;
-  }
-
-  .stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(35, 7, 90, 0.12);
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .stat-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(35, 7, 90, 0.08);
-    flex-shrink: 0;
   }
 
-  .stat-content {
-    flex: 1;
-  }
-
-  .stat-label {
-    font-size: 0.875rem;
-    color: var(--bc-dark-gray);
-    margin-bottom: 0.25rem;
+  .stat-icon svg {
+    display: block;
   }
 
   .stat-value {
-    font-size: 1.875rem;
-    font-weight: 700;
-    color: var(--bc-primary-blue);
-    margin-bottom: 0.25rem;
-  }
-
-  .stat-change {
-    font-size: 0.8125rem;
-    color: var(--bc-dark-gray);
-  }
-
-  .stat-change.positive {
-    color: #22c55e;
-  }
-
-  /* Section Styles */
-  .section {
-    margin-bottom: 2.5rem;
-  }
-
-  .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .section-title {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.375rem;
     font-weight: 600;
     color: var(--bc-primary-blue);
   }
 
-  .category-icon {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-  }
-
-  .info-text {
-    font-size: 0.875rem;
-    color: var(--bc-dark-gray);
-  }
-
-  /* Level Progress Card */
-  .level-progress-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
-  }
-
-  .level-info {
-    display: flex;
+  /* Compact Stats */
+  .compact-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    align-items: center;
-    margin-bottom: 1.5rem;
   }
 
-  .level-badge {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #f59e0b, #d97706);
+  .compact-stat {
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .compact-stat:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 12px 40px rgba(31, 38, 135, 0.2),
+      0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .compact-stat-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+    gap: 0.5rem;
   }
 
-  .level-icon {
+  .compact-label {
+    font-size: 0.875rem;
+    color: var(--bc-medium-gray);
+    font-weight: 500;
+  }
+
+  .compact-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #ec4899);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Section Title */
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Level Section */
+  .level-section {
+    padding: 2rem;
+  }
+
+  .level-circle-container {
     display: flex;
-    align-items: center;
     justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .circular-progress-large {
+    position: relative;
+  }
+
+  .progress-ring-large {
+    transform: rotate(-90deg);
+  }
+
+  .progress-ring-fill {
+    transition: stroke-dasharray 0.5s ease;
+    stroke-linecap: round;
+  }
+
+  .progress-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
   }
 
   .level-text {
-    font-size: 1rem;
-    font-weight: 700;
-    color: white;
-    margin-top: 0.25rem;
-  }
-
-  .level-details {
-    flex: 1;
-  }
-
-  .level-title {
-    font-size: 1.5rem;
+    display: block;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--bc-primary-blue);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
-  .level-description {
+  .level-percent {
+    display: block;
     font-size: 1rem;
-    color: var(--bc-dark-gray);
+    color: var(--bc-medium-gray);
   }
 
-  .level-progress-bar {
-    height: 20px;
-    background: rgba(35, 7, 90, 0.1);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
+  /* Floating Achievement Bubbles */
+  .bubbles-section {
+    padding: 2rem;
   }
 
-  .level-progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #22c55e, #16a34a);
-    border-radius: 12px;
+  .bubbles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    min-height: 300px;
+  }
+
+  .achievement-bubble {
+    position: relative;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding-right: 1rem;
-    transition: width 0.5s ease;
+    justify-content: center;
+    background: var(--bubble-color);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.15),
+      0 0 40px var(--bubble-color, rgba(102, 126, 234, 0.3));
+    transition: all 0.4s ease;
+    animation: float 3s ease-in-out infinite;
   }
 
-  .level-progress-label {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: white;
+  .achievement-bubble.large {
+    width: 160px;
+    height: 160px;
   }
 
-  .level-stats {
-    display: flex;
-    justify-content: space-between;
+  .achievement-bubble.medium {
+    width: 130px;
+    height: 130px;
   }
 
-  .level-stat {
+  .achievement-bubble.small {
+    width: 100px;
+    height: 100px;
+  }
+
+  .achievement-bubble:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 
+      0 12px 48px rgba(0, 0, 0, 0.2),
+      0 0 60px var(--bubble-color, rgba(102, 126, 234, 0.5));
+  }
+
+  .bubble-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--bubble-color, rgba(102, 126, 234, 0.4)), transparent 70%);
+    opacity: 0.5;
+    animation: pulse 2s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  .bubble-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-align: center;
+    padding: 1rem;
   }
 
-  .level-stat-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--bc-primary-blue);
-    line-height: 1;
-    margin-bottom: 0.5rem;
+  .bubble-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
   }
 
-  .level-stat-label {
+  .bubble-icon svg {
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  }
+
+  .achievement-bubble.large .bubble-icon svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .achievement-bubble.medium .bubble-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .achievement-bubble.small .bubble-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .bubble-name {
     font-size: 0.875rem;
-    color: var(--bc-dark-gray);
+    font-weight: 600;
+    line-height: 1.2;
   }
 
-  /* Recent Achievements */
-  .recent-achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
+  .bubble-points {
+    font-size: 0.75rem;
+    opacity: 0.9;
   }
 
-  .achievement-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
-    display: flex;
-    gap: 1.25rem;
-    align-items: center;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .achievement-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-  }
-
-  .achievement-card.gold::before {
-    background: linear-gradient(90deg, #f59e0b, #d97706);
-  }
-
-  .achievement-card.silver::before {
-    background: linear-gradient(90deg, #94a3b8, #64748b);
-  }
-
-  .achievement-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(35, 7, 90, 0.12);
-  }
-
-  .achievement-badge {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .achievement-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-  }
-
-  .rarity-glow {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    opacity: 0.2;
-    animation: pulse 2s infinite;
-  }
-
-  .rarity-glow.gold {
-    background: radial-gradient(circle, #f59e0b, transparent);
-  }
-
-  .rarity-glow.silver {
-    background: radial-gradient(circle, #94a3b8, transparent);
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 
   @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.2; }
-    50% { transform: scale(1.2); opacity: 0.4; }
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.7; }
   }
 
-  .achievement-content {
-    flex: 1;
+  /* Recent Section */
+  .recent-section {
+    padding: 2rem;
   }
 
-  .achievement-name {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--bc-primary-blue);
-    margin-bottom: 0.5rem;
-  }
-
-  .achievement-description {
-    font-size: 0.875rem;
-    color: var(--bc-dark-gray);
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
-  }
-
-  .achievement-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .achievement-points {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #22c55e;
-    padding: 0.25rem 0.75rem;
-    background: rgba(34, 197, 94, 0.1);
-    border-radius: 6px;
-  }
-
-  .achievement-date {
-    font-size: 0.8125rem;
-    color: var(--bc-dark-gray);
-  }
-
-  /* Badges Grid */
-  .badges-grid {
+  .recent-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 1.25rem;
-  }
-
-  .badge-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 1.5rem 1rem;
-    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-
-  .badge-card.unlocked:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(35, 7, 90, 0.12);
-  }
-
-  .badge-card.locked {
-    opacity: 0.6;
-  }
-
-  .badge-icon-wrapper {
-    position: relative;
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-
-  .badge-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .badge-icon.locked {
-    filter: grayscale(100%);
-    opacity: 0.5;
-  }
-
-  .unlock-checkmark {
-    position: absolute;
-    bottom: -4px;
-    right: -4px;
-    width: 24px;
-    height: 24px;
-    background: #22c55e;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
-  }
-
-  .badge-name {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--bc-primary-blue);
-    margin-bottom: 0.375rem;
-    line-height: 1.3;
-  }
-
-  .badge-points {
-    font-size: 0.75rem;
-    color: var(--bc-dark-gray);
-    margin-bottom: 0.75rem;
-  }
-
-  .badge-progress {
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-
-  .badge-progress-bar {
-    height: 6px;
-    background: rgba(35, 7, 90, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 0.375rem;
-  }
-
-  .badge-progress-fill {
-    height: 100%;
-    border-radius: 10px;
-    transition: width 0.5s ease;
-  }
-
-  .badge-progress-text {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--bc-dark-gray);
-  }
-
-  /* Two Column Grid */
-  .two-column-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2.5rem;
-  }
-
-  /* Leaderboard */
-  .leaderboard-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
-  }
-
-  .leaderboard-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--bc-light-gray);
-    transition: all 0.2s ease;
-  }
-
-  .leaderboard-item:last-child {
-    border-bottom: none;
-  }
-
-  .leaderboard-item:hover {
-    background: rgba(35, 7, 90, 0.02);
-  }
-
-  .leaderboard-item.current-user {
-    background: linear-gradient(90deg, rgba(236, 72, 153, 0.1), rgba(236, 72, 153, 0.05));
-    border-left: 4px solid #ec4899;
-  }
-
-  .leaderboard-rank {
-    width: 40px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .rank-medal {
-    font-size: 1.5rem;
-    line-height: 1;
-  }
-
-  .rank-number {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--bc-dark-gray);
-  }
-
-  .leaderboard-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--bc-primary-blue), var(--bc-light-blue));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .avatar-text {
-    color: white;
-    font-weight: 600;
-    font-size: 1rem;
-  }
-
-  .leaderboard-info {
-    flex: 1;
-  }
-
-  .leaderboard-name {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--bc-primary-blue);
-    margin-bottom: 0.25rem;
-  }
-
-  .leaderboard-level {
-    font-size: 0.8125rem;
-    color: var(--bc-dark-gray);
-  }
-
-  .leaderboard-points {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .points-value {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--bc-primary-blue);
-  }
-
-  .points-trend {
-    font-size: 1.125rem;
-    font-weight: 700;
-  }
-
-  .points-trend.up {
-    color: #22c55e;
-  }
-
-  .points-trend.down {
-    color: #ef4444;
-  }
-
-  .points-trend.same {
-    color: var(--bc-dark-gray);
-  }
-
-  /* Points History */
-  .points-history-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
-  }
-
-  .points-history-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--bc-light-gray);
-    transition: all 0.2s ease;
-  }
-
-  .points-history-item:last-child {
-    border-bottom: none;
-  }
-
-  .points-history-item:hover {
-    background: rgba(35, 7, 90, 0.02);
-  }
-
-  .points-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .points-icon.badge {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
-    color: white;
-  }
-
-  .points-icon.assignment {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    color: white;
-  }
-
-  .points-icon.participation {
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-    color: white;
-  }
-
-  .points-icon.quiz {
-    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-    color: white;
-  }
-
-  .points-info {
-    flex: 1;
-  }
-
-  .points-activity {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--bc-primary-blue);
-    margin-bottom: 0.25rem;
-  }
-
-  .points-date {
-    font-size: 0.8125rem;
-    color: var(--bc-dark-gray);
-  }
-
-  .points-earned {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #22c55e;
-  }
-
-  /* Upcoming Achievements */
-  .upcoming-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
 
-  .upcoming-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 16px;
+  .recent-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     padding: 1.5rem;
-    box-shadow: 0 4px 20px rgba(35, 7, 90, 0.08);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    border-left: 4px solid var(--card-color);
     transition: all 0.3s ease;
   }
 
-  .upcoming-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(35, 7, 90, 0.12);
+  .recent-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(4px);
   }
 
-  .upcoming-header {
-    display: flex;
-    gap: 1rem;
-    align-items: start;
-    margin-bottom: 1.25rem;
-  }
-
-  .upcoming-icon {
+  .recent-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: grayscale(30%);
+    flex-shrink: 0;
   }
 
-  .upcoming-info {
-    flex: 1;
+  .recent-icon svg {
+    display: block;
   }
 
-  .upcoming-name {
-    font-size: 1.125rem;
+  .recent-info h4 {
     font-weight: 600;
     color: var(--bc-primary-blue);
-    margin-bottom: 0.375rem;
+    margin-bottom: 0.25rem;
   }
 
-  .upcoming-description {
+  .recent-info p {
     font-size: 0.875rem;
-    color: var(--bc-dark-gray);
-    line-height: 1.5;
+    color: var(--bc-medium-gray);
   }
 
-  .upcoming-progress {
+  /* Achievement Path */
+  .path-section {
+    padding: 2rem;
+  }
+
+  .achievement-path {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .path-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .path-connector {
+    position: absolute;
+    top: 50px;
+    left: -50%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+  }
+
+  .path-node {
+    position: relative;
     margin-bottom: 1rem;
   }
 
-  .upcoming-progress-bar {
-    height: 10px;
-    background: rgba(35, 7, 90, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 0.5rem;
-  }
-
-  .upcoming-progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #ec4899, #be185d);
-    border-radius: 10px;
-    transition: width 0.5s ease;
-  }
-
-  .upcoming-stats {
+  .path-icon-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     display: flex;
-    justify-content: space-between;
-    font-size: 0.875rem;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
   }
 
-  .upcoming-current {
-    color: var(--bc-dark-gray);
+  .path-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .upcoming-percentage {
+  .path-icon svg {
+    display: block;
+  }
+
+  .path-progress-ring {
+    transform: rotate(-90deg);
+  }
+
+  .path-ring-fill {
+    transition: stroke-dasharray 0.5s ease;
+    stroke-linecap: round;
+  }
+
+  .path-info {
+    text-align: center;
+  }
+
+  .path-info h4 {
     font-weight: 600;
     color: var(--bc-primary-blue);
+    margin-bottom: 0.25rem;
   }
 
-  .upcoming-footer {
-    padding-top: 1rem;
-    border-top: 1px solid var(--bc-light-gray);
-  }
-
-  .upcoming-reward {
+  .path-info p {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--bc-primary-blue);
+    color: var(--bc-medium-gray);
   }
 
   /* Responsive Design */
+  @media (max-width: 1200px) {
+    .achievement-path {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bubbles-container {
+      gap: 1.5rem;
+    }
+  }
+
   @media (max-width: 768px) {
-    .header-actions {
-      width: 100%;
-      justify-content: stretch;
-    }
-
-    .view-rewards-btn {
-      width: 100%;
-      justify-content: center;
-    }
-
-    .stats-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .level-info {
+    .header-content {
       flex-direction: column;
       align-items: flex-start;
+      gap: 1rem;
     }
 
-    .recent-achievements-grid {
+    .compact-stats {
       grid-template-columns: 1fr;
     }
 
-    .badges-grid {
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    }
-
-    .two-column-grid {
+    .recent-grid {
       grid-template-columns: 1fr;
     }
 
-    .upcoming-grid {
+    .achievement-path {
       grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .path-connector {
+      display: none;
+    }
+
+    .bubbles-container {
+      flex-direction: column;
     }
   }
 </style>
