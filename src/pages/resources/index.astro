@@ -1,0 +1,213 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const resourceCategories = [
+  {
+    id: 'blog',
+    title: 'Blog',
+    icon: '<svg class="w-12 h-12" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" fill="#e8d9f5" opacity="0.5"/><path d="M4 8h16M8 4v16M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 12h6M11 16h4" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round"/></svg>',
+    description: 'Fresh stories, interviews and reflections from our teaching community',
+    href: '/resources/blog',
+    features: ['Weekly ideas', 'Teacher voices', 'Exam strategies']
+  },
+  {
+    id: 'articles',
+    title: 'Articles & Playbooks',
+    icon: '<svg class="w-12 h-12" viewBox="0 0 24 24" fill="none"><path d="M5 4h14a2 2 0 012 2v12a2 2 0 01-2 2H9l-4 4V6a2 2 0 012-2z" fill="#e4fbf8" opacity="0.5"/><path d="M5 4h14a2 2 0 012 2v12a2 2 0 01-2 2H9l-4 4V6a2 2 0 012-2z" stroke="#7bcfff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 8h8M9 12h6M9 16h4" stroke="#2fd6c8" stroke-width="1.5" stroke-linecap="round"/></svg>',
+    description: 'Deep-dive frameworks, research-backed guides and printable planning templates',
+    href: '/resources/articles',
+    features: ['Playbooks', 'Frameworks', 'Quick guides']
+  },
+  {
+    id: 'videos',
+    title: 'Video Library',
+    icon: '<svg class="w-12 h-12" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="12" rx="2" fill="#ffd4e8" opacity="0.5"/><path d="M2 6h20v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM2 6a2 2 0 012-2h16a2 2 0 012 2" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 9l5 3-5 3V9z" fill="#b794d4"/></svg>',
+    description: 'Engaging video lessons, tutorials, and learning content for all levels',
+    href: '/resources/videos',
+    features: ['Grammar lessons', 'Pronunciation guides', 'Cultural insights']
+  },
+  {
+    id: 'games',
+    title: 'Games & Activities',
+    icon: '<svg class="w-12 h-12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#ffcce0" opacity="0.5"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#ff99c8" stroke-width="1.5"/><path d="M8 10h.01M16 10h.01M8 14s1 2 4 2 4-2 4-2" stroke="#b794d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    description: 'Fun, interactive games to practice English skills while having fun',
+    href: '/resources/games',
+    features: ['Word games', 'Quizzes', 'Interactive activities']
+  },
+  {
+    id: 'podcasts',
+    title: 'Podcasts',
+    icon: '<svg class="w-12 h-12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" fill="#dcc6f0" opacity="0.5"/><path d="M12 2a6 6 0 016 6v4a6 6 0 01-12 0V8a6 6 0 016-6z" stroke="#a688c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 18v4M8 22h8" stroke="#c4a7de" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    description: 'Listen and learn with our English learning podcasts on the go',
+    href: '/resources/podcasts',
+    features: ['Series 1-6', 'All levels', 'Download & listen']
+  },
+  {
+    id: 'downloads',
+    title: 'Free Downloads',
+    icon: '<svg class="w-12 h-12" viewBox="0 0 24 24" fill="none"><path d="M9 12h6M12 9v6M3 7h18M5 21h14a2 2 0 002-2V7H3v12a2 2 0 002 2z" stroke="#9b7bbe" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="6" y="10" width="12" height="8" rx="1" fill="#e8d9f5" opacity="0.5"/><path d="M12 12v3m0 0l2-2m-2 2l-2-2" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    description: 'Worksheets, guides, and learning materials to support your English studies',
+    href: '/resources/downloads',
+    features: ['Worksheets', 'Study guides', 'Practice materials']
+  },
+  {
+    id: 'tools',
+    title: 'Learning Tools',
+    icon: '<svg class="w-12 h-12" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" fill="#ffd4e8" opacity="0.5" stroke="#ff9ec7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    description: 'Dictionary, grammar checker, and language tools to enhance your learning',
+    href: '/resources/tools',
+    features: ['Dictionary', 'Grammar tools', 'Vocabulary builder']
+  }
+];
+---
+
+<Layout title="Free Learning Resources | British Council Spain">
+  <main class="bc-container pt-32 pb-20">
+    <!-- Hero Section -->
+    <div class="max-w-4xl mx-auto text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.08), rgba(255, 20, 147, 0.08)); border: 1px solid rgba(35, 7, 90, 0.1);">
+        <svg class="w-5 h-5" style="color: var(--bc-primary-blue);" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span class="text-sm font-semibold" style="color: var(--bc-primary-blue);">Free Learning Resources</span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style="color: var(--bc-primary-blue);">
+        Learn English for Free
+      </h1>
+
+      <p class="text-lg md:text-xl leading-relaxed mb-8" style="color: var(--muted);">
+        Explore our extensive collection of free resources including videos, games, podcasts, articles, and downloadable materials to support your English learning journey.
+      </p>
+    </div>
+
+    <!-- Resource Categories Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {resourceCategories.map((resource) => (
+        <a
+          href={resource.href}
+          class="resource-card group block p-8 rounded-3xl transition-all duration-300"
+          style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)); backdrop-filter: blur(10px); border: 1px solid var(--line);"
+        >
+          <div class="flex flex-col h-full">
+            <div class="mb-6 transform group-hover:scale-110 transition-transform duration-300">
+              <span set:html={resource.icon} />
+            </div>
+
+            <h3 class="text-2xl font-bold mb-3 group-hover:text-pink-500 transition-colors" style="color: var(--bc-primary-blue);">
+              {resource.title}
+            </h3>
+
+            <p class="text-base leading-relaxed mb-6 flex-grow" style="color: var(--muted);">
+              {resource.description}
+            </p>
+
+            <ul class="space-y-2 mb-6">
+              {resource.features.map((feature) => (
+                <li class="flex items-center gap-2 text-sm" style="color: var(--ink);">
+                  <svg class="w-4 h-4 flex-shrink-0" style="color: var(--bc-cta-pink);" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <div class="flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all" style="color: var(--bc-primary-blue);">
+              <span>Explore {resource.title}</span>
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Why Learn with British Council Section -->
+    <div class="max-w-5xl mx-auto mt-20">
+      <div class="rounded-3xl p-8 md:p-12" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.06), rgba(255, 20, 147, 0.06)); border: 1px solid var(--line);">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center" style="color: var(--bc-primary-blue);">
+          Why Learn with the British Council?
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.1), rgba(255, 20, 147, 0.1));">
+              <svg class="w-8 h-8" style="color: var(--bc-primary-blue);" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Expert Quality</h3>
+            <p class="text-sm" style="color: var(--muted);">All resources created by qualified English teaching professionals</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.1), rgba(255, 20, 147, 0.1));">
+              <svg class="w-8 h-8" style="color: var(--bc-cta-pink);" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.2"/>
+                <path d="M2 12h20M12 2c2.5 0 4.5 4.5 4.5 10s-2 10-4.5 10-4.5-4.5-4.5-10S9.5 2 12 2z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">Globally Trusted</h3>
+            <p class="text-sm" style="color: var(--muted);">Over 80 years of experience teaching English worldwide</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.1), rgba(255, 20, 147, 0.1));">
+              <svg class="w-8 h-8" style="color: var(--bc-primary-blue);" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L3 9L12 14L21 9L12 2Z" fill="currentColor" opacity="0.2"/>
+                <path d="M12 2L3 9L12 14L21 9L12 2Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 14L12 19L21 14M3 19L12 24L21 19" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--bc-primary-blue);">All Levels</h3>
+            <p class="text-sm" style="color: var(--muted);">Resources suitable for beginners to advanced learners</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="max-w-3xl mx-auto mt-16 text-center">
+      <div class="rounded-3xl p-10" style="background: linear-gradient(135deg, var(--bc-primary-blue), #4a1a8e); color: white;">
+        <h2 class="text-3xl font-bold mb-4">Ready to take your English further?</h2>
+        <p class="text-lg mb-8 opacity-90">
+          Join one of our expert-led courses and accelerate your learning with personalized support
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/courses"
+            class="px-8 py-4 rounded-full font-semibold transition-all hover:scale-105"
+            style="background: white; color: var(--bc-primary-blue);"
+          >
+            Browse Courses
+          </a>
+          <a
+            href="/contact"
+            class="px-8 py-4 rounded-full font-semibold transition-all hover:scale-105"
+            style="background: rgba(255, 255, 255, 0.2); color: white; border: 2px solid white;"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .resource-card {
+    box-shadow: 0 4px 20px rgba(23, 12, 70, 0.06);
+  }
+
+  .resource-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(23, 12, 70, 0.12);
+    border-color: rgba(255, 20, 147, 0.2) !important;
+  }
+
+  .resource-card:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 240, 250, 0.8)) !important;
+  }
+</style>

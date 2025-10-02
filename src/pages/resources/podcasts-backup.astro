@@ -1,0 +1,1697 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+// British Council Spain Podcasts Page
+// Enhanced podcast layout with stunning visuals, animations, and interactivity
+
+// Mock podcast data with additional properties
+const podcasts = [
+  {
+    id: 1,
+    title: "Business English: Networking Success",
+    description: "Master the art of professional networking with real conversations and practical phrases for conferences and meetings.",
+    duration: "28:45",
+    level: "B2-C1",
+    category: "Business Talks",
+    series: "Business English Pro",
+    date: "2024-09-28",
+    coverImage: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    featured: true,
+    transcript: true,
+    isNew: true,
+    listeners: "12.4K",
+    progress: 35
+  },
+  {
+    id: 2,
+    title: "Daily English: At the Supermarket",
+    description: "Learn everyday vocabulary and expressions used while shopping, including asking for help and comparing products.",
+    duration: "15:30",
+    level: "A2-B1",
+    category: "Daily English",
+    series: "Everyday Situations",
+    date: "2024-09-26",
+    coverImage: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    featured: false,
+    transcript: true,
+    isNew: true,
+    listeners: "8.2K",
+    progress: 0
+  },
+  {
+    id: 3,
+    title: "IELTS Speaking Part 2: Personal Stories",
+    description: "Expert tips and sample answers for IELTS Speaking Part 2, focusing on narrating personal experiences effectively.",
+    duration: "32:15",
+    level: "B2-C1",
+    category: "IELTS Prep",
+    series: "IELTS Mastery",
+    date: "2024-09-24",
+    coverImage: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+    featured: true,
+    transcript: true,
+    isNew: false,
+    listeners: "15.7K",
+    progress: 60
+  },
+  {
+    id: 4,
+    title: "Grammar Focus: Perfect Tenses Explained",
+    description: "Clear explanations and practical examples of present perfect, past perfect, and future perfect tenses with common mistakes to avoid.",
+    duration: "22:10",
+    level: "B1-B2",
+    category: "Grammar Focus",
+    series: "Grammar Essentials",
+    date: "2024-09-22",
+    coverImage: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+    featured: false,
+    transcript: true,
+    isNew: false,
+    listeners: "9.1K",
+    progress: 0
+  },
+  {
+    id: 5,
+    title: "Stories & Literature: Sherlock Holmes",
+    description: "Explore classic English literature with an adapted reading of 'The Adventure of the Speckled Band' followed by vocabulary analysis.",
+    duration: "45:20",
+    level: "B2-C2",
+    category: "Stories & Literature",
+    series: "Classic Tales",
+    date: "2024-09-20",
+    coverImage: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
+    featured: true,
+    transcript: true,
+    isNew: false,
+    listeners: "18.3K",
+    progress: 0
+  },
+  {
+    id: 6,
+    title: "Daily English: Making Phone Calls",
+    description: "Essential phrases and etiquette for making and receiving professional and personal phone calls in English.",
+    duration: "18:40",
+    level: "A2-B1",
+    category: "Daily English",
+    series: "Everyday Situations",
+    date: "2024-09-18",
+    coverImage: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+    featured: false,
+    transcript: true,
+    isNew: false,
+    listeners: "7.5K",
+    progress: 100
+  },
+  {
+    id: 7,
+    title: "Business English: Email Writing Mastery",
+    description: "Write professional emails with confidence, covering subject lines, formal greetings, clear messages, and appropriate closings.",
+    duration: "26:35",
+    level: "B1-C1",
+    category: "Business Talks",
+    series: "Business English Pro",
+    date: "2024-09-16",
+    coverImage: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+    featured: false,
+    transcript: true,
+    isNew: false,
+    listeners: "11.2K",
+    progress: 45
+  },
+  {
+    id: 8,
+    title: "IELTS Listening: Note-Taking Strategies",
+    description: "Proven techniques for effective note-taking during the IELTS listening test, with practice exercises and insider tips.",
+    duration: "29:50",
+    level: "B2-C1",
+    category: "IELTS Prep",
+    series: "IELTS Mastery",
+    date: "2024-09-14",
+    coverImage: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+    featured: false,
+    transcript: true,
+    isNew: false,
+    listeners: "13.6K",
+    progress: 0
+  },
+  {
+    id: 9,
+    title: "Grammar Focus: Conditional Sentences Made Easy",
+    description: "Master all types of conditional sentences with practical examples from real-life situations and common usage patterns.",
+    duration: "24:15",
+    level: "B1-B2",
+    category: "Grammar Focus",
+    series: "Grammar Essentials",
+    date: "2024-09-12",
+    coverImage: "linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%)",
+    featured: false,
+    transcript: true,
+    isNew: false,
+    listeners: "10.8K",
+    progress: 0
+  },
+  {
+    id: 10,
+    title: "Stories & Literature: Modern Short Stories",
+    description: "Contemporary English short story followed by discussion of themes, vocabulary, and writing techniques used by the author.",
+    duration: "38:25",
+    level: "B2-C2",
+    category: "Stories & Literature",
+    series: "Classic Tales",
+    date: "2024-09-10",
+    coverImage: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+    featured: false,
+    transcript: true,
+    isNew: false,
+    listeners: "16.4K",
+    progress: 25
+  },
+  {
+    id: 11,
+    title: "Daily English: At the Doctor's Office",
+    description: "Learn how to describe symptoms, understand medical advice, and communicate effectively with healthcare professionals.",
+    duration: "17:55",
+    level: "A2-B1",
+    category: "Daily English",
+    series: "Everyday Situations",
+    date: "2024-09-08",
+    coverImage: "linear-gradient(135deg, #fccb90 0%, #d57eeb 100%)",
+    featured: false,
+    transcript: true,
+    isNew: false,
+    listeners: "6.9K",
+    progress: 0
+  },
+  {
+    id: 12,
+    title: "Business English: Presentations That Impress",
+    description: "Structure compelling business presentations with impactful openings, clear transitions, and memorable conclusions.",
+    duration: "31:20",
+    level: "B2-C1",
+    category: "Business Talks",
+    series: "Business English Pro",
+    date: "2024-09-06",
+    coverImage: "linear-gradient(135deg, #f8b195 0%, #f67280 100%)",
+    featured: false,
+    transcript: true,
+    isNew: false,
+    listeners: "14.1K",
+    progress: 0
+  }
+];
+
+const categories = [
+  { name: "All Episodes", value: "all", color: "#667eea", icon: "grid" },
+  { name: "Daily English", value: "Daily English", color: "#f093fb", icon: "coffee" },
+  { name: "Business Talks", value: "Business Talks", color: "#fa709a", icon: "briefcase" },
+  { name: "Grammar Focus", value: "Grammar Focus", color: "#fee140", icon: "book" },
+  { name: "Stories & Literature", value: "Stories & Literature", color: "#30cfd0", icon: "book-open" },
+  { name: "IELTS Prep", value: "IELTS Prep", color: "#4facfe", icon: "award" }
+];
+
+const levels = ["All Levels", "A2-B1", "B1-B2", "B2-C1", "B2-C2"];
+const durations = ["All Durations", "Under 20 min", "20-30 min", "30+ min"];
+
+const podcastPlatforms = [
+  { name: "Spotify", icon: "spotify", url: "#" },
+  { name: "Apple Podcasts", icon: "apple", url: "#" },
+  { name: "Google Podcasts", icon: "google", url: "#" },
+  { name: "RSS Feed", icon: "rss", url: "#" }
+];
+
+// Podcast series data
+const podcastSeries = [
+  { name: "Business English Pro", episodes: 3, coverImage: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
+  { name: "Everyday Situations", episodes: 3, coverImage: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" },
+  { name: "IELTS Mastery", episodes: 2, coverImage: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" },
+  { name: "Grammar Essentials", episodes: 2, coverImage: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" },
+  { name: "Classic Tales", episodes: 2, coverImage: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)" }
+];
+---
+
+<Layout title="Podcasts - British Council" description="Listen to our English learning podcasts covering grammar, vocabulary, pronunciation, business English, and exam preparation for all levels.">
+  <Header />
+  <main class="podcasts-page">
+  <style>
+    .podcasts-page {
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Animated Background Elements */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-30px) translateX(10px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes soundWave {
+      0%, 100% { transform: scaleY(0.5); }
+      50% { transform: scaleY(1); }
+    }
+
+    /* Hero Section with Animations */
+    .hero-header {
+      background: linear-gradient(-45deg,
+        rgba(183, 148, 212, 0.15) 0%,
+        rgba(255, 158, 199, 0.15) 25%,
+        rgba(255, 212, 232, 0.15) 50%,
+        rgba(183, 148, 212, 0.15) 75%,
+        rgba(255, 158, 199, 0.15) 100%
+      );
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      padding: 3rem 0 2.5rem;
+      margin-top: 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(240, 147, 251, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-background-waves {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .bg-wave {
+      width: 4px;
+      background: linear-gradient(to top, transparent, var(--bc-purple), transparent);
+      border-radius: 2px;
+      animation: soundWave 1.5s ease-in-out infinite;
+    }
+
+    .bg-wave:nth-child(1) { height: 60px; animation-delay: 0s; }
+    .bg-wave:nth-child(2) { height: 80px; animation-delay: 0.1s; }
+    .bg-wave:nth-child(3) { height: 100px; animation-delay: 0.2s; }
+    .bg-wave:nth-child(4) { height: 70px; animation-delay: 0.3s; }
+    .bg-wave:nth-child(5) { height: 90px; animation-delay: 0.4s; }
+    .bg-wave:nth-child(6) { height: 110px; animation-delay: 0.5s; }
+    .bg-wave:nth-child(7) { height: 75px; animation-delay: 0.6s; }
+    .bg-wave:nth-child(8) { height: 95px; animation-delay: 0.7s; }
+
+    .floating-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, var(--bc-pink) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { top: 60%; left: 20%; animation-delay: 1s; }
+    .particle:nth-child(3) { top: 40%; left: 80%; animation-delay: 2s; }
+    .particle:nth-child(4) { top: 70%; left: 70%; animation-delay: 3s; }
+    .particle:nth-child(5) { top: 30%; left: 50%; animation-delay: 4s; }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: var(--bc-primary-blue);
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge svg {
+      stroke: var(--bc-cta-pink);
+    }
+
+    .hero-title {
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: var(--bc-primary-blue);
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, var(--bc-primary-blue), #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--bc-dark-gray);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--bc-primary-blue);
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-stat-label {
+      font-size: 0.875rem;
+      color: var(--bc-medium-gray);
+      font-weight: 500;
+    }
+
+    .stat-divider {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom,
+        rgba(183, 148, 212, 0),
+        rgba(183, 148, 212, 0.3),
+        rgba(183, 148, 212, 0)
+      );
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Subscribe Section */
+    .subscribe-section {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: -2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+      z-index: 10;
+    }
+
+    .subscribe-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--bc-primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .platform-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .platform-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      background: white;
+      border: 2px solid var(--bc-border);
+      border-radius: 12px;
+      color: var(--bc-dark-gray);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.875rem;
+      transition: all 0.2s ease;
+    }
+
+    .platform-btn:hover {
+      border-color: var(--bc-primary-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(35, 7, 90, 0.15);
+    }
+
+    .platform-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Featured Episode */
+    .featured-section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--bc-primary-blue);
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-player {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-content {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .featured-artwork {
+      width: 200px;
+      height: 200px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-artwork::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M20 0v40M0 20h40'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .featured-artwork-icon {
+      position: relative;
+      z-index: 1;
+    }
+
+    .featured-info {
+      flex: 1;
+    }
+
+    .featured-category {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(102, 126, 234, 0.15);
+      color: #667eea;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .featured-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--bc-primary-blue);
+      margin-bottom: 0.75rem;
+    }
+
+    .featured-description {
+      color: var(--bc-medium-gray);
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .featured-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--bc-medium-gray);
+    }
+
+    /* Audio Player */
+    .audio-player {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .play-button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--bc-purple), var(--bc-pink));
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(183, 148, 212, 0.3);
+    }
+
+    .play-button:hover {
+      transform: scale(1.05);
+    }
+
+    .play-button svg {
+      fill: white;
+      width: 20px;
+      height: 20px;
+    }
+
+    .waveform-container {
+      flex: 1;
+      height: 48px;
+      background: rgba(183, 148, 212, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 0 1rem;
+      overflow: hidden;
+    }
+
+    .waveform-bar {
+      width: 3px;
+      background: linear-gradient(to top, var(--bc-purple), var(--bc-pink));
+      border-radius: 2px;
+      animation: wave 1.5s ease-in-out infinite;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+
+    .waveform-bar:hover {
+      opacity: 1;
+    }
+
+    @keyframes wave {
+      0%, 100% { height: 20%; }
+      50% { height: 100%; }
+    }
+
+    .waveform-bar:nth-child(1) { animation-delay: 0s; height: 40%; }
+    .waveform-bar:nth-child(2) { animation-delay: 0.1s; height: 60%; }
+    .waveform-bar:nth-child(3) { animation-delay: 0.2s; height: 80%; }
+    .waveform-bar:nth-child(4) { animation-delay: 0.3s; height: 50%; }
+    .waveform-bar:nth-child(5) { animation-delay: 0.4s; height: 70%; }
+    .waveform-bar:nth-child(6) { animation-delay: 0.5s; height: 90%; }
+    .waveform-bar:nth-child(7) { animation-delay: 0.6s; height: 60%; }
+    .waveform-bar:nth-child(8) { animation-delay: 0.7s; height: 75%; }
+    .waveform-bar:nth-child(9) { animation-delay: 0.8s; height: 55%; }
+    .waveform-bar:nth-child(10) { animation-delay: 0.9s; height: 85%; }
+    .waveform-bar:nth-child(11) { animation-delay: 1s; height: 45%; }
+    .waveform-bar:nth-child(12) { animation-delay: 1.1s; height: 65%; }
+    .waveform-bar:nth-child(13) { animation-delay: 1.2s; height: 75%; }
+    .waveform-bar:nth-child(14) { animation-delay: 1.3s; height: 50%; }
+    .waveform-bar:nth-child(15) { animation-delay: 1.4s; height: 70%; }
+
+    .time-display {
+      font-size: 0.875rem;
+      color: var(--bc-medium-gray);
+      font-weight: 500;
+      min-width: 100px;
+      text-align: right;
+    }
+
+    .player-timeline {
+      width: 100%;
+      height: 6px;
+      background: rgba(183, 148, 212, 0.2);
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-progress {
+      height: 100%;
+      background: linear-gradient(to right, var(--bc-purple), var(--bc-pink));
+      border-radius: 3px;
+      width: 35%;
+      transition: width 0.1s ease;
+    }
+
+    .player-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1rem;
+      background: white;
+      border: 2px solid var(--bc-border);
+      border-radius: 10px;
+      color: var(--bc-dark-gray);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn:hover {
+      border-color: var(--bc-primary-blue);
+      transform: translateY(-1px);
+    }
+
+    /* Filters */
+    .filters-section {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .filters-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--bc-primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .filter-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--bc-medium-gray);
+    }
+
+    .filter-select {
+      padding: 0.625rem 1rem;
+      background: white;
+      border: 2px solid var(--bc-border);
+      border-radius: 10px;
+      color: var(--bc-dark-gray);
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--bc-primary-blue);
+    }
+
+    /* Category Pills */
+    .category-pills {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .category-pill {
+      padding: 0.625rem 1.25rem;
+      background: white;
+      border: 2px solid var(--bc-border);
+      border-radius: 25px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--bc-dark-gray);
+    }
+
+    .category-pill.active {
+      background: var(--bc-primary-blue);
+      color: white;
+      border-color: var(--bc-primary-blue);
+    }
+
+    .category-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Episodes Grid */
+    .episodes-section {
+      margin-bottom: 3rem;
+    }
+
+    .episodes-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .episode-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .episode-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--bc-purple), var(--bc-pink));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .episode-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .episode-card:hover::before {
+      opacity: 1;
+    }
+
+    .episode-artwork {
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .episode-artwork::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M15 0v30M0 15h30'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .episode-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .episode-category {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      background: rgba(183, 148, 212, 0.15);
+      color: var(--bc-purple);
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .episode-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--bc-primary-blue);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .episode-description {
+      font-size: 0.875rem;
+      color: var(--bc-medium-gray);
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .episode-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8125rem;
+      color: var(--bc-medium-gray);
+      flex-wrap: wrap;
+    }
+
+    .episode-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-end;
+    }
+
+    .episode-play-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--bc-purple), var(--bc-pink));
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      box-shadow: 0 4px 16px rgba(183, 148, 212, 0.3);
+    }
+
+    .episode-play-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .episode-play-btn svg {
+      fill: white;
+      width: 22px;
+      height: 22px;
+    }
+
+    .episode-secondary-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid var(--bc-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--bc-primary-blue);
+      transform: scale(1.05);
+    }
+
+    .icon-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--bc-medium-gray);
+    }
+
+    /* Transcript Section */
+    .transcript-section {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .transcript-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .transcript-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--bc-primary-blue);
+    }
+
+    .transcript-toggle {
+      padding: 0.625rem 1.25rem;
+      background: var(--bc-primary-blue);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .transcript-toggle:hover {
+      background: #1a0545;
+    }
+
+    .transcript-content {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-height: 400px;
+      overflow-y: auto;
+      line-height: 1.8;
+      color: var(--bc-dark-gray);
+      border: 1px solid var(--bc-border);
+    }
+
+    .transcript-timestamp {
+      display: inline-block;
+      color: var(--bc-purple);
+      font-weight: 600;
+      margin-right: 0.5rem;
+      cursor: pointer;
+    }
+
+    .transcript-timestamp:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile Sticky Player */
+    .mobile-player {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 1rem;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+      border-top: 2px solid rgba(183, 148, 212, 0.3);
+    }
+
+    .mobile-player-content {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 100%;
+    }
+
+    .mobile-player-artwork {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      flex-shrink: 0;
+    }
+
+    .mobile-player-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mobile-player-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--bc-primary-blue);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mobile-player-meta {
+      font-size: 0.75rem;
+      color: var(--bc-medium-gray);
+    }
+
+    .mobile-play-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--bc-purple), var(--bc-pink));
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Visual Audio Indicators */
+    .audio-visualizer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 40px;
+    }
+
+    .visualizer-bar {
+      width: 4px;
+      background: linear-gradient(to top, var(--bc-purple), var(--bc-pink));
+      border-radius: 2px;
+      animation: equalizer 0.8s ease-in-out infinite;
+    }
+
+    @keyframes equalizer {
+      0%, 100% { height: 30%; }
+      50% { height: 100%; }
+    }
+
+    .visualizer-bar:nth-child(1) { animation-delay: 0s; }
+    .visualizer-bar:nth-child(2) { animation-delay: 0.15s; }
+    .visualizer-bar:nth-child(3) { animation-delay: 0.3s; }
+    .visualizer-bar:nth-child(4) { animation-delay: 0.45s; }
+    .visualizer-bar:nth-child(5) { animation-delay: 0.6s; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .featured-content {
+        grid-template-columns: 150px 1fr;
+        gap: 1.5rem;
+      }
+
+      .featured-artwork {
+        width: 150px;
+        height: 150px;
+      }
+
+      .episode-card {
+        grid-template-columns: 80px 1fr auto;
+        gap: 1rem;
+      }
+
+      .episode-artwork {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .container {
+        padding: 1rem;
+      }
+
+      .featured-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .featured-artwork {
+        margin: 0 auto;
+      }
+
+      .featured-title {
+        font-size: 1.5rem;
+      }
+
+      .featured-meta {
+        justify-content: center;
+      }
+
+      .episode-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .episode-artwork {
+        margin: 0 auto;
+      }
+
+      .episode-meta {
+        justify-content: center;
+      }
+
+      .episode-actions {
+        align-items: center;
+      }
+
+      .mobile-player {
+        display: block;
+      }
+
+      body {
+        padding-bottom: 80px;
+      }
+
+      .filters-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-pills {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.5rem;
+      }
+
+      .category-pill {
+        white-space: nowrap;
+      }
+    }
+
+    /* Loading Animation */
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
+      }
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+
+    .loading {
+      animation: shimmer 2s infinite;
+      background: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+      background-size: 1000px 100%;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(183, 148, 212, 0.5);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(183, 148, 212, 0.7);
+    }
+
+    /* Glass Effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(35, 7, 90, 0.08);
+    }
+  </style>
+
+  <!-- Hero Header -->
+  <section class="hero-header">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="3"/>
+            <path d="M12 2a6 6 0 016 6v4a6 6 0 01-12 0V8a6 6 0 016-6z"/>
+            <path d="M19 10v2a7 7 0 01-14 0v-2M12 18v4M8 22h8"/>
+          </svg>
+          <span>Audio Learning</span>
+        </div>
+        <h1 class="hero-title">English Learning Podcasts</h1>
+        <p class="hero-subtitle">Enhance your English learning with our engaging podcast series covering grammar, business English, IELTS preparation, and daily conversations</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-value">{podcasts.length}+</div>
+            <div class="hero-stat-label">Episodes</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">5</div>
+            <div class="hero-stat-label">Categories</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">Free</div>
+            <div class="hero-stat-label">Access</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+      <h2 class="subscribe-title">Subscribe & Listen On Your Favorite Platform</h2>
+      <div class="platform-links">
+        {podcastPlatforms.map((platform) => (
+          <a href={platform.url} class="platform-btn">
+            {platform.icon === 'spotify' && (
+              <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+            )}
+            {platform.icon === 'apple' && (
+              <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+            )}
+            {platform.icon === 'google' && (
+              <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12c6.627 0 12-5.373 12-12S18.627 0 12 0zm.14 19.018c-3.868 0-7-3.14-7-7.018c0-3.878 3.132-7.018 7-7.018 1.89 0 3.47.697 4.682 1.829l-1.974 1.978v-.004c-.735-.702-1.667-1.062-2.708-1.062-2.31 0-4.187 1.956-4.187 4.273 0 2.315 1.877 4.277 4.187 4.277 2.096 0 3.522-1.202 3.816-2.852H12.14v-2.737h6.585c.088.47.135.96.135 1.474 0 4.01-2.677 6.86-6.72 6.86z"/>
+              </svg>
+            )}
+            {platform.icon === 'rss' && (
+              <svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 11a9 9 0 0 1 9 9"/>
+                <path d="M4 4a16 16 0 0 1 16 16"/>
+                <circle cx="5" cy="19" r="1"/>
+              </svg>
+            )}
+            {platform.name}
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Featured Episode -->
+    <section class="featured-section">
+      <h2 class="section-title">Featured Episode</h2>
+      {podcasts.filter(p => p.featured).slice(0, 1).map((podcast) => (
+        <div class="featured-player">
+          <div class="featured-content">
+            <div class="featured-artwork" style={`background: ${podcast.coverImage}`}>
+              <div class="featured-artwork-icon">
+                <div class="audio-visualizer">
+                  <div class="visualizer-bar"></div>
+                  <div class="visualizer-bar"></div>
+                  <div class="visualizer-bar"></div>
+                  <div class="visualizer-bar"></div>
+                  <div class="visualizer-bar"></div>
+                </div>
+              </div>
+            </div>
+            <div class="featured-info">
+              <span class="featured-category">{podcast.category}</span>
+              <h3 class="featured-title">{podcast.title}</h3>
+              <p class="featured-description">{podcast.description}</p>
+              <div class="featured-meta">
+                <span class="meta-item">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="8" cy="8" r="6"/>
+                    <path d="M8 4v4l2 2"/>
+                  </svg>
+                  {podcast.duration}
+                </span>
+                <span class="meta-item">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 7V4a2 2 0 012-2h8a2 2 0 012 2v3M4 11v3a2 2 0 002 2h8a2 2 0 002-2v-3M2 7h16v4H2z"/>
+                  </svg>
+                  {podcast.level}
+                </span>
+                <span class="meta-item">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="14" height="14" rx="2"/>
+                    <path d="M3 8h14M8 4v14"/>
+                  </svg>
+                  {podcast.date}
+                </span>
+              </div>
+
+              <!-- Audio Player -->
+              <div class="audio-player">
+                <div class="player-controls">
+                  <button class="play-button">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </button>
+                  <div class="waveform-container">
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                    <div class="waveform-bar"></div>
+                  </div>
+                  <span class="time-display">10:15 / {podcast.duration}</span>
+                </div>
+                <div class="player-timeline">
+                  <div class="timeline-progress"></div>
+                </div>
+                <div class="player-actions">
+                  <button class="action-btn">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 002-2v-4M17 9l-5 5-5-5M12 3v11"/>
+                    </svg>
+                    Download
+                  </button>
+                  <button class="action-btn">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 00-2 2v16l8-4 8 4V4a2 2 0 00-2-2z"/>
+                    </svg>
+                    Transcript
+                  </button>
+                  <button class="action-btn">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
+                    </svg>
+                    Share
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- Filters -->
+    <section class="filters-section">
+      <h3 class="filters-title">Filter Episodes</h3>
+      <div class="filters-grid">
+        <div class="filter-group">
+          <label class="filter-label">Level</label>
+          <select class="filter-select" id="levelFilter">
+            {levels.map(level => (
+              <option value={level}>{level}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Duration</label>
+          <select class="filter-select" id="durationFilter">
+            {durations.map(duration => (
+              <option value={duration}>{duration}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Sort By</label>
+          <select class="filter-select" id="sortFilter">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="longest">Longest First</option>
+            <option value="shortest">Shortest First</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Pills -->
+    <div class="category-pills">
+      {categories.map((category, index) => (
+        <button
+          class={`category-pill ${index === 0 ? 'active' : ''}`}
+          data-category={category.value}
+        >
+          {category.name}
+        </button>
+      ))}
+    </div>
+
+    <!-- All Episodes -->
+    <section class="episodes-section">
+      <h2 class="section-title">All Episodes</h2>
+      <div class="episodes-grid">
+        {podcasts.map((podcast) => (
+          <div class="episode-card" data-category={podcast.category} data-level={podcast.level}>
+            <div class="episode-artwork" style={`background: ${podcast.coverImage}`}>
+              <div class="audio-visualizer">
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+              </div>
+            </div>
+            <div class="episode-info">
+              <span class="episode-category">{podcast.category}</span>
+              <h4 class="episode-title">{podcast.title}</h4>
+              <p class="episode-description">{podcast.description}</p>
+              <div class="episode-meta">
+                <span>
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; vertical-align: middle; margin-right: 4px;">
+                    <circle cx="7" cy="7" r="5"/>
+                    <path d="M7 3v4l2 2"/>
+                  </svg>
+                  {podcast.duration}
+                </span>
+                <span>
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; vertical-align: middle; margin-right: 4px;">
+                    <path d="M3 6V3a1.5 1.5 0 011.5-1.5h6A1.5 1.5 0 0112 3v3M3 9v2a1.5 1.5 0 001.5 1.5h6A1.5 1.5 0 0012 11V9M1.5 6h11v3h-11z"/>
+                  </svg>
+                  {podcast.level}
+                </span>
+                <span>Series: {podcast.series}</span>
+              </div>
+            </div>
+            <div class="episode-actions">
+              <button class="episode-play-btn">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+              <div class="episode-secondary-actions">
+                <button class="icon-btn" title="Download">
+                  <svg fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 002-2v-4M17 9l-5 5-5-5M12 3v11"/>
+                  </svg>
+                </button>
+                <button class="icon-btn" title="Transcript">
+                  <svg fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 00-2 2v16l8-4 8 4V4a2 2 0 00-2-2z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Transcript Viewer (Mock) -->
+    <section class="transcript-section">
+      <div class="transcript-header">
+        <h3 class="transcript-title">Episode Transcript</h3>
+        <button class="transcript-toggle">Show Transcript</button>
+      </div>
+      <div class="transcript-content" style="display: none;">
+        <p><span class="transcript-timestamp">[00:00]</span> Welcome to British Council Podcasts. Today we're discussing business networking strategies that actually work.</p>
+        <p><span class="transcript-timestamp">[00:15]</span> Networking is one of the most important skills for career success, but many people find it challenging or even intimidating.</p>
+        <p><span class="transcript-timestamp">[00:30]</span> In this episode, we'll explore practical phrases and conversation starters that will help you make meaningful professional connections.</p>
+        <p><span class="transcript-timestamp">[00:45]</span> Let's begin with the fundamentals of introducing yourself in a professional setting...</p>
+        <p><span class="transcript-timestamp">[01:00]</span> Remember, the key to successful networking is authenticity. You want to be genuinely interested in the people you meet.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Mobile Sticky Player -->
+  <div class="mobile-player">
+    <div class="mobile-player-content">
+      <div class="mobile-player-artwork"></div>
+      <div class="mobile-player-info">
+        <div class="mobile-player-title">Business English: Networking Success</div>
+        <div class="mobile-player-meta">10:15 / 28:45</div>
+      </div>
+      <button class="mobile-play-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Category filtering
+    const categoryPills = document.querySelectorAll('.category-pill');
+    const episodeCards = document.querySelectorAll('.episode-card');
+
+    categoryPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        // Update active state
+        categoryPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        // Filter episodes
+        const category = pill.dataset.category;
+        episodeCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'grid';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Transcript toggle
+    const transcriptToggle = document.querySelector('.transcript-toggle');
+    const transcriptContent = document.querySelector('.transcript-content');
+
+    transcriptToggle?.addEventListener('click', () => {
+      const isHidden = transcriptContent.style.display === 'none';
+      transcriptContent.style.display = isHidden ? 'block' : 'none';
+      transcriptToggle.textContent = isHidden ? 'Hide Transcript' : 'Show Transcript';
+    });
+
+    // Play button interactions (mock)
+    const playButtons = document.querySelectorAll('.play-button, .episode-play-btn, .mobile-play-btn');
+
+    playButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const svg = btn.querySelector('svg path');
+        if (svg.getAttribute('d').startsWith('M8 5v14')) {
+          // Change to pause icon
+          svg.setAttribute('d', 'M6 4h4v16H6zM14 4h4v16h-4z');
+        } else {
+          // Change to play icon
+          svg.setAttribute('d', 'M8 5v14l11-7z');
+        }
+      });
+    });
+
+    // Level filter
+    const levelFilter = document.getElementById('levelFilter');
+    levelFilter?.addEventListener('change', (e) => {
+      const selectedLevel = e.target.value;
+      episodeCards.forEach(card => {
+        if (selectedLevel === 'All Levels' || card.dataset.level === selectedLevel) {
+          card.style.display = 'grid';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Duration filter
+    const durationFilter = document.getElementById('durationFilter');
+    durationFilter?.addEventListener('change', (e) => {
+      const selectedDuration = e.target.value;
+      episodeCards.forEach(card => {
+        const episodeMeta = card.querySelector('.episode-meta');
+        const durationText = episodeMeta?.textContent || '';
+        const minutes = parseInt(durationText.match(/(\d+):/)?.[1] || '0');
+
+        let show = true;
+        if (selectedDuration === 'Under 20 min') {
+          show = minutes < 20;
+        } else if (selectedDuration === '20-30 min') {
+          show = minutes >= 20 && minutes < 30;
+        } else if (selectedDuration === '30+ min') {
+          show = minutes >= 30;
+        }
+
+        card.style.display = show ? 'grid' : 'none';
+      });
+    });
+
+    // Timeline interaction (mock)
+    const timeline = document.querySelector('.player-timeline');
+    timeline?.addEventListener('click', (e) => {
+      const rect = timeline.getBoundingClientRect();
+      const percent = ((e.clientX - rect.left) / rect.width) * 100;
+      const progress = timeline.querySelector('.timeline-progress');
+      progress.style.width = `${percent}%`;
+    });
+
+    // Add smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+  </main>
+</Layout>

@@ -1,0 +1,730 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Button from '../../../components/Button.astro';
+
+const article = {
+  title: 'English Language Exams for School-Age Learners: 10 Key Aspects to Consider',
+  excerpt: 'Whether you're in primary school or in your final years of secondary education, there are different English exams to choose from. But choosing the right exam, for the right reason, at the right time, isn't always straightforward.',
+  image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80',
+  category: 'Exams',
+  categoryColor: '#667eea',
+  author: 'British Council Spain',
+  authorAvatar: 'BC',
+  date: '29 July 2025',
+  readTime: '8 min read',
+  publishedDate: '2025-07-29'
+};
+
+const relatedArticles = [
+  {
+    slug: 'how-british-council-uses-ai-language-assessment',
+    title: 'How British Council Uses AI in Language Assessment',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&q=80',
+    category: 'Technology',
+    categoryColor: '#ec4899',
+    readTime: '10 min read'
+  },
+  {
+    slug: 'right-test-right-time',
+    title: 'The Right Test at the Right Time',
+    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80',
+    category: 'Exams',
+    categoryColor: '#667eea',
+    readTime: '7 min read'
+  },
+  {
+    slug: 'ielts-preparation-success-strategies',
+    title: 'IELTS Preparation: Proven Success Strategies',
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80',
+    category: 'IELTS',
+    categoryColor: '#f59e0b',
+    readTime: '12 min read'
+  }
+];
+
+const tableOfContents = [
+  { id: 'age-appropriate', title: 'The right exam for each age' },
+  { id: 'right-level', title: 'The right level' },
+  { id: 'what-assessed', title: 'What is assessed' },
+  { id: 'assessing-learning', title: 'Assessing what has been learned' },
+  { id: 'right-place-time', title: 'The right place and time' },
+  { id: 'fit-for-purpose', title: 'Fit for purpose' },
+  { id: 'results', title: 'Results' },
+  { id: 'international-standard', title: 'Aligned with an international standard' },
+  { id: 'regulated-recognized', title: 'Regulated, recognized and reliable' },
+  { id: 'right-for-you', title: 'Right for you' }
+];
+---
+
+<Layout
+  title={`${article.title} - British Council Blog`}
+  description={article.excerpt}
+>
+  <main class="article-page">
+    <!-- Breadcrumb -->
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/">Home</a>
+        <span class="separator">/</span>
+        <a href="/blog">Blog</a>
+        <span class="separator">/</span>
+        <span class="current">{article.title}</span>
+      </nav>
+    </div>
+
+    <!-- Article Header -->
+    <header class="article-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="article-meta">
+            <span class="category-badge" style={`background: ${article.categoryColor}20; color: ${article.categoryColor}`}>
+              {article.category}
+            </span>
+            <span class="read-time">{article.readTime}</span>
+          </div>
+          <h1 class="article-title">{article.title}</h1>
+          <p class="article-excerpt">{article.excerpt}</p>
+          <div class="author-section">
+            <div class="author-info">
+              <div class="author-avatar">
+                <svg viewBox="0 0 40 40" fill="none">
+                  <circle cx="20" cy="20" r="20" fill="url(#avatar-gradient)"/>
+                  <text x="20" y="25" font-size="16" font-weight="600" fill="white" text-anchor="middle">BC</text>
+                  <defs>
+                    <linearGradient id="avatar-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#b794d4;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#ff9ec7;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="author-details">
+                <span class="author-name">{article.author}</span>
+                <time class="article-date" datetime={article.publishedDate}>{article.date}</time>
+              </div>
+            </div>
+            <div class="share-buttons">
+              <button class="share-btn" aria-label="Share on Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </button>
+              <button class="share-btn" aria-label="Share on Twitter">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                </svg>
+              </button>
+              <button class="share-btn" aria-label="Share on LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Featured Image -->
+    <div class="featured-image-wrapper">
+      <div class="container">
+        <img src={article.image} alt={article.title} class="featured-image" />
+      </div>
+    </div>
+
+    <!-- Article Content -->
+    <div class="article-content-wrapper">
+      <div class="container">
+        <div class="content-layout">
+          <!-- Table of Contents -->
+          <aside class="table-of-contents glass">
+            <h3 class="toc-title">Table of Contents</h3>
+            <nav class="toc-nav">
+              <ul>
+                {tableOfContents.map((item) => (
+                  <li>
+                    <a href={`#${item.id}`}>{item.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </aside>
+
+          <!-- Main Content -->
+          <article class="article-body">
+            <div class="prose">
+              <p class="lead">If you're a school-age student learning English, you may have been encouraged to take an English language exam. Not an end-of-week class test, but a formal exam to certify your level and demonstrate your progress. If you're a parent or teacher, you may have been presented with the same proposal: a formal English test for your child or students, with the aim of certifying their level and evaluating their progress.</p>
+
+              <p>Whether you're in primary school or in your final years of secondary education, or anywhere in between, there are different English exams to choose from. But choosing the right exam, for the right reason, at the right time, isn't always straightforward. To help you make that decision, here's a list of ten key aspects to consider.</p>
+
+              <h2 id="age-appropriate">The right exam for each age</h2>
+              <p>The exam content and the way it's presented should be age-appropriate, engaging and relevant for school-age learners. Activity-based tasks are often more suitable for primary students, while exams that assess both knowledge and communication skills will benefit secondary students.</p>
+
+              <p>The British Council's <a href="/exams/primary-english-test">Primary English Test</a> uses gamified stories and animations, designed to capture the attention of pre-adolescent students, rather than traditional questions. As students grow, it's essential to assess their developing language skills and broader vocabulary in contexts relevant to their age. The British Council's <a href="/exams/secondary-english-test">Secondary English Test</a> does this through content and situations that teenagers encounter in their daily lives.</p>
+
+              <h2 id="right-level">The right level</h2>
+              <p>Choosing an English test at the right level is the best way to ensure a fair and accurate assessment of language proficiency. An exam that's too easy won't truly reflect the student's level, while one that's too difficult may include overly complex tasks.</p>
+
+              <p>Exams that focus on a specific language level, such as B2 First, assess competence at that particular level, while multi-level exams like the <a href="/exams/secondary-english-test">Secondary English Test</a>, <a href="/exams/aptis">Aptis ESOL</a>, or <a href="/exams/ielts">IELTS</a> allow students to demonstrate their level accurately and, in the case of Aptis ESOL and IELTS, certify it officially.</p>
+
+              <h2 id="what-assessed">What is assessed</h2>
+              <p>In real life, we speak, write, listen, and read. That's why an exam that only assesses some of these skills can't provide a complete picture of a person's English level. Instead, exams that assess all four key skills provide a comprehensive evaluation of language level.</p>
+
+              <p>The way each skill is assessed is also important. For example, the best way to evaluate writing is to analyze what and how a person writes, or what they'll need to write in their daily life. The <a href="/exams/secondary-english-test">Secondary English Test</a> assesses all four language skills—listening, reading, writing, and speaking—as well as grammar and vocabulary knowledge, through real-world tasks designed to provide a complete picture of the level and highlight possible areas for improvement.</p>
+
+              <h2 id="assessing-learning">Assessing what has been learned</h2>
+              <p>Some exams are linked to a complete curriculum, while others align more generally with students' study programs. In any case, for an exam to be fair and valid, it must accurately assess what has been learned.</p>
+
+              <p>Exams that are aligned with a structured language proficiency framework like the Common European Framework of Reference for Languages (CEFR) can be integrated into school English programs. This way, what's assessed in the exam reflects what has been taught and learned.</p>
+
+              <h2 id="right-place-time">The right place and time</h2>
+              <p>When and where to take an exam can depend on various factors. Some schools prefer their students to take English exams at the beginning of the academic year. Others opt for dates at the end of the school year. Some prefer to conduct the exam at their own center; others, at external locations. What's most appropriate for the school may not be ideal for each student.</p>
+
+              <p>Whether you're a school or a student, it's advisable to choose an exam that offers flexibility regarding dates and locations. <a href="/exams/ielts">IELTS</a> and <a href="/exams/aptis">Aptis ESOL</a> offer multiple exam sessions and test centers, while the British Council's <a href="/exams/primary-english-test">Primary English Test</a> and <a href="/exams/secondary-english-test">Secondary English Test</a> can be scheduled at any time and place, as long as the necessary equipment and facilities are available.</p>
+
+              <h2 id="fit-for-purpose">Fit for purpose</h2>
+              <p>For an exam to be valid, it must accurately assess the language skills it's designed to measure and provide reliable and consistent results, regardless of when and where it's taken. Additionally, it should be practical for administration in school contexts and have a positive impact on teaching and learning.</p>
+
+              <p>A valid, reliable, practical, and fit-for-purpose exam will go a long way toward making test day a positive and stress-free experience for the student, allowing them to perform at their best. A well-designed exam, like the <a href="/exams/primary-english-test">Primary English Test</a>, administered and applied to the highest standards, gives younger learners the opportunity to demonstrate what they know in an optimal environment.</p>
+
+              <h2 id="results">Results</h2>
+              <p>A good exam should provide clear, consistent, and easy-to-understand results. The grading system should be comprehensible to both test-takers and teachers, schools, and families, offering a clear view of strengths and weaknesses in each skill.</p>
+
+              <p>Results linked to an international standard like the CEFR allow understanding of language proficiency level in each communicative skill and offer a global view of the level. Established and recognized exams like <a href="/exams/ielts">IELTS</a> and TOEFL present results aligned with the CEFR, as do more recent British Council exams, such as the range of English assessments for schools and <a href="/exams/aptis">Aptis ESOL</a>.</p>
+
+              <h2 id="international-standard">Aligned with an international standard</h2>
+              <p>An internationally recognized reference framework like the CEFR is key for exams like <a href="/exams/aptis">Aptis ESOL</a> and the <a href="/exams/secondary-english-test">Secondary English Test</a>, not only as a basis for designing exam tasks but also as a scale for evaluating performance and presenting results.</p>
+
+              <p>The CEFR defines six levels of language proficiency, from A1 (beginner) to C2 (proficient user), with clear and understandable descriptors of what a person can do at each level and in each skill. By linking exam scores to these levels, all British Council exams present results clearly and transparently.</p>
+
+              <h2 id="regulated-recognized">Regulated, recognized and reliable</h2>
+              <p>External regulation is a clear indicator of quality and reliability in an exam, as is its official recognition by ministries, education departments, universities, or official bodies. In most cases, this recognition is linked to level certification for specific purposes, such as obtaining a secondary school diploma, university admission, or job applications.</p>
+
+              <p>Although it's not usual for school-age exams to be formally recognized for academic or professional purposes, <a href="/exams/aptis">Aptis ESOL</a> and <a href="/exams/ielts">IELTS</a> do have wide recognition. <a href="/exams/ielts">IELTS</a> is accepted by thousands of organizations worldwide for study, work, or migration. <a href="/exams/aptis">Aptis ESOL</a>, for its part, has official recognition in countries like Spain.</p>
+
+              <h2 id="right-for-you">Right for you</h2>
+              <p>Last but not least, the exam you choose should be right for you: for you as a student, as a teacher, or as a school.</p>
+
+              <p>For the youngest learners, sparking their interest and motivation is key. Discover how the <a href="/exams/primary-english-test">Primary English Test</a> achieves this.</p>
+
+              <p>The best exams for teenagers should focus on building confidence and providing the opportunity to demonstrate language skills and progress. Learn more about how the <a href="/exams/secondary-english-test">Secondary English Test</a> does this.</p>
+
+              <p>Towards the end of the school stage, when academic goals are more demanding, it may be necessary to have official certification of English level. Discover how <a href="/exams/aptis">Aptis ESOL</a> and <a href="/exams/ielts">IELTS</a> can help you.</p>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="article-cta glass">
+              <h3>Ready to take your English exam?</h3>
+              <p>Explore our range of English exams and find the perfect one for your needs</p>
+              <div class="cta-buttons">
+                <Button href="/exams" variant="primary">Browse Exams</Button>
+                <Button href="/contact" variant="secondary">Contact Us</Button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Articles -->
+    <section class="related-articles">
+      <div class="container">
+        <h2 class="section-title">Related Articles</h2>
+        <div class="related-grid">
+          {relatedArticles.map((article) => (
+            <a href={`/blog/${article.slug}`} class="related-card glass">
+              <div class="related-image">
+                <img src={article.image} alt={article.title} loading="lazy" />
+              </div>
+              <div class="related-content">
+                <span class="category-badge" style={`background: ${article.categoryColor}20; color: ${article.categoryColor}`}>
+                  {article.category}
+                </span>
+                <h3 class="related-title">{article.title}</h3>
+                <span class="read-time">{article.readTime}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .article-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg,
+      rgba(183, 148, 212, 0.03) 0%,
+      rgba(255, 158, 199, 0.03) 50%,
+      rgba(255, 212, 232, 0.03) 100%
+    );
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    padding: 2rem 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--bc-medium-gray);
+  }
+
+  .breadcrumb a {
+    color: var(--bc-medium-gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--bc-primary-blue);
+  }
+
+  .breadcrumb .current {
+    color: var(--bc-dark-gray);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+  }
+
+  .separator {
+    color: var(--bc-medium-gray);
+  }
+
+  /* Article Header */
+  .article-header {
+    padding: 2rem 0 3rem;
+  }
+
+  .header-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .category-badge {
+    padding: 0.375rem 0.875rem;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  .read-time {
+    font-size: 0.875rem;
+    color: var(--bc-medium-gray);
+  }
+
+  .article-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-excerpt {
+    font-size: 1.25rem;
+    color: var(--bc-dark-gray);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .author-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(183, 148, 212, 0.2);
+  }
+
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .author-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-name {
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    font-size: 1rem;
+  }
+
+  .article-date {
+    font-size: 0.875rem;
+    color: var(--bc-medium-gray);
+  }
+
+  .share-buttons {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .share-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bc-primary-blue);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .share-btn:hover {
+    background: var(--bc-primary-blue);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  /* Featured Image */
+  .featured-image-wrapper {
+    margin-bottom: 4rem;
+  }
+
+  .featured-image {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(35, 7, 90, 0.15);
+  }
+
+  /* Content Layout */
+  .article-content-wrapper {
+    padding-bottom: 4rem;
+  }
+
+  .content-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Table of Contents */
+  .table-of-contents {
+    position: sticky;
+    top: 2rem;
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .toc-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .toc-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .toc-nav li {
+    margin-bottom: 0.75rem;
+  }
+
+  .toc-nav a {
+    color: var(--bc-dark-gray);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+    display: block;
+  }
+
+  .toc-nav a:hover {
+    color: var(--bc-cta-pink);
+  }
+
+  /* Article Body */
+  .article-body {
+    max-width: 720px;
+  }
+
+  .prose {
+    color: var(--bc-dark-gray);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+
+  .prose .lead {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--bc-primary-blue);
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+
+  .prose p {
+    margin-bottom: 1.5rem;
+  }
+
+  .prose h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .prose h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose a {
+    color: var(--bc-cta-pink);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+
+  .prose a:hover {
+    color: var(--bc-primary-blue);
+  }
+
+  .prose ul, .prose ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Article CTA */
+  .article-cta {
+    margin-top: 4rem;
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+  }
+
+  .article-cta h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.75rem;
+  }
+
+  .article-cta p {
+    font-size: 1.0625rem;
+    color: var(--bc-dark-gray);
+    margin-bottom: 2rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  /* Related Articles */
+  .related-articles {
+    padding: 4rem 0;
+    background: linear-gradient(135deg,
+      rgba(183, 148, 212, 0.05) 0%,
+      rgba(255, 158, 199, 0.05) 100%
+    );
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .related-card {
+    display: block;
+    text-decoration: none;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .related-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(35, 7, 90, 0.15);
+  }
+
+  .related-image {
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .related-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .related-card:hover .related-image img {
+    transform: scale(1.05);
+  }
+
+  .related-content {
+    padding: 1.5rem;
+  }
+
+  .related-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    margin: 0.75rem 0;
+    line-height: 1.4;
+  }
+
+  /* Glass effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .content-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .table-of-contents {
+      position: relative;
+      top: 0;
+      margin-bottom: 3rem;
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 1rem;
+    }
+
+    .article-title {
+      font-size: 2rem;
+    }
+
+    .article-excerpt {
+      font-size: 1.0625rem;
+    }
+
+    .author-section {
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .prose {
+      font-size: 1rem;
+    }
+
+    .prose h2 {
+      font-size: 1.5rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .breadcrumb .current {
+      max-width: 150px;
+    }
+  }
+</style>
+
+<script>
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc-nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Highlight active TOC item on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        document.querySelectorAll('.toc-nav a').forEach(link => {
+          link.style.color = '';
+          link.style.fontWeight = '';
+        });
+        const activeLink = document.querySelector(`.toc-nav a[href="#${id}"]`);
+        if (activeLink) {
+          activeLink.style.color = 'var(--bc-cta-pink)';
+          activeLink.style.fontWeight = '600';
+        }
+      }
+    });
+  }, {
+    rootMargin: '-100px 0px -80% 0px'
+  });
+
+  document.querySelectorAll('.prose h2[id]').forEach((heading) => {
+    observer.observe(heading);
+  });
+</script>

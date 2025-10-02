@@ -1,0 +1,1360 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+const featuredVideo = {
+  id: 'feat-1',
+  title: 'IELTS Speaking Test: Top Tips for Success',
+  description: 'Examiner led walkthrough covering part by part tactics, vocabulary boosts and confidence drills.',
+  thumbnail: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&q=80',
+  duration: '15:24',
+  level: 'B2-C1',
+  category: 'Exam Prep',
+  categoryColor: '#f59e0b',
+  views: '45.2K',
+  uploadDate: '2 weeks ago',
+  videoUrl: '#'
+};
+
+const quickFilters = [
+  { label: 'Grammar clinics', description: 'Deep dives for B1-B2 learners' },
+  { label: 'IELTS prep', description: 'Band 7 strategies and model answers' },
+  { label: 'Business English', description: 'Meetings, email and presentation skills' },
+  { label: 'Young learner fun', description: 'Songs, stories and movement breaks' }
+];
+
+const curatedJourneys = [
+  {
+    id: 'fluency',
+    title: 'Fluency Foundations',
+    description: 'Short, high-energy clips that get learners talking in minutes.',
+    accent: '#ff9edb',
+    gradient: 'linear-gradient(140deg, rgba(255, 158, 219, 0.55), rgba(124, 77, 255, 0.35))',
+    outcomes: ['Warmers and exit tickets', 'Teacher prompt cards', 'Pair work missions']
+  },
+  {
+    id: 'confidence',
+    title: 'Confidence on Camera',
+    description: 'Project based story arcs to build presentation and debate skills.',
+    accent: '#7bcfff',
+    gradient: 'linear-gradient(140deg, rgba(123, 207, 255, 0.55), rgba(47, 214, 200, 0.35))',
+    outcomes: ['Storyboard templates', 'Delivery coaching', 'Editable slide decks']
+  },
+  {
+    id: 'exam',
+    title: 'Results Lab',
+    description: 'Step by step exam preparation playlists with printable trackers.',
+    accent: '#ffd49b',
+    gradient: 'linear-gradient(140deg, rgba(255, 212, 155, 0.55), rgba(255, 94, 168, 0.32))',
+    outcomes: ['Timed drills', 'Band descriptor cheatsheets', 'Reflection prompts']
+  }
+];
+
+const videos = [
+  {
+    id: 'vid-1',
+    title: 'English Grammar: Mastering Present Perfect',
+    description: 'Complete guide to using present perfect with real-world examples and practice tasks.',
+    thumbnail: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80',
+    duration: '12:45',
+    level: 'B1',
+    category: 'Grammar',
+    categoryColor: '#10b981',
+    views: '28.5K',
+    uploadDate: '1 week ago',
+    videoUrl: '#',
+    ageGroup: 'Adults'
+  },
+  {
+    id: 'vid-2',
+    title: 'Business English: Effective Email Writing',
+    description: 'Professional email writing tips for international teams, including tone and structure.',
+    thumbnail: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80',
+    duration: '10:30',
+    level: 'B2',
+    category: 'Business English',
+    categoryColor: '#8b5cf6',
+    views: '32.1K',
+    uploadDate: '3 days ago',
+    videoUrl: '#',
+    ageGroup: 'Adults'
+  },
+  {
+    id: 'vid-3',
+    title: 'Pronunciation Workshop: British vs American English',
+    description: 'Compare key sounds with on screen mouth shapes and drill exercises you can copy.',
+    thumbnail: 'https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=800&q=80',
+    duration: '18:20',
+    level: 'B1-B2',
+    category: 'Pronunciation',
+    categoryColor: '#ec4899',
+    views: '51.3K',
+    uploadDate: '2 weeks ago',
+    videoUrl: '#',
+    ageGroup: 'All Ages'
+  },
+  {
+    id: 'vid-4',
+    title: 'Vocabulary Builder: Academic English',
+    description: 'Essential academic vocabulary for essays and seminars with note taking frames.',
+    thumbnail: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80',
+    duration: '14:15',
+    level: 'C1',
+    category: 'Vocabulary',
+    categoryColor: '#06b6d4',
+    views: '19.8K',
+    uploadDate: '5 days ago',
+    videoUrl: '#',
+    ageGroup: 'Adults'
+  },
+  {
+    id: 'vid-5',
+    title: 'IELTS Writing Task 2: How to Structure Your Essay',
+    description: 'Step by step walkthrough of high scoring essays with examiner commentary.',
+    thumbnail: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80',
+    duration: '16:50',
+    level: 'B2-C1',
+    category: 'Exam Prep',
+    categoryColor: '#f59e0b',
+    views: '67.4K',
+    uploadDate: '1 week ago',
+    videoUrl: '#',
+    ageGroup: 'Adults'
+  },
+  {
+    id: 'vid-6',
+    title: 'English for Kids: Fun with Animals',
+    description: 'Interactive lesson teaching animal names and sounds through songs and games.',
+    thumbnail: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
+    duration: '8:35',
+    level: 'A1',
+    category: 'Grammar',
+    categoryColor: '#10b981',
+    views: '42.7K',
+    uploadDate: '4 days ago',
+    videoUrl: '#',
+    ageGroup: 'Children'
+  },
+  {
+    id: 'vid-7',
+    title: 'Business Presentations: Confidence and Clarity',
+    description: 'Master professional presentations with storytelling frameworks and delivery tips.',
+    thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+    duration: '13:40',
+    level: 'B2-C1',
+    category: 'Business English',
+    categoryColor: '#8b5cf6',
+    views: '25.6K',
+    uploadDate: '6 days ago',
+    videoUrl: '#',
+    ageGroup: 'Adults'
+  },
+  {
+    id: 'vid-8',
+    title: 'Advanced Grammar: Conditionals Explained',
+    description: 'All conditional structures with memorable examples and practice prompts.',
+    thumbnail: 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=800&q=80',
+    duration: '20:15',
+    level: 'B2-C1',
+    category: 'Grammar',
+    categoryColor: '#10b981',
+    views: '38.2K',
+    uploadDate: '3 weeks ago',
+    videoUrl: '#',
+    ageGroup: 'Adults'
+  },
+  {
+    id: 'vid-9',
+    title: 'Idioms and Expressions: Sound Like a Native',
+    description: 'Learn 50 essential idioms with context clips and downloadable practice sheets.',
+    thumbnail: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80',
+    duration: '11:25',
+    level: 'B1-B2',
+    category: 'Vocabulary',
+    categoryColor: '#06b6d4',
+    views: '55.9K',
+    uploadDate: '1 week ago',
+    videoUrl: '#',
+    ageGroup: 'Teenagers'
+  },
+  {
+    id: 'vid-10',
+    title: 'Cambridge B2 First: Reading Tips and Strategies',
+    description: 'Proven strategies to boost your reading score with guided walkthroughs.',
+    thumbnail: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80',
+    duration: '17:30',
+    level: 'B2',
+    category: 'Exam Prep',
+    categoryColor: '#f59e0b',
+    views: '29.4K',
+    uploadDate: '2 weeks ago',
+    videoUrl: '#',
+    ageGroup: 'Teenagers'
+  },
+  {
+    id: 'vid-11',
+    title: 'Pronunciation Practice: Difficult Sounds',
+    description: 'Target tricky vowel and consonant sounds with repetition and rhythm drills.',
+    thumbnail: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80',
+    duration: '9:50',
+    level: 'A2-B1',
+    category: 'Pronunciation',
+    categoryColor: '#ec4899',
+    views: '44.1K',
+    uploadDate: '5 days ago',
+    videoUrl: '#',
+    ageGroup: 'All Ages'
+  },
+  {
+    id: 'vid-12',
+    title: 'Business Vocabulary: Finance and Economics',
+    description: 'Essential vocabulary for finance professionals with follow up practice tasks.',
+    thumbnail: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
+    duration: '15:05',
+    level: 'C1-C2',
+    category: 'Business English',
+    categoryColor: '#8b5cf6',
+    views: '18.3K',
+    uploadDate: '1 week ago',
+    videoUrl: '#',
+    ageGroup: 'Adults'
+  }
+];
+
+const continueWatching = [
+  {
+    id: videos[0].id,
+    ...videos[0],
+    progress: 65,
+    lastWatched: '2 hours ago'
+  },
+  {
+    id: videos[1].id,
+    ...videos[1],
+    progress: 32,
+    lastWatched: 'Yesterday'
+  },
+  {
+    id: videos[2].id,
+    ...videos[2],
+    progress: 84,
+    lastWatched: '5 days ago'
+  }
+];
+
+const playlists = [
+  {
+    id: 'fluency-sprint',
+    title: 'Fluency Sprint',
+    description: 'Fifteen bite-size lessons to build pace, flow and accuracy in everyday talk.',
+    mood: '15 lessons',
+    color: '#f1e8ff',
+    tags: ['B1-B2', 'Speaking lab', 'Downloadable planner']
+  },
+  {
+    id: 'exam-bootcamp',
+    title: 'Exam Bootcamp',
+    description: 'Four week crash course with live marking demos and printable trackers.',
+    mood: '4 weeks',
+    color: '#fff5f4',
+    tags: ['IELTS', 'Cambridge B2', 'Band 7 goals']
+  },
+  {
+    id: 'young-explorers',
+    title: 'Young Explorers',
+    description: 'Energetic stories, songs and movement breaks for primary classrooms.',
+    mood: '12 adventures',
+    color: '#e4fbf8',
+    tags: ['A1-A2', 'Primary Plus', 'Teacher packs']
+  }
+];
+
+const categoryFilters = Array.from(new Set(videos.map((video) => video.category)));
+const levelFilters = ['All levels', ...Array.from(new Set(videos.map((video) => video.level)) )];
+const ageFilters = ['All ages', ...Array.from(new Set(videos.map((video) => video.ageGroup)) )];
+---
+
+<Layout title="British Council Video Library" description="Watch beautifully produced British Council lessons, exam workshops and young learner adventures on demand.">
+  <Header />
+
+  <main class="videos-hub">
+    <section class="hero">
+      <div class="bc-container hero__inner">
+        <div class="hero__content">
+          <span class="hero__badge">Stream ready resources</span>
+          <h1>Video lessons that feel like studio productions</h1>
+          <p>Browse curated learning arcs, exam strategy breakdowns and young learner adventures. Preview everything now before we switch it live.</p>
+          <div class="hero__cta">
+            <a class="hero__primary" href="#library">Browse video library</a>
+            <button type="button" class="hero__secondary">Build my playlist</button>
+          </div>
+          <dl class="hero__stats">
+            <div>
+              <dt>Fresh uploads</dt>
+              <dd>12 this month</dd>
+            </div>
+            <div>
+              <dt>Average runtime</dt>
+              <dd>14m 20s</dd>
+            </div>
+            <div>
+              <dt>Educator teams</dt>
+              <dd>18 specialists</dd>
+            </div>
+          </dl>
+          <div class="hero__filters">
+            {quickFilters.map((filter) => (
+              <button type="button" class="hero__filter">
+                <strong>{filter.label}</strong>
+                <span>{filter.description}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <article class="hero__featured">
+          <div class="featured__thumb" style={`background-image: url('${featuredVideo.thumbnail}');`}>
+            <span class="featured__duration">{featuredVideo.duration}</span>
+          </div>
+          <div class="featured__body">
+            <span class="featured__tag" style={`--tag-color: ${featuredVideo.categoryColor};`}>{featuredVideo.category}</span>
+            <h2>{featuredVideo.title}</h2>
+            <p>{featuredVideo.description}</p>
+            <div class="featured__meta">
+              <span>{featuredVideo.level}</span>
+              <span>{featuredVideo.views} views</span>
+              <span>{featuredVideo.uploadDate}</span>
+            </div>
+            <a href={featuredVideo.videoUrl} class="featured__cta">Play preview</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="journeys" class="journeys">
+      <div class="bc-container">
+        <div class="section-heading">
+          <div>
+            <h2>Curated journeys for every goal</h2>
+            <p>Hand picked sequences with supporting classroom packs so you can drop them straight into lessons.</p>
+          </div>
+          <a class="ghost-link" href="#library">See all videos</a>
+        </div>
+        <div class="journeys__grid">
+          {curatedJourneys.map((journey) => (
+            <article class="journey" style={`--journey-accent: ${journey.accent}; --journey-gradient: ${journey.gradient};`}>
+              <header>
+                <span class="journey__chip">{journey.title}</span>
+                <h3>{journey.description}</h3>
+              </header>
+              <ul>
+                {journey.outcomes.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <button type="button">Open journey preview</button>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="continue">
+      <div class="bc-container">
+        <div class="section-heading">
+          <div>
+            <h2>Continue watching</h2>
+            <p>Jump back into lessons you have already started and pick up right where you stopped.</p>
+          </div>
+          <a class="ghost-link" href="/portal">Sync with my account</a>
+        </div>
+        <div class="continue__scroller">
+          {continueWatching.map((item) => (
+            <article class="continue__card">
+              <div class="continue__thumb" style={`background-image: url('${item.thumbnail}');`}>
+                <span class="continue__duration">{item.duration}</span>
+              </div>
+              <div class="continue__body">
+                <span class="continue__tag" style={`--tag-color: ${item.categoryColor};`}>{item.category}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <div class="continue__progress">
+                  <div class="continue__progress-bar" style={`width: ${item.progress}%;`}></div>
+                </div>
+                <div class="continue__meta">
+                  <span>{item.progress}% complete</span>
+                  <span>Last watched {item.lastWatched}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="playlists">
+      <div class="bc-container">
+        <div class="section-heading">
+          <div>
+            <h2>Spotlight playlists</h2>
+            <p>Ready-made playlists curated by our teachers for different learning moments.</p>
+          </div>
+          <button type="button" class="ghost-link">Request bespoke set</button>
+        </div>
+        <div class="playlists__grid">
+          {playlists.map((playlist) => (
+            <article class="playlist" style={`background: ${playlist.color};`}>
+              <header>
+                <span class="playlist__mood">{playlist.mood}</span>
+                <h3>{playlist.title}</h3>
+              </header>
+              <p>{playlist.description}</p>
+              <ul>
+                {playlist.tags.map((tag) => (
+                  <li>{tag}</li>
+                ))}
+              </ul>
+              <button type="button">Preview track list</button>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="library" class="library">
+      <div class="bc-container">
+        <div class="section-heading">
+          <div>
+            <h2>Watch the full library</h2>
+            <p>Filter by level, theme or learner profile to find the perfect lesson in seconds.</p>
+          </div>
+          <button type="button" class="ghost-link">Export as PDF</button>
+        </div>
+
+        <div class="library__filters">
+          <div class="filter-toolbar">
+            <div class="filter-toolbar__meta">
+              <span class="filter-toolbar__eyebrow">Filter library</span>
+              <p>Dial in the lessons you need by level, theme or learner profile.</p>
+              <button type="button" class="filter-toolbar__reset">Reset filters</button>
+            </div>
+            <div class="filter-toolbar__segments">
+              <div class="filter-toolbar__segment">
+                <span class="filter-toolbar__label">Level</span>
+                <div class="pill-row">
+                  {levelFilters.map((level, index) => (
+                    <button type="button" class={`pill ${index === 0 ? 'pill--active' : ''}`}>
+                      {level}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div class="filter-toolbar__segment">
+                <span class="filter-toolbar__label">Category</span>
+                <div class="pill-row">
+                  <button type="button" class="pill pill--active">All categories</button>
+                  {categoryFilters.map((category) => (
+                    <button type="button" class="pill">{category}</button>
+                  ))}
+                </div>
+              </div>
+              <div class="filter-toolbar__segment">
+                <span class="filter-toolbar__label">Age</span>
+                <div class="pill-row">
+                  {ageFilters.map((age, index) => (
+                    <button type="button" class={`pill ${index === 0 ? 'pill--active' : ''}`}>
+                      {age}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="library__grid">
+          {videos.map((video) => (
+            <article class="video-card">
+              <div class="video-card__thumb" style={`background-image: url('${video.thumbnail}');`}>
+                <span class="video-card__duration">{video.duration}</span>
+              </div>
+              <div class="video-card__body">
+                <div class="video-card__meta">
+                  <span class="video-card__tag" style={`--tag-color: ${video.categoryColor};`}>{video.category}</span>
+                  <span class="video-card__level">{video.level}</span>
+                </div>
+                <h3>{video.title}</h3>
+                <p>{video.description}</p>
+                <div class="video-card__stats">
+                  <span>{video.views} views</span>
+                  <span>{video.uploadDate}</span>
+                  <span>{video.ageGroup}</span>
+                </div>
+                <a href={video.videoUrl} class="video-card__cta">Play lesson</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="bc-container cta__inner">
+        <div>
+          <h2>Want early access when we switch it live?</h2>
+          <p>Leave your email and we will send you new playlists, printable certificates and the class tracker.</p>
+        </div>
+        <form class="cta__form" novalidate>
+          <label for="cta-email-videos" class="sr-only">Email</label>
+          <input id="cta-email-videos" type="email" placeholder="you@school.edu" autocomplete="email" />
+          <button type="button">Notify me</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  :root {
+    color-scheme: light;
+  }
+
+  .videos-hub {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    padding-bottom: 6rem;
+  }
+
+  .hero {
+    position: relative;
+    padding: 8rem 0 5rem;
+    background: radial-gradient(circle at 0% 0%, rgba(124, 77, 255, 0.16), transparent 70%),
+      linear-gradient(120deg, rgba(17, 6, 50, 0.95), rgba(35, 7, 90, 0.82));
+    color: white;
+    overflow: hidden;
+  }
+
+  .hero::before,
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    opacity: 0.4;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    z-index: 0;
+  }
+
+  .hero::before {
+    top: -160px;
+    right: -120px;
+    background: radial-gradient(circle, rgba(255, 94, 168, 0.4), transparent 70%);
+  }
+
+  .hero::after {
+    bottom: -140px;
+    left: -160px;
+    background: radial-gradient(circle, rgba(47, 214, 200, 0.34), transparent 70%);
+  }
+
+  .hero__inner {
+    position: relative;
+    display: grid;
+    gap: 3rem;
+    align-items: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    z-index: 1;
+  }
+
+  .hero__content {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 1.3rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero__content h1 {
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
+    line-height: 1.05;
+    color: white;
+    text-wrap: balance;
+  }
+
+  .hero__content p {
+    max-width: 34rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.05rem;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .hero__primary,
+  .hero__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.9rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .hero__primary {
+    color: #10043b;
+    background: linear-gradient(135deg, #ffa8f4, #705cff);
+    box-shadow: 0 14px 30px rgba(124, 77, 255, 0.28);
+  }
+
+  .hero__secondary {
+    background: rgba(255, 255, 255, 0.18);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+  }
+
+  .hero__primary:hover,
+  .hero__secondary:hover {
+    transform: translateY(-3px);
+  }
+
+  .hero__stats {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  }
+
+  .hero__stats div {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 1.4rem;
+    padding: 1.05rem 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(16px);
+  }
+
+  .hero__stats dt {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .hero__stats dd {
+    margin-top: 0.35rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+  }
+
+  .hero__filters {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: 0.6rem;
+  }
+
+  .hero__filter {
+    text-align: left;
+    padding: 0.9rem 1.1rem;
+    border-radius: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.88);
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .hero__filter strong {
+    font-size: 0.88rem;
+    color: white;
+  }
+
+  .hero__filter span {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.72);
+    word-break: normal;
+    white-space: normal;
+    text-wrap: balance;
+  }
+
+  .hero__featured {
+    position: relative;
+    border-radius: 2.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    display: grid;
+    grid-template-rows: minmax(200px, 210px) auto;
+    box-shadow: 0 22px 38px rgba(35, 7, 90, 0.2);
+  }
+
+  .featured__thumb {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .featured__duration {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.2rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    font-size: 0.78rem;
+  }
+
+  .featured__body {
+    padding: 1.8rem;
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .featured__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: white;
+  }
+
+  .featured__tag::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--tag-color, #ff9edb);
+    margin-right: 0.5rem;
+  }
+
+  .featured__body h2 {
+    font-size: 1.6rem;
+    color: white;
+  }
+
+  .featured__body p {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .featured__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1.2rem;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .featured__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #54b5ff, #7c4dff);
+    color: white;
+    font-weight: 600;
+    width: fit-content;
+  }
+
+  .section-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2.8rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+  }
+
+  .section-heading p {
+    color: var(--muted);
+    max-width: 32rem;
+  }
+
+  .ghost-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    border-bottom: 1px solid rgba(35, 7, 90, 0.2);
+    padding-bottom: 0.25rem;
+  }
+
+  .journeys__grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .journey {
+    position: relative;
+    padding: 2.4rem;
+    border-radius: 2.2rem;
+    background: var(--journey-gradient);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 22px 45px rgba(35, 7, 90, 0.14);
+    display: grid;
+    gap: 1.6rem;
+  }
+
+  .journey::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--journey-accent), transparent 70%);
+    opacity: 0.5;
+  }
+
+  .journey header {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .journey__chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 1.1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    width: fit-content;
+  }
+
+  .journey h3 {
+    color: var(--bc-primary-blue);
+    font-size: 1.3rem;
+  }
+
+  .journey ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.7rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .journey li {
+    padding-left: 1.4rem;
+    color: var(--muted);
+    position: relative;
+  }
+
+  .journey li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--journey-accent);
+  }
+
+  .journey button {
+    justify-self: flex-start;
+    border-radius: 999px;
+    padding: 0.7rem 1.6rem;
+    border: none;
+    font-weight: 600;
+    background: rgba(17, 6, 50, 0.85);
+    color: white;
+    cursor: pointer;
+  }
+
+  .continue {
+    background: linear-gradient(135deg, rgba(35, 7, 90, 0.06), rgba(124, 77, 255, 0.04));
+    padding: 5rem 0;
+  }
+
+  .continue__scroller {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .continue__card {
+    border-radius: 2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 238, 255, 0.92));
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    box-shadow: 0 18px 38px rgba(35, 7, 90, 0.12);
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 180px auto;
+  }
+
+  .continue__thumb {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .continue__duration {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    font-size: 0.75rem;
+  }
+
+  .continue__body {
+    padding: 1.8rem;
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .continue__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.28rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: rgba(17, 6, 50, 0.08);
+  }
+
+  .continue__tag::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--tag-color, #ff9edb);
+    margin-right: 0.45rem;
+  }
+
+  .continue__body h3 {
+    font-size: 1.2rem;
+    color: var(--bc-primary-blue);
+  }
+
+  .continue__body p {
+    color: var(--muted);
+  }
+
+  .continue__progress {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(17, 6, 50, 0.08);
+    overflow: hidden;
+  }
+
+  .continue__progress-bar {
+    height: 100%;
+    background: linear-gradient(135deg, #ff9edb, #7c4dff);
+  }
+
+  .continue__meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .playlists__grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .playlist {
+    padding: 1.9rem;
+    border-radius: 2.2rem;
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    box-shadow: 0 22px 45px rgba(35, 7, 90, 0.1);
+    display: grid;
+    gap: 1rem;
+  }
+
+  .playlist__mood {
+    display: inline-flex;
+    padding: 0.28rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(17, 6, 50, 0.08);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .playlist h3 {
+    font-size: 1.4rem;
+    color: var(--bc-primary-blue);
+  }
+
+  .playlist p {
+    color: var(--muted);
+  }
+
+  .playlist ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--muted);
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .playlist button {
+    justify-self: flex-start;
+    border-radius: 999px;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    font-weight: 600;
+    background: rgba(17, 6, 50, 0.85);
+    color: white;
+  }
+
+  .library__filters {
+    margin-bottom: 2.5rem;
+  }
+
+  .filter-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 1.6rem;
+    padding: 1.4rem 1.8rem;
+    border-radius: 1.9rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    box-shadow: 0 18px 36px rgba(35, 7, 90, 0.12);
+  }
+
+  .filter-toolbar__meta {
+    flex: 1 1 220px;
+    min-width: 220px;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .filter-toolbar__eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(17, 6, 50, 0.65);
+  }
+
+  .filter-toolbar__meta p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+    max-width: 20rem;
+  }
+
+  .filter-toolbar__reset {
+    justify-self: flex-start;
+    border: none;
+    border-radius: 999px;
+    padding: 0.45rem 1.1rem;
+    font-weight: 600;
+    font-size: 0.82rem;
+    background: rgba(35, 7, 90, 0.08);
+    color: var(--bc-primary-blue);
+    cursor: pointer;
+  }
+
+  .filter-toolbar__segments {
+    flex: 2 1 520px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .filter-toolbar__segment {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem;
+    padding-right: 1.2rem;
+    border-right: 1px solid rgba(17, 6, 50, 0.08);
+    min-width: 220px;
+  }
+
+  .filter-toolbar__segment:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .filter-toolbar__label {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(17, 6, 50, 0.6);
+  }
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .pill {
+    border-radius: 999px;
+    border: 1px solid rgba(35, 7, 90, 0.16);
+    padding: 0.55rem 1.4rem;
+    background: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .pill--active {
+    background: linear-gradient(135deg, rgba(255, 183, 242, 0.65), rgba(124, 77, 255, 0.4));
+    border-color: rgba(124, 77, 255, 0.25);
+  }
+
+  .library__grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .video-card {
+    position: relative;
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(17, 6, 50, 0.06);
+    box-shadow: 0 18px 40px rgba(35, 7, 90, 0.12);
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 200px auto;
+  }
+
+  .video-card__thumb {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .video-card__duration {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    font-size: 0.75rem;
+  }
+
+  .video-card__body {
+    padding: 1.8rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .video-card__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    color: var(--muted);
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .video-card__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(17, 6, 50, 0.08);
+  }
+
+  .video-card__tag::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--tag-color, #ff9edb);
+    margin-right: 0.4rem;
+  }
+
+  .video-card__body h3 {
+    font-size: 1.2rem;
+    color: var(--bc-primary-blue);
+  }
+
+  .video-card__body p {
+    color: var(--muted);
+  }
+
+  .video-card__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .video-card__cta {
+    justify-self: flex-start;
+    border-radius: 999px;
+    padding: 0.7rem 1.4rem;
+    background: linear-gradient(135deg, #23075a, #7c4dff);
+    color: white;
+    font-weight: 600;
+  }
+
+  .cta {
+    padding: 5rem 0;
+  }
+
+  .cta__inner {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(235, 234, 255, 0.96));
+    padding: 3rem;
+    border-radius: 2.6rem;
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    box-shadow: 0 26px 45px rgba(35, 7, 90, 0.12);
+  }
+
+  .cta__inner h2 {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    margin-bottom: 0.8rem;
+  }
+
+  .cta__inner p {
+    color: var(--muted);
+    max-width: 30rem;
+  }
+
+  .cta__form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    background: white;
+    padding: 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(35, 7, 90, 0.15);
+    box-shadow: inset 0 0 0 1px rgba(124, 77, 255, 0.08);
+  }
+
+  .cta__form input {
+    border: none;
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .cta__form input:focus {
+    outline: none;
+  }
+
+  .cta__form button {
+    border: none;
+    border-radius: 999px;
+    padding: 0.85rem 1.8rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ffb7f2, #7c4dff);
+    color: #10043b;
+    cursor: pointer;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 1023px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__featured {
+      order: -1;
+    }
+
+    .hero__content p {
+      max-width: 100%;
+    }
+
+    .section-heading {
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .hero {
+      padding: 7.5rem 0 4.5rem;
+    }
+
+    .hero__stats {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .hero__filters {
+      grid-template-columns: 1fr;
+    }
+
+    .continue__meta {
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .library__filters {
+      gap: 1.2rem;
+    }
+
+    .cta__form {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+    }
+
+    .cta__form button {
+      width: 100%;
+    }
+  }
+</style>

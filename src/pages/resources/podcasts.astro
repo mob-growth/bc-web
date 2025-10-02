@@ -1,0 +1,674 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+const podcasts = [
+  { id: 1, title: 'Business English: Networking Success', description: 'Master the art of professional networking with real conversations and practical phrases for conferences and meetings.', duration: '28:45', level: 'B2-C1', category: 'Business Talks', series: 'Business English Pro', date: '2024-09-28', cover: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', featured: true, listeners: '12.4K' },
+  { id: 2, title: 'Daily English: At the Supermarket', description: 'Learn everyday vocabulary and expressions used while shopping, including asking for help and comparing products.', duration: '15:30', level: 'A2-B1', category: 'Daily English', series: 'Everyday Situations', date: '2024-09-26', cover: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', featured: true, listeners: '8.2K' },
+  { id: 3, title: 'IELTS Speaking Part 2: Personal Stories', description: 'Expert tips and sample answers for IELTS Speaking Part 2, focusing on narrating personal experiences effectively.', duration: '32:15', level: 'B2-C1', category: 'IELTS Prep', series: 'IELTS Mastery', date: '2024-09-24', cover: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', featured: false, listeners: '15.7K' },
+  { id: 4, title: 'Grammar Focus: Perfect Tenses Explained', description: 'Clear explanations and practical examples of present perfect, past perfect and future perfect tenses.', duration: '22:10', level: 'B1-B2', category: 'Grammar Focus', series: 'Grammar Essentials', date: '2024-09-22', cover: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)', featured: false, listeners: '9.1K' },
+  { id: 5, title: 'Stories & Literature: Sherlock Holmes', description: 'Explore classic English literature with an adapted reading of The Adventure of the Speckled Band followed by vocabulary analysis.', duration: '45:20', level: 'B2-C2', category: 'Stories & Literature', series: 'Classic Tales', date: '2024-09-20', cover: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)', featured: false, listeners: '18.3K' },
+  { id: 6, title: 'Daily English: Making Phone Calls', description: 'Essential phrases and etiquette for making and receiving professional and personal phone calls.', duration: '18:40', level: 'A2-B1', category: 'Daily English', series: 'Everyday Situations', date: '2024-09-18', cover: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)', featured: false, listeners: '7.5K' },
+  { id: 7, title: 'Business English: Email Writing Mastery', description: 'Write professional emails with confidence, covering subject lines, formal greetings and clear messages.', duration: '26:35', level: 'B1-C1', category: 'Business Talks', series: 'Business English Pro', date: '2024-09-16', cover: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)', featured: false, listeners: '11.2K' },
+  { id: 8, title: 'IELTS Listening: Note-Taking Strategies', description: 'Proven techniques for effective note-taking during the IELTS listening test.', duration: '29:50', level: 'B2-C1', category: 'IELTS Prep', series: 'IELTS Mastery', date: '2024-09-14', cover: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)', featured: false, listeners: '13.6K' },
+  { id: 9, title: 'Grammar Focus: Conditional Sentences Made Easy', description: 'Master all types of conditional sentences with practical examples from real-life situations.', duration: '24:15', level: 'B1-B2', category: 'Grammar Focus', series: 'Grammar Essentials', date: '2024-09-12', cover: 'linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%)', featured: false, listeners: '10.8K' },
+  { id: 10, title: 'Stories & Literature: Modern Short Stories', description: 'Contemporary English short story followed by discussion of themes and vocabulary.', duration: '38:25', level: 'B2-C2', category: 'Stories & Literature', series: 'Classic Tales', date: '2024-09-10', cover: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)', featured: false, listeners: '16.4K' },
+  { id: 11, title: 'Daily English: At the Doctor', description: 'Describe symptoms, understand medical advice and communicate effectively with healthcare professionals.', duration: '17:55', level: 'A2-B1', category: 'Daily English', series: 'Everyday Situations', date: '2024-09-08', cover: 'linear-gradient(135deg, #fccb90 0%, #d57eeb 100%)', featured: false, listeners: '6.9K' },
+  { id: 12, title: 'Business English: Presentations That Impress', description: 'Structure compelling business presentations with impactful openings and memorable conclusions.', duration: '31:20', level: 'B2-C1', category: 'Business Talks', series: 'Business English Pro', date: '2024-09-05', cover: 'linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)', featured: false, listeners: '14.1K' }
+];
+
+const heroEpisode = podcasts[0];
+const freshDrops = podcasts.slice(0, 6);
+const bingeList = podcasts.filter((episode) => episode.duration >= '29:00').slice(0, 4);
+const seriesMap = podcasts.reduce((acc, episode) => {
+  acc[episode.series] = acc[episode.series] || { series: episode.series, category: episode.category, episodes: [] };
+  acc[episode.series].episodes.push(episode);
+  return acc;
+}, {});
+const seriesHighlights = Object.values(seriesMap)
+  .map((item) => ({ ...item, episodeCount: item.episodes.length, sample: item.episodes[0] }))
+  .slice(0, 4);
+---
+
+<Layout title="British Council Podcasts" description="Listen to beautifully produced British Council Spain podcasts for learners and teachers.">
+  <Header />
+
+  <main class="podcasts-hub">
+    <section class="hero">
+      <div class="bc-container hero__inner">
+        <div class="hero__content">
+          <span class="hero__badge">Studio sessions</span>
+          <h1>Podcasts that turn English practice into inspiring stories</h1>
+          <p>Stream our series created by British Council educators, examiners and storytellers. Every episode comes with downloadable notes, vocabulary boosts and classroom prompts.</p>
+          <div class="hero__cta">
+            <a class="hero__primary" href="#fresh">Play new episodes</a>
+            <a class="hero__secondary" href="#series">Explore series</a>
+          </div>
+          <dl class="hero__stats">
+            <div>
+              <dt>Total listens</dt>
+              <dd>420K</dd>
+            </div>
+            <div>
+              <dt>Average episode</dt>
+              <dd>26 min</dd>
+            </div>
+            <div>
+              <dt>Expert hosts</dt>
+              <dd>18</dd>
+            </div>
+          </dl>
+        </div>
+        <article class="hero__card">
+          <div class="card__cover" style={`background:${heroEpisode.cover};`}></div>
+          <div class="card__body">
+            <span class="card__category">{heroEpisode.category}</span>
+            <h2>{heroEpisode.title}</h2>
+            <p>{heroEpisode.description}</p>
+            <div class="card__meta">
+              <span>{heroEpisode.duration}</span>
+              <span>{heroEpisode.level}</span>
+              <span>{heroEpisode.listeners} listeners</span>
+            </div>
+            <a href="#fresh" class="card__cta">Play episode</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="fresh" class="fresh">
+      <div class="bc-container">
+        <div class="section-heading">
+          <div>
+            <h2>Fresh from the studio</h2>
+            <p>New episodes released this month with downloadable lesson companions.</p>
+          </div>
+          <button type="button" class="ghost-link">Subscribe on Spotify</button>
+        </div>
+        <div class="fresh__grid">
+          {freshDrops.map((episode) => (
+            <article class="episode" style={`--cover:${episode.cover};`}>
+              <div class="episode__cover"></div>
+              <div class="episode__body">
+                <span class="episode__category">{episode.category}</span>
+                <h3>{episode.title}</h3>
+                <p>{episode.description}</p>
+                <div class="episode__meta">
+                  <span>{episode.duration}</span>
+                  <span>{episode.level}</span>
+                  <span>{episode.date}</span>
+                </div>
+                <a href="#" class="episode__cta">Listen now</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="series" class="series">
+      <div class="bc-container">
+        <div class="section-heading">
+          <div>
+            <h2>Signature series</h2>
+            <p>Follow curated arcs that combine audio with transcripts, vocabulary tasks and coaching prompts.</p>
+          </div>
+          <a class="ghost-link" href="/resources/downloads">Get companion packs</a>
+        </div>
+        <div class="series__grid">
+          {seriesHighlights.map((series) => (
+            <article class="collection">
+              <header>
+                <span class="collection__category">{series.category}</span>
+                <h3>{series.series}</h3>
+                <p>{series.sample.description}</p>
+              </header>
+              <div class="collection__stats">
+                <span>{series.episodeCount} episodes</span>
+                <span>{series.sample.level}</span>
+              </div>
+              <button type="button">View playlist</button>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="binge">
+      <div class="bc-container">
+        <div class="section-heading">
+          <div>
+            <h2>Deep focus sessions</h2>
+            <p>Longer episodes perfect for commutes or weekend study with accompanying worksheets.</p>
+          </div>
+          <button type="button" class="ghost-link">Download worksheet bundle</button>
+        </div>
+        <div class="binge__list">
+          {bingeList.map((episode) => (
+            <article class="longform">
+              <span class="longform__title">{episode.title}</span>
+              <span class="longform__duration">{episode.duration}</span>
+              <span class="longform__level">{episode.level}</span>
+              <a href="#" class="longform__cta">Play</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="bc-container cta__inner">
+        <div>
+          <h2>Want classroom-ready listening packs?</h2>
+          <p>Tell us your learners&apos; level and we will send bespoke podcast playlists with transcripts and tasks.</p>
+        </div>
+        <form class="cta__form" novalidate>
+          <label for="podcast-email" class="sr-only">Email</label>
+          <input id="podcast-email" type="email" placeholder="you@school.edu" autocomplete="email" />
+          <button type="button">Request playlists</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  :root { color-scheme: light; }
+
+  .podcasts-hub {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    padding-bottom: 6rem;
+  }
+
+  .hero {
+    position: relative;
+    padding: 9rem 0 6rem;
+    background: radial-gradient(circle at 0% 0%, rgba(124, 77, 255, 0.16), transparent 70%),
+      linear-gradient(120deg, rgba(17, 6, 50, 0.95), rgba(35, 7, 90, 0.82));
+    color: white;
+    overflow: hidden;
+  }
+
+  .hero::before,
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    opacity: 0.4;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    z-index: 0;
+  }
+
+  .hero::before {
+    top: -220px;
+    right: -160px;
+    background: radial-gradient(circle, rgba(255, 94, 168, 0.4), transparent 70%);
+  }
+
+  .hero::after {
+    bottom: -200px;
+    left: -160px;
+    background: radial-gradient(circle, rgba(47, 214, 200, 0.32), transparent 70%);
+  }
+
+  .hero__inner {
+    position: relative;
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    align-items: stretch;
+    z-index: 1;
+  }
+
+  .hero__content {
+    display: grid;
+    gap: 1.6rem;
+  }
+
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 1.3rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero__content h1 {
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
+    line-height: 1.05;
+    color: white;
+    text-wrap: balance;
+  }
+
+  .hero__content p {
+    max-width: 34rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1.05rem;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero__primary,
+  .hero__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.9rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.4s ease;
+  }
+
+  .hero__primary {
+    color: #10043b;
+    background: linear-gradient(135deg, #ffb7f2, #7c4dff);
+    box-shadow: 0 18px 35px rgba(124, 77, 255, 0.34);
+  }
+
+  .hero__secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .hero__primary:hover,
+  .hero__secondary:hover {
+    transform: translateY(-3px);
+  }
+
+  .hero__stats {
+    display: grid;
+    gap: 1.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    margin-top: 2.4rem;
+  }
+
+  .hero__stats div {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 1.4rem;
+    padding: 1.4rem 1.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(16px);
+  }
+
+  .hero__stats dt {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .hero__stats dd {
+    margin-top: 0.35rem;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .hero__card {
+    border-radius: 2.6rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 26px 45px rgba(35, 7, 90, 0.24);
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 200px auto;
+  }
+
+  .card__cover {
+    background: var(--cover, linear-gradient(135deg, #7c4dff, #54b5ff));
+  }
+
+  .card__body {
+    padding: 2.4rem;
+    display: grid;
+    gap: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .card__category {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .card__body h2 {
+    font-size: 1.6rem;
+    color: white;
+  }
+
+  .card__body p {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 1.2rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .card__cta {
+    justify-self: flex-start;
+    border-radius: 999px;
+    padding: 0.8rem 1.8rem;
+    background: linear-gradient(135deg, #54b5ff, #7c4dff);
+    color: white;
+    font-weight: 600;
+  }
+
+  .section-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2.8rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+  }
+
+  .section-heading p {
+    color: var(--muted);
+    max-width: 32rem;
+  }
+
+  .ghost-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    border-bottom: 1px solid rgba(35, 7, 90, 0.2);
+    padding-bottom: 0.25rem;
+  }
+
+  .fresh__grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .episode {
+    border-radius: 2.2rem;
+    overflow: hidden;
+    background: white;
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    box-shadow: 0 22px 45px rgba(35, 7, 90, 0.12);
+    display: grid;
+    grid-template-rows: 200px auto;
+    position: relative;
+  }
+
+  .episode__cover {
+    background: var(--cover);
+  }
+
+  .episode__body {
+    padding: 2.2rem;
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .episode__category {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(17, 6, 50, 0.08);
+  }
+
+  .episode__body h3 {
+    font-size: 1.4rem;
+    color: var(--bc-primary-blue);
+  }
+
+  .episode__body p {
+    color: var(--muted);
+  }
+
+  .episode__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 1.2rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .episode__cta {
+    justify-self: flex-start;
+    border-radius: 999px;
+    padding: 0.8rem 1.8rem;
+    background: linear-gradient(135deg, #23075a, #7c4dff);
+    color: white;
+    font-weight: 600;
+  }
+
+  .series {
+    background: linear-gradient(135deg, rgba(35, 7, 90, 0.05), rgba(124, 77, 255, 0.08));
+    padding: 5rem 0;
+  }
+
+  .series__grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .collection {
+    border-radius: 2.2rem;
+    padding: 2.4rem;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    box-shadow: 0 20px 40px rgba(35, 7, 90, 0.1);
+    display: grid;
+    gap: 1.3rem;
+  }
+
+  .collection header {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .collection__category {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-weight: 600;
+    background: rgba(17, 6, 50, 0.08);
+  }
+
+  .collection h3 {
+    font-size: 1.4rem;
+    color: var(--bc-primary-blue);
+  }
+
+  .collection p {
+    color: var(--muted);
+  }
+
+  .collection__stats {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .collection button {
+    justify-self: flex-start;
+    border-radius: 999px;
+    padding: 0.8rem 1.8rem;
+    border: none;
+    font-weight: 600;
+    background: rgba(17, 6, 50, 0.85);
+    color: white;
+  }
+
+  .binge__list {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .longform {
+    border-radius: 1.6rem;
+    padding: 1.4rem 1.8rem;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    box-shadow: 0 16px 30px rgba(35, 7, 90, 0.1);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .longform__title {
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+  }
+
+  .longform__duration,
+  .longform__level {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .longform__cta {
+    color: var(--bc-primary-blue);
+    font-weight: 600;
+  }
+
+  .cta {
+    padding: 5rem 0;
+  }
+
+  .cta__inner {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(235, 234, 255, 0.98));
+    padding: 3rem;
+    border-radius: 2.6rem;
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    box-shadow: 0 26px 45px rgba(35, 7, 90, 0.12);
+  }
+
+  .cta__inner h2 {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    margin-bottom: 0.8rem;
+  }
+
+  .cta__inner p {
+    color: var(--muted);
+    max-width: 30rem;
+  }
+
+  .cta__form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    background: white;
+    padding: 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(35, 7, 90, 0.15);
+    box-shadow: inset 0 0 0 1px rgba(124, 77, 255, 0.08);
+  }
+
+  .cta__form input {
+    border: none;
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .cta__form input:focus {
+    outline: none;
+  }
+
+  .cta__form button {
+    border: none;
+    border-radius: 999px;
+    padding: 0.85rem 1.8rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ffb7f2, #7c4dff);
+    color: #10043b;
+    cursor: pointer;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 1023px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__card {
+      order: -1;
+    }
+
+    .longform {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+      text-align: center;
+    }
+
+    .longform__cta {
+      justify-self: center;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .hero {
+      padding: 7.5rem 0 4.5rem;
+    }
+
+    .cta__form {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+    }
+
+    .cta__form button {
+      width: 100%;
+    }
+  }
+</style>

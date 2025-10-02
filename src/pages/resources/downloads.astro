@@ -1,0 +1,965 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+const collections = [
+  {
+    id: 'foundation',
+    title: 'Foundation Skills',
+    description: 'Phonics, letter formation and early vocabulary games loved by 3-8 year olds.',
+    accent: '#ff9edb',
+    gradient: 'linear-gradient(135deg, rgba(255, 158, 219, 0.45), rgba(124, 77, 255, 0.35))',
+    tags: ['Phonics mats', 'Story prompts', 'Mini games'],
+  },
+  {
+    id: 'confidence',
+    title: 'Confidence Builders',
+    description: 'Interactive speaking and listening projects that get tweens collaborating.',
+    accent: '#7bcfff',
+    gradient: 'linear-gradient(135deg, rgba(123, 207, 255, 0.45), rgba(47, 214, 200, 0.35))',
+    tags: ['Role play cards', 'Podcast worksheets', 'Debate kits'],
+  },
+  {
+    id: 'exam',
+    title: 'Exam Power Packs',
+    description: 'Targeted IELTS practise routes with smart trackers and go-to templates.',
+    accent: '#ffd49b',
+    gradient: 'linear-gradient(135deg, rgba(255, 212, 155, 0.48), rgba(255, 94, 168, 0.25))',
+    tags: ['Speaking drills', 'Model answers', 'Timing guides'],
+  },
+];
+
+const downloadPacks = [
+  {
+    title: 'Seasonal Storytelling Kit',
+    subtitle: 'Spark imagination in primary classrooms',
+    description: 'Story dice, scaffolded writing frames and illustrator-ready colouring sheets that transform creative writing lessons into full experiences.',
+    badge: 'New',
+    color: '#f1e8ff',
+    pattern: 'radial-gradient(circle at 20% 20%, rgba(124, 77, 255, 0.18), transparent 55%)',
+    downloadLabel: 'Preview pack (PDF, 6.4MB)'
+  },
+  {
+    title: 'Real-World English Project',
+    subtitle: 'Secondary & teens project week',
+    description: 'Task cards, mini-podcast scripts and self-reflection journals designed for collaborative problem solving and presentation skills.',
+    badge: 'Featured',
+    color: '#e4fbf8',
+    pattern: 'radial-gradient(circle at 80% 30%, rgba(47, 214, 200, 0.2), transparent 60%)',
+    downloadLabel: 'Download sample (ZIP, 12.1MB)'
+  },
+  {
+    title: 'IELTS Fast-Track Toolkit',
+    subtitle: 'Upper-intermediate to advanced',
+    description: 'Weekly rehearsal planner, band 7+ feedback rubrics and timed audio files ready for independent study or guided classes.',
+    badge: 'Updated',
+    color: '#fff5f4',
+    pattern: 'radial-gradient(circle at 50% 10%, rgba(255, 94, 168, 0.18), transparent 55%)',
+    downloadLabel: 'Access toolkit (Google Drive)'
+  }
+];
+
+const teacherSpotlight = {
+  name: 'Sophie Delgado',
+  role: 'Senior Teacher, British Council Madrid',
+  quote: '"The curated pathways are a lifesaver. Everything dovetails from warm-up to assessment with very little prep. My teens love the mission badges."',
+  avatar: '/images/avatars/teacher-sophie.webp',
+  highlights: [
+    'International School Award winner 2023',
+    'Leads bilingual STEAM initiatives',
+    'Mentors new teachers on digital pedagogy'
+  ],
+};
+
+const faqs = [
+  {
+    question: 'Can I use the packs for commercial teaching?',
+    answer: 'Yes. All downloads are licensed for classroom, tutoring and extracurricular clubs when attributed to the British Council.'
+  },
+  {
+    question: 'Do I need an account to access everything?',
+    answer: 'No account is needed for preview packs. Create a free portal login to unlock editable versions, lesson planners and progress dashboards.'
+  },
+  {
+    question: 'How often are resources refreshed?',
+    answer: 'We release new packs every month and refresh the most popular pathways each term. You can opt-in for early access alerts.'
+  }
+];
+---
+
+<Layout title="Immersive Downloads Hub" description="Explore beautiful, ready-to-teach download packs crafted by British Council experts for every learning journey.">
+  <Header />
+
+  <main class="downloads-hub">
+    <section class="hero">
+      <div class="bc-container hero__inner">
+        <div class="hero__content">
+          <span class="hero__badge">Curated by British Council educators</span>
+          <h1>Download experiences, not just worksheets</h1>
+          <p>
+            Discover immersive packs, classroom journeys and printable toolkits designed to move learners forward with confidence. Preview everything here before we roll it out live.
+          </p>
+          <div class="hero__cta">
+            <a class="hero__primary" href="#packs">Browse packs</a>
+            <a class="hero__secondary" href="#collections">See collections</a>
+          </div>
+          <dl class="hero__stats">
+            <div>
+              <dt>Curated pathways</dt>
+              <dd>28</dd>
+            </div>
+            <div>
+              <dt>Ready-to-print pages</dt>
+              <dd>420+</dd>
+            </div>
+            <div>
+              <dt>Teacher hours saved</dt>
+              <dd>3.5k</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="hero__preview" aria-hidden="true">
+          <div class="preview__card preview__card--primary">
+            <span>Mission brief</span>
+            <strong>Eco City Challenge</strong>
+            <p>Students design future-friendly neighbourhoods with authentic English prompts.</p>
+          </div>
+          <div class="preview__card preview__card--secondary">
+            <span>Audio Companion</span>
+            <strong>Listening B2+</strong>
+            <p>Timed practice with transcripts & self-marking guides.</p>
+          </div>
+          <div class="preview__orbit"></div>
+          <div class="preview__glow"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collections" class="collections">
+      <div class="bc-container">
+        <div class="section-heading">
+          <div>
+            <h2>Collections shaped around learner journeys</h2>
+            <p>Pick a pathway and pull an entire term's worth of sequenced activities, formative checks and enrichment tasks.</p>
+          </div>
+          <a class="ghost-link" href="#packs">Preview spotlight packs</a>
+        </div>
+        <div class="collections__grid">
+          {collections.map((collection) => (
+            <article class="collection" style={`--accent:${collection.accent}; --collection-gradient:${collection.gradient};`}>
+              <header>
+                <span class="collection__chip">{collection.title}</span>
+                <h3>{collection.description}</h3>
+              </header>
+              <ul>
+                {collection.tags.map((tag) => (
+                  <li>{tag}</li>
+                ))}
+              </ul>
+              <button type="button">Open pathway preview</button>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="packs" class="packs">
+      <div class="bc-container">
+        <div class="section-heading">
+          <div>
+            <h2>Spotlight download packs</h2>
+            <p>Handpicked downloads ready for printing, projection or digital sharing with learners.</p>
+          </div>
+          <div class="section-heading__cta">
+            <button type="button" class="pill">PDF</button>
+            <button type="button" class="pill">Slides</button>
+            <button type="button" class="pill">Audio</button>
+          </div>
+        </div>
+        <div class="packs__grid">
+          {downloadPacks.map((pack) => (
+            <article class="pack" style={`background:${pack.color};`}>
+              <div class="pack__background" style={`background:${pack.pattern};`}></div>
+              <header>
+                <span class="pack__badge">{pack.badge}</span>
+                <h3>{pack.title}</h3>
+                <p class="pack__subtitle">{pack.subtitle}</p>
+              </header>
+              <p class="pack__description">{pack.description}</p>
+              <div class="pack__actions">
+                <a href="#" class="pack__primary">Preview flipbook</a>
+                <span class="pack__download">{pack.downloadLabel}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="teachers">
+      <div class="bc-container teachers__inner">
+        <div class="teachers__profile">
+          <div class="avatar" role="presentation">
+            <div class="avatar__glow"></div>
+            <div class="avatar__ring"></div>
+            <div class="avatar__circle">
+              <span>SD</span>
+            </div>
+          </div>
+          <div>
+            <h2>Teacher spotlight</h2>
+            <p class="teachers__name">{teacherSpotlight.name}</p>
+            <p class="teachers__role">{teacherSpotlight.role}</p>
+          </div>
+        </div>
+        <blockquote>
+          <p>{teacherSpotlight.quote}</p>
+        </blockquote>
+        <ul class="teachers__highlights">
+          {teacherSpotlight.highlights.map((item) => (
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" /></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="faqs">
+      <div class="bc-container">
+        <div class="section-heading">
+          <div>
+            <h2>Helpful things to know</h2>
+            <p>Here is the small print before we publish the hub.</p>
+          </div>
+          <a class="ghost-link" href="/portal">Create a free account</a>
+        </div>
+        <div class="faqs__grid">
+          {faqs.map((faq) => (
+            <article class="faq">
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="bc-container cta__inner">
+        <div>
+          <h2>Want early access when we switch it live?</h2>
+          <p>Leave your email and we will send you the first three packs, printable certificates and the class score tracker.</p>
+        </div>
+        <form class="cta__form" novalidate>
+          <label for="cta-email" class="sr-only">Email</label>
+          <input id="cta-email" type="email" placeholder="you@school.edu" autocomplete="email" />
+          <button type="button">Notify me</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  :root {
+    color-scheme: light;
+  }
+
+  .downloads-hub {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    padding-bottom: 6rem;
+  }
+
+  .hero {
+    position: relative;
+    padding: 8rem 0 6rem;
+    overflow: hidden;
+    background: radial-gradient(circle at 0% 0%, rgba(124, 77, 255, 0.14), transparent 70%),
+      linear-gradient(120deg, rgba(17, 6, 50, 0.94), rgba(35, 7, 90, 0.85));
+  }
+
+  .hero::before,
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: auto;
+    width: 420px;
+    height: 420px;
+    filter: blur(0);
+    opacity: 0.45;
+    pointer-events: none;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    z-index: 0;
+  }
+
+  .hero::before {
+    left: -160px;
+    top: -80px;
+    background: radial-gradient(circle, rgba(255, 94, 168, 0.36), transparent 65%);
+  }
+
+  .hero::after {
+    right: -120px;
+    bottom: -60px;
+    background: radial-gradient(circle, rgba(47, 214, 200, 0.32), transparent 68%);
+  }
+
+  .hero__inner {
+    position: relative;
+    display: grid;
+    gap: 4rem;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    z-index: 1;
+  }
+
+  .hero__content {
+    color: white;
+  }
+
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero__content h1 {
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
+    margin: 1.5rem 0 1rem;
+    line-height: 1.05;
+    color: white;
+    text-wrap: balance;
+  }
+
+  .hero__content p {
+    font-size: 1.1rem;
+    max-width: 34rem;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .hero__cta {
+    margin: 2.5rem 0 2.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero__primary,
+  .hero__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .hero__primary {
+    color: #10043b;
+    background: linear-gradient(135deg, #ffb7f2, #7c4dff);
+    box-shadow: 0 18px 35px rgba(124, 77, 255, 0.35);
+  }
+
+  .hero__primary:hover {
+    transform: translateY(-3px) scale(1.01);
+  }
+
+  .hero__secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .hero__secondary:hover {
+    transform: translateY(-2px);
+  }
+
+  .hero__stats {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+
+  .hero__stats div {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 1.4rem;
+    padding: 1.4rem 1.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(16px);
+  }
+
+  .hero__stats dt {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .hero__stats dd {
+    margin: 0.35rem 0 0;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .hero__preview {
+    position: relative;
+    padding: 3.5rem 3rem;
+    border-radius: 2.6rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+    min-height: 420px;
+    display: grid;
+    place-items: center;
+  }
+
+  .preview__card {
+    position: absolute;
+    width: min(260px, 82%);
+    padding: 1.6rem;
+    border-radius: 1.6rem;
+    color: var(--ink);
+    display: grid;
+    gap: 0.6rem;
+    line-height: 1.4;
+    box-shadow: var(--shadow-md);
+    transform: rotate(-2deg);
+    background: white;
+  }
+
+  .preview__card strong {
+    font-size: 1.15rem;
+    color: var(--bc-primary-blue);
+  }
+
+  .preview__card span {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .preview__card p {
+    font-size: 0.86rem;
+    color: var(--muted);
+  }
+
+  .preview__card--primary {
+    top: 18%;
+    left: 12%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(235, 234, 255, 0.95));
+  }
+
+  .preview__card--secondary {
+    bottom: 16%;
+    right: 14%;
+    transform: rotate(6deg);
+    background: linear-gradient(135deg, rgba(255, 251, 247, 0.95), rgba(230, 240, 255, 0.95));
+  }
+
+  .preview__orbit {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+  }
+
+  .preview__glow {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 70%);
+    filter: blur(0);
+  }
+
+  .section-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+  }
+
+  .section-heading p {
+    color: var(--muted);
+    max-width: 32rem;
+  }
+
+  .ghost-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    border-bottom: 1px solid rgba(35, 7, 90, 0.2);
+    padding-bottom: 0.25rem;
+  }
+
+  .collections {
+    position: relative;
+  }
+
+  .collections::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+    z-index: -1;
+  }
+
+  .collections__grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .collection {
+    position: relative;
+    padding: 2.2rem;
+    border-radius: 2.2rem;
+    background: var(--collection-gradient);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 22px 45px rgba(35, 7, 90, 0.12);
+    overflow: hidden;
+    display: grid;
+    gap: 1.8rem;
+  }
+
+  .collection::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--accent), transparent 70%);
+    opacity: 0.55;
+  }
+
+  .collection header {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .collection__chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    width: fit-content;
+  }
+
+  .collection h3 {
+    color: var(--bc-primary-blue);
+    font-size: 1.3rem;
+  }
+
+  .collection ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.65rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .collection li {
+    padding-left: 1.4rem;
+    color: var(--muted);
+    position: relative;
+  }
+
+  .collection li::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    left: 0;
+    top: 0.45rem;
+  }
+
+  .collection button {
+    justify-self: flex-start;
+    border-radius: 999px;
+    padding: 0.7rem 1.6rem;
+    border: none;
+    font-weight: 600;
+    background: rgba(17, 6, 50, 0.85);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .collection button:hover {
+    transform: translateY(-2px);
+  }
+
+  .packs {
+    position: relative;
+  }
+
+  .section-heading__cta {
+    display: inline-flex;
+    gap: 0.75rem;
+  }
+
+  .pill {
+    border-radius: 999px;
+    border: 1px solid rgba(35, 7, 90, 0.16);
+    padding: 0.5rem 1.4rem;
+    background: white;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .packs__grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .pack {
+    position: relative;
+    padding: 2.4rem;
+    border-radius: 2.4rem;
+    overflow: hidden;
+    display: grid;
+    gap: 1.6rem;
+    border: 1px solid rgba(17, 6, 50, 0.06);
+  }
+
+  .pack__background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 1;
+  }
+
+  .pack header,
+  .pack__description,
+  .pack__actions {
+    position: relative;
+    z-index: 1;
+  }
+
+  .pack__badge {
+    display: inline-flex;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    background: rgba(17, 6, 50, 0.85);
+    color: white;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .pack h3 {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+  }
+
+  .pack__subtitle {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .pack__description {
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  .pack__actions {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .pack__primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0.85rem 1.8rem;
+    background: linear-gradient(135deg, #23075a, #7c4dff);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 18px 35px rgba(35, 7, 90, 0.16);
+  }
+
+  .pack__download {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .teachers {
+    position: relative;
+    background: linear-gradient(135deg, rgba(35, 7, 90, 0.95), rgba(17, 6, 50, 0.9));
+    padding: 5rem 0;
+    color: white;
+  }
+
+  .teachers__inner {
+    display: grid;
+    gap: 2.8rem;
+  }
+
+  .teachers__profile {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+  }
+
+  .avatar {
+    position: relative;
+    width: 90px;
+    height: 90px;
+  }
+
+  .avatar__glow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle, rgba(255, 185, 247, 0.5), transparent 70%);
+    filter: blur(12px);
+  }
+
+  .avatar__ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+  }
+
+  .avatar__circle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  .teachers__name {
+    font-size: 1.3rem;
+  }
+
+  .teachers__role {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  blockquote {
+    margin: 0;
+    font-size: 1.3rem;
+    line-height: 1.6;
+  }
+
+  .teachers__highlights {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .teachers__highlights li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.4rem;
+    border-radius: 1.4rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .teachers__highlights svg {
+    width: 20px;
+    height: 20px;
+    color: #54b5ff;
+  }
+
+  .faqs {
+    position: relative;
+  }
+
+  .faqs__grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .faq {
+    padding: 2rem;
+    border-radius: 1.8rem;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    box-shadow: 0 16px 30px rgba(17, 6, 50, 0.08);
+  }
+
+  .faq h3 {
+    margin-bottom: 0.85rem;
+    font-size: 1.15rem;
+    color: var(--bc-primary-blue);
+  }
+
+  .faq p {
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .cta {
+    padding: 5rem 0;
+  }
+
+  .cta__inner {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(235, 234, 255, 0.96));
+    padding: 3rem;
+    border-radius: 2.6rem;
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    box-shadow: 0 26px 45px rgba(35, 7, 90, 0.12);
+  }
+
+  .cta__inner h2 {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    margin-bottom: 0.8rem;
+  }
+
+  .cta__inner p {
+    color: var(--muted);
+    max-width: 30rem;
+  }
+
+  .cta__form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    background: white;
+    padding: 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(35, 7, 90, 0.15);
+    box-shadow: inset 0 0 0 1px rgba(124, 77, 255, 0.08);
+  }
+
+  .cta__form input {
+    border: none;
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .cta__form input:focus {
+    outline: none;
+  }
+
+  .cta__form button {
+    border: none;
+    border-radius: 999px;
+    padding: 0.85rem 1.8rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ffb7f2, #7c4dff);
+    color: #10043b;
+    cursor: pointer;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 1023px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__preview {
+      order: -1;
+      min-height: 360px;
+    }
+
+    .hero__content p {
+      max-width: 100%;
+    }
+
+    .section-heading {
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .hero {
+      padding: 7rem 0 4.5rem;
+    }
+
+    .hero__stats {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .hero__stats div {
+      padding: 1.1rem 1.2rem;
+    }
+
+    .collections__grid,
+    .packs__grid,
+    .teachers__highlights,
+    .faqs__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta__form {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+    }
+
+    .cta__form button {
+      width: 100%;
+    }
+  }
+</style>
