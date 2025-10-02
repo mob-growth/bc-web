@@ -183,6 +183,23 @@ const editorialSeries = [
         <div class="newsroom__lead">
           <h2>From the newsroom</h2>
           <p>A quick look at what our academic journalists are unpacking this week.</p>
+
+          <div class="newsroom__featured">
+            <h3>This week's focus</h3>
+            <p>Our editorial team is exploring how AI-powered language tools are reshaping classroom dynamics, particularly for hybrid learning environments across Spain.</p>
+          </div>
+
+          <div class="newsroom__stats">
+            <div class="stat">
+              <span class="stat__number">47</span>
+              <span class="stat__label">Articles published</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number">12k</span>
+              <span class="stat__label">Monthly readers</span>
+            </div>
+          </div>
+
           <a href="/resources" class="ghost-link">Explore all resources</a>
         </div>
         <div class="newsroom__list">
@@ -555,7 +572,56 @@ const editorialSeries = [
 
   .newsroom__lead {
     display: grid;
-    gap: 1.2rem;
+    gap: 1.6rem;
+  }
+
+  .newsroom__featured {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 1.4rem;
+    padding: 1.6rem;
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    box-shadow: 0 8px 20px rgba(35, 7, 90, 0.08);
+  }
+
+  .newsroom__featured h3 {
+    font-size: 1.1rem;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.7rem;
+  }
+
+  .newsroom__featured p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .newsroom__stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .stat {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 1.2rem;
+    padding: 1.2rem;
+    border: 1px solid rgba(17, 6, 50, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .stat__number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+  }
+
+  .stat__label {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .newsroom__list {
