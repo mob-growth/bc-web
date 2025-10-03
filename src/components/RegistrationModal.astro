@@ -857,11 +857,11 @@ const { courseType = 'adults', location = '' } = Astro.props;
     color: var(--bc-primary-blue);
   }
 
-  .calendar-day:hover:not(.disabled) {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(35, 7, 90, 0.15);
-    background: linear-gradient(135deg, rgba(255, 20, 147, 0.08), rgba(183, 148, 212, 0.05));
-    border-color: var(--bc-cta-pink);
+  .calendar-day:hover:not(.disabled):not(.selected) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.1);
+    border-color: var(--bc-primary-blue);
+    border-width: 2px;
     z-index: 10;
     color: var(--bc-primary-blue);
   }
@@ -887,30 +887,17 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .calendar-day.selected {
-    background: linear-gradient(135deg, var(--bc-primary-blue), #1e3a8a) !important;
-    color: white !important;
-    border-color: var(--bc-primary-blue) !important;
-    box-shadow: 0 4px 16px rgba(35, 7, 90, 0.3) !important;
-    transform: scale(1.08) !important;
+    background: white !important;
+    color: var(--bc-primary-blue) !important;
+    border: 3px solid var(--bc-primary-blue) !important;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--bc-primary-blue) !important;
     font-weight: 700 !important;
     position: relative;
+    transform: scale(1) !important;
   }
 
   .calendar-day.selected::after {
-    content: '✓';
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    font-size: 0.7rem;
-    color: white;
-    background: var(--bc-cta-pink);
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
+    display: none;
   }
 
   .calendar-day.disabled {
@@ -931,9 +918,9 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   @keyframes confirmSelection {
-    0% { transform: scale(1.08); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1.08); }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
   }
 
   /* Add active state for immediate feedback */
@@ -974,18 +961,18 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .time-slot {
-    padding: 0.75rem 1rem;
-    border-radius: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    border-radius: 2rem;
     background: white;
-    border: 2px solid rgba(183, 148, 212, 0.2);
+    border: 2px solid rgba(183, 148, 212, 0.25);
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.925rem;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--bc-primary-blue);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .time-slot::before {
@@ -1000,43 +987,29 @@ const { courseType = 'adults', location = '' } = Astro.props;
     transition: opacity 0.3s ease;
   }
 
-  .time-slot:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.15);
-    border-color: var(--bc-cta-pink);
+  .time-slot:hover:not(.selected) {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(35, 7, 90, 0.1);
+    border-color: var(--bc-primary-blue);
+    border-width: 3px;
   }
 
-  .time-slot:hover::before {
-    opacity: 1;
+  .time-slot:hover:not(.selected)::before {
+    opacity: 0;
   }
 
   .time-slot.selected {
-    background: linear-gradient(135deg, var(--bc-primary-blue), #1e3a8a) !important;
-    color: white !important;
-    border-color: var(--bc-primary-blue) !important;
-    box-shadow: 0 4px 16px rgba(35, 7, 90, 0.3) !important;
-    transform: scale(1.08) !important;
+    background: white !important;
+    color: var(--bc-primary-blue) !important;
+    border: 3px solid var(--bc-primary-blue) !important;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--bc-primary-blue) !important;
     font-weight: 700 !important;
     position: relative;
+    transform: scale(1) !important;
   }
 
   .time-slot.selected::after {
-    content: '✓';
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    font-size: 0.65rem;
-    color: white;
-    background: var(--bc-cta-pink);
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    border: 2px solid white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: none;
   }
 
   .flexible-btn {
