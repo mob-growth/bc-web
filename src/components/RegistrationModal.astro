@@ -320,10 +320,17 @@ const { courseType = 'adults', location = '' } = Astro.props;
     <!-- Navigation Buttons -->
     <div class="modal-footer">
       <button type="button" class="btn-back" style="display: none;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M11 1L4 8l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
         Back
       </button>
+      <div class="footer-spacer"></div>
       <button type="button" class="btn-next">
         Continue
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M5 1l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
       </button>
     </div>
   </div>
@@ -425,7 +432,7 @@ const { courseType = 'adults', location = '' } = Astro.props;
 
   .progress-fill {
     height: 100%;
-    background: linear-gradient(135deg, #ff9edb, #7c4dff);
+    background: var(--bc-primary-blue);
     border-radius: 2px;
     width: 33.33%;
     transition: width 0.3s ease;
@@ -464,7 +471,7 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .progress-step.active .step-number {
-    background: linear-gradient(135deg, #ff9edb, #7c4dff);
+    background: var(--bc-primary-blue);
     color: white;
   }
 
@@ -482,7 +489,7 @@ const { courseType = 'adults', location = '' } = Astro.props;
 
   .modal-sidebar {
     width: 340px;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, var(--bc-primary-blue), #1e3a8a);
     padding: 2rem 1.5rem;
     color: white;
     display: flex;
@@ -593,18 +600,24 @@ const { courseType = 'adults', location = '' } = Astro.props;
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ffd49b, #ff5ea8);
+    background: #cbd5e1;
     border: 2px solid white;
     margin-left: -8px;
+    position: relative;
+    overflow: hidden;
   }
 
   .avatar:first-child {
     margin-left: 0;
-    background: linear-gradient(135deg, #7bcfff, #7c4dff);
+    background: #94a3b8;
   }
 
   .avatar:nth-child(2) {
-    background: linear-gradient(135deg, #ff9edb, #dcc6f0);
+    background: #64748b;
+  }
+
+  .avatar:nth-child(3) {
+    background: #475569;
   }
 
   .avatar-more {
@@ -1002,44 +1015,68 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .modal-footer {
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
+    background: #f8fafc;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-spacer {
+    flex: 1;
   }
 
   .btn-back,
   .btn-next,
   .btn-primary,
   .btn-secondary {
-    padding: 0.75rem 2rem;
-    border-radius: 999px;
-    font-weight: 600;
+    padding: 0.625rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.2s ease;
     border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .btn-back {
-    background: transparent;
-    color: var(--muted);
+    background: white;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
   }
 
   .btn-back:hover {
-    background: rgba(0, 0, 0, 0.05);
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+  }
+
+  .btn-back svg {
+    width: 14px;
+    height: 14px;
   }
 
   .btn-next,
   .btn-primary {
-    background: linear-gradient(135deg, #ff9edb, #7c4dff);
+    background: var(--bc-primary-blue);
     color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   .btn-next:hover,
   .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(124, 77, 255, 0.3);
+    background: #1e3a8a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+  }
+
+  .btn-next svg {
+    width: 14px;
+    height: 14px;
   }
 
   .btn-secondary {
