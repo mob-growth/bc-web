@@ -755,9 +755,26 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .calendar-container {
-    background: #f9fafb;
-    border-radius: 1rem;
-    padding: 1.5rem;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid var(--bc-primary-blue);
+    border-radius: 1.5rem;
+    padding: 1.75rem;
+    box-shadow: 0 8px 32px rgba(35, 7, 90, 0.1);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .calendar-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(35, 7, 90, 0.05), rgba(183, 148, 212, 0.03));
+    z-index: 0;
   }
 
   .calendar-header {
@@ -765,44 +782,55 @@ const { courseType = 'adults', location = '' } = Astro.props;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
   }
 
   .calendar-nav {
-    width: 2rem;
-    height: 2rem;
+    width: 2.25rem;
+    height: 2.25rem;
     border: none;
-    background: white;
-    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
   .calendar-nav:hover {
     background: var(--bc-primary-blue);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.2);
   }
 
   .calendar-month {
-    font-weight: 600;
+    font-size: 1.375rem;
+    font-weight: 700;
     color: var(--bc-primary-blue);
+    letter-spacing: -0.02em;
   }
 
   .calendar-weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 2px solid rgba(183, 148, 212, 0.1);
   }
 
   .calendar-weekdays span {
     text-align: center;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--muted);
-    padding: 0.5rem 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--bc-primary-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
   }
 
   .calendar-days {
@@ -813,96 +841,178 @@ const { courseType = 'adults', location = '' } = Astro.props;
 
   .calendar-day {
     aspect-ratio: 1;
-    border: none;
-    background: white;
-    border-radius: 0.5rem;
+    border-radius: 0.875rem;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(183, 148, 212, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 0.925rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
-    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    color: var(--bc-primary-blue);
   }
 
   .calendar-day:hover:not(.disabled) {
-    background: var(--bc-primary-blue);
-    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(35, 7, 90, 0.15);
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.08), rgba(183, 148, 212, 0.05));
+    border-color: var(--bc-cta-pink);
+    z-index: 10;
+    color: var(--bc-primary-blue);
+  }
+
+  .calendar-day.available {
+    background: linear-gradient(135deg, rgba(35, 7, 90, 0.05), rgba(183, 148, 212, 0.03));
+    border-color: var(--bc-primary-blue);
+    color: var(--bc-primary-blue);
+    font-weight: 700;
+  }
+
+  .calendar-day.available::after {
+    content: '';
+    position: absolute;
+    bottom: 0.35rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background: var(--bc-cta-pink);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(255, 20, 147, 0.2);
   }
 
   .calendar-day.selected {
-    background: linear-gradient(135deg, #ff9edb, #7c4dff);
-    color: white;
+    background: linear-gradient(135deg, var(--bc-primary-blue), #1e3a8a);
+    color: white !important;
+    border-color: var(--bc-primary-blue);
+    box-shadow: 0 4px 16px rgba(35, 7, 90, 0.3);
+    transform: scale(1.05);
   }
 
   .calendar-day.disabled {
     opacity: 0.3;
     cursor: not-allowed;
+    background: rgba(0, 0, 0, 0.02);
   }
 
   .calendar-day.today {
-    border: 2px solid var(--bc-primary-blue);
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(183, 148, 212, 0.08));
+    border: 2px solid var(--bc-cta-pink);
+    animation: subtlePulse 3s infinite;
+  }
+
+  @keyframes subtlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
   }
 
   .time-slots {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.03), rgba(183, 148, 212, 0.02));
+    border-radius: 1rem;
+    border: 1px solid rgba(183, 148, 212, 0.15);
   }
 
   .time-slots h3 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
     color: var(--bc-primary-blue);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .time-slots h3::before {
+    content: '🕐';
+    font-size: 1.25rem;
+    filter: grayscale(0.5);
   }
 
   .slots-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.75rem;
   }
 
   .time-slot {
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
     background: white;
+    border: 2px solid rgba(183, 148, 212, 0.2);
     text-align: center;
     cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    font-size: 0.925rem;
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .time-slot::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(183, 148, 212, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   .time-slot:hover {
-    border-color: var(--bc-primary-blue);
-    background: rgba(37, 99, 235, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.15);
+    border-color: var(--bc-cta-pink);
+  }
+
+  .time-slot:hover::before {
+    opacity: 1;
   }
 
   .time-slot.selected {
-    background: var(--bc-primary-blue);
+    background: linear-gradient(135deg, var(--bc-primary-blue), #1e3a8a);
     color: white;
     border-color: var(--bc-primary-blue);
+    box-shadow: 0 4px 16px rgba(35, 7, 90, 0.3);
+    transform: scale(1.05);
   }
 
   .flexible-btn {
     width: 100%;
-    margin-top: 1rem;
-    padding: 0.75rem;
-    border: 2px dashed rgba(0, 0, 0, 0.2);
-    border-radius: 0.5rem;
-    background: transparent;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 2px dashed rgba(183, 148, 212, 0.3);
+    border-radius: 0.875rem;
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.02), rgba(183, 148, 212, 0.01));
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    color: var(--muted);
+    color: var(--bc-primary-blue);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    font-size: 0.925rem;
+    font-weight: 600;
   }
 
   .flexible-btn:hover {
-    border-color: var(--bc-primary-blue);
-    background: rgba(37, 99, 235, 0.05);
-    color: var(--bc-primary-blue);
+    border-color: var(--bc-cta-pink);
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.05), rgba(183, 148, 212, 0.03));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(35, 7, 90, 0.1);
+  }
+
+  .flexible-btn svg {
+    color: var(--bc-cta-pink);
   }
 
   .confirmation-summary {
@@ -1411,30 +1521,40 @@ const { courseType = 'adults', location = '' } = Astro.props;
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
     calendarDays.innerHTML = '';
 
     // Empty cells before first day
     for (let i = 0; i < (firstDay || 7) - 1; i++) {
-      calendarDays.innerHTML += '<div></div>';
+      const emptyDiv = document.createElement('div');
+      emptyDiv.className = 'calendar-day disabled';
+      calendarDays.appendChild(emptyDiv);
     }
 
-    // Calendar days
+    // Calendar days with random availability
     for (let day = 1; day <= daysInMonth; day++) {
       const dayDate = new Date(year, month, day);
-      const isToday = dayDate.toDateString() === today.toDateString();
+      dayDate.setHours(0, 0, 0, 0);
+      const isToday = dayDate.getTime() === today.getTime();
       const isPast = dayDate < today;
       const isWeekend = dayDate.getDay() === 0 || dayDate.getDay() === 6;
+
+      // Random availability for weekdays (70% chance)
+      const hasAvailability = !isPast && !isWeekend && Math.random() > 0.3;
 
       const dayButton = document.createElement('button');
       dayButton.className = 'calendar-day';
       dayButton.textContent = day;
 
       if (isToday) dayButton.classList.add('today');
-      if (isPast || isWeekend) dayButton.classList.add('disabled');
-
-      if (!isPast && !isWeekend) {
+      if (isPast || isWeekend) {
+        dayButton.classList.add('disabled');
+      } else if (hasAvailability) {
+        dayButton.classList.add('available');
         dayButton.addEventListener('click', () => selectDate(dayDate));
+      } else {
+        dayButton.classList.add('disabled');
       }
 
       calendarDays.appendChild(dayButton);
@@ -1469,17 +1589,50 @@ const { courseType = 'adults', location = '' } = Astro.props;
     if (timeSlotsContainer && slotsGrid) {
       timeSlotsContainer.style.display = 'block';
 
-      // Generate available time slots (mock data)
-      const slots = ['09:00', '09:30', '10:00', '10:30', '11:00', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00'];
+      // Generate available time slots with better variety
+      const morningSlots = ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30'];
+      const afternoonSlots = ['14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30'];
+
+      // Randomly remove some slots to simulate bookings
+      const availableSlots = [...morningSlots, ...afternoonSlots].filter(() => Math.random() > 0.2);
+
       slotsGrid.innerHTML = '';
 
-      slots.forEach(time => {
+      // Add a smooth fade-in animation
+      timeSlotsContainer.style.opacity = '0';
+      setTimeout(() => {
+        timeSlotsContainer.style.transition = 'opacity 0.3s ease';
+        timeSlotsContainer.style.opacity = '1';
+      }, 10);
+
+      availableSlots.forEach((time, index) => {
         const slot = document.createElement('button');
         slot.className = 'time-slot';
         slot.textContent = time;
+        slot.style.animationDelay = `${index * 30}ms`;
+        slot.style.animation = 'fadeInUp 0.4s ease forwards';
         slot.addEventListener('click', () => selectTime(time));
         slotsGrid.appendChild(slot);
       });
+
+      // Add keyframe animation if not already present
+      if (!document.getElementById('timeSlotAnimation')) {
+        const style = document.createElement('style');
+        style.id = 'timeSlotAnimation';
+        style.textContent = `
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `;
+        document.head.appendChild(style);
+      }
     }
   }
 
