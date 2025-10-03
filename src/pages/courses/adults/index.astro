@@ -3,6 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Hero from '../../../components/Hero.astro';
 import Button from '../../../components/Button.astro';
+import RegistrationModal from '../../../components/RegistrationModal.astro';
 
 const pageTitle = "English Courses for Adults";
 const pageDescription = "Transform your English skills with British Council Spain. Face-to-face courses, Cambridge exam preparation, Business English, and flexible online learning options.";
@@ -17,7 +18,7 @@ const pageDescription = "Transform your English skills with British Council Spai
     subtitle="Learn English with the world's English experts. Choose from face-to-face classes, online courses, exam preparation, and Business English programs designed for your success."
     ctaPrimary={{
       text: "Book Free Consultation",
-      href: "#contact"
+      href: "javascript:openRegistrationModal('adults')"
     }}
     ctaSecondary={{
       text: "Explore Courses",
@@ -300,12 +301,15 @@ const pageDescription = "Transform your English skills with British Council Spai
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Button variant="secondary" size="lg">
+          <button
+            onclick="openRegistrationModal('adults')"
+            class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-full text-white transition-all hover:-translate-y-1 hover:shadow-xl"
+            style="background: linear-gradient(135deg, #ff9edb, #7c4dff);">
             Book Free Consultation
             <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
             </svg>
-          </Button>
+          </button>
           <Button variant="outline" size="lg">
             Take Level Test
             <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -362,4 +366,6 @@ const pageDescription = "Transform your English skills with British Council Spai
       animation: slideInUp 1s ease-out forwards;
     }
   </style>
+  <!-- Registration Modal -->
+  <RegistrationModal courseType="adults" />
 </Layout>

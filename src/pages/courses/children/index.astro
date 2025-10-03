@@ -3,6 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Hero from '../../../components/Hero.astro';
 import Button from '../../../components/Button.astro';
+import RegistrationModal from '../../../components/RegistrationModal.astro';
 
 const pageTitle = "English Courses for Children & Teens (2-17 years)";
 const pageDescription = "Give your child the gift of English with British Council Spain. Expert teachers, proven methods, and courses designed for ages 2-17. Build confidence and unlock global opportunities.";
@@ -17,7 +18,7 @@ const pageDescription = "Give your child the gift of English with British Counci
     subtitle="Prepare your child for a world of opportunities with British Council's proven English courses for ages 2-17. Our expert teachers make learning engaging, fun, and effective."
     ctaPrimary={{
       text: "Book Free Consultation",
-      href: "#contact"
+      href: "javascript:openRegistrationModal('children')"
     }}
     ctaSecondary={{
       text: "Explore Courses",
@@ -446,4 +447,6 @@ const pageDescription = "Give your child the gift of English with British Counci
       animation: slideInUp 1s ease-out forwards;
     }
   </style>
+  <!-- Registration Modal -->
+  <RegistrationModal courseType="children" />
 </Layout>

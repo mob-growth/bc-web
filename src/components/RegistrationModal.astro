@@ -1,0 +1,1414 @@
+---
+export interface Props {
+  courseType?: 'adults' | 'children' | 'corporate';
+  location?: string;
+}
+
+const { courseType = 'adults', location = '' } = Astro.props;
+---
+
+<div id="registrationModal" class="registration-modal" data-course-type={courseType} data-location={location}>
+  <div class="modal-overlay"></div>
+  <div class="modal-container">
+    <button class="modal-close" aria-label="Close registration form">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Progress Bar -->
+    <div class="modal-progress">
+      <div class="progress-bar">
+        <div class="progress-fill" data-step="1"></div>
+      </div>
+      <div class="progress-steps">
+        <div class="progress-step active" data-step="1">
+          <span class="step-number">1</span>
+          <span class="step-label">Your Details</span>
+        </div>
+        <div class="progress-step" data-step="2">
+          <span class="step-number">2</span>
+          <span class="step-label">Schedule</span>
+        </div>
+        <div class="progress-step" data-step="3">
+          <span class="step-number">3</span>
+          <span class="step-label">Confirm</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Content -->
+    <div class="modal-content">
+      <!-- Side Panel (Desktop Only) -->
+      <div class="modal-sidebar">
+        <div class="sidebar-content">
+          <h3>Start Your English Journey</h3>
+          <p>Join thousands of learners achieving their goals with British Council</p>
+
+          <div class="trust-indicators">
+            <div class="trust-item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm-1 15l-5-5 1.41-1.41L9 12.17l7.59-7.59L18 6l-9 9z"/>
+              </svg>
+              <span>Expert teachers</span>
+            </div>
+            <div class="trust-item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm-1 15l-5-5 1.41-1.41L9 12.17l7.59-7.59L18 6l-9 9z"/>
+              </svg>
+              <span>Flexible schedules</span>
+            </div>
+            <div class="trust-item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm-1 15l-5-5 1.41-1.41L9 12.17l7.59-7.59L18 6l-9 9z"/>
+              </svg>
+              <span>Globally recognised</span>
+            </div>
+          </div>
+
+          <div class="social-proof">
+            <p class="proof-text">
+              <strong>23 people</strong> registered for courses this week
+            </p>
+          </div>
+        </div>
+
+        <div class="sidebar-image">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80"
+               alt="Students learning together" />
+        </div>
+      </div>
+
+      <!-- Form Steps Container -->
+      <div class="modal-form">
+        <!-- Step 1: Contact Information -->
+        <div class="form-step active" data-step="1">
+          <h2>Let's get started</h2>
+          <p class="step-description">Tell us a bit about yourself so we can find the perfect course for you.</p>
+
+          <form id="step1Form" novalidate>
+            <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input type="text" id="fullName" name="fullName" required
+                     placeholder="Enter your full name" />
+              <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required
+                     placeholder="you@example.com" />
+              <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <div class="phone-input">
+                <select id="phoneCode" name="phoneCode">
+                  <option value="+34">+34 (Spain)</option>
+                  <option value="+44">+44 (UK)</option>
+                  <option value="+1">+1 (USA)</option>
+                </select>
+                <input type="tel" id="phone" name="phone" required
+                       placeholder="123 456 789" />
+              </div>
+              <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="courseInterest">Course Type *</label>
+              <select id="courseInterest" name="courseInterest" required>
+                <option value="">Select a course type</option>
+                <option value="adults" selected={courseType === 'adults'}>Adult Courses</option>
+                <option value="children" selected={courseType === 'children'}>Children & Teens</option>
+                <option value="corporate" selected={courseType === 'corporate'}>Corporate Training</option>
+                <option value="online">Online Courses</option>
+              </select>
+              <span class="error-message"></span>
+            </div>
+
+            <!-- Children-specific fields (hidden by default) -->
+            <div id="childrenFields" class="children-fields" style="display: none;">
+              <div class="form-group">
+                <label for="childName">Child's Name *</label>
+                <input type="text" id="childName" name="childName"
+                       placeholder="Enter child's full name" />
+                <span class="error-message"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="childAge">Child's Age *</label>
+                <select id="childAge" name="childAge">
+                  <option value="">Select age</option>
+                  {[...Array(16)].map((_, i) => (
+                    <option value={i + 3}>{i + 3} years</option>
+                  ))}
+                </select>
+                <span class="error-message"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="location">Preferred Location *</label>
+              <select id="location" name="location" required>
+                <option value="">Select a location</option>
+                <option value="madrid" selected={location === 'madrid'}>Madrid</option>
+                <option value="barcelona" selected={location === 'barcelona'}>Barcelona</option>
+                <option value="valencia" selected={location === 'valencia'}>Valencia</option>
+                <option value="bilbao" selected={location === 'bilbao'}>Bilbao</option>
+                <option value="palma" selected={location === 'palma'}>Palma</option>
+                <option value="online">Online</option>
+              </select>
+              <span class="error-message"></span>
+            </div>
+
+            <div class="form-checkbox">
+              <input type="checkbox" id="newsletter" name="newsletter" />
+              <label for="newsletter">
+                Send me updates about courses and special offers
+              </label>
+            </div>
+          </form>
+        </div>
+
+        <!-- Step 2: Calendar Selection -->
+        <div class="form-step" data-step="2">
+          <h2>Choose your schedule</h2>
+          <p class="step-description">Select a consultation time that works best for you.</p>
+
+          <div class="calendar-container">
+            <div class="calendar-header">
+              <button class="calendar-nav prev" aria-label="Previous month">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/>
+                </svg>
+              </button>
+              <div class="calendar-month">October 2025</div>
+              <button class="calendar-nav next" aria-label="Next month">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="calendar-grid">
+              <div class="calendar-weekdays">
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+              </div>
+              <div class="calendar-days" id="calendarDays">
+                <!-- Calendar days will be populated by JavaScript -->
+              </div>
+            </div>
+
+            <div class="time-slots" id="timeSlots" style="display: none;">
+              <h3>Available times</h3>
+              <div class="slots-grid">
+                <!-- Time slots will be populated by JavaScript -->
+              </div>
+            </div>
+
+            <div class="flexible-option">
+              <button type="button" class="flexible-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 8a1 1 0 01-2 0V6a1 1 0 012 0v4zm-1 4a1 1 0 100-2 1 1 0 000 2z"/>
+                </svg>
+                I'm flexible with timing - contact me with options
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Confirmation -->
+        <div class="form-step" data-step="3">
+          <h2>Confirm your registration</h2>
+          <p class="step-description">Review your details and complete your registration.</p>
+
+          <div class="confirmation-summary">
+            <div class="summary-section">
+              <h3>Your Information</h3>
+              <dl class="summary-list">
+                <dt>Name:</dt>
+                <dd id="summaryName">-</dd>
+                <dt>Email:</dt>
+                <dd id="summaryEmail">-</dd>
+                <dt>Phone:</dt>
+                <dd id="summaryPhone">-</dd>
+                <dt>Course Type:</dt>
+                <dd id="summaryCourse">-</dd>
+                <dt>Location:</dt>
+                <dd id="summaryLocation">-</dd>
+              </dl>
+            </div>
+
+            <div class="summary-section">
+              <h3>Consultation Time</h3>
+              <div class="appointment-card">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                </svg>
+                <div>
+                  <p id="summaryDate">-</p>
+                  <p id="summaryTime">-</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="terms-section">
+              <div class="form-checkbox">
+                <input type="checkbox" id="terms" name="terms" required />
+                <label for="terms">
+                  I have read and accept the <a href="/terms" target="_blank">Terms and Conditions</a>
+                  and <a href="/privacy" target="_blank">Privacy Policy</a> *
+                </label>
+              </div>
+              <span class="error-message"></span>
+            </div>
+
+            <div class="additional-info">
+              <label for="specialRequirements">Special requirements or questions (optional)</label>
+              <textarea id="specialRequirements" name="specialRequirements" rows="3"
+                       placeholder="Let us know if you have any special requirements or questions"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success State -->
+        <div class="form-success" style="display: none;">
+          <div class="success-icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="currentColor">
+              <path d="M32 0C14.3 0 0 14.3 0 32s14.3 32 32 32 32-14.3 32-32S49.7 0 32 0zm-4 48L12 32l4.2-4.2L28 39.6l19.8-19.8L52 24 28 48z"/>
+            </svg>
+          </div>
+          <h2>Registration Complete!</h2>
+          <p>Thank you for registering. We've sent a confirmation email to your address.</p>
+          <p class="success-detail">One of our advisors will contact you within 24 hours to finalize your enrollment.</p>
+
+          <div class="success-actions">
+            <button class="btn-primary" onclick="window.location.href='/portal'">Go to Student Portal</button>
+            <button class="btn-secondary" onclick="closeRegistrationModal()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="modal-footer">
+      <button type="button" class="btn-back" style="display: none;">
+        Back
+      </button>
+      <button type="button" class="btn-next">
+        Continue
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .registration-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .registration-modal.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 1.5rem;
+    width: 90%;
+    max-width: 1100px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -45%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--bc-primary-blue);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 10;
+  }
+
+  .modal-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: rotate(90deg);
+  }
+
+  .modal-progress {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #ff9edb, #7c4dff);
+    border-radius: 2px;
+    width: 33.33%;
+    transition: width 0.3s ease;
+  }
+
+  .progress-fill[data-step="2"] { width: 66.66%; }
+  .progress-fill[data-step="3"] { width: 100%; }
+
+  .progress-steps {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .progress-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+  }
+
+  .progress-step.active {
+    opacity: 1;
+  }
+
+  .step-number {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .progress-step.active .step-number {
+    background: linear-gradient(135deg, #ff9edb, #7c4dff);
+    color: white;
+  }
+
+  .step-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--bc-primary-blue);
+  }
+
+  .modal-content {
+    display: flex;
+    height: calc(90vh - 200px);
+    overflow-y: auto;
+  }
+
+  .modal-sidebar {
+    width: 380px;
+    background: linear-gradient(135deg, var(--bc-primary-blue), #2d0f54);
+    padding: 3rem 2rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .sidebar-content h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-content p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .trust-indicators {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .trust-item svg {
+    opacity: 0.8;
+  }
+
+  .social-proof {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  .proof-text {
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  .sidebar-image {
+    margin-top: 2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .sidebar-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .modal-form {
+    flex: 1;
+    padding: 3rem;
+    overflow-y: auto;
+  }
+
+  .form-step {
+    display: none;
+  }
+
+  .form-step.active {
+    display: block;
+    animation: fadeInStep 0.3s ease;
+  }
+
+  @keyframes fadeInStep {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .form-step h2 {
+    font-size: 2rem;
+    color: var(--bc-primary-blue);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-description {
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--bc-primary-blue);
+    font-size: 0.875rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--bc-primary-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  .phone-input {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .phone-input select {
+    width: 140px;
+  }
+
+  .phone-input input {
+    flex: 1;
+  }
+
+  .form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-checkbox input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.125rem;
+    cursor: pointer;
+  }
+
+  .form-checkbox label {
+    flex: 1;
+    font-size: 0.875rem;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .form-checkbox label a {
+    color: var(--bc-primary-blue);
+    text-decoration: underline;
+  }
+
+  .error-message {
+    display: block;
+    color: #ef4444;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .calendar-container {
+    background: #f9fafb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .calendar-nav {
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background: white;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .calendar-nav:hover {
+    background: var(--bc-primary-blue);
+    color: white;
+  }
+
+  .calendar-month {
+    font-weight: 600;
+    color: var(--bc-primary-blue);
+  }
+
+  .calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .calendar-weekdays span {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 0.5rem 0;
+  }
+
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+  }
+
+  .calendar-day {
+    aspect-ratio: 1;
+    border: none;
+    background: white;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+
+  .calendar-day:hover:not(.disabled) {
+    background: var(--bc-primary-blue);
+    color: white;
+  }
+
+  .calendar-day.selected {
+    background: linear-gradient(135deg, #ff9edb, #7c4dff);
+    color: white;
+  }
+
+  .calendar-day.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .calendar-day.today {
+    border: 2px solid var(--bc-primary-blue);
+  }
+
+  .time-slots {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .time-slots h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--bc-primary-blue);
+  }
+
+  .slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .time-slot {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    background: white;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+  }
+
+  .time-slot:hover {
+    border-color: var(--bc-primary-blue);
+    background: rgba(37, 99, 235, 0.05);
+  }
+
+  .time-slot.selected {
+    background: var(--bc-primary-blue);
+    color: white;
+    border-color: var(--bc-primary-blue);
+  }
+
+  .flexible-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border: 2px dashed rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .flexible-btn:hover {
+    border-color: var(--bc-primary-blue);
+    background: rgba(37, 99, 235, 0.05);
+    color: var(--bc-primary-blue);
+  }
+
+  .confirmation-summary {
+    background: #f9fafb;
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+
+  .summary-section {
+    margin-bottom: 2rem;
+  }
+
+  .summary-section h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    color: var(--bc-primary-blue);
+  }
+
+  .summary-list {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+  }
+
+  .summary-list dt {
+    font-weight: 500;
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+
+  .summary-list dd {
+    color: var(--bc-primary-blue);
+    margin: 0;
+  }
+
+  .appointment-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .appointment-card svg {
+    color: var(--bc-primary-blue);
+  }
+
+  .appointment-card p {
+    margin: 0;
+    color: var(--bc-primary-blue);
+    font-weight: 500;
+  }
+
+  .additional-info {
+    margin-top: 1.5rem;
+  }
+
+  .additional-info label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--bc-primary-blue);
+    font-size: 0.875rem;
+  }
+
+  .additional-info textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    resize: vertical;
+  }
+
+  .form-success {
+    text-align: center;
+    padding: 3rem;
+  }
+
+  .success-icon {
+    margin-bottom: 2rem;
+  }
+
+  .success-icon svg {
+    color: #10b981;
+  }
+
+  .form-success h2 {
+    font-size: 2rem;
+    color: var(--bc-primary-blue);
+    margin-bottom: 1rem;
+  }
+
+  .form-success p {
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .success-detail {
+    font-weight: 500;
+    color: var(--bc-primary-blue);
+  }
+
+  .success-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .modal-footer {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .btn-back,
+  .btn-next,
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.75rem 2rem;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+  }
+
+  .btn-back {
+    background: transparent;
+    color: var(--muted);
+  }
+
+  .btn-back:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .btn-next,
+  .btn-primary {
+    background: linear-gradient(135deg, #ff9edb, #7c4dff);
+    color: white;
+  }
+
+  .btn-next:hover,
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 77, 255, 0.3);
+  }
+
+  .btn-secondary {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--bc-primary-blue);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .modal-container {
+      width: 100%;
+      height: 100%;
+      max-height: 100vh;
+      border-radius: 0;
+    }
+
+    .modal-content {
+      height: calc(100vh - 180px);
+    }
+
+    .modal-sidebar {
+      display: none;
+    }
+
+    .modal-form {
+      padding: 1.5rem;
+    }
+
+    .progress-steps {
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .step-label {
+      display: none;
+    }
+
+    .calendar-weekdays,
+    .calendar-days {
+      gap: 0.25rem;
+    }
+
+    .slots-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .success-actions {
+      flex-direction: column;
+    }
+
+    .modal-footer {
+      padding: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Registration Modal JavaScript
+  let currentStep = 1;
+  const totalSteps = 3;
+  let formData = {};
+  let selectedDate = null;
+  let selectedTime = null;
+
+  function initRegistrationModal() {
+    const modal = document.getElementById('registrationModal');
+    const overlay = modal?.querySelector('.modal-overlay');
+    const closeBtn = modal?.querySelector('.modal-close');
+    const backBtn = modal?.querySelector('.btn-back');
+    const nextBtn = modal?.querySelector('.btn-next');
+    const courseSelect = document.getElementById('courseInterest');
+    const childrenFields = document.getElementById('childrenFields');
+
+    // Course type change handler
+    courseSelect?.addEventListener('change', function() {
+      if (this.value === 'children') {
+        childrenFields.style.display = 'block';
+      } else {
+        childrenFields.style.display = 'none';
+      }
+    });
+
+    // Navigation handlers
+    backBtn?.addEventListener('click', () => navigateStep('back'));
+    nextBtn?.addEventListener('click', () => navigateStep('next'));
+    overlay?.addEventListener('click', closeModal);
+    closeBtn?.addEventListener('click', closeModal);
+
+    // Initialize calendar
+    initCalendar();
+
+    // Form validation
+    initFormValidation();
+
+    // Auto-save to localStorage
+    initAutoSave();
+  }
+
+  function openRegistrationModal(courseType = 'adults', location = '') {
+    const modal = document.getElementById('registrationModal');
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Set default values if provided
+      if (courseType) {
+        const courseSelect = document.getElementById('courseInterest');
+        if (courseSelect) courseSelect.value = courseType;
+      }
+
+      if (location) {
+        const locationSelect = document.getElementById('location');
+        if (locationSelect) locationSelect.value = location;
+      }
+
+      // Load saved data if exists
+      loadSavedData();
+    }
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('registrationModal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  window.closeRegistrationModal = closeModal;
+
+  function navigateStep(direction) {
+    if (direction === 'next') {
+      if (!validateCurrentStep()) return;
+
+      if (currentStep === totalSteps) {
+        submitRegistration();
+        return;
+      }
+
+      saveStepData();
+      currentStep++;
+    } else if (direction === 'back' && currentStep > 1) {
+      currentStep--;
+    }
+
+    updateModalStep();
+  }
+
+  function updateModalStep() {
+    // Update progress bar
+    const progressFill = document.querySelector('.progress-fill');
+    if (progressFill) {
+      progressFill.setAttribute('data-step', currentStep);
+    }
+
+    // Update progress steps
+    document.querySelectorAll('.progress-step').forEach((step, index) => {
+      step.classList.toggle('active', index < currentStep);
+    });
+
+    // Update form steps
+    document.querySelectorAll('.form-step').forEach(step => {
+      const stepNum = parseInt(step.getAttribute('data-step'));
+      step.classList.toggle('active', stepNum === currentStep);
+    });
+
+    // Update buttons
+    const backBtn = document.querySelector('.btn-back');
+    const nextBtn = document.querySelector('.btn-next');
+
+    if (backBtn) {
+      backBtn.style.display = currentStep === 1 ? 'none' : 'block';
+    }
+
+    if (nextBtn) {
+      nextBtn.textContent = currentStep === totalSteps ? 'Complete Registration' : 'Continue';
+    }
+
+    // Update summary if on confirmation step
+    if (currentStep === 3) {
+      updateConfirmationSummary();
+    }
+  }
+
+  function validateCurrentStep() {
+    const currentFormStep = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+    const requiredFields = currentFormStep?.querySelectorAll('[required]');
+    let isValid = true;
+
+    requiredFields?.forEach(field => {
+      if (!field.value.trim()) {
+        showFieldError(field, 'This field is required');
+        isValid = false;
+      } else if (field.type === 'email' && !validateEmail(field.value)) {
+        showFieldError(field, 'Please enter a valid email address');
+        isValid = false;
+      } else {
+        clearFieldError(field);
+      }
+    });
+
+    // Special validation for step 2 (calendar)
+    if (currentStep === 2) {
+      const flexibleBtn = document.querySelector('.flexible-btn');
+      if (!selectedDate && !selectedTime && !flexibleBtn?.classList.contains('selected')) {
+        alert('Please select a consultation time or choose the flexible option');
+        isValid = false;
+      }
+    }
+
+    // Special validation for step 3 (terms)
+    if (currentStep === 3) {
+      const termsCheckbox = document.getElementById('terms');
+      if (!termsCheckbox?.checked) {
+        showFieldError(termsCheckbox, 'You must accept the terms and conditions');
+        isValid = false;
+      }
+    }
+
+    return isValid;
+  }
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function showFieldError(field, message) {
+    const errorElement = field.parentElement?.querySelector('.error-message');
+    if (errorElement) {
+      errorElement.textContent = message;
+      field.classList.add('error');
+    }
+  }
+
+  function clearFieldError(field) {
+    const errorElement = field.parentElement?.querySelector('.error-message');
+    if (errorElement) {
+      errorElement.textContent = '';
+      field.classList.remove('error');
+    }
+  }
+
+  function saveStepData() {
+    const inputs = document.querySelectorAll(`.form-step[data-step="${currentStep}"] input, .form-step[data-step="${currentStep}"] select, .form-step[data-step="${currentStep}"] textarea`);
+
+    inputs.forEach(input => {
+      if (input.type === 'checkbox') {
+        formData[input.name] = input.checked;
+      } else if (input.type === 'radio') {
+        if (input.checked) {
+          formData[input.name] = input.value;
+        }
+      } else {
+        formData[input.name] = input.value;
+      }
+    });
+
+    // Save calendar selection
+    if (currentStep === 2) {
+      formData.selectedDate = selectedDate;
+      formData.selectedTime = selectedTime;
+    }
+
+    // Save to localStorage
+    localStorage.setItem('registrationFormData', JSON.stringify(formData));
+  }
+
+  function loadSavedData() {
+    const savedData = localStorage.getItem('registrationFormData');
+    if (savedData) {
+      formData = JSON.parse(savedData);
+
+      // Populate form fields
+      Object.keys(formData).forEach(key => {
+        const field = document.querySelector(`[name="${key}"]`);
+        if (field) {
+          if (field.type === 'checkbox') {
+            field.checked = formData[key];
+          } else {
+            field.value = formData[key];
+          }
+        }
+      });
+    }
+  }
+
+  function initAutoSave() {
+    const inputs = document.querySelectorAll('.modal-form input, .modal-form select, .modal-form textarea');
+
+    inputs.forEach(input => {
+      input.addEventListener('change', () => {
+        saveStepData();
+      });
+    });
+  }
+
+  function initCalendar() {
+    const calendarDays = document.getElementById('calendarDays');
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    if (calendarDays) {
+      renderCalendar(currentMonth, currentYear);
+    }
+
+    // Calendar navigation
+    document.querySelector('.calendar-nav.prev')?.addEventListener('click', () => {
+      renderCalendar(currentMonth - 1, currentYear);
+    });
+
+    document.querySelector('.calendar-nav.next')?.addEventListener('click', () => {
+      renderCalendar(currentMonth + 1, currentYear);
+    });
+
+    // Flexible button
+    document.querySelector('.flexible-btn')?.addEventListener('click', function() {
+      this.classList.toggle('selected');
+      selectedDate = 'flexible';
+      selectedTime = 'flexible';
+    });
+  }
+
+  function renderCalendar(month, year) {
+    const calendarDays = document.getElementById('calendarDays');
+    if (!calendarDays) return;
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const today = new Date();
+
+    calendarDays.innerHTML = '';
+
+    // Empty cells before first day
+    for (let i = 0; i < (firstDay || 7) - 1; i++) {
+      calendarDays.innerHTML += '<div></div>';
+    }
+
+    // Calendar days
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dayDate = new Date(year, month, day);
+      const isToday = dayDate.toDateString() === today.toDateString();
+      const isPast = dayDate < today;
+      const isWeekend = dayDate.getDay() === 0 || dayDate.getDay() === 6;
+
+      const dayButton = document.createElement('button');
+      dayButton.className = 'calendar-day';
+      dayButton.textContent = day;
+
+      if (isToday) dayButton.classList.add('today');
+      if (isPast || isWeekend) dayButton.classList.add('disabled');
+
+      if (!isPast && !isWeekend) {
+        dayButton.addEventListener('click', () => selectDate(dayDate));
+      }
+
+      calendarDays.appendChild(dayButton);
+    }
+
+    // Update month display
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                       'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthDisplay = document.querySelector('.calendar-month');
+    if (monthDisplay) {
+      monthDisplay.textContent = `${monthNames[month]} ${year}`;
+    }
+  }
+
+  function selectDate(date) {
+    selectedDate = date;
+
+    // Update visual selection
+    document.querySelectorAll('.calendar-day').forEach(day => {
+      day.classList.remove('selected');
+    });
+    event.target.classList.add('selected');
+
+    // Show time slots
+    showTimeSlots(date);
+  }
+
+  function showTimeSlots(date) {
+    const timeSlotsContainer = document.getElementById('timeSlots');
+    const slotsGrid = timeSlotsContainer?.querySelector('.slots-grid');
+
+    if (timeSlotsContainer && slotsGrid) {
+      timeSlotsContainer.style.display = 'block';
+
+      // Generate available time slots (mock data)
+      const slots = ['09:00', '09:30', '10:00', '10:30', '11:00', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00'];
+      slotsGrid.innerHTML = '';
+
+      slots.forEach(time => {
+        const slot = document.createElement('button');
+        slot.className = 'time-slot';
+        slot.textContent = time;
+        slot.addEventListener('click', () => selectTime(time));
+        slotsGrid.appendChild(slot);
+      });
+    }
+  }
+
+  function selectTime(time) {
+    selectedTime = time;
+
+    // Update visual selection
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.classList.remove('selected');
+    });
+    event.target.classList.add('selected');
+  }
+
+  function updateConfirmationSummary() {
+    document.getElementById('summaryName').textContent = formData.fullName || '-';
+    document.getElementById('summaryEmail').textContent = formData.email || '-';
+    document.getElementById('summaryPhone').textContent = `${formData.phoneCode || ''} ${formData.phone || '-'}`;
+    document.getElementById('summaryCourse').textContent = formData.courseInterest || '-';
+    document.getElementById('summaryLocation').textContent = formData.location || '-';
+
+    if (selectedDate === 'flexible') {
+      document.getElementById('summaryDate').textContent = 'Flexible scheduling requested';
+      document.getElementById('summaryTime').textContent = 'We will contact you with options';
+    } else if (selectedDate && selectedTime) {
+      document.getElementById('summaryDate').textContent = selectedDate.toLocaleDateString();
+      document.getElementById('summaryTime').textContent = selectedTime;
+    }
+  }
+
+  function submitRegistration() {
+    saveStepData();
+
+    // Hide form and show success
+    document.querySelectorAll('.form-step').forEach(step => {
+      step.classList.remove('active');
+    });
+    document.querySelector('.modal-footer').style.display = 'none';
+    document.querySelector('.form-success').style.display = 'block';
+
+    // Send data to backend (mock)
+    console.log('Registration submitted:', formData);
+
+    // Clear saved data
+    localStorage.removeItem('registrationFormData');
+
+    // Send confirmation email (would be handled by backend)
+    // ...
+  }
+
+  function initFormValidation() {
+    // Real-time validation for email
+    document.getElementById('email')?.addEventListener('blur', function() {
+      if (this.value && !validateEmail(this.value)) {
+        showFieldError(this, 'Please enter a valid email address');
+      } else {
+        clearFieldError(this);
+      }
+    });
+
+    // Real-time validation for phone
+    document.getElementById('phone')?.addEventListener('blur', function() {
+      if (this.value && !/^\d{9,}$/.test(this.value.replace(/\s/g, ''))) {
+        showFieldError(this, 'Please enter a valid phone number');
+      } else {
+        clearFieldError(this);
+      }
+    });
+  }
+
+  // Initialize on DOM load
+  document.addEventListener('DOMContentLoaded', initRegistrationModal);
+
+  // Export function for use in other components
+  window.openRegistrationModal = openRegistrationModal;
+</script>
