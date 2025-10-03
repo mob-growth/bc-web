@@ -887,11 +887,30 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .calendar-day.selected {
-    background: linear-gradient(135deg, var(--bc-primary-blue), #1e3a8a);
+    background: linear-gradient(135deg, var(--bc-primary-blue), #1e3a8a) !important;
     color: white !important;
-    border-color: var(--bc-primary-blue);
-    box-shadow: 0 4px 16px rgba(35, 7, 90, 0.3);
-    transform: scale(1.05);
+    border-color: var(--bc-primary-blue) !important;
+    box-shadow: 0 4px 16px rgba(35, 7, 90, 0.3) !important;
+    transform: scale(1.08) !important;
+    font-weight: 700 !important;
+    position: relative;
+  }
+
+  .calendar-day.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 0.7rem;
+    color: white;
+    background: var(--bc-cta-pink);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
   }
 
   .calendar-day.disabled {
@@ -909,6 +928,19 @@ const { courseType = 'adults', location = '' } = Astro.props;
   @keyframes subtlePulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.02); }
+  }
+
+  @keyframes confirmSelection {
+    0% { transform: scale(1.08); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1.08); }
+  }
+
+  /* Add active state for immediate feedback */
+  .calendar-day:active:not(.disabled),
+  .time-slot:active {
+    transform: scale(0.95) !important;
+    transition: transform 0.1s ease !important;
   }
 
   .time-slots {
@@ -979,11 +1011,32 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .time-slot.selected {
-    background: linear-gradient(135deg, var(--bc-primary-blue), #1e3a8a);
+    background: linear-gradient(135deg, var(--bc-primary-blue), #1e3a8a) !important;
+    color: white !important;
+    border-color: var(--bc-primary-blue) !important;
+    box-shadow: 0 4px 16px rgba(35, 7, 90, 0.3) !important;
+    transform: scale(1.08) !important;
+    font-weight: 700 !important;
+    position: relative;
+  }
+
+  .time-slot.selected::after {
+    content: '✓';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    font-size: 0.65rem;
     color: white;
-    border-color: var(--bc-primary-blue);
-    box-shadow: 0 4px 16px rgba(35, 7, 90, 0.3);
-    transform: scale(1.05);
+    background: var(--bc-cta-pink);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
 
   .flexible-btn {
@@ -1553,6 +1606,14 @@ const { courseType = 'adults', location = '' } = Astro.props;
       } else if (hasAvailability) {
         dayButton.classList.add('available');
         dayButton.addEventListener('click', () => selectDate(dayDate));
+
+        // Restore selection if this was previously selected
+        if (window.selectedDateElement &&
+            window.selectedDateElement.date === day &&
+            window.selectedDateElement.month === month &&
+            window.selectedDateElement.year === year) {
+          dayButton.classList.add('selected');
+        }
       } else {
         dayButton.classList.add('disabled');
       }
@@ -1572,11 +1633,22 @@ const { courseType = 'adults', location = '' } = Astro.props;
   function selectDate(date) {
     selectedDate = date;
 
-    // Update visual selection
+    // Update visual selection - remove from all days first
     document.querySelectorAll('.calendar-day').forEach(day => {
       day.classList.remove('selected');
     });
-    event.target.classList.add('selected');
+
+    // Add selected class to clicked element
+    if (event && event.target) {
+      event.target.classList.add('selected');
+
+      // Store the selected date element to maintain selection when navigating months
+      window.selectedDateElement = {
+        date: date.getDate(),
+        month: date.getMonth(),
+        year: date.getFullYear()
+      };
+    }
 
     // Show time slots
     showTimeSlots(date);
@@ -1612,6 +1684,12 @@ const { courseType = 'adults', location = '' } = Astro.props;
         slot.style.animationDelay = `${index * 30}ms`;
         slot.style.animation = 'fadeInUp 0.4s ease forwards';
         slot.addEventListener('click', () => selectTime(time));
+
+        // Restore selection if this time was previously selected
+        if (window.selectedTimeSlot === time) {
+          slot.classList.add('selected');
+        }
+
         slotsGrid.appendChild(slot);
       });
 
@@ -1639,11 +1717,26 @@ const { courseType = 'adults', location = '' } = Astro.props;
   function selectTime(time) {
     selectedTime = time;
 
-    // Update visual selection
+    // Update visual selection - remove from all slots first
     document.querySelectorAll('.time-slot').forEach(slot => {
       slot.classList.remove('selected');
     });
-    event.target.classList.add('selected');
+
+    // Add selected class to clicked element
+    if (event && event.target) {
+      event.target.classList.add('selected');
+
+      // Store the selected time to maintain state
+      window.selectedTimeSlot = time;
+    }
+
+    // Add a subtle animation to confirm selection
+    if (event && event.target) {
+      event.target.style.animation = 'confirmSelection 0.3s ease';
+      setTimeout(() => {
+        event.target.style.animation = '';
+      }, 300);
+    }
   }
 
   function updateConfirmationSummary() {
