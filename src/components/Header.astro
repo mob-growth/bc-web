@@ -129,9 +129,10 @@ const examCategories = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 w-full z-50 header-glass">
-  <nav class="bc-container">
-    <div class="flex items-center justify-between h-20 lg:h-24">
+<header class="relative z-50">
+  <div class="fixed top-0 left-0 right-0 w-full z-50 header-glass">
+    <nav class="bc-container">
+      <div class="flex items-center justify-between h-20 lg:h-24">
       <!-- Logo -->
       <a href="/" class="flex items-center logo-hover">
         <img
@@ -432,7 +433,9 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
     </div>
-  </nav>
+    </nav>
+  </div>
+  <div class="header-spacer" aria-hidden="true"></div>
 </header>
 
 <script>
@@ -531,6 +534,16 @@ const currentPath = Astro.url.pathname;
     );
     border-bottom: 1px solid rgba(35, 7, 90, 0.08);
     box-shadow: 0 4px 24px rgba(23, 12, 70, 0.04);
+  }
+
+  .header-spacer {
+    height: 5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .header-spacer {
+      height: 6rem;
+    }
   }
 
   /* Mega Menu Styles */

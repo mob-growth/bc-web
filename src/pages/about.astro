@@ -1,0 +1,255 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+const focusAreas = [
+  {
+    title: 'English teaching',
+    description: 'Courses for children, teens, adults and organisations delivered by qualified teachers in our centres and online.',
+    image: 'https://mktgfiles.britishcouncil.org/hubfs/HD%20-%20Assets/FaceToFace/lp/images/f2f-adults-lp-hero.jpg'
+  },
+  {
+    title: 'Exam services',
+    description: 'IELTS, Aptis ESOL and UK education admissions tests with expert preparation and on-the-day care.',
+    image: 'https://mktgfiles.britishcouncil.org/hubfs/IELTS%20Coach-May-mail1.png'
+  },
+  {
+    title: 'Culture & partnerships',
+    description: 'Collaborations that connect Spanish schools, universities, artists and institutions with the UK.',
+    image: 'https://mktgfiles.britishcouncil.org/hubfs/Global%20-%20Future%20of%20English/Corporate%20English%20Solutions.jpg'
+  }
+];
+
+const impactStats = [
+  { value: '80M+', label: 'people engaged globally each year' },
+  { value: '90', label: 'years building cultural relations' },
+  { value: '200+', label: 'partner schools across Spain' },
+  { value: '6,000+', label: 'English teaching specialists worldwide' }
+];
+---
+
+<Layout
+  title="About the British Council in Spain"
+  description="Discover how the British Council connects the United Kingdom and Spain through English teaching, exams and cultural relations."
+>
+  <Header />
+
+  <main class="pt-28 lg:pt-36 pb-16">
+    <!-- Hero -->
+    <section class="bc-container">
+      <div class="rounded-[32px] bg-white/85 shadow-xl overflow-hidden px-6 py-10 md:px-12 md:py-14 lg:px-16 lg:py-18 flex flex-col lg:flex-row gap-10 items-center">
+        <div class="flex-1 max-w-xl">
+          <span class="section-kicker">British Council Spain</span>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-5 mb-6" style="color: var(--bc-primary-blue);">
+            Connecting the UK and Spain through education and culture
+          </h1>
+          <p class="text-base sm:text-lg leading-relaxed mb-8" style="color: var(--bc-dark-gray);">
+            We are the United Kingdom&rsquo;s international organisation for cultural relations and educational opportunities.
+            From our centres in Spain and our global online classrooms, we help people gain the skills, confidence and connections
+            they need to realise their potential.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a
+              href="/courses"
+              class="inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold shadow-sm transition-all"
+              style="background: var(--bc-primary-blue); color: white;"
+            >
+              Explore courses
+            </a>
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all border"
+              style="border-color: rgba(35, 7, 90, 0.2); color: var(--bc-primary-blue); background: rgba(255, 255, 255, 0.85);"
+            >
+              Talk to our team
+            </a>
+          </div>
+        </div>
+
+        <div class="flex-1 w-full">
+          <div class="relative rounded-[28px] overflow-hidden shadow-lg about-hero-media">
+            <img
+              src="https://mktgfiles.britishcouncil.org/hubfs/Photo%20of%20five%20children%20in%20a%20class.jpg"
+              alt="British Council teacher with students"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 pointer-events-none about-hero-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who we are -->
+    <section class="py-16">
+      <div class="bc-container grid gap-10 lg:grid-cols-[0.95fr,1.05fr] items-center">
+        <div class="order-2 lg:order-1">
+          <div class="rounded-[28px] overflow-hidden shadow-lg">
+            <img
+              src="https://mktgfiles.britishcouncil.org/hubfs/HD%20-%20Assets/FaceToFace/lp/images/f2f-adults-lp-hero.jpg"
+              alt="Adult learners attending an English class"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <span class="section-kicker">Who we are</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-5 mb-5" style="color: var(--bc-primary-blue);">
+            A trusted partner for learners, educators and institutions
+          </h2>
+          <p class="text-base md:text-lg leading-relaxed mb-6" style="color: var(--bc-dark-gray);">
+            The British Council builds connections, understanding and trust between people in the UK and countries around the world.
+            In Spain we have been active since 1940, delivering programmes that open doors for students, parents, teachers and cultural partners.
+          </p>
+          <ul class="space-y-4 text-sm md:text-base" style="color: var(--muted);">
+            <li class="flex items-start gap-3">
+              <span class="mt-1 about-icon-check" aria-hidden="true"></span>
+              Accredited teaching centres in Madrid, Barcelona, Bilbao, Palma, Valencia and online.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 about-icon-check" aria-hidden="true"></span>
+              Safeguarding-led learning environments for young learners and families.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 about-icon-check" aria-hidden="true"></span>
+              Strategic partnerships with schools, universities, cultural organisations and government bodies.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Focus areas -->
+    <section class="py-16" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.05), rgba(255, 20, 147, 0.05));">
+      <div class="bc-container">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <span class="section-kicker">What we do in Spain</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-5 mb-4" style="color: var(--bc-primary-blue);">
+            Programmes that help people learn, certify and collaborate
+          </h2>
+          <p class="text-base md:text-lg" style="color: var(--bc-dark-gray);">
+            Everything we offer is designed to build confidence in English, enable international study or work, and foster cultural exchange between Spain and the UK.
+          </p>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-3">
+          {focusAreas.map((area) => (
+            <article class="rounded-[26px] overflow-hidden bg-white shadow-md hover:-translate-y-1 transition-transform focus-area-card">
+              <div class="aspect-[4/3] overflow-hidden">
+                <img src={area.image} alt={area.title} class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2" style="color: var(--bc-primary-blue);">{area.title}</h3>
+                <p class="text-sm leading-relaxed" style="color: var(--muted);">{area.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact -->
+    <section class="py-16">
+      <div class="bc-container">
+        <div class="max-w-2xl mx-auto text-center mb-12">
+          <span class="section-kicker">Our impact</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-5 mb-4" style="color: var(--bc-primary-blue);">
+            A global community with deep roots in Spain
+          </h2>
+          <p class="text-base md:text-lg" style="color: var(--bc-dark-gray);">
+            We combine international expertise with local insight to create learning experiences that are trusted by families, professionals and institutions.
+          </p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {impactStats.map((stat) => (
+            <div class="rounded-3xl p-6 text-center shadow-md" style="background: white; border: 1px solid var(--line);">
+              <p class="text-2xl font-bold mb-1" style="color: var(--bc-primary-blue);">{stat.value}</p>
+              <p class="text-xs uppercase tracking-wide" style="color: var(--muted);">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-12">
+      <div class="bc-container">
+        <div class="rounded-[32px] px-8 py-12 md:px-12 md:py-14 text-center shadow-xl" style="background: linear-gradient(135deg, var(--bc-primary-blue), #4a1a8e); color: white;">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to work with the British Council?</h2>
+          <p class="text-base md:text-lg mb-8 opacity-90">
+            Our advisers can help you choose the right English course, plan an exam session or explore partnership opportunities across Spain.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact"
+              class="px-8 py-4 rounded-full font-semibold transition-all shadow-sm"
+              style="background: white; color: var(--bc-primary-blue);"
+            >
+              Contact us
+            </a>
+            <a
+              href="/portal"
+              class="px-8 py-4 rounded-full font-semibold transition-all"
+              style="background: rgba(255, 255, 255, 0.2); color: white; border: 2px solid white;"
+            >
+              Access student portal
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .section-kicker {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    background: rgba(35, 7, 90, 0.08);
+    color: var(--bc-primary-blue);
+  }
+
+  .about-hero-media img {
+    transition: transform 0.6s ease;
+  }
+
+  .about-hero-media:hover img {
+    transform: scale(1.04);
+  }
+
+  .about-hero-overlay {
+    background: linear-gradient(180deg, rgba(35, 7, 90, 0.15), transparent 70%);
+  }
+
+  .about-icon-check {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.25), rgba(35, 7, 90, 0.25));
+    position: relative;
+  }
+
+  .about-icon-check::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>') center / 70% 70% no-repeat;
+    background: white;
+  }
+
+  .focus-area-card img {
+    transition: transform 0.5s ease;
+  }
+
+  .focus-area-card:hover img {
+    transform: scale(1.05);
+  }
+</style>
