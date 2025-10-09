@@ -288,7 +288,7 @@ const heroStats = [
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                       </svg>
                       <span class="course-label">English & Exams</span>
-                      <select id="courseTypeFilter" onchange="event.stopPropagation(); filterCourses(this.value)" class="course-dropdown ml-2 appearance-none px-3 py-0.5 pr-7 rounded-md text-xs font-medium transition-all cursor-pointer" style="background: white; border: 1px solid rgba(35, 7, 90, 0.2); min-width: 110px; color: var(--bc-primary-blue);" onclick="event.stopPropagation()">
+                      <select id="courseTypeFilter" onchange="event.stopPropagation(); filterCourses(this.value)" class="course-dropdown ml-2 appearance-none px-3 py-0.5 pr-7 rounded-md text-xs font-medium transition-all cursor-pointer" style="display: none; background: white; border: 1px solid rgba(35, 7, 90, 0.2); min-width: 110px; color: var(--bc-primary-blue);" onclick="event.stopPropagation()">
                         <option value="all">All Courses</option>
                         <option value="adults">Adults</option>
                         <option value="kids">Children</option>
@@ -296,7 +296,7 @@ const heroStats = [
                         <option value="business">Business</option>
                         <option value="exams">Exam Prep</option>
                       </select>
-                      <div class="absolute" style="right: 24px; top: 50%; transform: translateY(-50%); pointer-events: none;">
+                      <div class="course-dropdown-arrow absolute" style="display: none; right: 24px; top: 50%; transform: translateY(-50%); pointer-events: none;">
                         <svg class="w-3 h-3" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
@@ -322,6 +322,31 @@ const heroStats = [
                     <span>Cultural Events</span>
                   </div>
                 </button>
+
+                <!-- Fixed Term Courses Filter -->
+                <div class="relative inline-block">
+                  <button class="event-type-btn fixed-term-btn" onclick="filterEventType('fixedterm', this)" style="background: rgba(35, 7, 90, 0.05); border: 1px solid rgba(35, 7, 90, 0.15); padding: 6px 14px; border-radius: 10px; font-size: 13px; font-weight: 500; transition: all 0.3s; position: relative;">
+                    <div class="flex items-center gap-2">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                      </svg>
+                      <span class="fixed-term-label">Fixed Term</span>
+                      <select id="fixedTermFilter" onchange="event.stopPropagation(); filterFixedTerm(this.value)" class="fixed-term-dropdown ml-2 appearance-none px-3 py-0.5 pr-7 rounded-md text-xs font-medium transition-all cursor-pointer" style="display: none; background: white; border: 1px solid rgba(35, 7, 90, 0.2); min-width: 110px; color: var(--bc-primary-blue);" onclick="event.stopPropagation()">
+                        <option value="all">All Durations</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="three-month">Three-Month</option>
+                        <option value="academic-year">Academic Year</option>
+                        <option value="summer">Summer</option>
+                      </select>
+                      <div class="fixed-term-dropdown-arrow absolute" style="display: none; right: 24px; top: 50%; transform: translateY(-50%); pointer-events: none;">
+                        <svg class="w-3 h-3" style="color: var(--bc-primary-blue);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </button>
+                </div>
               </div>
 
               <!-- Event Type Legend -->
@@ -343,6 +368,14 @@ const heroStats = [
                     <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"/>
                   </svg>
                   <span>Cultural</span>
+                </div>
+                <div class="flex items-center gap-1" style="color: #22c55e;">
+                  <span class="w-2 h-2 rounded-full" style="background: #22c55e; display: inline-block;"></span>
+                  <span>Upcoming</span>
+                </div>
+                <div class="flex items-center gap-1" style="color: #ef4444;">
+                  <span class="w-2 h-2 rounded-full" style="background: #ef4444; display: inline-block;"></span>
+                  <span>In Progress</span>
                 </div>
               </div>
             </div>
@@ -469,6 +502,237 @@ const heroStats = [
         </div>
       </div>
     </div>
+
+    <!-- Popular Upcoming Courses Carousel -->
+    <section class="py-16 px-4" style="background: linear-gradient(180deg, rgba(35, 7, 90, 0.02) 0%, rgba(255, 255, 255, 0) 100%);">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <svg class="w-6 h-6" style="color: var(--bc-cta-pink);" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <h2 class="text-3xl md:text-4xl font-bold" style="color: var(--bc-primary-blue);">Popular Upcoming Courses</h2>
+          </div>
+          <p class="text-base max-w-2xl mx-auto" style="color: var(--bc-dark-gray);">
+            Trending courses starting soon - secure your spot today!
+          </p>
+        </div>
+
+        <div class="relative">
+          <!-- Carousel Container -->
+          <div class="overflow-hidden" id="coursesCarousel">
+            <div class="flex gap-6 transition-transform duration-500 ease-out" id="carouselTrack">
+
+              <!-- Card 1: Business English B2 -->
+              <div class="flex-shrink-0 w-80 md:w-96">
+                <div class="group h-full rounded-2xl p-6 transition-all duration-300 hover:scale-105" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(124, 58, 237, 0.05)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(139, 92, 246, 0.2); box-shadow: 0 8px 32px rgba(139, 92, 246, 0.12);">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <span class="text-xs font-semibold px-2 py-1 rounded-full" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">In Progress</span>
+                      </div>
+                    </div>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">Three-Month</span>
+                  </div>
+
+                  <h3 class="text-xl font-bold mb-2" style="color: var(--bc-primary-blue);">Business English B2</h3>
+                  <p class="text-sm mb-4" style="color: var(--bc-dark-gray);">Master professional English communication for the global business environment</p>
+
+                  <div class="space-y-2 mb-4">
+                    <div class="flex items-center gap-2 text-sm" style="color: var(--bc-dark-gray);">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span>Started: Oct 1, 2025</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm" style="color: var(--bc-dark-gray);">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <span>Monday 09:00-11:00</span>
+                    </div>
+                  </div>
+
+                  <div class="pt-4 border-t" style="border-color: rgba(139, 92, 246, 0.2);">
+                    <div class="flex items-center justify-between">
+                      <span class="text-2xl font-bold" style="color: #8b5cf6;">€210<span class="text-sm font-normal" style="color: var(--bc-dark-gray);">/month</span></span>
+                      <button class="px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:scale-105" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white;">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: General English A2 -->
+              <div class="flex-shrink-0 w-80 md:w-96">
+                <div class="group h-full rounded-2xl p-6 transition-all duration-300 hover:scale-105" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(5, 150, 105, 0.05)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(34, 197, 94, 0.2); box-shadow: 0 8px 32px rgba(34, 197, 94, 0.12);">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #22c55e, #059669);">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <span class="text-xs font-semibold px-2 py-1 rounded-full" style="background: rgba(34, 197, 94, 0.15); color: #22c55e;">Upcoming</span>
+                      </div>
+                    </div>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: rgba(34, 197, 94, 0.15); color: #059669;">Monthly</span>
+                  </div>
+
+                  <h3 class="text-xl font-bold mb-2" style="color: var(--bc-primary-blue);">General English A2</h3>
+                  <p class="text-sm mb-4" style="color: var(--bc-dark-gray);">Build your English foundation with practical everyday communication skills</p>
+
+                  <div class="space-y-2 mb-4">
+                    <div class="flex items-center gap-2 text-sm" style="color: var(--bc-dark-gray);">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span>Starts: Nov 5, 2025</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm" style="color: var(--bc-dark-gray);">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <span>Tuesday 10:00-12:00</span>
+                    </div>
+                  </div>
+
+                  <div class="pt-4 border-t" style="border-color: rgba(34, 197, 94, 0.2);">
+                    <div class="flex items-center justify-between">
+                      <span class="text-2xl font-bold" style="color: #059669;">€180<span class="text-sm font-normal" style="color: var(--bc-dark-gray);">/month</span></span>
+                      <button class="px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:scale-105" style="background: linear-gradient(135deg, #22c55e, #059669); color: white;">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: IELTS Preparation -->
+              <div class="flex-shrink-0 w-80 md:w-96">
+                <div class="group h-full rounded-2xl p-6 transition-all duration-300 hover:scale-105" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(37, 99, 235, 0.05)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(59, 130, 246, 0.2); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.12);">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <span class="text-xs font-semibold px-2 py-1 rounded-full" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">In Progress</span>
+                      </div>
+                    </div>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">Three-Month</span>
+                  </div>
+
+                  <h3 class="text-xl font-bold mb-2" style="color: var(--bc-primary-blue);">IELTS Preparation</h3>
+                  <p class="text-sm mb-4" style="color: var(--bc-dark-gray);">Comprehensive preparation for academic and general IELTS examinations</p>
+
+                  <div class="space-y-2 mb-4">
+                    <div class="flex items-center gap-2 text-sm" style="color: var(--bc-dark-gray);">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span>Started: Oct 8, 2025</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm" style="color: var(--bc-dark-gray);">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <span>Tuesday 18:00-20:00</span>
+                    </div>
+                  </div>
+
+                  <div class="pt-4 border-t" style="border-color: rgba(59, 130, 246, 0.2);">
+                    <div class="flex items-center justify-between">
+                      <span class="text-2xl font-bold" style="color: #2563eb;">€240<span class="text-sm font-normal" style="color: var(--bc-dark-gray);">/month</span></span>
+                      <button class="px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:scale-105" style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white;">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4: Kids 7-9 Academic Year -->
+              <div class="flex-shrink-0 w-80 md:w-96">
+                <div class="group h-full rounded-2xl p-6 transition-all duration-300 hover:scale-105" style="background: linear-gradient(135deg, rgba(251, 146, 60, 0.08), rgba(249, 115, 22, 0.05)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(251, 146, 60, 0.2); box-shadow: 0 8px 32px rgba(251, 146, 60, 0.12);">
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                      <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #fb923c, #f97316);">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <span class="text-xs font-semibold px-2 py-1 rounded-full" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">In Progress</span>
+                      </div>
+                    </div>
+                    <span class="text-xs font-medium px-3 py-1 rounded-full" style="background: rgba(251, 146, 60, 0.15); color: #f97316;">Academic Year</span>
+                  </div>
+
+                  <h3 class="text-xl font-bold mb-2" style="color: var(--bc-primary-blue);">Kids 7-9</h3>
+                  <p class="text-sm mb-4" style="color: var(--bc-dark-gray);">Fun, engaging program that builds confidence and English skills for young learners</p>
+
+                  <div class="space-y-2 mb-4">
+                    <div class="flex items-center gap-2 text-sm" style="color: var(--bc-dark-gray);">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      <span>Started: Sep 15, 2025</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm" style="color: var(--bc-dark-gray);">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <span>Monday 16:00-17:30</span>
+                    </div>
+                  </div>
+
+                  <div class="pt-4 border-t" style="border-color: rgba(251, 146, 60, 0.2);">
+                    <div class="flex items-center justify-between">
+                      <span class="text-2xl font-bold" style="color: #f97316;">€190<span class="text-sm font-normal" style="color: var(--bc-dark-gray);">/month</span></span>
+                      <button class="px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:scale-105" style="background: linear-gradient(135deg, #fb923c, #f97316); color: white;">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Navigation Arrows -->
+          <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed" style="background: linear-gradient(135deg, var(--bc-primary-blue), #5a3a77); box-shadow: 0 4px 20px rgba(35, 7, 90, 0.3);">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+
+          <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed" style="background: linear-gradient(135deg, var(--bc-primary-blue), #5a3a77); box-shadow: 0 4px 20px rgba(35, 7, 90, 0.3);">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="flex justify-center gap-2 mt-8">
+          <button class="carousel-dot w-2 h-2 rounded-full transition-all" style="background: var(--bc-primary-blue);"></button>
+          <button class="carousel-dot w-2 h-2 rounded-full transition-all" style="background: rgba(35, 7, 90, 0.3);"></button>
+          <button class="carousel-dot w-2 h-2 rounded-full transition-all" style="background: rgba(35, 7, 90, 0.3);"></button>
+          <button class="carousel-dot w-2 h-2 rounded-full transition-all" style="background: rgba(35, 7, 90, 0.3);"></button>
+        </div>
+      </div>
+    </section>
 
     <!-- Wall of Love -->
     <section class="py-16 overflow-hidden" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(35, 7, 90, 0.015) 50%, rgba(255, 255, 255, 0) 100%);">
@@ -1051,10 +1315,11 @@ const heroStats = [
 </style>
 
 <script>
-  let currentMonth = 10; // November (0-indexed)
-  let currentYear = 2025;
-  let activeFilter = 'all';
-  let activeEventType = 'all';
+  window.currentMonth = 10; // November (0-indexed)
+  window.currentYear = 2025;
+  window.activeFilter = 'all';
+  window.activeEventType = 'all';
+  window.activeFixedTermFilter = 'all';
 
   // Course database with details
   const courseDatabase = {
@@ -1367,54 +1632,54 @@ const heroStats = [
   const courseSchedule = {
     // Monday courses (1st, 8th, 15th, 22nd, 29th of each month if it's a Monday)
     'monday': [
-      { time: '09:00', name: 'Business English B2', duration: '09:00-11:00', type: 'course' },
-      { time: '16:00', name: 'Kids 7-9', duration: '16:00-17:30', type: 'course' },
+      { time: '09:00', name: 'Business English B2', duration: '09:00-11:00', type: 'course', fixedTerm: 'three-month', startDate: '2025-10-01', status: 'in-progress' },
+      { time: '16:00', name: 'Kids 7-9', duration: '16:00-17:30', type: 'course', fixedTerm: 'academic-year', startDate: '2025-09-15', status: 'in-progress' },
       { time: '19:00', name: 'Business Communication Webinar', duration: '19:00-20:00', type: 'webinar' }
     ],
     'tuesday': [
-      { time: '10:00', name: 'General English A2', duration: '10:00-12:00', type: 'course' },
-      { time: '18:00', name: 'IELTS Preparation', duration: '18:00-20:00', type: 'course' },
+      { time: '10:00', name: 'General English A2', duration: '10:00-12:00', type: 'course', fixedTerm: 'monthly', startDate: '2025-11-05', status: 'upcoming' },
+      { time: '18:00', name: 'IELTS Preparation', duration: '18:00-20:00', type: 'course', fixedTerm: 'three-month', startDate: '2025-10-08', status: 'in-progress' },
       { time: '20:00', name: 'IELTS Tips Webinar', duration: '20:00-21:00', type: 'webinar' }
     ],
     'wednesday': [
-      { time: '11:00', name: 'Conversation Club B1', duration: '11:00-12:30', type: 'course' },
+      { time: '11:00', name: 'Conversation Club B1', duration: '11:00-12:30', type: 'course', fixedTerm: 'weekly', startDate: '2025-11-06', status: 'upcoming' },
       { time: '15:00', name: 'Tea & Conversation', duration: '15:00-17:00', type: 'cultural' },
-      { time: '17:00', name: 'Teen English 14-17', duration: '17:00-19:00', type: 'course' }
+      { time: '17:00', name: 'Teen English 14-17', duration: '17:00-19:00', type: 'course', fixedTerm: 'academic-year', startDate: '2025-09-20', status: 'in-progress' }
     ],
     'thursday': [
-      { time: '09:00', name: 'Business English C1', duration: '09:00-11:00', type: 'course' },
-      { time: '19:00', name: 'Cambridge FCE Intensive', duration: '19:00-21:00', special: 'NEW', type: 'course' },
+      { time: '09:00', name: 'Business English C1', duration: '09:00-11:00', type: 'course', fixedTerm: 'three-month', startDate: '2025-11-13', status: 'upcoming' },
+      { time: '19:00', name: 'Cambridge FCE Intensive', duration: '19:00-21:00', special: 'NEW', type: 'course', fixedTerm: 'monthly', startDate: '2025-11-13', status: 'upcoming' },
       { time: '18:00', name: 'Teaching Methods Webinar', duration: '18:00-19:30', type: 'webinar' }
     ],
     'friday': [
-      { time: '10:00', name: 'General English B1+', duration: '10:00-12:00', type: 'course' },
-      { time: '16:30', name: 'Kids Starters 4-6', duration: '16:30-17:30', type: 'course' },
+      { time: '10:00', name: 'General English B1+', duration: '10:00-12:00', type: 'course', fixedTerm: 'monthly', startDate: '2025-10-18', status: 'in-progress' },
+      { time: '16:30', name: 'Kids Starters 4-6', duration: '16:30-17:30', type: 'course', fixedTerm: 'academic-year', startDate: '2025-09-10', status: 'in-progress' },
       { time: '19:00', name: 'British Film Night', duration: '19:00-22:00', type: 'cultural' }
     ],
     'saturday': [
-      { time: '09:00', name: 'Weekend Intensive IELTS', duration: '09:00-13:00', special: 'WEEKEND', type: 'course' },
-      { time: '10:00', name: 'Saturday Kids Club', duration: '10:00-12:00', type: 'course' },
+      { time: '09:00', name: 'Weekend Intensive IELTS', duration: '09:00-13:00', special: 'WEEKEND', type: 'course', fixedTerm: 'monthly', startDate: '2025-11-01', status: 'in-progress' },
+      { time: '10:00', name: 'Saturday Kids Club', duration: '10:00-12:00', type: 'course', fixedTerm: 'weekly', startDate: '2025-11-08', status: 'upcoming' },
       { time: '14:00', name: 'Shakespeare Workshop', duration: '14:00-17:00', type: 'cultural' },
       { time: '19:00', name: 'British Music Night', duration: '19:00-21:00', type: 'cultural' }
     ],
     'sunday': [
-      { time: '11:00', name: 'Sunday Speaking Workshop', duration: '11:00-13:00', type: 'course' }
+      { time: '11:00', name: 'Sunday Speaking Workshop', duration: '11:00-13:00', type: 'course', fixedTerm: 'weekly', startDate: '2025-11-02', status: 'in-progress' }
     ]
   };
 
   // Make functions globally available
   window.previousMonth = function() {
-    currentMonth--;
-    if (currentMonth < 0) {
-      currentMonth = 11;
-      currentYear--;
+    window.currentMonth--;
+    if (window.currentMonth < 0) {
+      window.currentMonth = 11;
+      window.currentYear--;
     }
     updateMonthDisplay();
     animateCalendarTransition('left');
 
     // Reset filters when changing months
-    if (activeFilter !== 'all') {
-      activeFilter = 'all';
+    if (window.activeFilter !== 'all') {
+      window.activeFilter = 'all';
       const courseDropdown = document.getElementById('courseTypeFilter');
       if (courseDropdown) {
         courseDropdown.value = 'all';
@@ -1422,8 +1687,8 @@ const heroStats = [
     }
 
     // Reset event type filter
-    if (activeEventType !== 'all') {
-      activeEventType = 'all';
+    if (window.activeEventType !== 'all') {
+      window.activeEventType = 'all';
       document.querySelectorAll('.event-type-btn').forEach(btn => {
         btn.classList.remove('active');
         btn.style.background = 'var(--glass)';
@@ -1434,22 +1699,31 @@ const heroStats = [
         allEventsBtn.classList.add('active');
         allEventsBtn.style.background = 'linear-gradient(135deg, var(--bc-primary-blue), #5a3a77)';
         allEventsBtn.style.color = 'white';
+      }
+    }
+
+    // Reset fixed term filter
+    if (window.activeFixedTermFilter !== 'all') {
+      window.activeFixedTermFilter = 'all';
+      const fixedTermDropdown = document.getElementById('fixedTermFilter');
+      if (fixedTermDropdown) {
+        fixedTermDropdown.value = 'all';
       }
     }
   }
 
   window.nextMonth = function() {
-    currentMonth++;
-    if (currentMonth > 11) {
-      currentMonth = 0;
-      currentYear++;
+    window.currentMonth++;
+    if (window.currentMonth > 11) {
+      window.currentMonth = 0;
+      window.currentYear++;
     }
     updateMonthDisplay();
     animateCalendarTransition('right');
 
     // Reset filters when changing months
-    if (activeFilter !== 'all') {
-      activeFilter = 'all';
+    if (window.activeFilter !== 'all') {
+      window.activeFilter = 'all';
       const courseDropdown = document.getElementById('courseTypeFilter');
       if (courseDropdown) {
         courseDropdown.value = 'all';
@@ -1457,8 +1731,8 @@ const heroStats = [
     }
 
     // Reset event type filter
-    if (activeEventType !== 'all') {
-      activeEventType = 'all';
+    if (window.activeEventType !== 'all') {
+      window.activeEventType = 'all';
       document.querySelectorAll('.event-type-btn').forEach(btn => {
         btn.classList.remove('active');
         btn.style.background = 'var(--glass)';
@@ -1469,6 +1743,15 @@ const heroStats = [
         allEventsBtn.classList.add('active');
         allEventsBtn.style.background = 'linear-gradient(135deg, var(--bc-primary-blue), #5a3a77)';
         allEventsBtn.style.color = 'white';
+      }
+    }
+
+    // Reset fixed term filter
+    if (window.activeFixedTermFilter !== 'all') {
+      window.activeFixedTermFilter = 'all';
+      const fixedTermDropdown = document.getElementById('fixedTermFilter');
+      if (fixedTermDropdown) {
+        fixedTermDropdown.value = 'all';
       }
     }
   }
@@ -1480,7 +1763,7 @@ const heroStats = [
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
                        'July', 'August', 'September', 'October', 'November', 'December'];
 
-    monthElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+    monthElement.textContent = `${monthNames[window.currentMonth]} ${window.currentYear}`;
     generateCalendarDays();
   }
 
@@ -1488,9 +1771,9 @@ const heroStats = [
     const calendarDays = document.getElementById('calendarDays');
     if (!calendarDays) return;
 
-    const firstDay = new Date(currentYear, currentMonth, 1);
-    const lastDay = new Date(currentYear, currentMonth + 1, 0);
-    const prevLastDay = new Date(currentYear, currentMonth, 0);
+    const firstDay = new Date(window.currentYear, window.currentMonth, 1);
+    const lastDay = new Date(window.currentYear, window.currentMonth + 1, 0);
+    const prevLastDay = new Date(window.currentYear, window.currentMonth, 0);
 
     // Get the day of week for the first day (0 = Sunday)
     let startingDayOfWeek = firstDay.getDay();
@@ -1517,7 +1800,7 @@ const heroStats = [
 
     // Add days of the current month
     for (let day = 1; day <= daysInMonth; day++) {
-      const currentDate = new Date(currentYear, currentMonth, day);
+      const currentDate = new Date(window.currentYear, window.currentMonth, day);
       const dayOfWeek = currentDate.getDay();
       const dayName = dayNames[dayOfWeek === 0 ? 6 : dayOfWeek - 1];
       const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
@@ -1622,9 +1905,9 @@ const heroStats = [
 
     // Select distribution based on current month
     let courseDistribution;
-    if (currentMonth === 9) { // October
+    if (window.currentMonth === 9) { // October
       courseDistribution = octoberDistribution;
-    } else if (currentMonth === 10) { // November
+    } else if (window.currentMonth === 10) { // November
       courseDistribution = novemberDistribution;
     } else {
       // For other months, use a default sporadic pattern
@@ -1646,22 +1929,28 @@ const heroStats = [
       const courseData = courseDatabase[course.name];
 
       // Apply category filter
-      if (activeFilter !== 'all') {
+      if (window.activeFilter !== 'all') {
         const category = courseData?.category || '';
 
-        if (activeFilter === 'adults' && !category.includes('Adults') && !category.includes('Speaking Focus') && !category.includes('Business')) return null;
-        if (activeFilter === 'kids' && !category.includes('Children')) return null;
-        if (activeFilter === 'teens' && !category.includes('Teen')) return null;
-        if (activeFilter === 'business' && !category.includes('Business')) return null;
-        if (activeFilter === 'exams' && !category.includes('Exam') && !course.name.includes('IELTS') && !course.name.includes('Cambridge')) return null;
+        if (window.activeFilter === 'adults' && !category.includes('Adults') && !category.includes('Speaking Focus') && !category.includes('Business')) return null;
+        if (window.activeFilter === 'kids' && !category.includes('Children')) return null;
+        if (window.activeFilter === 'teens' && !category.includes('Teen')) return null;
+        if (window.activeFilter === 'business' && !category.includes('Business')) return null;
+        if (window.activeFilter === 'exams' && !category.includes('Exam') && !course.name.includes('IELTS') && !course.name.includes('Cambridge')) return null;
       }
 
       // Apply event type filter
-      if (activeEventType !== 'all') {
+      if (window.activeEventType !== 'all') {
         const eventType = course.type || 'course';
-        if (activeEventType === 'courses' && eventType !== 'course') return null;
-        if (activeEventType === 'webinars' && eventType !== 'webinar') return null;
-        if (activeEventType === 'cultural' && eventType !== 'cultural') return null;
+        if (window.activeEventType === 'courses' && eventType !== 'course') return null;
+        if (window.activeEventType === 'webinars' && eventType !== 'webinar') return null;
+        if (window.activeEventType === 'cultural' && eventType !== 'cultural') return null;
+        if (window.activeEventType === 'fixedterm' && !course.fixedTerm) return null;
+      }
+
+      // Apply fixed term filter
+      if (window.activeFixedTermFilter !== 'all' && window.activeEventType === 'fixedterm') {
+        if (!course.fixedTerm || course.fixedTerm !== window.activeFixedTermFilter) return null;
       }
 
       return { course, courseData, courseIndex };
@@ -1686,13 +1975,20 @@ const heroStats = [
         eventBgColor = '';
       }
 
+      // Get status indicator (dot) if this is a fixed term course
+      let statusIndicator = '';
+      if (course.fixedTerm && course.status) {
+        const dotColor = course.status === 'upcoming' ? '#22c55e' : '#ef4444';
+        statusIndicator = `<span class="inline-block w-1.5 h-1.5 rounded-full ml-1" style="background: ${dotColor};"></span>`;
+      }
+
       if (course.special) {
         return `
           <button class="course-item w-full text-left p-1 rounded hover:scale-105 transition-all special-offer"
                   onclick="showCourseDetails('${course.name}', '${course.duration}', '${dayName}')">
             <div class="flex items-center justify-between">
-              <div>
-                <div class="text-[10px] font-semibold" style="color: var(--bc-primary-blue);">${eventIcon}${course.time}</div>
+              <div class="flex-1">
+                <div class="text-[10px] font-semibold flex items-center" style="color: var(--bc-primary-blue);">${eventIcon}${course.time}${statusIndicator}</div>
                 <div class="text-[10px] truncate" style="color: ${categoryColor};">${course.name.length > 12 ? course.name.substring(0, 12) + '...' : course.name}</div>
               </div>
               <span class="text-[8px] px-1 py-0.5 rounded" style="background: linear-gradient(135deg, #ff1493, #ff69b4); color: white;">${course.special}</span>
@@ -1708,7 +2004,7 @@ const heroStats = [
           <button class="course-item w-full text-left p-1 rounded hover:scale-105 transition-all"
                   style="${bgStyle}"
                   onclick="showCourseDetails('${course.name}', '${course.duration}', '${dayName}')">
-            <div class="text-[10px] font-semibold" style="color: var(--bc-primary-blue);">${eventIcon}${course.time}</div>
+            <div class="text-[10px] font-semibold flex items-center" style="color: var(--bc-primary-blue);">${eventIcon}${course.time}${statusIndicator}</div>
             <div class="text-[10px] truncate" style="color: ${categoryColor};">${course.name.length > 12 ? course.name.substring(0, 12) + '...' : course.name}</div>
           </button>
         `;
@@ -1801,7 +2097,24 @@ const heroStats = [
 
   window.filterCourses = function(type) {
     // Update active filter
-    activeFilter = type;
+    window.activeFilter = type;
+
+    // Regenerate calendar with filter applied
+    generateCalendarDays();
+
+    // Animate calendar
+    const calendar = document.getElementById('calendarDays');
+    if (calendar) {
+      calendar.style.opacity = '0';
+      setTimeout(() => {
+        calendar.style.opacity = '1';
+      }, 100);
+    }
+  }
+
+  window.filterFixedTerm = function(type) {
+    // Update active fixed term filter
+    window.activeFixedTermFilter = type;
 
     // Regenerate calendar with filter applied
     generateCalendarDays();
@@ -1818,7 +2131,18 @@ const heroStats = [
 
   window.filterEventType = function(type, element) {
     // Update active event type filter
-    activeEventType = type;
+    window.activeEventType = type;
+
+    // Hide all dropdowns first
+    const courseDropdown = document.getElementById('courseTypeFilter');
+    const fixedTermDropdown = document.getElementById('fixedTermFilter');
+    const courseArrow = document.querySelector('.course-dropdown-arrow');
+    const fixedTermArrow = document.querySelector('.fixed-term-dropdown-arrow');
+
+    if (courseDropdown) courseDropdown.style.display = 'none';
+    if (fixedTermDropdown) fixedTermDropdown.style.display = 'none';
+    if (courseArrow) courseArrow.style.display = 'none';
+    if (fixedTermArrow) fixedTermArrow.style.display = 'none';
 
     // Update active event type button
     document.querySelectorAll('.event-type-btn').forEach(btn => {
@@ -1841,6 +2165,18 @@ const heroStats = [
       } else if (type === 'cultural') {
         clickedBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
         clickedBtn.style.color = 'white';
+      } else if (type === 'fixedterm') {
+        clickedBtn.style.background = 'linear-gradient(135deg, #8b5cf6, #7c3aed)';
+        clickedBtn.style.color = 'white';
+        // Show fixed term dropdown
+        if (fixedTermDropdown) fixedTermDropdown.style.display = 'inline-block';
+        if (fixedTermArrow) fixedTermArrow.style.display = 'block';
+      } else if (type === 'courses') {
+        clickedBtn.style.background = 'linear-gradient(135deg, var(--bc-primary-blue), #5a3a77)';
+        clickedBtn.style.color = 'white';
+        // Show course dropdown
+        if (courseDropdown) courseDropdown.style.display = 'inline-block';
+        if (courseArrow) courseArrow.style.display = 'block';
       } else {
         clickedBtn.style.background = 'linear-gradient(135deg, var(--bc-primary-blue), #5a3a77)';
         clickedBtn.style.color = 'white';
@@ -1879,5 +2215,64 @@ const heroStats = [
         }
       });
     }
+
+    // Initialize carousel
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    let currentIndex = 0;
+    const totalCards = 4;
+
+    function updateCarousel() {
+      const cardWidth = track.children[0].offsetWidth;
+      const gap = 24; // 6 * 4 (gap-6 in Tailwind)
+      const offset = -(currentIndex * (cardWidth + gap));
+
+      track.style.transform = `translateX(${offset}px)`;
+
+      // Update dots
+      dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+          dot.style.background = 'var(--bc-primary-blue)';
+          dot.style.width = '24px';
+        } else {
+          dot.style.background = 'rgba(35, 7, 90, 0.3)';
+          dot.style.width = '8px';
+        }
+      });
+
+      // Update button states
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === totalCards - 1;
+    }
+
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < totalCards - 1) {
+          currentIndex++;
+          updateCarousel();
+        }
+      });
+    }
+
+    // Dot navigation
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+
+    // Initial state
+    updateCarousel();
   });
 </script>

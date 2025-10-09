@@ -336,7 +336,7 @@ const { courseType = 'adults', location = '' } = Astro.props;
   </div>
 </div>
 
-<style>
+<style is:global>
   .registration-modal {
     display: none;
     position: fixed;
@@ -365,6 +365,7 @@ const { courseType = 'adults', location = '' } = Astro.props;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
+    z-index: 1;
   }
 
   .modal-container {
@@ -381,6 +382,7 @@ const { courseType = 'adults', location = '' } = Astro.props;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     animation: slideUp 0.3s ease;
+    z-index: 2; /* Ensure container is above overlay */
   }
 
   @keyframes slideUp {
@@ -755,9 +757,8 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .calendar-container {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    /* Removed backdrop-filter as it causes blur issues in modal */
     border: 2px solid var(--bc-primary-blue);
     border-radius: 1.5rem;
     padding: 1.75rem;
@@ -775,6 +776,7 @@ const { courseType = 'adults', location = '' } = Astro.props;
     height: 60px;
     background: linear-gradient(135deg, rgba(35, 7, 90, 0.05), rgba(183, 148, 212, 0.03));
     z-index: 0;
+    pointer-events: none;
   }
 
   .calendar-header {
@@ -837,14 +839,15 @@ const { courseType = 'adults', location = '' } = Astro.props;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.5rem;
+    position: relative;
+    z-index: 2;
   }
 
   .calendar-day {
     aspect-ratio: 1;
     border-radius: 0.875rem;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(248, 245, 255, 0.8);
+    /* Removed backdrop-filter to prevent blur issues in modal */
     border: 1px solid rgba(183, 148, 212, 0.2);
     display: flex;
     align-items: center;
@@ -886,18 +889,34 @@ const { courseType = 'adults', location = '' } = Astro.props;
     box-shadow: 0 0 0 2px rgba(255, 20, 147, 0.2);
   }
 
-  .calendar-day.selected {
-    background: white !important;
-    color: var(--bc-primary-blue) !important;
-    border: 3px solid var(--bc-primary-blue) !important;
-    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--bc-primary-blue) !important;
+  /* Selection styles using both class and data attribute for maximum specificity */
+  .calendar-day.selected,
+  .calendar-day.selected:hover,
+  .calendar-day.selected:focus,
+  .calendar-day[data-selected="true"],
+  .calendar-day[data-selected="true"]:hover,
+  .calendar-day[data-selected="true"]:focus,
+  button.calendar-day.selected,
+  button.calendar-day.selected:hover,
+  button.calendar-day.selected:focus,
+  button.calendar-day[data-selected="true"],
+  button.calendar-day[data-selected="true"]:hover,
+  button.calendar-day[data-selected="true"]:focus {
+    background: var(--bc-primary-blue) !important;
+    color: white !important;
     font-weight: 700 !important;
-    position: relative;
-    transform: scale(1) !important;
+    transform: scale(1.1) !important;
+    border: 3px solid var(--bc-primary-blue) !important;
+    box-shadow: 0 8px 24px rgba(35, 7, 90, 0.3) !important;
+    z-index: 100 !important;
+    border-radius: 50% !important;
+    position: relative !important;
   }
 
-  .calendar-day.selected::after {
-    display: none;
+  /* Hide the available indicator on selected days */
+  .calendar-day.selected::after,
+  .calendar-day[data-selected="true"]::after {
+    display: none !important;
   }
 
   .calendar-day.disabled {
@@ -998,18 +1017,28 @@ const { courseType = 'adults', location = '' } = Astro.props;
     opacity: 0;
   }
 
-  .time-slot.selected {
-    background: white !important;
-    color: var(--bc-primary-blue) !important;
-    border: 3px solid var(--bc-primary-blue) !important;
-    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--bc-primary-blue) !important;
+  /* Time slot selection styles with data attributes */
+  .time-slot.selected,
+  .time-slot.selected:hover,
+  .time-slot.selected:focus,
+  .time-slot[data-selected="true"],
+  .time-slot[data-selected="true"]:hover,
+  .time-slot[data-selected="true"]:focus,
+  button.time-slot.selected,
+  button.time-slot.selected:hover,
+  button.time-slot.selected:focus,
+  button.time-slot[data-selected="true"],
+  button.time-slot[data-selected="true"]:hover,
+  button.time-slot[data-selected="true"]:focus {
+    background: var(--bc-primary-blue) !important;
+    color: white !important;
     font-weight: 700 !important;
-    position: relative;
-    transform: scale(1) !important;
-  }
-
-  .time-slot.selected::after {
-    display: none;
+    transform: scale(1.05) !important;
+    border: 3px solid var(--bc-primary-blue) !important;
+    box-shadow: 0 6px 20px rgba(35, 7, 90, 0.3) !important;
+    z-index: 100 !important;
+    border-radius: 24px !important;
+    position: relative !important;
   }
 
   .flexible-btn {
@@ -1516,20 +1545,34 @@ const { courseType = 'adults', location = '' } = Astro.props;
   function initCalendar() {
     const calendarDays = document.getElementById('calendarDays');
     const currentDate = new Date();
-    const currentMonth = currentDate.getMonth();
-    const currentYear = currentDate.getFullYear();
+
+    // Use an object to track current displayed month/year
+    const calendarState = {
+      month: currentDate.getMonth(),
+      year: currentDate.getFullYear()
+    };
 
     if (calendarDays) {
-      renderCalendar(currentMonth, currentYear);
+      renderCalendar(calendarState.month, calendarState.year);
     }
 
-    // Calendar navigation
+    // Calendar navigation with state updates
     document.querySelector('.calendar-nav.prev')?.addEventListener('click', () => {
-      renderCalendar(currentMonth - 1, currentYear);
+      calendarState.month--;
+      if (calendarState.month < 0) {
+        calendarState.month = 11;
+        calendarState.year--;
+      }
+      renderCalendar(calendarState.month, calendarState.year);
     });
 
     document.querySelector('.calendar-nav.next')?.addEventListener('click', () => {
-      renderCalendar(currentMonth + 1, currentYear);
+      calendarState.month++;
+      if (calendarState.month > 11) {
+        calendarState.month = 0;
+        calendarState.year++;
+      }
+      renderCalendar(calendarState.month, calendarState.year);
     });
 
     // Flexible button
@@ -1558,7 +1601,7 @@ const { courseType = 'adults', location = '' } = Astro.props;
       calendarDays.appendChild(emptyDiv);
     }
 
-    // Calendar days with random availability
+    // Calendar days - make all future weekdays available
     for (let day = 1; day <= daysInMonth; day++) {
       const dayDate = new Date(year, month, day);
       dayDate.setHours(0, 0, 0, 0);
@@ -1566,19 +1609,27 @@ const { courseType = 'adults', location = '' } = Astro.props;
       const isPast = dayDate < today;
       const isWeekend = dayDate.getDay() === 0 || dayDate.getDay() === 6;
 
-      // Random availability for weekdays (70% chance)
-      const hasAvailability = !isPast && !isWeekend && Math.random() > 0.3;
-
       const dayButton = document.createElement('button');
+      dayButton.type = 'button';
       dayButton.className = 'calendar-day';
       dayButton.textContent = day;
+      dayButton.setAttribute('data-date', dayDate.toISOString().split('T')[0]);
+      dayButton.setAttribute('data-selected', 'false');
+      dayButton.setAttribute('aria-pressed', 'false');
+      dayButton.setAttribute('aria-label', `Select ${dayDate.toLocaleDateString()}`);
 
       if (isToday) dayButton.classList.add('today');
-      if (isPast || isWeekend) {
+
+      if (isPast) {
         dayButton.classList.add('disabled');
-      } else if (hasAvailability) {
+        dayButton.disabled = true;
+      } else if (isWeekend) {
+        dayButton.classList.add('disabled');
+        dayButton.disabled = true;
+      } else {
+        // All future weekdays are available
         dayButton.classList.add('available');
-        dayButton.addEventListener('click', () => selectDate(dayDate));
+        dayButton.addEventListener('click', (e) => selectDate(dayDate, e));
 
         // Restore selection if this was previously selected
         if (window.selectedDateElement &&
@@ -1587,8 +1638,6 @@ const { courseType = 'adults', location = '' } = Astro.props;
             window.selectedDateElement.year === year) {
           dayButton.classList.add('selected');
         }
-      } else {
-        dayButton.classList.add('disabled');
       }
 
       calendarDays.appendChild(dayButton);
@@ -1603,17 +1652,30 @@ const { courseType = 'adults', location = '' } = Astro.props;
     }
   }
 
-  function selectDate(date) {
+  function selectDate(date, event) {
     selectedDate = date;
 
     // Update visual selection - remove from all days first
     document.querySelectorAll('.calendar-day').forEach(day => {
       day.classList.remove('selected');
+      day.setAttribute('data-selected', 'false');
+      day.setAttribute('aria-pressed', 'false');
     });
 
     // Add selected class to clicked element
-    if (event && event.target) {
-      event.target.classList.add('selected');
+    if (event && event.currentTarget) {
+      event.currentTarget.classList.add('selected');
+      event.currentTarget.setAttribute('data-selected', 'true');
+      event.currentTarget.setAttribute('aria-pressed', 'true');
+
+      // Force style recalculation to ensure CSS is applied
+      void event.currentTarget.offsetHeight;
+
+      // Debug: Log to verify class is added and styles computed
+      console.log('Selected date:', date);
+      console.log('Element classes:', event.currentTarget.className);
+      console.log('Data-selected:', event.currentTarget.getAttribute('data-selected'));
+      console.log('Computed background:', window.getComputedStyle(event.currentTarget).backgroundColor);
 
       // Store the selected date element to maintain selection when navigating months
       window.selectedDateElement = {
@@ -1634,12 +1696,18 @@ const { courseType = 'adults', location = '' } = Astro.props;
     if (timeSlotsContainer && slotsGrid) {
       timeSlotsContainer.style.display = 'block';
 
-      // Generate available time slots with better variety
+      // Generate available time slots
       const morningSlots = ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30'];
       const afternoonSlots = ['14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30'];
 
-      // Randomly remove some slots to simulate bookings
-      const availableSlots = [...morningSlots, ...afternoonSlots].filter(() => Math.random() > 0.2);
+      // Show most slots, randomly remove just a few to simulate bookings
+      const allSlots = [...morningSlots, ...afternoonSlots];
+      const availableSlots = allSlots.filter(() => Math.random() > 0.15); // 85% chance each slot is available
+
+      // Ensure at least some slots are always available
+      if (availableSlots.length < 4) {
+        availableSlots.push(...allSlots.slice(0, 6));
+      }
 
       slotsGrid.innerHTML = '';
 
@@ -1652,11 +1720,16 @@ const { courseType = 'adults', location = '' } = Astro.props;
 
       availableSlots.forEach((time, index) => {
         const slot = document.createElement('button');
+        slot.type = 'button';
         slot.className = 'time-slot';
         slot.textContent = time;
+        slot.setAttribute('data-time', time);
+        slot.setAttribute('data-selected', 'false');
+        slot.setAttribute('aria-pressed', 'false');
+        slot.setAttribute('aria-label', `Select ${time} consultation time`);
         slot.style.animationDelay = `${index * 30}ms`;
         slot.style.animation = 'fadeInUp 0.4s ease forwards';
-        slot.addEventListener('click', () => selectTime(time));
+        slot.addEventListener('click', (e) => selectTime(time, e));
 
         // Restore selection if this time was previously selected
         if (window.selectedTimeSlot === time) {
@@ -1687,27 +1760,34 @@ const { courseType = 'adults', location = '' } = Astro.props;
     }
   }
 
-  function selectTime(time) {
+  function selectTime(time, event) {
     selectedTime = time;
 
     // Update visual selection - remove from all slots first
     document.querySelectorAll('.time-slot').forEach(slot => {
       slot.classList.remove('selected');
+      slot.setAttribute('data-selected', 'false');
+      slot.setAttribute('aria-pressed', 'false');
     });
 
     // Add selected class to clicked element
-    if (event && event.target) {
-      event.target.classList.add('selected');
+    if (event && event.currentTarget) {
+      event.currentTarget.classList.add('selected');
+      event.currentTarget.setAttribute('data-selected', 'true');
+      event.currentTarget.setAttribute('aria-pressed', 'true');
+
+      // Force style recalculation
+      void event.currentTarget.offsetHeight;
 
       // Store the selected time to maintain state
       window.selectedTimeSlot = time;
-    }
 
-    // Add a subtle animation to confirm selection
-    if (event && event.target) {
-      event.target.style.animation = 'confirmSelection 0.3s ease';
+      // Add a subtle animation to confirm selection
+      event.currentTarget.style.animation = 'confirmSelection 0.3s ease';
       setTimeout(() => {
-        event.target.style.animation = '';
+        if (event.currentTarget) {
+          event.currentTarget.style.animation = '';
+        }
       }, 300);
     }
   }
