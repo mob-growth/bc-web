@@ -9,10 +9,13 @@ const pageDescription = "Advance your career with Business English courses from 
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
-  <!-- Hero Section -->
-  <Hero
+  <main class="pt-12">
+    <!-- Hero Section -->
+    <Hero
     title="Business English Courses"
     subtitle="Master professional English and advance your career. Communicate confidently in meetings, presentations, negotiations, and all business contexts with our specialized Business English programs."
     ctaPrimary={{
@@ -430,6 +433,7 @@ const pageDescription = "Advance your career with Business English courses from 
       </div>
     </div>
   </section>
+  </main>
 
   <style>
     @keyframes slideInUp {

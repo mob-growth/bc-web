@@ -9,10 +9,13 @@ const pageDescription = "Learn English online with British Council Spain. Flexib
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
-  <!-- Hero Section -->
-  <Hero
+  <main class="pt-12">
+    <!-- Hero Section -->
+    <Hero
     title="Online English Courses"
     subtitle="Learn English from anywhere in the world. Join live interactive classes with expert teachers, access 24/7 learning resources, and study at your own pace with our flexible online programs."
     ctaPrimary={{
@@ -455,6 +458,7 @@ const pageDescription = "Learn English online with British Council Spain. Flexib
       </div>
     </div>
   </section>
+  </main>
 
   <style>
     @keyframes slideInUp {

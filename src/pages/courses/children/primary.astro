@@ -9,10 +9,13 @@ const pageDescription = "Build your child's English skills and confidence with P
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
-  <!-- Hero Section -->
-  <Hero
+  <main class="pt-12">
+    <!-- Hero Section -->
+    <Hero
     title="Primary Plus: Building Confident Communicators"
     subtitle="Give your child the English skills they need to thrive. Our Primary Plus program combines academic excellence with 21st-century skills through engaging, project-based learning."
     ctaPrimary={{
@@ -462,6 +465,7 @@ const pageDescription = "Build your child's English skills and confidence with P
       </div>
     </div>
   </section>
+  </main>
 
   <style>
     @keyframes slideInUp {

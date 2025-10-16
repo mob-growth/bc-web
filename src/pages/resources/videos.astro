@@ -275,7 +275,9 @@ const ageFilters = ['All ages', ...Array.from(new Set(videos.map((video) => vide
 ---
 
 <Layout title="British Council Video Library" description="Watch beautifully produced British Council lessons, exam workshops and young learner adventures on demand.">
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
   <main class="videos-hub">
     <section class="hero">

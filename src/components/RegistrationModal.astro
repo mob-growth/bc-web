@@ -16,98 +16,30 @@ const { courseType = 'adults', location = '' } = Astro.props;
       </svg>
     </button>
 
-    <!-- Progress Bar -->
+    <!-- Compact Progress Indicator -->
     <div class="modal-progress">
-      <div class="progress-bar">
-        <div class="progress-fill" data-step="1"></div>
-      </div>
-      <div class="progress-steps">
-        <div class="progress-step active current" data-step="1">
-          <span class="step-number">1</span>
-          <span class="step-label">Your Details</span>
+      <div class="progress-steps-compact">
+        <div class="progress-step-compact active current" data-step="1">
+          <span class="step-dot">1</span>
+          <span class="step-text">Your Details</span>
         </div>
-        <div class="progress-step" data-step="2">
-          <span class="step-number">2</span>
-          <span class="step-label">Schedule</span>
+        <div class="progress-divider"></div>
+        <div class="progress-step-compact" data-step="2">
+          <span class="step-dot">2</span>
+          <span class="step-text">Schedule</span>
         </div>
-        <div class="progress-step" data-step="3">
-          <span class="step-number">3</span>
-          <span class="step-label">Confirm</span>
+        <div class="progress-divider"></div>
+        <div class="progress-step-compact" data-step="3">
+          <span class="step-dot">3</span>
+          <span class="step-text">Confirm</span>
         </div>
       </div>
     </div>
 
     <!-- Modal Content -->
     <div class="modal-content">
-      <!-- Side Panel (Desktop Only) -->
-      <div class="modal-sidebar">
-        <div class="sidebar-content">
-          <div class="sidebar-top">
-            <span class="sidebar-logo">British Council · Spain</span>
-            <h3>Complete your booking in minutes</h3>
-            <p>Secure a free 20-minute consultation so we can design a study path that matches your goals and schedule.</p>
-          </div>
-
-          <ul class="sidebar-benefits">
-            <li class="benefit-item">
-              <div class="benefit-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 3l2.09 4.26L19 8.27l-3.5 3.41.83 4.82L12 14.77 7.67 16.5l.83-4.82L5 8.27l4.91-.99L12 3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div>
-                <strong>Tailored guidance</strong>
-                <span>Dedicated advisor reviews your objectives before we speak.</span>
-              </div>
-            </li>
-            <li class="benefit-item">
-              <div class="benefit-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                </svg>
-              </div>
-              <div>
-                <strong>Weekday & weekend slots</strong>
-                <span>Morning, lunchtime and evening appointments available.</span>
-              </div>
-            </li>
-            <li class="benefit-item">
-              <div class="benefit-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 1l3 4h4l-3 4 3 4h-4l-3 4-3-4H5l3-4-3-4h4l3-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div>
-                <strong>Recognised worldwide</strong>
-                <span>British Council certification valued by universities and employers.</span>
-              </div>
-            </li>
-          </ul>
-
-          <div class="sidebar-metrics">
-            <div class="metric-card">
-              <strong>4.8/5</strong>
-              <span>Student satisfaction score</span>
-            </div>
-            <div class="metric-card">
-              <strong>12k+</strong>
-              <span>Consultations booked this year</span>
-            </div>
-          </div>
-
-          <div class="sidebar-testimonial">
-            <div class="testimonial-avatar">A</div>
-            <div>
-              <p>“My advisor helped me map out a course plan that fit my work schedule in one conversation.”</p>
-              <span>Ana · Business English learner</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Form Steps Container -->
-      <div class="modal-form">
+      <div class="modal-form-full">
         <!-- Step 1: Contact Information -->
         <div class="form-step active" data-step="1">
           <h2>Let's get started</h2>
@@ -385,17 +317,18 @@ const { courseType = 'adults', location = '' } = Astro.props;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: min(1024px, calc(100% - 3rem));
-    max-height: min(88vh, 900px);
+    width: min(800px, calc(100% - 3rem));
+    max-height: min(90vh, 750px);
     transform: translate(-50%, -50%);
     background: #ffffff;
-    border-radius: 28px;
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 28px 80px -48px rgba(15, 23, 42, 0.4);
+    box-shadow: 0 25px 80px -20px rgba(37, 99, 235, 0.25), 0 8px 32px -8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     z-index: 2;
     animation: modalRiseIn 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    border: 1px solid rgba(148, 163, 184, 0.08);
   }
 
   .modal-close {
@@ -424,323 +357,156 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .modal-progress {
-    padding: 2rem 2.5rem 1.4rem;
-    background: linear-gradient(180deg, rgba(248, 250, 255, 0.96) 0%, rgba(241, 245, 255, 0.94) 100%);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-  }
-
-  .progress-bar {
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(147, 51, 234, 0.03) 100%);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
     position: relative;
-    height: 5px;
-    border-radius: 999px;
-    background: rgba(30, 64, 175, 0.12);
     overflow: hidden;
-    margin-bottom: 1.5rem;
   }
 
-  .progress-fill {
-    height: 100%;
-    width: 33.33%;
-    background: linear-gradient(135deg, #2563eb, #1e3a8a);
-    border-radius: 999px;
-    transition: width 0.3s ease-in-out;
+  .modal-progress::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb 0%, #7c3aed 50%, #ec4899 100%);
+    opacity: 0.6;
   }
 
-  .progress-fill[data-step="2"] { width: 66.66%; }
-  .progress-fill[data-step="3"] { width: 100%; }
-
-  .progress-steps {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-  }
-
-  .progress-step {
-    display: grid;
-    grid-template-columns: auto 1fr;
+  .progress-steps-compact {
+    display: flex;
     align-items: center;
-    gap: 0.85rem;
-    padding: 0.85rem 1rem;
-    border-radius: 18px;
-    background: rgba(37, 99, 235, 0.08);
-    border: 1px solid transparent;
-    color: rgba(15, 23, 42, 0.6);
-    transition: all 0.25s ease;
-    opacity: 0.55;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 600px;
+    margin: 0 auto;
   }
 
-  .progress-step.active {
-    opacity: 1;
+  .progress-step-compact {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #94a3b8;
+    transition: all 0.2s ease;
   }
 
-  .progress-step.complete {
-    background: rgba(37, 99, 235, 0.12);
-    border-color: rgba(37, 99, 235, 0.18);
+  .progress-step-compact.active {
     color: #1e3a8a;
   }
 
-  .progress-step.current {
-    background: rgba(255, 255, 255, 0.96);
-    border-color: rgba(37, 99, 235, 0.26);
-    box-shadow: 0 16px 32px -26px rgba(37, 99, 235, 0.45);
-    color: #1e3a8a;
+  .progress-step-compact.current {
+    color: #2563eb;
   }
 
-  .step-number {
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
-    background: rgba(59, 130, 246, 0.15);
+  .step-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    color: #64748b;
     display: grid;
     place-items: center;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #1e3a8a;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    position: relative;
   }
 
-  .progress-step.complete .step-number {
-    background: rgba(59, 130, 246, 0.18);
+  .progress-step-compact.active .step-dot {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(147, 51, 234, 0.08) 100%);
     color: #1e3a8a;
+    border-color: rgba(37, 99, 235, 0.2);
   }
 
-  .progress-step.current .step-number {
-    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+  .progress-step-compact.current .step-dot {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
     color: white;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4), 0 0 0 4px rgba(37, 99, 235, 0.1);
+    transform: scale(1.1);
   }
 
-  .step-label {
-    font-size: 0.875rem;
+  .progress-step-compact.complete .step-dot {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-color: transparent;
+  }
+
+  .progress-step-compact.complete .step-dot::after {
+    content: '✓';
+    position: absolute;
+    font-size: 0.75rem;
+  }
+
+  .step-text {
+    font-size: 0.8125rem;
     font-weight: 600;
-    letter-spacing: 0.01em;
-    color: #1f2937;
+  }
+
+  .progress-divider {
+    width: 40px;
+    height: 2px;
+    background: #e2e8f0;
+    transition: all 0.2s ease;
+  }
+
+  .progress-step-compact.complete ~ .progress-divider,
+  .progress-step-compact.current ~ .progress-divider {
+    background: #2563eb;
   }
 
   .modal-content {
-    display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);
     background: #ffffff;
     flex: 1;
     min-height: 0;
-  }
-
-  .modal-sidebar {
-    position: relative;
-    overflow: hidden;
-    color: white;
-    background: linear-gradient(185deg, #1e3a8a 0%, #2563eb 55%, #60a5fa 100%);
-  }
-
-  .modal-sidebar::before,
-  .modal-sidebar::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.4;
-    mix-blend-mode: screen;
-  }
-
-  .modal-sidebar::before {
-    width: 360px;
-    height: 360px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.35), transparent 65%);
-    top: -110px;
-    right: -140px;
-  }
-
-  .modal-sidebar::after {
-    width: 260px;
-    height: 260px;
-    background: radial-gradient(circle, rgba(96, 165, 250, 0.4), transparent 70%);
-    bottom: -120px;
-    left: -80px;
-  }
-
-  .sidebar-content {
-    position: relative;
-    z-index: 2;
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
-    padding: 2.1rem 2rem 2.3rem;
-    height: 100%;
-    overflow-y: auto;
   }
 
-  .sidebar-content::-webkit-scrollbar {
+  .modal-form-full {
+    position: relative;
+    padding: 2.5rem 3rem;
+    background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: 0;
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .modal-form-full::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .modal-form-full > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .modal-form-full::-webkit-scrollbar {
     width: 6px;
   }
 
-  .sidebar-content::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.25);
+  .modal-form-full::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.4);
     border-radius: 999px;
   }
 
-  .sidebar-top {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .sidebar-logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.3rem 0.75rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.95);
-    color: #1e3a8a;
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-
-  .sidebar-top h3 {
-    font-size: 1.8rem;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin: 0;
-    color: #ffffff;
-  }
-
-  .sidebar-top p {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: rgba(226, 232, 255, 0.92);
-  }
-
-  .sidebar-benefits {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .benefit-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.75rem;
-    background: rgba(59, 130, 246, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    padding: 0.9rem 1rem;
-    backdrop-filter: blur(12px);
-  }
-
-  .benefit-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.22);
-    display: grid;
-    place-items: center;
-    color: #ffffff;
-  }
-
-  .benefit-item strong {
-    display: block;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #f8fafc;
-    margin-bottom: 0.2rem;
-  }
-
-  .benefit-item span {
-    font-size: 0.85rem;
-    color: rgba(219, 234, 254, 0.82);
-  }
-
-  .sidebar-metrics {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
-  }
-
-  .metric-card {
-    padding: 0.85rem 1rem;
-    border-radius: 16px;
-    background: rgba(37, 99, 235, 0.24);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    color: #f8fafc;
-  }
-
-  .metric-card strong {
-    font-size: 1.35rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
-  .metric-card span {
-    font-size: 0.8rem;
-    color: rgba(219, 234, 254, 0.78);
-    line-height: 1.4;
-  }
-
-  .sidebar-testimonial {
-    margin-top: auto;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.85rem;
-    padding: 1rem 1.1rem;
-    border-radius: 16px;
-    background: rgba(30, 64, 175, 0.32);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    backdrop-filter: blur(14px);
-  }
-
-  .testimonial-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-    font-size: 1.1rem;
-    background: linear-gradient(135deg, #fde68a, #f472b6);
-    color: #1e293b;
-  }
-
-  .sidebar-testimonial p {
-    margin: 0 0 0.4rem 0;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: rgba(219, 234, 254, 0.92);
-  }
-
-  .sidebar-testimonial span {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(226, 232, 255, 0.7);
-  }
-
-  .modal-form {
-    position: relative;
-    padding: 2.2rem 2.5rem 2rem;
-    background: linear-gradient(165deg, rgba(248, 250, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 60%, rgba(248, 250, 255, 0.98) 100%);
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-    min-height: 0;
-  }
-
-  .modal-form::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  .modal-form::-webkit-scrollbar-thumb {
-    background: rgba(148, 163, 184, 0.45);
-    border-radius: 999px;
-  }
-
-  .modal-form::-webkit-scrollbar-track {
+  .modal-form-full::-webkit-scrollbar-track {
     background: transparent;
   }
 
@@ -765,60 +531,73 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .form-step h2 {
-    font-size: 1.9rem;
+    font-size: 1.625rem;
     line-height: 1.2;
-    color: #0f172a;
-    margin-bottom: 0.65rem;
+    background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
   }
 
   .step-description {
-    color: #475467;
-    margin-bottom: 1.75rem;
-    font-size: 0.98rem;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+    font-size: 0.9375rem;
     line-height: 1.6;
   }
 
   .form-group {
-    margin-bottom: 1.15rem;
+    margin-bottom: 0.875rem;
   }
 
   .form-group label {
     display: block;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #1e3a8a;
-    margin-bottom: 0.45rem;
-    font-size: 0.72rem;
+    color: #334155;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
   }
 
   .form-group input,
   .form-group select,
   .form-group textarea {
     width: 100%;
-    padding: 0.68rem 0.95rem;
-    font-size: 0.94rem;
-    border-radius: 12px;
-    border: 1px solid rgba(148, 163, 184, 0.26);
-    background: rgba(255, 255, 255, 0.95);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    border-radius: 10px;
+    border: 1.5px solid #e2e8f0;
+    background: white;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
   }
 
   .form-group textarea {
     min-height: 120px;
+    resize: vertical;
   }
 
   .form-group input::placeholder,
   .form-group textarea::placeholder {
-    color: rgba(148, 163, 184, 0.85);
+    color: #94a3b8;
+  }
+
+  .form-group input:hover,
+  .form-group select:hover,
+  .form-group textarea:hover {
+    border-color: #cbd5e1;
   }
 
   .form-group input:focus,
   .form-group select:focus,
   .form-group textarea:focus {
     outline: none;
-    border-color: rgba(37, 99, 235, 0.65);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
     background: #ffffff;
   }
 
@@ -882,11 +661,12 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .calendar-container {
-    border-radius: 24px;
-    padding: 2rem;
-    background: linear-gradient(160deg, rgba(248, 250, 255, 0.95), rgba(224, 231, 255, 0.85));
-    border: 1px solid rgba(37, 99, 235, 0.22);
-    box-shadow: 0 30px 60px -40px rgba(37, 99, 235, 0.3);
+    border-radius: 16px;
+    padding: 1.75rem;
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.8) 0%, rgba(241, 245, 249, 0.6) 100%);
+    border: 1.5px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(8px);
   }
 
   .calendar-header {
@@ -949,37 +729,40 @@ const { courseType = 'adults', location = '' } = Astro.props;
 
   .calendar-day {
     aspect-ratio: 1;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.88);
-    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 12px;
+    background: white;
+    border: 1.5px solid #e2e8f0;
     display: grid;
     place-items: center;
     font-weight: 600;
-    color: #1f2a5a;
+    font-size: 0.875rem;
+    color: #64748b;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
   }
 
   .calendar-day.available {
-    background: rgba(37, 99, 235, 0.12);
-    border-color: rgba(37, 99, 235, 0.35);
+    background: white;
+    border-color: rgba(37, 99, 235, 0.3);
     color: #1e3a8a;
   }
 
-  .calendar-day:hover:not(.disabled):not(.selected) {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 32px -24px rgba(37, 99, 235, 0.4);
-    border-color: rgba(37, 99, 235, 0.5);
+  .calendar-day.available:hover:not(.selected) {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(147, 51, 234, 0.06) 100%);
+    border-color: #2563eb;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
   }
 
   .calendar-day.selected,
   .calendar-day[data-selected="true"] {
-    background: linear-gradient(140deg, #2563eb, #1d4ed8);
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
     color: white;
     border-color: transparent;
-    transform: scale(1.06);
-    box-shadow: 0 18px 34px -16px rgba(37, 99, 235, 0.45);
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+    font-weight: 700;
   }
 
   .calendar-day.selected::after,
@@ -1014,29 +797,32 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .time-slot {
-    padding: 0.75rem;
-    border-radius: 12px;
-    border: 1px solid rgba(148, 163, 184, 0.4);
-    background: rgba(255, 255, 255, 0.92);
-    font-size: 0.9rem;
+    padding: 0.875rem 1rem;
+    border-radius: 10px;
+    border: 1.5px solid #e2e8f0;
+    background: white;
+    font-size: 0.9375rem;
     font-weight: 600;
-    color: #1f2937;
+    color: #475569;
     text-align: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .time-slot:hover {
-    border-color: rgba(37, 99, 235, 0.55);
+    border-color: #2563eb;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.06) 0%, rgba(147, 51, 234, 0.04) 100%);
     color: #1e3a8a;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
   }
 
   .time-slot.selected {
     border-color: transparent;
-    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
     color: white;
-    box-shadow: 0 16px 32px -22px rgba(37, 99, 235, 0.45);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+    transform: scale(1.02);
   }
 
   @keyframes confirmSelection {
@@ -1077,13 +863,14 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   .confirmation-summary {
-    border-radius: 22px;
-    background: linear-gradient(160deg, rgba(248, 250, 252, 0.95), rgba(226, 232, 240, 0.6));
-    border: 1px solid rgba(148, 163, 184, 0.3);
-    padding: 2rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.9) 0%, rgba(241, 245, 249, 0.7) 100%);
+    border: 1.5px solid rgba(226, 232, 240, 0.8);
+    padding: 1.75rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
   }
 
   .summary-section h3 {
@@ -1117,10 +904,15 @@ const { courseType = 'adults', location = '' } = Astro.props;
     grid-template-columns: auto 1fr;
     gap: 1rem;
     align-items: center;
-    padding: 1.1rem 1.25rem;
-    background: rgba(255, 255, 255, 0.92);
-    border-radius: 16px;
-    border: 1px solid rgba(148, 163, 184, 0.35);
+    padding: 1.25rem 1.5rem;
+    background: white;
+    border-radius: 12px;
+    border: 1.5px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .appointment-card svg {
+    color: #2563eb;
   }
 
   .terms-section .error-message {
@@ -1182,10 +974,18 @@ const { courseType = 'adults', location = '' } = Astro.props;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 1rem;
-    margin-top: 1.25rem;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
     padding-top: 1.25rem;
-    border-top: 1px solid rgba(226, 232, 240, 0.8);
+    border-top: 1px solid #e2e8f0;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    margin-left: -3rem;
+    margin-right: -3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 1.25rem;
   }
 
   .form-navigation .btn-back {
@@ -1197,40 +997,63 @@ const { courseType = 'adults', location = '' } = Astro.props;
   .btn-primary,
   .btn-secondary {
     border: none;
-    border-radius: 14px;
-    padding: 0.95rem 1.75rem;
+    border-radius: 12px;
+    padding: 0.875rem 1.75rem;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9375rem;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
   }
 
   .btn-back {
-    background: #ffffff;
-    border: 1px solid rgba(148, 163, 184, 0.35);
-    color: #475467;
+    background: white;
+    border: 1.5px solid #e2e8f0;
+    color: #64748b;
   }
 
   .btn-back:hover {
-    border-color: rgba(37, 99, 235, 0.45);
-    color: #1e3a8a;
+    border-color: #cbd5e1;
+    color: #334155;
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
 
   .btn-next,
   .btn-primary {
-    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
     color: white;
-    box-shadow: 0 18px 40px -24px rgba(37, 99, 235, 0.45);
+    border: none;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+  }
+
+  .btn-next::before,
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   .btn-next:hover,
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 26px 50px -24px rgba(30, 64, 175, 0.55);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+  }
+
+  .btn-next:hover::before,
+  .btn-primary:hover::before {
+    opacity: 1;
   }
 
   .btn-secondary {
@@ -1250,38 +1073,7 @@ const { courseType = 'adults', location = '' } = Astro.props;
     margin-bottom: 1.5rem;
   }
 
-  @media (max-width: 1180px) {
-    .modal-container {
-      width: min(960px, calc(100% - 2.5rem));
-    }
-
-    .modal-progress {
-      padding: 1.8rem 2.2rem 1.3rem;
-    }
-
-    .modal-form {
-      padding: 2rem 2.2rem 1.8rem;
-    }
-  }
-
   @media (max-width: 1024px) {
-    .modal-content {
-      grid-template-columns: 1fr;
-      background: #ffffff;
-    }
-
-    .modal-sidebar {
-      display: none;
-    }
-
-    .modal-form {
-      padding: 2rem 1.8rem 1.8rem;
-    }
-
-    .modal-progress {
-      padding: 1.7rem 1.8rem 1.2rem;
-    }
-
     .modal-container {
       width: 100%;
       height: 100%;
@@ -1292,41 +1084,45 @@ const { courseType = 'adults', location = '' } = Astro.props;
     .modal-close {
       top: 1rem;
       right: 1rem;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .modal-form-full {
+      padding: 1.5rem 2rem;
     }
 
     .form-navigation {
-      padding: 1.1rem 2rem 1.4rem;
+      margin-left: -2rem;
+      margin-right: -2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 
   @media (max-width: 640px) {
     .modal-progress {
-      padding: 1.6rem 1.5rem 1.25rem;
+      padding: 1rem 1.25rem;
     }
 
-    .progress-steps {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.6rem;
+    .progress-steps-compact {
+      gap: 0.375rem;
     }
 
-    .progress-step {
-      padding: 0.75rem 0.6rem;
-      gap: 0.6rem;
+    .step-text {
+      font-size: 0.75rem;
     }
 
-    .step-label {
-      font-size: 0.78rem;
+    .step-dot {
+      width: 24px;
+      height: 24px;
+      font-size: 0.6875rem;
     }
 
-    .step-number {
-      width: 40px;
-      height: 40px;
+    .progress-divider {
+      width: 24px;
     }
 
-    .modal-form {
-      padding: 1.75rem 1.5rem;
+    .modal-form-full {
+      padding: 1.25rem 1.5rem;
     }
 
     .phone-input {
@@ -1340,8 +1136,11 @@ const { courseType = 'adults', location = '' } = Astro.props;
     .form-navigation {
       flex-direction: column;
       align-items: stretch;
-      padding-top: 1rem;
       gap: 0.75rem;
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
 
     .form-navigation .btn-back {
@@ -1525,14 +1324,8 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   function updateModalStep() {
-    // Update progress bar
-    const progressFill = document.querySelector('.progress-fill');
-    if (progressFill) {
-      progressFill.setAttribute('data-step', currentStep);
-    }
-
     // Update progress steps
-    document.querySelectorAll('.progress-step').forEach((step, index) => {
+    document.querySelectorAll('.progress-step-compact').forEach((step, index) => {
       const stepNumber = index + 1;
       const isCurrent = stepNumber === currentStep;
       const isComplete = stepNumber < currentStep;
@@ -1681,7 +1474,7 @@ const { courseType = 'adults', location = '' } = Astro.props;
   }
 
   function initAutoSave() {
-    const inputs = document.querySelectorAll('.modal-form input, .modal-form select, .modal-form textarea');
+    const inputs = document.querySelectorAll('.modal-form-full input, .modal-form-full select, .modal-form-full textarea');
 
     inputs.forEach(input => {
       input.addEventListener('change', () => {

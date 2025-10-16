@@ -10,10 +10,13 @@ const pageDescription = "Give your child the gift of English with British Counci
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
-  <!-- Hero Section -->
-  <Hero
+  <main class="pt-12">
+    <!-- Hero Section -->
+    <Hero
     title="Give Your Child the Gift of English"
     subtitle="Prepare your child for a world of opportunities with British Council's proven English courses for ages 2-17. Our expert teachers make learning engaging, fun, and effective."
     ctaPrimary={{

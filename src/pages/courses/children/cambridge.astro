@@ -9,10 +9,13 @@ const pageDescription = "Official Cambridge exam preparation for children and te
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
-  <!-- Hero Section -->
-  <Hero
+  <main class="pt-12">
+    <!-- Hero Section -->
+    <Hero
     title="Cambridge Exam Preparation for Children & Teens"
     subtitle="Give your child a globally recognized English qualification. Our expert preparation courses for Cambridge exams boost confidence and open doors to international opportunities."
     ctaPrimary={{
@@ -485,6 +488,7 @@ const pageDescription = "Official Cambridge exam preparation for children and te
       </div>
     </div>
   </section>
+  </main>
 
   <style>
     @keyframes slideInUp {

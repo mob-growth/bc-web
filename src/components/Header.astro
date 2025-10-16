@@ -130,7 +130,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="relative z-50">
-  <div class="fixed top-0 left-0 right-0 w-full z-50 header-glass">
+  <div class="fixed left-0 right-0 w-full z-50 header-glass" style="top: var(--announcement-bar-height);">
     <nav class="bc-container">
       <div class="flex items-center justify-between h-20 lg:h-24">
       <!-- Logo -->
@@ -537,12 +537,12 @@ const currentPath = Astro.url.pathname;
   }
 
   .header-spacer {
-    height: 5rem;
+    height: calc(5rem + var(--announcement-bar-height, 0px));
   }
 
   @media (min-width: 1024px) {
     .header-spacer {
-      height: 6rem;
+      height: calc(6rem + var(--announcement-bar-height, 0px));
     }
   }
 

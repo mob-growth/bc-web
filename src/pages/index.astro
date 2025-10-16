@@ -13,63 +13,46 @@ const heroStats = [
 ---
 
 <Layout title="British Council Spain - Learn English with the World's English Experts">
-  <Header />
+  <div style="--announcement-bar-height: 32px;">
+  <!-- 90 Years Heritage Announcement Bar -->
+  <div class="announcement-bar fixed top-0 left-0 right-0 w-full h-8 md:h-9 overflow-hidden z-[100]" style="background: linear-gradient(135deg, #e8d9f5 0%, #dcc6f0 50%, #e8d9f5 100%);">
+    <!-- Decorative pattern -->
+    <div class="absolute inset-0 opacity-30">
+      <div class="absolute top-0 left-0 w-full h-full" style="background: radial-gradient(circle at 25% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 50%), radial-gradient(circle at 75% 50%, rgba(183, 148, 212, 0.3) 0%, transparent 50%);"></div>
+    </div>
 
-  <main>
-    <!-- Hero Section -->
-    <Hero
-      title="Learn English with the world's English experts"
-      subtitle="Join over 30,000 students who trust British Council Spain every year to achieve their professional and personal goals."
-      ctaPrimary={{ text: 'Explore Courses', href: '/courses' }}
-      ctaSecondary={{ text: 'Take Free Test', href: '/level-test' }}
-      stats={heroStats}
-    />
-
-    <!-- 90 Years Heritage Banner -->
-    <section class="relative overflow-hidden" style="background: linear-gradient(135deg, #e8d9f5 0%, #dcc6f0 50%, #e8d9f5 100%);">
-      <!-- Decorative pattern -->
-      <div class="absolute inset-0 opacity-30">
-        <div class="absolute top-0 left-0 w-full h-full" style="background: radial-gradient(circle at 25% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 50%), radial-gradient(circle at 75% 50%, rgba(183, 148, 212, 0.3) 0%, transparent 50%);"></div>
-      </div>
-
-      <div class="bc-container relative z-10">
-        <div class="py-4 md:py-5 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6">
-          <!-- Custom Trophy SVG -->
-          <svg class="w-6 h-6 md:w-7 md:h-7 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 15C15.866 15 19 11.866 19 8V5C19 4.44772 18.5523 4 18 4H6C5.44772 4 5 4.44772 5 5V8C5 11.866 8.13401 15 12 15Z" fill="#b794d4" opacity="0.3"/>
-            <path d="M12 15C15.866 15 19 11.866 19 8V5C19 4.44772 18.5523 4 18 4H6C5.44772 4 5 4.44772 5 5V8C5 11.866 8.13401 15 12 15Z" stroke="#8e5db8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 15V19M12 19H9M12 19H15M9 19L8 22H16L15 19" stroke="#8e5db8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M5 6H3C2.44772 6 2 6.44772 2 7V8C2 9.65685 3.34315 11 5 11" stroke="#8e5db8" stroke-width="2" stroke-linecap="round"/>
-            <path d="M19 6H21C21.5523 6 22 6.44772 22 7V8C22 9.65685 20.6569 11 19 11" stroke="#8e5db8" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-
-          <!-- Main Text -->
-          <div class="text-center">
-            <span class="text-lg md:text-xl font-bold" style="color: #23075a; letter-spacing: 0.02em;">
-              Celebrating <span style="color: #ff1493;">90 Years</span> of English Excellence
-            </span>
-            <span class="hidden md:inline mx-3" style="color: rgba(35, 7, 90, 0.3);">•</span>
-            <span class="text-sm md:text-base block md:inline mt-1 md:mt-0" style="color: #5a3a77;">
-              Trusted by millions worldwide since 1934
-            </span>
-          </div>
-
-          <!-- Custom Medal SVG -->
-          <svg class="w-6 h-6 md:w-7 md:h-7 flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="14" r="6" fill="#ffd4e8" opacity="0.5"/>
-            <circle cx="12" cy="14" r="6" stroke="#ff9ec7" stroke-width="2"/>
-            <circle cx="12" cy="14" r="3.5" fill="#ff9ec7"/>
-            <path d="M9 2L10 8L12 14" stroke="#ff9ec7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M15 2L14 8L12 14" stroke="#ff9ec7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9 2L7 1V4L9 5V2Z" fill="#ffcce0" stroke="#ff9ec7" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M15 2L17 1V4L15 5V2Z" fill="#ffcce0" stroke="#ff9ec7" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
+    <div class="bc-container relative z-10 h-full">
+      <div class="h-full flex items-center justify-center px-2" id="announcement-bar">
+        <!-- Main Text -->
+        <div class="text-center leading-tight">
+          <span class="text-[11px] md:text-base font-bold" style="color: #23075a; letter-spacing: 0.01em;">
+            Celebrating <span style="color: #ff1493;">90 Years</span> of English Excellence
+          </span>
+          <span class="hidden md:inline mx-2" style="color: rgba(35, 7, 90, 0.3);">•</span>
+          <span class="hidden md:inline text-sm" style="color: #5a3a77;">
+            Trusted by millions worldwide since 1934
+          </span>
         </div>
       </div>
+    </div>
 
-      <!-- Bottom border -->
-      <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(142, 93, 184, 0.3) 50%, transparent);"></div>
-    </section>
+    <!-- Bottom border -->
+    <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(142, 93, 184, 0.3) 50%, transparent);"></div>
+  </div>
+
+  <Header />
+
+  <main class="pt-[112px] md:pt-[132px]">
+    <!-- Hero Section -->
+    <div class="-mt-[112px] md:-mt-[132px]">
+      <Hero
+        title="Learn English with the world's English experts"
+        subtitle="Join over 30,000 students who trust British Council Spain every year to achieve their professional and personal goals."
+        ctaPrimary={{ text: 'Explore Courses', href: '/courses' }}
+        ctaSecondary={{ text: 'Take Free Test', href: '/level-test' }}
+        stats={heroStats}
+      />
+    </div>
 
     <!-- Learning Pathways Section -->
     <section class="py-20" style="background: transparent;">
@@ -1029,6 +1012,7 @@ const heroStats = [
       </div>
     </section>
   </main>
+  </div>
 </Layout>
 
 <style>

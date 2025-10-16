@@ -66,7 +66,9 @@ const icons = {
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
   <Hero
     title="Aptis ESOL - Fast English Certification"
@@ -86,7 +88,7 @@ const icons = {
     ]}
   />
 
-  <main class="pt-10 pb-20">
+  <main class="pt-12 pb-20">
     <!-- Key Benefits -->
     <section class="py-12" style="background: linear-gradient(180deg, transparent 0%, rgba(35, 7, 90, 0.02) 100%);">
       <div class="bc-container">

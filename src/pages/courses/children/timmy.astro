@@ -9,10 +9,13 @@ const pageDescription = "Give your preschooler the perfect start with Learning T
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
-  <!-- Hero Section -->
-  <Hero
+  <main class="pt-12">
+    <!-- Hero Section -->
+    <Hero
     title="Learning Time with Timmy"
     subtitle="A magical introduction to English for your preschooler. Through play, songs, and stories with our beloved character Timmy, your child will discover English naturally and joyfully."
     ctaPrimary={{
@@ -379,6 +382,7 @@ const pageDescription = "Give your preschooler the perfect start with Learning T
       </div>
     </div>
   </section>
+  </main>
 
   <style>
     @keyframes slideInUp {

@@ -9,7 +9,9 @@ const pageDescription = "Age-appropriate English testing for schools. Our Englis
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
   <Hero
     title="English Assessment for Schools"
@@ -29,7 +31,7 @@ const pageDescription = "Age-appropriate English testing for schools. Our Englis
     ]}
   />
 
-  <main class="pt-10 pb-20">
+  <main class="pt-12 pb-20">
     <!-- Benefits Section -->
     <section id="benefits" class="py-16">
       <div class="bc-container">

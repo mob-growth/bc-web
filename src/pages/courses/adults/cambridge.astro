@@ -9,10 +9,13 @@ const pageDescription = "Prepare for Cambridge English exams with British Counci
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
-  <!-- Hero Section -->
-  <Hero
+  <main class="pt-12">
+    <!-- Hero Section -->
+    <Hero
     title="Cambridge Exam Preparation"
     subtitle="Get certified with Cambridge English qualifications. Our specialized preparation courses give you the skills, strategies, and confidence to ace your B2 First, C1 Advanced, or C2 Proficiency exam."
     ctaPrimary={{
@@ -451,6 +454,7 @@ const pageDescription = "Prepare for Cambridge English exams with British Counci
       </div>
     </div>
   </section>
+  </main>
 
   <style>
     @keyframes slideInUp {

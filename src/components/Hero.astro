@@ -21,12 +21,12 @@ export interface Props {
 const { title, subtitle, ctaPrimary, ctaSecondary, stats } = Astro.props;
 ---
 
-<section class="relative min-h-[500px] md:min-h-[650px] lg:min-h-[700px] flex items-center overflow-hidden pt-8 md:pt-12" style="background: transparent;">
+<section class="relative min-h-[500px] md:min-h-[650px] lg:min-h-[700px] flex items-center overflow-hidden pt-2 md:pt-4" style="background: transparent;">
   <!-- Animated blobs -->
   <div class="absolute -top-12 -right-24 w-[600px] h-[600px] opacity-80 pointer-events-none" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.08) 0%, rgba(255, 20, 147, 0.04) 50%, transparent 100%); border-radius: 40% 60% 60% 40% / 60% 40%; filter: blur(0.5px); animation: morph-blob 20s ease-in-out infinite; z-index: 0;"></div>
   <div class="absolute -bottom-36 -left-36 w-[500px] h-[500px] opacity-80 pointer-events-none" style="background: linear-gradient(135deg, rgba(35, 7, 90, 0.06) 0%, rgba(35, 7, 90, 0.03) 50%, transparent 100%); border-radius: 60% 40% 40% 60% / 40% 60%; filter: blur(0.5px); animation: morph-blob 25s ease-in-out infinite reverse; z-index: 0;"></div>
 
-  <div class="bc-container relative z-10 py-8 sm:py-12 md:py-12 lg:py-16">
+  <div class="bc-container relative z-10 py-4 sm:py-6 md:py-8 lg:py-10">
     <div class="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
       <!-- Content -->
       <div>
@@ -91,56 +91,246 @@ const { title, subtitle, ctaPrimary, ctaSecondary, stats } = Astro.props;
         )}
       </div>
 
-      <!-- Visual Element - Course Preview Cards -->
-      <div class="relative hidden lg:block">
-        <div class="space-y-4">
-          <!-- Course Card 1 -->
-          <div class="rounded-2xl p-6 shadow-lg transform hover:-translate-y-1 transition-all cursor-pointer" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
-            <div class="flex items-start space-x-4">
-              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
-                <span class="text-white font-bold text-lg">A1</span>
-              </div>
-              <div class="flex-1">
-                <h3 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Beginner Course</h3>
-                <p class="text-sm mb-2" style="color: var(--bc-dark-gray);">Start your English journey</p>
-                <div class="flex items-center space-x-2">
-                  <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">12 weeks</span>
-                  <span class="text-xs px-2 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05)); color: var(--bc-cta-pink);">Live classes</span>
+      <!-- Visual Element - Scrolling Product Showcase -->
+      <div class="relative hidden lg:block h-[600px] overflow-hidden">
+        <!-- Gradient overlays for smooth fade -->
+        <div class="absolute top-0 left-0 right-0 h-24 z-10 pointer-events-none" style="background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-24 z-10 pointer-events-none" style="background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);"></div>
+
+        <div class="flex gap-4 h-full">
+          <!-- Left Column - Scrolling Up -->
+          <div class="flex-1 scroll-column-up">
+            <div class="scroll-content">
+              <!-- Face-to-Face Course -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                  </svg>
                 </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Face-to-Face Courses</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">12-week intensive programs with expert native teachers</p>
+              </div>
+
+              <!-- Business English -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #1e88e5, #1565c0);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Business English</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Boost your career with professional English skills</p>
+              </div>
+
+              <!-- Primary Plus -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Primary Plus (Ages 6-11)</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Project-based learning with 21st century skills</p>
+              </div>
+
+              <!-- Corporate Training -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #7b1fa2, #4a148c);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Corporate Training</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Customized business English solutions for your team</p>
+              </div>
+
+              <!-- Online Courses -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #00897b, #00695c);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Online Courses</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Learn from anywhere with live interactive sessions</p>
+              </div>
+
+              <!-- Cambridge Exam (Adults) -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #d84315, #bf360c);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Cambridge Exam Prep</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Get certified with Cambridge English qualifications</p>
+              </div>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="scroll-content" aria-hidden="true">
+              <!-- Same cards repeated -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, var(--bc-primary-blue), #3a1570);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Face-to-Face Courses</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">12-week intensive programs with expert native teachers</p>
+              </div>
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #1e88e5, #1565c0);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Business English</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Boost your career with professional English skills</p>
+              </div>
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Primary Plus (Ages 6-11)</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Project-based learning with 21st century skills</p>
+              </div>
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #7b1fa2, #4a148c);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Corporate Training</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Customized business English solutions for your team</p>
+              </div>
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #00897b, #00695c);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Online Courses</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Learn from anywhere with live interactive sessions</p>
+              </div>
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #d84315, #bf360c);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Cambridge Exam Prep</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Get certified with Cambridge English qualifications</p>
               </div>
             </div>
           </div>
 
-          <!-- Course Card 2 -->
-          <div class="rounded-2xl p-6 shadow-lg transform hover:-translate-y-1 transition-all cursor-pointer ml-8" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
-            <div class="flex items-start space-x-4">
-              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--bc-cta-pink), #ff69b4);">
-                <span class="text-white font-bold text-lg">B2</span>
-              </div>
-              <div class="flex-1">
-                <h3 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Upper Intermediate</h3>
-                <p class="text-sm mb-2" style="color: var(--bc-dark-gray);">Enhance your fluency</p>
-                <div class="flex items-center space-x-2">
-                  <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">16 weeks</span>
-                  <span class="text-xs px-2 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05)); color: var(--bc-cta-pink);">Self-paced</span>
+          <!-- Right Column - Scrolling Down -->
+          <div class="flex-1 scroll-column-down">
+            <div class="scroll-content">
+              <!-- Timmy -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #ff6f00, #e65100);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
                 </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Timmy (Ages 2-5)</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Fun English learning for toddlers and preschoolers</p>
+              </div>
+
+              <!-- Secondary Plus -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #8e24aa, #6a1b9a);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z M12 14v6.5"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Secondary Plus (Ages 12-17)</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Critical thinking and academic preparation for teens</p>
+              </div>
+
+              <!-- English Assessment -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #43a047, #2e7d32);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">English Assessment</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Professional testing with accurate placement and detailed reports</p>
+              </div>
+
+              <!-- Cambridge Exam (Children) -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #c62828, #b71c1c);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Young Learners Cambridge</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Prepare children for Cambridge English certifications</p>
+              </div>
+
+              <!-- Online Corporate -->
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #00acc1, #00838f);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Corporate Online Solutions</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Flexible learning options for busy professionals</p>
               </div>
             </div>
-          </div>
-
-          <!-- Course Card 3 -->
-          <div class="rounded-2xl p-6 shadow-lg transform hover:-translate-y-1 transition-all cursor-pointer" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
-            <div class="flex items-start space-x-4">
-              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--violet), var(--pink));">
-                <span class="text-white font-bold text-lg">C1</span>
-              </div>
-              <div class="flex-1">
-                <h3 class="font-semibold mb-1" style="color: var(--bc-primary-blue);">Advanced English</h3>
-                <p class="text-sm mb-2" style="color: var(--bc-dark-gray);">Master professional English</p>
-                <div class="flex items-center space-x-2">
-                  <span class="text-xs px-2 py-1 rounded-full" style="background: rgba(35, 7, 90, 0.05); color: var(--bc-primary-blue);">20 weeks</span>
-                  <span class="text-xs px-2 py-1 rounded-full" style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 20, 147, 0.05)); color: var(--bc-cta-pink);">Hybrid</span>
+            <!-- Duplicate for seamless loop -->
+            <div class="scroll-content" aria-hidden="true">
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #ff6f00, #e65100);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
                 </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Timmy (Ages 2-5)</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Fun English learning for toddlers and preschoolers</p>
+              </div>
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #8e24aa, #6a1b9a);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z M12 14v6.5"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Secondary Plus (Ages 12-17)</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Critical thinking and academic preparation for teens</p>
+              </div>
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #43a047, #2e7d32);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">English Assessment</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Professional testing with accurate placement and detailed reports</p>
+              </div>
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #c62828, #b71c1c);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Young Learners Cambridge</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Prepare children for Cambridge English certifications</p>
+              </div>
+              <div class="product-card rounded-2xl p-5 mb-4 shadow-lg" style="background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line);">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background: linear-gradient(135deg, #00acc1, #00838f);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="font-bold text-sm mb-1" style="color: var(--bc-primary-blue);">Corporate Online Solutions</h3>
+                <p class="text-xs leading-relaxed" style="color: var(--bc-dark-gray);">Flexible learning options for busy professionals</p>
               </div>
             </div>
           </div>

@@ -9,10 +9,13 @@ const pageDescription = "Prepare your teenager for academic success and global o
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
-  <!-- Hero Section -->
-  <Hero
+  <main class="pt-12">
+    <!-- Hero Section -->
+    <Hero
     title="Secondary Plus: Preparing Global Leaders"
     subtitle="Equip your teenager with advanced English skills and critical thinking abilities. Our Secondary Plus program prepares students for university, international careers, and success in a globalized world."
     ctaPrimary={{
@@ -355,6 +358,7 @@ const pageDescription = "Prepare your teenager for academic success and global o
       </div>
     </div>
   </section>
+  </main>
 
   <style>
     @keyframes slideInUp {

@@ -9,10 +9,13 @@ const pageDescription = "Join our most popular English course in Madrid and Barc
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
-  <!-- Hero Section -->
-  <Hero
+  <main class="pt-12">
+    <!-- Hero Section -->
+    <Hero
     title="Three Month Face-to-Face Course"
     subtitle="Our most popular English course. Learn in dynamic classroom environments at our centres in Madrid or Barcelona with expert native teachers and an international community."
     ctaPrimary={{
@@ -432,6 +435,7 @@ const pageDescription = "Join our most popular English course in Madrid and Barc
       </div>
     </div>
   </section>
+  </main>
 
   <style>
     @keyframes slideInUp {

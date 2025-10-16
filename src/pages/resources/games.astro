@@ -44,7 +44,9 @@ const quickChallenges = games.filter((game) => game.time <= 8).slice(0, 6);
 ---
 
 <Layout title="Games and Activities" description="Interactive English learning games curated by British Council Spain." >
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
   <main class="games-hub">
     <section class="hero">

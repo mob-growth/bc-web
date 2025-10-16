@@ -10,10 +10,13 @@ const pageDescription = "Transform your English skills with British Council Spai
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <Header />
+  <div style="--announcement-bar-height: 0px;">
+    <Header />
+  </div>
 
-  <!-- Hero Section -->
-  <Hero
+  <main class="pt-12">
+    <!-- Hero Section -->
+    <Hero
     title="English Courses for Adults"
     subtitle="Learn English with the world's English experts. Choose from face-to-face classes, online courses, exam preparation, and Business English programs designed for your success."
     ctaPrimary={{
