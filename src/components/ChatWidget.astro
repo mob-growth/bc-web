@@ -1,0 +1,929 @@
+---
+// ChatWidget.astro - Live Chat & Video Support Widget
+---
+
+<div id="chat-widget">
+  <!-- Floating Chat Button -->
+  <button id="chat-toggle" class="chat-button" aria-label="Open chat">
+    <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+    </svg>
+    <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+    <span class="notification-badge" id="notification-badge">1</span>
+  </button>
+
+  <!-- Chat Window -->
+  <div id="chat-window" class="chat-window">
+    <!-- Chat Header -->
+    <div class="chat-header">
+      <div class="header-content">
+        <div class="agent-info">
+          <div class="agent-avatar">
+            <img src="/agent-avatar.jpeg" alt="Support Agent" />
+          </div>
+          <div class="agent-details">
+            <h3>British Council Support</h3>
+            <span class="status online">
+              <span class="status-dot"></span>
+              Available
+            </span>
+          </div>
+        </div>
+        <button class="minimize-button" id="minimize-chat" aria-label="Minimize chat">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat Content -->
+    <div id="chat-content" class="chat-content">
+      <!-- Messages Container -->
+      <div id="messages-container" class="messages-container">
+        <!-- Welcome Message -->
+        <div class="message agent-message">
+          <div class="message-avatar">
+            <img src="/agent-avatar.jpeg" alt="Support Agent" />
+          </div>
+          <div class="message-content">
+            <p>Hello! How can we help you today?</p>
+            <div class="quick-actions">
+              <button class="quick-action-btn" data-action="video">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                Start Video Call
+              </button>
+              <button class="quick-action-btn" data-action="chat">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                Continue with Chat
+              </button>
+            </div>
+            <span class="message-time">Just now</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Container (hidden by default) -->
+      <div id="video-container" class="video-container" style="display: none;">
+        <div class="video-wrapper">
+          <div id="video-call-frame" class="video-frame">
+            <div class="video-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <p>Connecting to agent...</p>
+            </div>
+          </div>
+          <div class="video-controls">
+            <button class="video-control-btn" id="toggle-video">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </button>
+            <button class="video-control-btn" id="toggle-audio">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+              </svg>
+            </button>
+            <button class="video-control-btn end-call" id="end-call">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M5 3a2 2 0 00-2 2v1c0 8.284 6.716 15 15 15h1a2 2 0 002-2v-3.28a1 1 0 00-.684-.948l-4.493-1.498a1 1 0 00-1.21.502l-1.13 2.257a11.042 11.042 0 01-5.516-5.517l2.257-1.128a1 1 0 00.502-1.21L9.228 3.683A1 1 0 008.279 3H5z" />
+              </svg>
+            </button>
+            <button class="video-control-btn" id="back-to-chat">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input -->
+    <div class="chat-input-container">
+      <form id="chat-form" class="chat-form">
+        <input
+          type="text"
+          id="message-input"
+          placeholder="Type your message..."
+          autocomplete="off"
+        />
+        <button type="submit" class="send-button" aria-label="Send message">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  #chat-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  /* Chat Button */
+  .chat-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0066CC 0%, #004C99 100%);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .chat-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 102, 204, 0.5);
+  }
+
+  .chat-icon,
+  .close-icon {
+    width: 28px;
+    height: 28px;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .close-icon {
+    display: none;
+    position: absolute;
+  }
+
+  .chat-button.active .chat-icon {
+    display: none;
+  }
+
+  .chat-button.active .close-icon {
+    display: block;
+  }
+
+  .notification-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #FF3B30;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    border: 2px solid white;
+  }
+
+  .notification-badge.hidden {
+    display: none;
+  }
+
+  /* Chat Window */
+  .chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 380px;
+    height: 600px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .chat-window.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+  }
+
+  /* Chat Header */
+  .chat-header {
+    background: linear-gradient(135deg, #0066CC 0%, #004C99 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .agent-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .agent-avatar {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .agent-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .agent-avatar svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .agent-details h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    opacity: 0.95;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background: #34C759;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .minimize-button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  .minimize-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .minimize-button svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Chat Content */
+  .chat-content {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .messages-container {
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .message {
+    display: flex;
+    gap: 12px;
+    animation: slideIn 0.3s ease;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .message-avatar {
+    width: 36px;
+    height: 36px;
+    background: #F2F2F7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .message-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .message-avatar svg {
+    width: 20px;
+    height: 20px;
+    color: #666;
+  }
+
+  .message-content {
+    flex: 1;
+  }
+
+  .message-content p {
+    background: #F2F2F7;
+    padding: 12px 16px;
+    border-radius: 16px;
+    margin: 0 0 4px 0;
+    line-height: 1.5;
+    color: #1C1C1E;
+  }
+
+  .user-message {
+    flex-direction: row-reverse;
+  }
+
+  .user-message .message-content p {
+    background: #0066CC;
+    color: white;
+  }
+
+  .message-time {
+    font-size: 11px;
+    color: #8E8E93;
+    display: block;
+    margin-top: 4px;
+  }
+
+  .quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .quick-action-btn {
+    background: white;
+    border: 1px solid #E5E5EA;
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    color: #1C1C1E;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .quick-action-btn:hover {
+    background: #F2F2F7;
+    border-color: #0066CC;
+    transform: translateY(-1px);
+  }
+
+  .quick-action-btn svg {
+    width: 20px;
+    height: 20px;
+    color: #0066CC;
+  }
+
+  /* Video Container */
+  .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+  }
+
+  .video-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .video-frame {
+    flex: 1;
+    position: relative;
+    background: #1C1C1E;
+  }
+
+  .video-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+
+  .video-placeholder svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+    opacity: 0.6;
+  }
+
+  .video-placeholder p {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.8;
+  }
+
+  .video-controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .video-control-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .video-control-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .video-control-btn.end-call {
+    background: #FF3B30;
+  }
+
+  .video-control-btn.end-call:hover {
+    background: #FF453A;
+  }
+
+  .video-control-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Chat Input */
+  .chat-input-container {
+    padding: 16px 20px;
+    border-top: 1px solid #E5E5EA;
+    background: white;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .chat-form {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  #message-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #E5E5EA;
+    border-radius: 24px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  #message-input:focus {
+    border-color: #0066CC;
+  }
+
+  .send-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #0066CC;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .send-button:hover {
+    background: #0052A3;
+    transform: scale(1.05);
+  }
+
+  .send-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .chat-window {
+      width: calc(100vw - 32px);
+      height: calc(100vh - 120px);
+      bottom: 80px;
+      right: 16px;
+    }
+
+    #chat-widget {
+      bottom: 16px;
+      right: 16px;
+    }
+  }
+</style>
+
+<script>
+  // Import Daily.co dynamically to avoid SSR issues
+  let DailyIframe: any = null;
+
+  // Load Daily.co SDK
+  async function loadDailySDK() {
+    if (!DailyIframe) {
+      const module = await import('@daily-co/daily-js');
+      DailyIframe = module.default;
+    }
+    return DailyIframe;
+  }
+
+  // Chat Widget Functionality
+  const chatToggle = document.getElementById('chat-toggle');
+  const chatWindow = document.getElementById('chat-window');
+  const minimizeChat = document.getElementById('minimize-chat');
+  const chatForm = document.getElementById('chat-form');
+  const messageInput = document.getElementById('message-input') as HTMLInputElement;
+  const messagesContainer = document.getElementById('messages-container');
+  const videoContainer = document.getElementById('video-container');
+  const chatContent = document.getElementById('chat-content');
+  const notificationBadge = document.getElementById('notification-badge');
+
+  // Daily.co instance
+  let callFrame: any = null;
+
+  // Toggle chat window
+  chatToggle?.addEventListener('click', () => {
+    chatToggle.classList.toggle('active');
+    chatWindow?.classList.toggle('active');
+    notificationBadge?.classList.add('hidden');
+  });
+
+  minimizeChat?.addEventListener('click', () => {
+    chatToggle?.classList.remove('active');
+    chatWindow?.classList.remove('active');
+  });
+
+  // Handle quick action buttons
+  document.querySelectorAll('.quick-action-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const action = (e.currentTarget as HTMLElement).dataset.action;
+
+      if (action === 'video') {
+        startVideoCall();
+      } else if (action === 'chat') {
+        addMessage('I\'d like to continue with chat', 'user');
+        setTimeout(() => {
+          addMessage('Perfect! I\'m here to help. What questions do you have about our courses?', 'agent');
+        }, 1000);
+      }
+    });
+  });
+
+  // Handle chat form submission
+  chatForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const message = messageInput?.value.trim();
+
+    if (message) {
+      addMessage(message, 'user');
+      messageInput.value = '';
+
+      // Simulate agent response
+      setTimeout(() => {
+        addMessage('Thank you for your message. An agent will respond shortly.', 'agent');
+      }, 1000);
+    }
+  });
+
+  // Add message to chat
+  function addMessage(text: string, sender: 'user' | 'agent') {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}-message`;
+
+    const time = new Date().toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit'
+    });
+
+    if (sender === 'agent') {
+      messageDiv.innerHTML = `
+        <div class="message-avatar">
+          <img src="/agent-avatar.jpeg" alt="Support Agent" />
+        </div>
+        <div class="message-content">
+          <p>${text}</p>
+          <span class="message-time">${time}</span>
+        </div>
+      `;
+    } else {
+      messageDiv.innerHTML = `
+        <div class="message-content">
+          <p>${text}</p>
+          <span class="message-time">${time}</span>
+        </div>
+      `;
+    }
+
+    messagesContainer?.appendChild(messageDiv);
+    messagesContainer?.scrollTo({
+      top: messagesContainer.scrollHeight,
+      behavior: 'smooth'
+    });
+  }
+
+  // Video call functionality with Daily.co
+  async function startVideoCall() {
+    addMessage('Starting video call...', 'agent');
+
+    try {
+      // Load Daily.co SDK first
+      await loadDailySDK();
+
+      // Create or get room URL
+      const roomUrl = await createOrGetRoomUrl();
+
+      if (!roomUrl) {
+        // Demo mode - show simulated video interface
+        startDemoVideoCall();
+        return;
+      }
+
+      console.log('Room URL:', roomUrl);
+
+      // Show video container
+      if (videoContainer && chatContent) {
+        videoContainer.style.display = 'block';
+        const msgContainer = chatContent.querySelector('.messages-container');
+        if (msgContainer) {
+          (msgContainer as HTMLElement).style.display = 'none';
+        }
+
+        // Initialize Daily.co call frame
+        const videoFrame = document.getElementById('video-call-frame');
+        if (videoFrame && DailyIframe) {
+          // Clear any existing frame
+          if (callFrame) {
+            callFrame.destroy();
+            callFrame = null;
+          }
+
+          // Remove placeholder
+          const placeholder = videoFrame.querySelector('.video-placeholder');
+          if (placeholder) {
+            placeholder.remove();
+          }
+
+          // Create new call frame
+          callFrame = DailyIframe.createFrame(videoFrame, {
+            showLeaveButton: false,
+            showFullscreenButton: true,
+            iframeStyle: {
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              border: 'none',
+              top: '0',
+              left: '0',
+            }
+          });
+
+          console.log('Call frame created, joining room...');
+
+          // Join the call
+          callFrame.join({ url: roomUrl })
+            .then(() => {
+              console.log('Successfully joined Daily.co call');
+              addMessage('Connected to video call', 'agent');
+            })
+            .catch((err: any) => {
+              console.error('Failed to join call:', err);
+
+              // Check if it's a payment method error
+              if (err.errorMsg === 'account-missing-payment-method') {
+                addMessage('⚠️ Daily.co requires a payment method. Using demo mode instead.', 'agent');
+                // Destroy the frame and start demo mode
+                if (callFrame) {
+                  callFrame.destroy();
+                  callFrame = null;
+                }
+                startDemoVideoCall();
+              } else {
+                addMessage('Failed to connect to video call', 'agent');
+                endVideoCall();
+              }
+            });
+
+          // Listen for call events
+          callFrame.on('left-meeting', () => {
+            console.log('Left meeting event');
+            endVideoCall();
+          });
+
+          callFrame.on('error', (e: any) => {
+            console.error('Daily.co error:', e);
+            if (e.errorMsg === 'account-missing-payment-method') {
+              addMessage('⚠️ Daily.co requires a payment method. Using demo mode instead.', 'agent');
+              if (callFrame) {
+                callFrame.destroy();
+                callFrame = null;
+              }
+              startDemoVideoCall();
+            } else {
+              addMessage('Video call error occurred', 'agent');
+            }
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Error starting video call:', error);
+      addMessage('Error starting video call. Trying demo mode...', 'agent');
+      startDemoVideoCall();
+    }
+  }
+
+  // Demo mode video call (without Daily.co)
+  function startDemoVideoCall() {
+    console.log('Starting DEMO mode video call');
+
+    if (videoContainer && chatContent) {
+      videoContainer.style.display = 'block';
+      const msgContainer = chatContent.querySelector('.messages-container');
+      if (msgContainer) {
+        (msgContainer as HTMLElement).style.display = 'none';
+      }
+
+      const videoFrame = document.getElementById('video-call-frame');
+      if (videoFrame) {
+        videoFrame.innerHTML = `
+          <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 20px;">
+            <div style="background: rgba(0,0,0,0.3); border-radius: 16px; padding: 30px; max-width: 400px;">
+              <svg style="width: 80px; height: 80px; margin-bottom: 20px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <h2 style="margin: 0 0 15px 0; font-size: 24px; font-weight: 600;">Demo Mode</h2>
+              <p style="margin: 0 0 20px 0; opacity: 0.9; line-height: 1.6;">
+                This is a preview of the video interface. To enable real video calls:
+              </p>
+              <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 20px; text-align: left;">
+                <p style="margin: 0 0 10px 0; font-weight: 600;">📝 Setup Required:</p>
+                <ol style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                  <li>Go to <a href="https://dashboard.daily.co/" target="_blank" style="color: #fff; text-decoration: underline;">Daily.co Dashboard</a></li>
+                  <li>Navigate to Settings → Billing</li>
+                  <li>Add a payment method (card)</li>
+                  <li>Still free for 10,000 min/month!</li>
+                </ol>
+              </div>
+              <p style="margin: 0; font-size: 14px; opacity: 0.8;">
+                💡 The chat functionality works now - only video requires setup
+              </p>
+            </div>
+          </div>
+        `;
+      }
+
+      setTimeout(() => {
+        addMessage('Demo mode active. See the video panel for setup instructions.', 'agent');
+      }, 500);
+    }
+  }
+
+  // Create or get room URL
+  async function createOrGetRoomUrl(): Promise<string | null> {
+    // Use permanent test room (created by user in Daily.co dashboard)
+    // This allows testing without payment method requirement
+    const TEST_ROOM_URL = 'https://britishcouncil.daily.co/BC-Test-Room';
+
+    console.log('Using test room:', TEST_ROOM_URL);
+    return TEST_ROOM_URL;
+
+    // For production: Uncomment this to create dynamic rooms via API
+    /*
+    try {
+      const response = await fetch('/api/create-room', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Failed to create room:', errorData);
+
+        // Fallback to test room
+        console.warn('API failed - using test room as fallback');
+        return TEST_ROOM_URL;
+      }
+
+      const data = await response.json();
+      return data.roomUrl;
+    } catch (error) {
+      console.error('Error creating room:', error);
+      console.warn('Using test room as fallback');
+      return TEST_ROOM_URL;
+    }
+    */
+  }
+
+  // Video control buttons
+  document.getElementById('end-call')?.addEventListener('click', () => {
+    endVideoCall();
+  });
+
+  document.getElementById('back-to-chat')?.addEventListener('click', () => {
+    endVideoCall();
+  });
+
+  function endVideoCall() {
+    // Leave and destroy the Daily.co call
+    if (callFrame) {
+      callFrame.leave().then(() => {
+        callFrame.destroy();
+        callFrame = null;
+      });
+    }
+
+    if (videoContainer && chatContent) {
+      videoContainer.style.display = 'none';
+      const msgContainer = chatContent.querySelector('.messages-container');
+      if (msgContainer) {
+        (msgContainer as HTMLElement).style.display = 'flex';
+      }
+    }
+    addMessage('Video call ended. How else can I help you?', 'agent');
+  }
+
+  // Toggle video/audio with Daily.co
+  let videoEnabled = true;
+  let audioEnabled = true;
+
+  document.getElementById('toggle-video')?.addEventListener('click', function() {
+    if (callFrame) {
+      videoEnabled = !videoEnabled;
+      callFrame.setLocalVideo(videoEnabled);
+      this.style.background = videoEnabled ? 'rgba(255, 255, 255, 0.2)' : '#FF3B30';
+    }
+  });
+
+  document.getElementById('toggle-audio')?.addEventListener('click', function() {
+    if (callFrame) {
+      audioEnabled = !audioEnabled;
+      callFrame.setLocalAudio(audioEnabled);
+      this.style.background = audioEnabled ? 'rgba(255, 255, 255, 0.2)' : '#FF3B30';
+    }
+  });
+</script>

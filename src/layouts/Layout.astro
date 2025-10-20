@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
+import ChatWidget from '../components/ChatWidget.astro';
 
 export interface Props {
   title: string;
@@ -58,6 +59,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.url.origin);
   <body>
     <slot />
     <Footer />
+    <ChatWidget />
     <script src="/src/scripts/animations.js"></script>
   </body>
 </html>
